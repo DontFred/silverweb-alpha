@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, memo, useMemo, useRef, useState } from "react";
 import { Button, Grid, Modal } from "@nextui-org/react";
 import { FormProvider, useForm } from "react-hook-form";
 
@@ -41,7 +41,7 @@ function renderFields([name, fieldProps]: [string, Field]) {
   }
 
   if (fieldProps.type === "select") {
-    return <SelectField {...fieldProps} name={name} />
+    return <SelectField {...fieldProps} name={name} />;
   }
 
   if (fieldProps.type === "password") {
@@ -53,7 +53,9 @@ function renderFields([name, fieldProps]: [string, Field]) {
 
 export function Form({ fields, onSubmit }: FormProps) {
   const [pages, setPages] = useState<number>(0);
+  const GeneratedFormRef = useRef<HTMLFormElement>(null)
   const form = useForm();
+  
   return (
     <Fragment>
       {process.env.NODE_ENV !== "production" && (
@@ -67,26 +69,7 @@ export function Form({ fields, onSubmit }: FormProps) {
           }}
         >
           <FormProvider {...form}>
-            <SelectField
-              label="Select"
-              type="select"
-              name="Select"
-              items={[
-                { label: "name", value: "name" },
-                { label: "name1", value: "name1" },
-                { label: "name2", value: "name2" },
-                { label: "name3", value: "name3" },
-                { label: "name4", value: "name4" },
-                { label: "name5", value: "name5" }
-              ]}
-              option={{
-                required: {
-                  value: true,
-                  message: "Please enter your company name",
-                },
-              }}
-            />
-            <form onSubmit={form.handleSubmit(onSubmit)}>
+            <form>
               {fields.map((field, idx) => (
                 <div
                   key={idx}
@@ -116,26 +99,27 @@ export function Form({ fields, onSubmit }: FormProps) {
                       size="sm"
                       ghost
                       auto
-                      type="submit"
+                      type="button"
+                      onClick={form.handleSubmit(onSubmit)}
                     >
-                      Submit
+                        Submit
                     </Button>
                   ) : (
                     <Button
                       type="button"
+                      role="button"
                       size="sm"
                       ghost
                       auto
-                      onPress={() => {
-                        Object.entries(fields[pages]).map(
-                          ([name, fieldProps]) => form.trigger([name])
-                        );
-                        if (
-                          !Object.entries(fields[pages]).find(
-                            ([name, fieldProps]) => form.formState.errors[name]
-                          )
-                        )
-                          setPages(pages + 1);
+                      onPress={async () => {
+                        await Promise.all(Object.entries(fields[pages]).map(async (field) => {
+                            // Checking field
+                            return await form.trigger(field[0])
+                        }));
+                        if(!Object.values(form.formState.errors).length){
+                            // No errors found
+                            setPages(pages + 1);
+                        }
                       }}
                     >
                       Next
