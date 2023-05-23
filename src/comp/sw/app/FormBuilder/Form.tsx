@@ -1,18 +1,19 @@
+import { Fragment, useState } from "react";
 import { Button, Grid, Modal } from "@nextui-org/react";
-import { Field, FormProps } from "./types";
 import { FormProvider, useForm } from "react-hook-form";
+
+import { Field, FormProps } from "./types";
 import TextField from "./ui/TextField";
 import TitleField from "./ui/TitleField";
-import { Fragment, useState } from "react";
 import DescriptionField from "./ui/DescriptionField";
 import PasswordField from "./ui/PasswordField";
 import SpacerField from "./ui/SpacerField";
-
-//Dev
-import { DevTool } from "@hookform/devtools";
 import HeadingField from "./ui/HeadingField";
 import SubheadingField from "./ui/SubheadingField";
 import SelectField from "./ui/SelectField";
+
+//Dev
+import { DevTool } from "@hookform/devtools";
 
 function renderFields([name, fieldProps]: [string, Field]) {
   if (fieldProps.type === "title") {
@@ -39,6 +40,10 @@ function renderFields([name, fieldProps]: [string, Field]) {
     return <TextField {...fieldProps} name={name} />;
   }
 
+  if (fieldProps.type === "select") {
+    return <SelectField {...fieldProps} name={name} />
+  }
+
   if (fieldProps.type === "password") {
     return <PasswordField {...fieldProps} name={name} />;
   }
@@ -52,6 +57,7 @@ export function Form({ fields, onSubmit }: FormProps) {
   return (
     <Fragment>
       {process.env.NODE_ENV !== "production" && (
+        // Form state tool for react-hook-form
         <DevTool control={form.control} />
       )}
       <Modal open={true} blur preventClose width="40%">
@@ -61,7 +67,25 @@ export function Form({ fields, onSubmit }: FormProps) {
           }}
         >
           <FormProvider {...form}>
-            <SelectField/>
+            <SelectField
+              label="Select"
+              type="select"
+              name="Select"
+              items={[
+                { label: "name", value: "name" },
+                { label: "name1", value: "name1" },
+                { label: "name2", value: "name2" },
+                { label: "name3", value: "name3" },
+                { label: "name4", value: "name4" },
+                { label: "name5", value: "name5" }
+              ]}
+              option={{
+                required: {
+                  value: true,
+                  message: "Please enter your company name",
+                },
+              }}
+            />
             <form onSubmit={form.handleSubmit(onSubmit)}>
               {fields.map((field, idx) => (
                 <div
@@ -103,9 +127,15 @@ export function Form({ fields, onSubmit }: FormProps) {
                       ghost
                       auto
                       onPress={() => {
-                        Object.entries(fields[pages]).map(([name, fieldProps]) => form.trigger([name]))
-                        if(!Object.entries(fields[pages]).find(([name, fieldProps]) => form.formState.errors[name]))
-                         setPages(pages + 1);
+                        Object.entries(fields[pages]).map(
+                          ([name, fieldProps]) => form.trigger([name])
+                        );
+                        if (
+                          !Object.entries(fields[pages]).find(
+                            ([name, fieldProps]) => form.formState.errors[name]
+                          )
+                        )
+                          setPages(pages + 1);
                       }}
                     >
                       Next

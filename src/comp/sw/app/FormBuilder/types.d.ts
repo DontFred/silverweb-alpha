@@ -15,6 +15,7 @@ type FieldSchema = {
     | "spacer"
     | "text"
     | "number"
+    | "select"
     | "array"
     | "address"
     | "person"
@@ -77,6 +78,12 @@ export type TextFieldProps = FieldSchema &
     type: "text";
   };
 
+export type SelectFieldProps = FieldSchema &
+  DefaultPops & {
+    type: "select";
+    items: Array<{ label: string; value: string}>;
+  };
+
 export type PasswordFieldProps = FieldSchema &
   DefaultPops & {
     type: "password";
@@ -89,6 +96,7 @@ export type Field =
   | SubheadingProps
   | SpacerProps
   | TextFieldProps
+  | SelectFieldProps
   | PasswordFieldProps;
 
 type Fields = Record<string, Field>;

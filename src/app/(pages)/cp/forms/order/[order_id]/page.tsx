@@ -34,7 +34,7 @@ const fields: FormProps["fields"] = [
         },
         pattern: {
             value: /^[A-Z2-7]{16}$/,
-            message: "Please enter a vaild password"
+            message: "Please enter a valid password"
         },
       }
     },
@@ -80,7 +80,17 @@ const fields: FormProps["fields"] = [
         type: "heading",
         content: "Registered company address"
     },
-    
+    select: {
+        type: "select",
+        label: "Company Name",
+        items: [{ label: "Company Name", value: "cn" }, { label: "Name2", value: "cn2"}],
+        option: {
+            required: {
+                message: "required",
+                value: true
+            }
+        }
+    }
   }
 ];
 
