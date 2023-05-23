@@ -80,17 +80,23 @@ const fields: FormProps["fields"] = [
         type: "heading",
         content: "Registered company address"
     },
-    select: {
-        type: "select",
-        label: "Company Name",
-        items: [{ label: "Company Name", value: "cn" }, { label: "Name2", value: "cn2"}],
+    companyAddress: {
+        type: "address",
+        label: "Company Address",
         option: {
             required: {
-                message: "required",
-                value: true
+                value: true,
+                message: "Please enter your company address"
             }
         }
-    }
+    },
+    spacerDrei: {
+        type: "spacer",       
+    },
+    headingDrei: {
+        type: "heading",
+        content: "Registered company address"
+    },
   }
 ];
 

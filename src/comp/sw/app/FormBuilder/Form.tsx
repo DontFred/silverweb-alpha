@@ -1,4 +1,4 @@
-import { Fragment, memo, useMemo, useRef, useState } from "react";
+import { Fragment, useState } from "react";
 import { Button, Grid, Modal } from "@nextui-org/react";
 import { FormProvider, useForm } from "react-hook-form";
 
@@ -14,6 +14,7 @@ import SelectField from "./ui/SelectField";
 
 //Dev
 import { DevTool } from "@hookform/devtools";
+import AddressField from "./ui/AddressField";
 
 function renderFields([name, fieldProps]: [string, Field]) {
   if (fieldProps.type === "title") {
@@ -44,6 +45,10 @@ function renderFields([name, fieldProps]: [string, Field]) {
     return <SelectField {...fieldProps} name={name} />;
   }
 
+  if (fieldProps.type === "address" ){
+    return <AddressField {...fieldProps} name={name} />;
+  }
+
   if (fieldProps.type === "password") {
     return <PasswordField {...fieldProps} name={name} />;
   }
@@ -53,11 +58,17 @@ function renderFields([name, fieldProps]: [string, Field]) {
 
 export function Form({ fields, onSubmit }: FormProps) {
   const [pages, setPages] = useState<number>(0);
-  const GeneratedFormRef = useRef<HTMLFormElement>(null)
+
   const form = useForm();
-  
   return (
     <Fragment>
+        <style jsx global>
+            {`
+                .nextui-input-helper-text-container {
+                    right: 10px;
+                }
+            `}
+        </style>
       {process.env.NODE_ENV !== "production" && (
         // Form state tool for react-hook-form
         <DevTool control={form.control} />
@@ -112,11 +123,11 @@ export function Form({ fields, onSubmit }: FormProps) {
                       ghost
                       auto
                       onPress={async () => {
-                        await Promise.all(Object.entries(fields[pages]).map(async (field) => {
+                        const Errors = await Promise.all(Object.entries(fields[pages]).map(async (field) => {
                             // Checking field
                             return await form.trigger(field[0])
                         }));
-                        if(!Object.values(form.formState.errors).length){
+                        if(Errors.every(value => value === true)){
                             // No errors found
                             setPages(pages + 1);
                         }

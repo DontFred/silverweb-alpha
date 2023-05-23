@@ -8,12 +8,15 @@ export default function PasswordField(
 ) {
   const { register, formState } = useFormContext();
   const { label, name, option } = props;
+
+  const Error = name.split('.').reduce((err, path): any => err && err[path], formState.errors)
+
   return (
     <Fragment>
       <Input.Password
-        status={formState.errors[name] ? "error" : "default"}
-        {...(formState.errors[name]?.message && {
-          helperText: "" + formState.errors[name]?.message,
+        status={Error ? "error" : "default"}
+        {...(Error && {
+          helperText: "" + Error.message,
         })}
         helperColor="error"
         fullWidth

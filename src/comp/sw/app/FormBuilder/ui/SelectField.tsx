@@ -30,6 +30,12 @@ export default function SelectField(
     rules: option,
   });
 
+  // Errors
+
+  const Error = name
+    .split(".")
+    .reduce((err, path): any => err && err[path], formState.errors);
+
   // useState
   const [selectedOption, setSelectedOption] = useState<Set<Key>>(new Set([]));
   const [searchInput, setSearchInput] = useState<string>("");
@@ -66,7 +72,7 @@ export default function SelectField(
         );
       }
     }
-  }, [somethingIsSelected, formState.errors[name]]);
+  }, [somethingIsSelected, Error]);
 
   // Search mechanic
 
@@ -79,18 +85,16 @@ export default function SelectField(
   const PlaceholderLabelOnAnimation: StyleObject.Properties = {
     // Animation for placeholder when Dropdown menu is open or something is selected
     left: "var(--nextui-space-2)",
-    color: formState.errors[name]
-      ? "var(--nextui-colors-error)"
-      : "var(--nextui-colors-text)",
-    top: "-58%",
+    color: Error ? "var(--nextui-colors-error)" : "var(--nextui-colors-text)",
+    top: "-28.8px",
   };
   const PlaceholderLabelOffAnimation: StyleObject.Properties = {
     // Animation for placeholder when dropdown menu is not open and nothing is selected
     left: "var(--nextui-space-6)",
-    color: formState.errors[name]
+    color: Error
       ? "var(--nextui-colors-error)"
       : "var(--nextui-colors-accents6)",
-    top: "24%",
+    top: "20%",
   };
 
   const PlaceholderLabelClass: CSS = {
@@ -109,9 +113,7 @@ export default function SelectField(
   const TriggerInputOnAnimation: StyleObject.Properties = {
     // Animation for trigger input when dropdown menu is open
     transform: "translate(0, -2px)",
-    border: formState.errors[name]
-      ? "2px solid var(--nextui-colors-error)"
-      : "2px solid white",
+    border: Error ? "2px solid var(--nextui-colors-error)" : "2px solid white",
   };
 
   const TriggerInputOffAnimation: StyleObject.Properties = {
@@ -122,16 +124,15 @@ export default function SelectField(
 
   const TriggerInputClass: CSS = {
     // Class for trigger input
-    w: "100%",
+    w: "calc(100% + 4px)",
     br: "0.75rem",
     bg: "transparent",
-    m: 0,
     p: "10px 16px",
     letterSpacing: "$normal",
     h: 44,
-    color: "$text",
+    color: Error ? "var(--nextui-colors-error)" : "var(--nextui-colors-text)",
     fontSize: "$sm",
-    margin: "2px",
+    m: -2,
     border: "2px solid $border",
     fontStyle: "normal",
     fontWeight: "$normal",
@@ -153,6 +154,7 @@ export default function SelectField(
   const ErrorMessageClass: CSS = {
     // Class for error message
     position: "absolute",
+    right: 10,
     m: "$1 0 0 $5",
     fontSize: "var(--nextui-space-5)",
     color: "$error",
@@ -173,6 +175,7 @@ export default function SelectField(
           {label}
         </Text>
         <Dropdown
+          placement="bottom"
           isOpen={isOpen}
           disableTriggerPressedAnimation={true}
           onOpenChange={(isOpen: boolean) => {
@@ -215,7 +218,7 @@ export default function SelectField(
           <Dropdown.Button
             onMouseEnter={() => {
               if (TriggerInputRef.current)
-                TriggerInputRef.current.style.border = formState.errors[name]
+                TriggerInputRef.current.style.border = Error
                   ? "2px solid var(--nextui-colors-error)"
                   : "2px solid white";
             }}
@@ -273,10 +276,7 @@ export default function SelectField(
             </Dropdown.Section>
           </Dropdown.Menu>
         </Dropdown>
-        <Text css={ErrorMessageClass}>
-          {formState.errors[name]?.message &&
-            "" + formState.errors[name]?.message}
-        </Text>
+        <Text css={ErrorMessageClass}>{Error && "" + Error.message}</Text>
       </div>
     </Fragment>
   );
