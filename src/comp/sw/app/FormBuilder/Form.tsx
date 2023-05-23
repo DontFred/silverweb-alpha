@@ -15,6 +15,7 @@ import SelectField from "./ui/SelectField";
 //Dev
 import { DevTool } from "@hookform/devtools";
 import AddressField from "./ui/AddressField";
+import ContactField from "./ui/ContactField";
 
 function renderFields([name, fieldProps]: [string, Field]) {
   if (fieldProps.type === "title") {
@@ -47,6 +48,10 @@ function renderFields([name, fieldProps]: [string, Field]) {
 
   if (fieldProps.type === "address" ){
     return <AddressField {...fieldProps} name={name} />;
+  }
+
+  if (fieldProps.type === "contact") {
+    return <ContactField {...fieldProps} name={name} />;
   }
 
   if (fieldProps.type === "password") {

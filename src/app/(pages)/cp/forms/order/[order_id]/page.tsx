@@ -63,6 +63,9 @@ const fields: FormProps["fields"] = [
         type: "subheading",
         content: "for contract purposes."
     },
+    spacerZwei: {
+        type: "spacer",
+    },
     officialCompanyName: {
         type: "text",
         label: "Company Name",
@@ -73,12 +76,16 @@ const fields: FormProps["fields"] = [
             }
         }
     },
-    spacerZwei: {
-        type: "spacer",       
+    spacerDrei: {
+        type: "spacer",
+        double: true,       
     },
     headingZwei: {
         type: "heading",
         content: "Registered company address"
+    },
+    spacerVier: {
+        type: "spacer"
     },
     companyAddress: {
         type: "address",
@@ -90,13 +97,21 @@ const fields: FormProps["fields"] = [
             }
         }
     },
-    spacerDrei: {
-        type: "spacer",       
+    spacerFunf: {
+        type: "spacer",  
+        double: true     
     },
     headingDrei: {
         type: "heading",
-        content: "Registered company address"
+        content: "Personal Contact Details"
     },
+    spacerSechs: {
+        type: "spacer",       
+    },
+    personalContact: {
+        type: "contact",
+        label: "Personal Contact"
+    }
   }
 ];
 

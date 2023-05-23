@@ -99,6 +99,7 @@ export default function SelectField(
 
   const PlaceholderLabelClass: CSS = {
     // Class for placeholder
+    userSelect: "none",
     fontSize: "$sm",
     position: "absolute",
     letterSpacing: "$normal",
@@ -159,6 +160,7 @@ export default function SelectField(
     fontSize: "var(--nextui-space-5)",
     color: "$error",
   };
+
 
   return (
     <Fragment>

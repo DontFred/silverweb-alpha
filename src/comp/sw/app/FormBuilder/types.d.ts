@@ -17,7 +17,7 @@ type FieldSchema = {
     | "number"
     | "select"
     | "address"
-    | "person"
+    | "contact"
     | "password";
 };
 
@@ -88,6 +88,11 @@ export type AddressFieldProps = FieldSchema &
     type: "address";
   };
 
+export type ContactFieldProps = FieldSchema &
+  DefaultPops & {
+    type: "contact";
+  };
+
 export type PasswordFieldProps = FieldSchema &
   DefaultPops & {
     type: "password";
@@ -102,6 +107,7 @@ export type Field =
   | TextFieldProps
   | SelectFieldProps
   | AddressFieldProps
+  | ContactFieldProps
   | PasswordFieldProps;
 
 type Fields = Record<string, Field>;
