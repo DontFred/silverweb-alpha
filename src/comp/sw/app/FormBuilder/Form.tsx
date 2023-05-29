@@ -21,6 +21,7 @@ import ArrayField from "./ui/ArrayField";
 
 //Dev
 import { DevTool } from "@hookform/devtools";
+import EmailField from "./ui/EmailField";
 
 function renderFields([name, fieldProps]: [string, Field], idx: number) {
   switch (fieldProps.type) {
@@ -44,6 +45,8 @@ function renderFields([name, fieldProps]: [string, Field], idx: number) {
       return <ContactField {...fieldProps} name={name} key={idx} />;
     case "password":
       return <PasswordField {...fieldProps} name={name} key={idx} />;
+    case "email":
+      return <EmailField {...fieldProps} name={name} key={idx} />;
     case "phone":
       return <PhoneField {...fieldProps} name={name} key={idx} />;
     case "array":

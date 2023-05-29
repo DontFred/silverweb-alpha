@@ -1303,7 +1303,7 @@ export default function PhoneField(props: PhoneFieldProps & { name: string }) {
 
   useEffect(() => {
     if (watch(name)) {
-      if (watch(name).test(/^\+[-0-9]+$/)){
+      if (!/^\+[-0-9]+$/.test(watch(name))){
         setError(name, {message: "Please enter a valid phone number", type: "pattern"})
       }
     }
@@ -1367,7 +1367,6 @@ export default function PhoneField(props: PhoneFieldProps & { name: string }) {
           bordered
           fullWidth
           inputMode="numeric"
-          pattern="^\+[-0-9]+$"
           onChange={(e: ChangeEvent<FormElement>) => {
             e.target.value = e.target.value.replace(/^[^\d-]+$/, "");
             if (!e.target.value.startsWith("+") && e.target.value.length) {

@@ -3,6 +3,7 @@ import { ContactFieldProps } from "../types";
 import { Grid, Spacer } from "@nextui-org/react";
 import TextField from "./TextField";
 import PhoneField from "./PhoneField";
+import EmailField from "./EmailField";
 
 export default function ContactField(
   props: ContactFieldProps & { name: string }
@@ -45,10 +46,10 @@ export default function ContactField(
           <Spacer x={1} />
         </Grid>
         <Grid xs>
-          <TextField
+          <EmailField
             name={`${name}.email`}
             label="Email"
-            type="text"
+            type="email"
             option={option}
           />
         </Grid>

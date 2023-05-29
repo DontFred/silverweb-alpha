@@ -10,6 +10,7 @@ import ContactField from "./ContactField";
 import HeadingField from "./HeadingField";
 import { Button, Spacer } from "@nextui-org/react";
 import { Minus, Plus } from "lucide-react";
+import EmailField from "./EmailField";
 
 const lookup: Record<ArrayProps["item"], any> = {
   text: TextField,
@@ -18,6 +19,7 @@ const lookup: Record<ArrayProps["item"], any> = {
   address: AddressField,
   phone: PhoneField,
   contact: ContactField,
+  email: EmailField,
   password: PasswordField,
 };
 

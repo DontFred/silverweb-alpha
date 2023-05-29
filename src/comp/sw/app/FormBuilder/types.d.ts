@@ -19,6 +19,7 @@ export type FieldSchema = {
     | "address"
     | "contact"
     | "password"
+    | "email"
     | "phone"
     | "array";
 };
@@ -101,6 +102,11 @@ export type PasswordFieldProps = FieldSchema &
     type: "password";
   };
 
+export type EmailFieldProps = FieldSchema &
+  DefaultPops & {
+    type: "email";
+  };
+
 export type PhoneFieldProps = FieldSchema &
   DefaultPops & {
     type: "phone";
@@ -116,6 +122,7 @@ export type ArrayProps = FieldSchema &
       | "address"
       | "contact"
       | "phone"
+      | "email"
       | "password";
 counterMessage?: string  
     };
@@ -131,6 +138,7 @@ export type Field =
   | AddressFieldProps
   | ContactFieldProps
   | PasswordFieldProps
+  | EmailFieldProps
   | PhoneFieldProps
   | ArrayProps;
 

@@ -1,16 +1,24 @@
-import { Fragment } from "react";
-import { TextFieldProps } from "../types";
+import { Fragment, useEffect } from "react";
+import { EmailFieldProps } from "../types";
 import { useFormContext } from "react-hook-form";
 import { Input } from "@nextui-org/react";
 import TooltipHelper from "./TooltipHelper";
 
-export default function TextField(props: TextFieldProps & { name: string }) {
-  const { register, formState } = useFormContext();
+export default function EmailField(props: EmailFieldProps & { name: string }) {
+  const { register, formState, watch, setError } = useFormContext();
   const { label, name, option, helpText } = props;
 
   const Error = name
     .split(".")
     .reduce((err, path): any => err && err[path], formState.errors);
+
+    useEffect(() => {
+        if (watch(name)) {
+          if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(watch(name))){
+            setError(name, {message: "Please enter a valid email", type: "pattern"})
+          }
+        }
+      }, [formState.isValidating]);
 
   return (
     <Fragment>
