@@ -16,6 +16,7 @@ export type FieldSchema = {
     | "text"
     | "number"
     | "select"
+    | "radio"
     | "address"
     | "contact"
     | "password"
@@ -87,6 +88,13 @@ export type SelectFieldProps = FieldSchema &
     items: Array<string> | Record<string, Array<string>>;
   };
 
+export type RadioFieldProps = FieldSchema & 
+  DefaultPops & {
+    type: "radio",
+    items: Array<string>;
+    otherOpt?: boolean;
+  }
+
 export type AddressFieldProps = FieldSchema &
   DefaultPops & {
     type: "address";
@@ -135,6 +143,7 @@ export type Field =
   | SpacerProps
   | TextFieldProps
   | SelectFieldProps
+  | RadioFieldProps
   | AddressFieldProps
   | ContactFieldProps
   | PasswordFieldProps

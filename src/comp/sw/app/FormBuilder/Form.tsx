@@ -22,6 +22,7 @@ import ArrayField from "./ui/ArrayField";
 //Dev
 import { DevTool } from "@hookform/devtools";
 import EmailField from "./ui/EmailField";
+import RadioField from "./ui/RadioField";
 
 function renderFields([name, fieldProps]: [string, Field], idx: number) {
   switch (fieldProps.type) {
@@ -39,6 +40,8 @@ function renderFields([name, fieldProps]: [string, Field], idx: number) {
       return <TextField {...fieldProps} name={name} key={idx} />;
     case "select":
       return <SelectField {...fieldProps} name={name} key={idx} />;
+    case "radio":
+      return <RadioField {...fieldProps} name={name} key={idx} />;
     case "address":
       return <AddressField {...fieldProps} name={name} key={idx} />;
     case "contact":

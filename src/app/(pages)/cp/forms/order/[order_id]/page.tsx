@@ -116,8 +116,8 @@ const fields: FormProps["fields"] = [
         required: {
           message: "Please enter your details",
           value: true,
-        }
-      }
+        },
+      },
     },
     spacerSieben: {
       type: "spacer",
@@ -125,22 +125,90 @@ const fields: FormProps["fields"] = [
     },
     headingVier: {
       type: "heading",
-      content: "Your Colleagues Contact Details"
+      content: "Your Colleagues Contact Details",
     },
     subheadingZwei: {
       type: "subheading",
-      content: "who will be involved in our collaboration."
+      content: "who will be involved in our collaboration.",
     },
     spacerAcht: {
       type: "spacer",
     },
-    colleagesContactDetails: {
-      type: "contact",
-    },
-    TestArray: {
+    colleaguesContactDetails: {
       type: "array",
       item: "contact",
-      counterMessage: "Colleague No."
+      counterMessage: "Colleague No.",
+    },
+    spacerNeun: {
+      type: "spacer",
+      double: true,
+    },
+  },
+  {
+    title: {
+      type: "title",
+      content: "Project Information",
+    },
+    description: {
+      type: "description",
+      content:
+        "This section of the form is to give us an information on the project you are working on and ultimately know what SilverBack need to resource in order to solve the needs on your mission critical construction projects.",
+    },
+    spacerEins: {
+      type: "spacer",
+      double: true
+    },
+    headingEins: {
+      type: "heading",
+      content: "Project name or code",
+    },
+    spacerZwei: {
+      type: "spacer",
+    },
+    projectName: {
+      type: "text",
+      label: "Project name",
+      option: {
+        required: {
+          message: "Please enter the project name",
+          value: true
+        }
+      }
+    },
+    spacerDrei: {
+      type: "spacer",
+      double: true
+    },
+    headingZwei: {
+      type: "heading",
+      content: "Project address"
+    },
+    spacerVier: {
+      type: "spacer"
+    },
+    projectAddress: {
+      type: "address",
+      option: {
+        required: {
+          message: "Please enter the project address",
+          value: true
+        }
+      }
+    },
+    spacerFunf: {
+      type: "spacer",
+      double: true
+    },
+    headingDrei: {
+      type: "heading",
+      content: "Type of project"
+    },
+    spacerSechs: {
+      type: "spacer"
+    },
+    typeOfProject: {
+      type: "radio",
+      items: ["hello"]
     }
   },
 ];
