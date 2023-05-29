@@ -2,7 +2,10 @@ import { Fragment, useState } from "react";
 import { Button, Grid, Modal } from "@nextui-org/react";
 import { FormProvider, useForm } from "react-hook-form";
 
-import { DescriptionProps, Field, FieldSchema, FormProps, TitleProps } from "./types";
+import {
+  Field,
+  FormProps,
+} from "./types";
 import TextField from "./ui/TextField";
 import TitleField from "./ui/TitleField";
 import DescriptionField from "./ui/DescriptionField";
@@ -20,59 +23,34 @@ import ArrayField from "./ui/ArrayField";
 import { DevTool } from "@hookform/devtools";
 
 function renderFields([name, fieldProps]: [string, Field], idx: number) {
-
   switch (fieldProps.type) {
-    
+    case "title":
+      return <TitleField {...fieldProps} key={idx} />;
+    case "description":
+      return <DescriptionField {...fieldProps} key={idx}/>;
+    case "heading":
+      return <HeadingField {...fieldProps} key={idx} />;
+    case "subheading":
+      return <SubheadingField {...fieldProps} key={idx} />;
+    case "spacer":
+      return <SpacerField {...fieldProps} key={idx} />;
+    case "text":
+      return <TextField {...fieldProps} name={name} key={idx} />;
+    case "select":
+      return <SelectField {...fieldProps} name={name} key={idx} />;
+    case "address":
+      return <AddressField {...fieldProps} name={name} key={idx} />;
+    case "contact":
+      return <ContactField {...fieldProps} name={name} key={idx} />;
+    case "password":
+      return <PasswordField {...fieldProps} name={name} key={idx} />;
+    case "phone":
+      return <PhoneField {...fieldProps} name={name} key={idx} />;
+    case "array":
+      return <ArrayField {...fieldProps} name={name} key={idx} />;
+    default: 
+      return <div key={idx}>Unknown type: &apos;{fieldProps["type"]}&apos;</div>;
   }
-  if (fieldProps.type === "title") {
-    return <TitleField {...fieldProps} key={idx} />;
-  }
-
-  if (fieldProps.type === "description") {
-    return <DescriptionField {...fieldProps} key={idx} />;
-  }
-
-  if (fieldProps.type === "heading") {
-    return <HeadingField {...fieldProps} key={idx} />;
-  }
-
-  if (fieldProps.type === "subheading") {
-    return <SubheadingField {...fieldProps} key={idx} />;
-  }
-
-  if (fieldProps.type === "spacer") {
-    return <SpacerField {...fieldProps} key={idx} />;
-  }
-
-  if (fieldProps.type === "text") {
-    return <TextField {...fieldProps} name={name} key={idx} />;
-  }
-
-  if (fieldProps.type === "select") {
-    return <SelectField {...fieldProps} name={name} key={idx} />;
-  }
-
-  if (fieldProps.type === "address") {
-    return <AddressField {...fieldProps} name={name} key={idx} />;
-  }
-
-  if (fieldProps.type === "contact") {
-    return <ContactField {...fieldProps} name={name} key={idx} />;
-  }
-
-  if (fieldProps.type === "password") {
-    return <PasswordField {...fieldProps} name={name} key={idx} />;
-  }
-
-  if (fieldProps.type === "phone") {
-    return <PhoneField {...fieldProps} name={name} key={idx} />;
-  }
-
-  if (fieldProps.type === "array"){
-    return <ArrayField {...fieldProps} name={name} key={idx} />;
-  }
-
-  return <div key={idx}>Unknown type: &apos;{fieldProps["type"]}&apos;</div>;
 }
 
 export function Form({ fields, onSubmit }: FormProps) {
