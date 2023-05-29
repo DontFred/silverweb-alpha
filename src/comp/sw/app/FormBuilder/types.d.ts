@@ -18,12 +18,14 @@ type FieldSchema = {
     | "select"
     | "address"
     | "contact"
-    | "password";
+    | "password"
+    | "phone";
 };
 
 type DefaultPops = {
-  label: string;
+  label?: string;
   htmlType?: HTMLInputTypeAttribute;
+  helpText?: string;
   option?: {
     required?: ValidationRule<boolean>;
     min?: ValidationRule<number>;
@@ -98,6 +100,11 @@ export type PasswordFieldProps = FieldSchema &
     type: "password";
   };
 
+export type PhoneFieldProps = FieldSchema &
+  DefaultPops & {
+    type: "phone"
+  }
+
 export type Field =
   | TitleProps
   | DescriptionProps
@@ -108,7 +115,8 @@ export type Field =
   | SelectFieldProps
   | AddressFieldProps
   | ContactFieldProps
-  | PasswordFieldProps;
+  | PasswordFieldProps
+  | PhoneFieldProps;
 
 type Fields = Record<string, Field>;
 

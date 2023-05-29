@@ -1,5 +1,5 @@
-import Providers from "@/lib/providers";
 import "./(styles)/globals.css";
+import Providers from "@/lib/providers";
 import localFont from "next/font/local";
 
 const graphik = localFont({

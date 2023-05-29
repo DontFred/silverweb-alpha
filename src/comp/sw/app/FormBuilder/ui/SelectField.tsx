@@ -32,7 +32,8 @@ const SelectItemStyling: CSS = {
   p: "5px $sm",
   br: "$sm",
   h: "$13",
-  m: -5,
+  m: "-5px 0",
+  w: "100%",
   transition: "$dropdownItem",
   userSelect: "none",
 };
@@ -163,8 +164,6 @@ export default function Select_Field(
   return (
     <Fragment>
       <div style={InputDropdownContainerStyling} ref={field.ref}>
-        <div id="1"  className="3"/>
-        <div id="1" className="2"/>
         <Input
           status={Error ? "error" : "default"}
           {...(Error && {

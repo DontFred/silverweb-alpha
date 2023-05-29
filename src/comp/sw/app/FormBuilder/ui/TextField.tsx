@@ -6,7 +6,7 @@ import TooltipHelper from "./TooltipHelper";
 
 export default function TextField(props: TextFieldProps & { name: string }) {
   const { register, formState } = useFormContext();
-  const { label, name, option } = props;
+  const { label, name, option, helpText } = props;
 
   const Error = name
     .split(".")
@@ -32,16 +32,17 @@ export default function TextField(props: TextFieldProps & { name: string }) {
           labelPlaceholder={label}
           {...register(name, { ...option })}
         />
-        {/* <div
+        <div
           style={{
             position: "absolute",
             top: "50%",
             transform: "translate(0, -50%)",
-            right: -20
+            right: -20,
+            display: helpText ? "block" : "none"
           }}
         >
-          <TooltipHelper content="Help text" />
-        </div> */}
+          <TooltipHelper content={helpText ? helpText : ""} />
+        </div>
       </div>
     </Fragment>
   );

@@ -16,48 +16,51 @@ import SelectField from "./ui/SelectField";
 import { DevTool } from "@hookform/devtools";
 import AddressField from "./ui/AddressField";
 import ContactField from "./ui/ContactField";
-import Select_Field from "./ui/SelectField";
-import PhonenumberField from "./ui/PhonenumberField";
+import PhoneField from "./ui/PhoneField";
 
 function renderFields([name, fieldProps]: [string, Field], idx: number) {
   if (fieldProps.type === "title") {
-    return <TitleField {...fieldProps} key={idx}/>;
+    return <TitleField {...fieldProps} key={idx} />;
   }
 
   if (fieldProps.type === "description") {
-    return <DescriptionField {...fieldProps} key={idx}/>;
+    return <DescriptionField {...fieldProps} key={idx} />;
   }
 
   if (fieldProps.type === "heading") {
-    return <HeadingField {...fieldProps} key={idx}/>;
+    return <HeadingField {...fieldProps} key={idx} />;
   }
 
   if (fieldProps.type === "subheading") {
-    return <SubheadingField {...fieldProps} key={idx}/>;
+    return <SubheadingField {...fieldProps} key={idx} />;
   }
 
   if (fieldProps.type === "spacer") {
-    return <SpacerField {...fieldProps} key={idx}/>;
+    return <SpacerField {...fieldProps} key={idx} />;
   }
 
   if (fieldProps.type === "text") {
-    return <TextField {...fieldProps} name={name} key={idx}/>;
+    return <TextField {...fieldProps} name={name} key={idx} />;
   }
 
   if (fieldProps.type === "select") {
-    return <SelectField {...fieldProps} name={name} key={idx}/>;
+    return <SelectField {...fieldProps} name={name} key={idx} />;
   }
 
-  if (fieldProps.type === "address" ){
-    return <AddressField {...fieldProps} name={name} key={idx}/>;
+  if (fieldProps.type === "address") {
+    return <AddressField {...fieldProps} name={name} key={idx} />;
   }
 
   if (fieldProps.type === "contact") {
-    return <ContactField {...fieldProps} name={name} key={idx}/>;
+    return <ContactField {...fieldProps} name={name} key={idx} />;
   }
 
   if (fieldProps.type === "password") {
-    return <PasswordField {...fieldProps} name={name} key={idx}/>;
+    return <PasswordField {...fieldProps} name={name} key={idx} />;
+  }
+
+  if (fieldProps.type === "phone") {
+    return <PhoneField {...fieldProps} name={name} key={idx} />;
   }
 
   return <div key={idx}>Unknown type: &apos;{fieldProps["type"]}&apos;</div>;
@@ -69,41 +72,46 @@ export function Form({ fields, onSubmit }: FormProps) {
   const form = useForm();
   return (
     <Fragment>
-        <style jsx global>
-            {`
-                .nextui-input-helper-text-container {
-                    right: 10px;
-                }
-            `}
-        </style>
+      <style jsx global>
+        {`
+          .nextui-input-helper-text-container {
+            right: 10px;
+          }
+        `}
+      </style>
       {process.env.NODE_ENV !== "production" && (
         // Form state tool for react-hook-form
         <DevTool control={form.control} />
       )}
-      <Modal open={true} blur preventClose width="100%" css={{
-        width: '90%',
-        m: '0 auto',
-        "@sm": {
-          width: "60%"
-        },
-        "@md": {
-            width: '45%',
-        },
-        "@lg": {
-            width: '45%',
-        },
-      }}>
+      <Modal
+        open={true}
+        blur
+        preventClose
+        width="100%"
+        css={{
+          width: "90%",
+          m: "0 auto",
+          "@sm": {
+            width: "60%",
+          },
+          "@md": {
+            width: "45%",
+          },
+          "@lg": {
+            width: "45%",
+          },
+        }}
+      >
         <Modal.Body
           css={{
             p: "$sm 40px",
             "@sm": {
-                p: "40px 80px",
+              p: "40px 80px",
             },
           }}
         >
           <FormProvider {...form}>
             <form>
-              <PhonenumberField/>
               {fields.map((field, idx) => (
                 <div
                   key={idx}
@@ -136,7 +144,7 @@ export function Form({ fields, onSubmit }: FormProps) {
                       type="button"
                       onClick={form.handleSubmit(onSubmit)}
                     >
-                        Submit
+                      Submit
                     </Button>
                   ) : (
                     <Button
@@ -146,13 +154,15 @@ export function Form({ fields, onSubmit }: FormProps) {
                       ghost
                       auto
                       onPress={async () => {
-                        const Errors = await Promise.all(Object.entries(fields[pages]).map(async (field) => {
+                        const Errors = await Promise.all(
+                          Object.entries(fields[pages]).map(async (field) => {
                             // Checking field
-                            return await form.trigger(field[0])
-                        }));
-                        if(Errors.every(value => value === true)){
-                            // No errors found
-                            setPages(pages + 1);
+                            return await form.trigger(field[0]);
+                          })
+                        );
+                        if (Errors.every((value) => value === true)) {
+                          // No errors found
+                          setPages(pages + 1);
                         }
                       }}
                     >
