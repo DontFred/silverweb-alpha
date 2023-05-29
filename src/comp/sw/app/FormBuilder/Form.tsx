@@ -2,7 +2,7 @@ import { Fragment, useState } from "react";
 import { Button, Grid, Modal } from "@nextui-org/react";
 import { FormProvider, useForm } from "react-hook-form";
 
-import { Field, FormProps } from "./types";
+import { DescriptionProps, Field, FieldSchema, FormProps, TitleProps } from "./types";
 import TextField from "./ui/TextField";
 import TitleField from "./ui/TitleField";
 import DescriptionField from "./ui/DescriptionField";
@@ -11,14 +11,19 @@ import SpacerField from "./ui/SpacerField";
 import HeadingField from "./ui/HeadingField";
 import SubheadingField from "./ui/SubheadingField";
 import SelectField from "./ui/SelectField";
-
-//Dev
-import { DevTool } from "@hookform/devtools";
 import AddressField from "./ui/AddressField";
 import ContactField from "./ui/ContactField";
 import PhoneField from "./ui/PhoneField";
+import ArrayField from "./ui/ArrayField";
+
+//Dev
+import { DevTool } from "@hookform/devtools";
 
 function renderFields([name, fieldProps]: [string, Field], idx: number) {
+
+  switch (fieldProps.type) {
+    
+  }
   if (fieldProps.type === "title") {
     return <TitleField {...fieldProps} key={idx} />;
   }
@@ -61,6 +66,10 @@ function renderFields([name, fieldProps]: [string, Field], idx: number) {
 
   if (fieldProps.type === "phone") {
     return <PhoneField {...fieldProps} name={name} key={idx} />;
+  }
+
+  if (fieldProps.type === "array"){
+    return <ArrayField {...fieldProps} name={name} key={idx} />;
   }
 
   return <div key={idx}>Unknown type: &apos;{fieldProps["type"]}&apos;</div>;
