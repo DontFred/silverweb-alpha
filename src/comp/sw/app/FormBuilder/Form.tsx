@@ -16,49 +16,51 @@ import SelectField from "./ui/SelectField";
 import { DevTool } from "@hookform/devtools";
 import AddressField from "./ui/AddressField";
 import ContactField from "./ui/ContactField";
+import Select_Field from "./ui/SelectField";
+import PhonenumberField from "./ui/PhonenumberField";
 
-function renderFields([name, fieldProps]: [string, Field]) {
+function renderFields([name, fieldProps]: [string, Field], idx: number) {
   if (fieldProps.type === "title") {
-    return <TitleField {...fieldProps} />;
+    return <TitleField {...fieldProps} key={idx}/>;
   }
 
   if (fieldProps.type === "description") {
-    return <DescriptionField {...fieldProps} />;
+    return <DescriptionField {...fieldProps} key={idx}/>;
   }
 
   if (fieldProps.type === "heading") {
-    return <HeadingField {...fieldProps} />;
+    return <HeadingField {...fieldProps} key={idx}/>;
   }
 
   if (fieldProps.type === "subheading") {
-    return <SubheadingField {...fieldProps} />;
+    return <SubheadingField {...fieldProps} key={idx}/>;
   }
 
   if (fieldProps.type === "spacer") {
-    return <SpacerField {...fieldProps} />;
+    return <SpacerField {...fieldProps} key={idx}/>;
   }
 
   if (fieldProps.type === "text") {
-    return <TextField {...fieldProps} name={name} />;
+    return <TextField {...fieldProps} name={name} key={idx}/>;
   }
 
   if (fieldProps.type === "select") {
-    return <SelectField {...fieldProps} name={name} />;
+    return <SelectField {...fieldProps} name={name} key={idx}/>;
   }
 
   if (fieldProps.type === "address" ){
-    return <AddressField {...fieldProps} name={name} />;
+    return <AddressField {...fieldProps} name={name} key={idx}/>;
   }
 
   if (fieldProps.type === "contact") {
-    return <ContactField {...fieldProps} name={name} />;
+    return <ContactField {...fieldProps} name={name} key={idx}/>;
   }
 
   if (fieldProps.type === "password") {
-    return <PasswordField {...fieldProps} name={name} />;
+    return <PasswordField {...fieldProps} name={name} key={idx}/>;
   }
 
-  return <div>Unknown type: &apos;{fieldProps["type"]}&apos;</div>;
+  return <div key={idx}>Unknown type: &apos;{fieldProps["type"]}&apos;</div>;
 }
 
 export function Form({ fields, onSubmit }: FormProps) {
@@ -78,14 +80,30 @@ export function Form({ fields, onSubmit }: FormProps) {
         // Form state tool for react-hook-form
         <DevTool control={form.control} />
       )}
-      <Modal open={true} blur preventClose width="40%">
+      <Modal open={true} blur preventClose width="100%" css={{
+        width: '90%',
+        m: '0 auto',
+        "@sm": {
+          width: "60%"
+        },
+        "@md": {
+            width: '45%',
+        },
+        "@lg": {
+            width: '45%',
+        },
+      }}>
         <Modal.Body
           css={{
-            p: "40px 80px",
+            p: "$sm 40px",
+            "@sm": {
+                p: "40px 80px",
+            },
           }}
         >
           <FormProvider {...form}>
             <form>
+              <PhonenumberField/>
               {fields.map((field, idx) => (
                 <div
                   key={idx}
@@ -102,7 +120,7 @@ export function Form({ fields, onSubmit }: FormProps) {
                     size="sm"
                     ghost
                     auto
-                    type="submit"
+                    type="button"
                     onPress={() => setPages(pages > 0 ? pages - 1 : 0)}
                   >
                     Back

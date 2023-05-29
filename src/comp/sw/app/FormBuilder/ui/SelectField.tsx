@@ -1,33 +1,102 @@
-import { CSS, Dropdown, FormElement, Input, Text } from "@nextui-org/react";
-import React, {
+import {
+  CSS,
+  FormElement,
+  Grid,
+  Input,
+  Popover,
+  Text,
+} from "@nextui-org/react";
+import {
+  ChangeEvent,
   Fragment,
-  Key,
-  useLayoutEffect,
-  useMemo,
+  KeyboardEvent,
+  MouseEvent,
+  useEffect,
   useRef,
   useState,
 } from "react";
-import { useController, useFormContext } from "react-hook-form";
 import StyleObject from "csstype";
+import { Check } from "lucide-react";
+import { useController, useFormContext } from "react-hook-form";
 import { SelectFieldProps } from "../types";
 
-function SetConverter(set: Set<Key>) {
-  // Set to string converter
-  return Array.from(set).join(", ").replaceAll("_", " ");
-}
+const DropdownMenuStyling: CSS = {
+  bs: "0 0 10px black",
+  w: 250,
+};
 
-export default function SelectField(
+const SelectItemStyling: CSS = {
+  cursor: "pointer",
+  fontSize: "$sm",
+  fontWeight: "$normal",
+  p: "5px $sm",
+  br: "$sm",
+  h: "$13",
+  m: -5,
+  transition: "$dropdownItem",
+  userSelect: "none",
+};
+
+const GridContainerStyling: CSS = {
+  bgColor: "transparent !important",
+};
+
+const GroupNameStyling: CSS = {
+  userSelect: "none",
+  fontSize: 12,
+  pt: "$2",
+  color: "$accents6",
+};
+
+const ListStyling: StyleObject.Properties = {
+  margin: "var(--nextui-space-sm)",
+};
+
+const InputDropdownContainerStyling: StyleObject.Properties = {
+  position: "relative",
+  width: "100%",
+};
+
+const TriggerStyling: StyleObject.Properties = {
+  position: "absolute",
+  top: "40px"
+};
+
+export default function Select_Field(
   props: SelectFieldProps & { name: string }
 ) {
   // Destruction
   const { name, label, option, items } = props;
+  const rules = option || {};
+  const ValidationRule = rules.validate || {};
+  Object.assign(ValidationRule, {
+    isSelectable: (value: string) => {
+      if (Array.isArray(items)) {
+        if (items.includes(value)) {
+          return true;
+        } else {
+          return "Please select a option";
+        }
+      } else {
+        if (
+          Object.entries(items)
+            .map((groups) => groups[1].includes(value))
+            .includes(true)
+        ) {
+          return true;
+        } else {
+          return "Please select a option";
+        }
+      }
+    },
+  }),
+    (rules.validate = ValidationRule);
 
   const { control, formState } = useFormContext();
-
   const { field } = useController({
     name: name,
     control: control,
-    rules: option,
+    rules: rules,
   });
 
   // Errors
@@ -36,249 +105,273 @@ export default function SelectField(
     .split(".")
     .reduce((err, path): any => err && err[path], formState.errors);
 
-  // useState
-  const [selectedOption, setSelectedOption] = useState<Set<Key>>(new Set([]));
-  const [searchInput, setSearchInput] = useState<string>("");
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [openPopover, setOpenPopover] = useState<boolean>(false);
+  const [shouldClose, setShouldClose] = useState<boolean>(false);
 
-  // useMemo
-  const selectedValue = useMemo(
-    () => SetConverter(selectedOption),
-    [selectedOption]
+  const [focusedItem, setFocusedItem] = useState<number>(-1);
+
+  const [selectedOrSearchValue, setSelectedOrSearchValue] = useState<string>(
+    field.value || ""
   );
 
-  const somethingIsSelected = useMemo(() => {
-    if (SetConverter(selectedOption)) return true;
-    else return false;
-  }, [selectedOption]);
+  useEffect(() => {
+    const endingFocusItem = document.getElementById(sortedItems[focusedItem]);
+    if (endingFocusItem) endingFocusItem.style.backgroundColor = "";
+    setFocusedItem(-1);
+    selectedOrSearchValue
+      ? field.onChange(selectedOrSearchValue)
+      : field.onChange();
+  }, [selectedOrSearchValue]);
 
-  // useRef
-  const PlaceholderLabelRef = useRef<HTMLElement>(null);
-  const TriggerInputRef = useRef<HTMLButtonElement>(null);
-
-  // useEffect
-  // This mechanic is for the animations and error handling
-  useLayoutEffect(() => {
-    if (PlaceholderLabelRef.current && TriggerInputRef.current) {
-      if (somethingIsSelected) {
-        Object.assign(
-          PlaceholderLabelRef.current.style,
-          PlaceholderLabelOnAnimation
-        );
-      } else if (!somethingIsSelected) {
-        Object.assign(
-          PlaceholderLabelRef.current.style,
-          PlaceholderLabelOffAnimation
-        );
-      }
-    }
-  }, [somethingIsSelected, Error]);
+  // For external blur and react-hook-form
+  const InputTriggerRef = useRef<HTMLInputElement>(null);
 
   // Search mechanic
+  // Check firstly if the items is grouped
+  // If its grouped search for string
+  // If not destruct the items
+  const searchedList: (string | [string, string[]])[] = Array.isArray(items)
+    ? items.filter((value: string) =>
+        items
+          .map((value: string) => value.toLowerCase())
+          .indexOf(selectedOrSearchValue.toLowerCase()) === -1 &&
+        selectedOrSearchValue !== ""
+          ? value.toLowerCase().includes(selectedOrSearchValue.toLowerCase())
+          : value
+      )
+    : Object.entries(items).map(
+        ([groupName, values]: [string, unknown]) =>
+          [
+            groupName,
+            (values as string[]).filter((value: string) =>
+              (values as string[])
+                .map((value: string) => value.toLowerCase())
+                .indexOf(selectedOrSearchValue.toLowerCase()) === -1 &&
+              selectedOrSearchValue !== ""
+                ? value
+                    .toLowerCase()
+                    .includes(selectedOrSearchValue.toLowerCase())
+                : value
+            ),
+          ] as [string, string[]]
+      );
 
-  const filteredItems = items.filter(
-    (item) =>
-      item.value.includes(searchInput) || item.label.includes(searchInput)
-  );
-
-  //CSS
-  const PlaceholderLabelOnAnimation: StyleObject.Properties = {
-    // Animation for placeholder when Dropdown menu is open or something is selected
-    left: "var(--nextui-space-2)",
-    color: Error ? "var(--nextui-colors-error)" : "var(--nextui-colors-text)",
-    top: "-28.8px",
-  };
-  const PlaceholderLabelOffAnimation: StyleObject.Properties = {
-    // Animation for placeholder when dropdown menu is not open and nothing is selected
-    left: "var(--nextui-space-6)",
-    color: Error
-      ? "var(--nextui-colors-error)"
-      : "var(--nextui-colors-accents6)",
-    top: "20%",
-  };
-
-  const PlaceholderLabelClass: CSS = {
-    // Class for placeholder
-    userSelect: "none",
-    fontSize: "$sm",
-    position: "absolute",
-    letterSpacing: "$normal",
-    transition: "left 0.25s ease 0s, color 0.25s ease 0s, top 0.25s ease 0s",
-    ...PlaceholderLabelOffAnimation,
-  };
-
-  const DropdownMenu: CSS = {
-    bs: "0 0 10px black",
-  };
-
-  const TriggerInputOnAnimation: StyleObject.Properties = {
-    // Animation for trigger input when dropdown menu is open
-    transform: "translate(0, -2px)",
-    border: Error ? "2px solid var(--nextui-colors-error)" : "2px solid white",
-  };
-
-  const TriggerInputOffAnimation: StyleObject.Properties = {
-    // Animation for trigger input when dropdown menu is closed
-    transform: "translate(0, 0)",
-    border: "2px solid var(--nextui-colors-border)",
-  };
-
-  const TriggerInputClass: CSS = {
-    // Class for trigger input
-    w: "calc(100% + 4px)",
-    br: "0.75rem",
-    bg: "transparent",
-    p: "10px 16px",
-    letterSpacing: "$normal",
-    h: 44,
-    color: Error ? "var(--nextui-colors-error)" : "var(--nextui-colors-text)",
-    fontSize: "$sm",
-    m: -2,
-    border: "2px solid $border",
-    fontStyle: "normal",
-    fontWeight: "$normal",
-    transition: "var(--nextui-transitions-default)",
-    justifyContent: "space-between",
-  };
-
-  const SearchBarClass: CSS = {
-    // Class for searchbar
-    position: "relative",
-    top: 0,
-    left: -8,
-    bs: "0 1px 0 var(--nextui-colors-border)",
-    br: 0,
-    mb: 9,
-    borderBottom: "9px solid transparent",
-  };
-
-  const ErrorMessageClass: CSS = {
-    // Class for error message
-    position: "absolute",
-    right: 10,
-    m: "$1 0 0 $5",
-    fontSize: "var(--nextui-space-5)",
-    color: "$error",
-  };
-
+  const sortedItems = !Array.isArray(items)
+    ? searchedList.flatMap((item) => item[1]).flat()
+    : (searchedList as Array<string>);
 
   return (
     <Fragment>
-      <div
-        aria-label="input-box"
-        style={{ position: "relative", width: "100%" }}
-      >
-        <Text
-          ref={PlaceholderLabelRef}
-          css={PlaceholderLabelClass}
-          aria-roledescription="label for select"
-          role="note"
-        >
-          {label}
-        </Text>
-        <Dropdown
-          placement="bottom"
-          isOpen={isOpen}
-          disableTriggerPressedAnimation={true}
-          onOpenChange={(isOpen: boolean) => {
-            // This mechanic is for the animations and control the opening of the dropdown menu
-            setIsOpen(isOpen);
-            if (
-              isOpen &&
-              PlaceholderLabelRef.current &&
-              TriggerInputRef.current
-            ) {
-              Object.assign(
-                PlaceholderLabelRef.current.style,
-                PlaceholderLabelOnAnimation
+      <div style={InputDropdownContainerStyling} ref={field.ref}>
+        <div id="1"  className="3"/>
+        <div id="1" className="2"/>
+        <Input
+          status={Error ? "error" : "default"}
+          {...(Error && {
+            helperText: "" + Error.message,
+          })}
+          name={field.name}
+          helperColor="error"
+          inputMode="search"
+          ref={InputTriggerRef}
+          bordered
+          labelPlaceholder={label}
+          fullWidth
+          value={selectedOrSearchValue}
+          onKeyDown={(e: KeyboardEvent<FormElement>) => {
+            // Accessability for Dropdown
+            if (e.key == "ArrowDown") {
+              const endingFocusItem = document.getElementById(
+                sortedItems[focusedItem]
               );
-              Object.assign(
-                TriggerInputRef.current.style,
-                TriggerInputOnAnimation
+              if (endingFocusItem) endingFocusItem.style.backgroundColor = "";
+              const applingFocusItem = document.getElementById(
+                sortedItems[focusedItem + 1]
               );
-            } else if (
-              !somethingIsSelected &&
-              PlaceholderLabelRef.current &&
-              TriggerInputRef.current
-            ) {
-              Object.assign(
-                PlaceholderLabelRef.current.style,
-                PlaceholderLabelOffAnimation
+              if (applingFocusItem)
+                applingFocusItem.style.backgroundColor =
+                  "var(--nextui-colors-neutralLight)";
+              if (focusedItem <= sortedItems.length)
+                setFocusedItem(focusedItem + 1);
+            } else if (e.key == "ArrowUp") {
+              const endingFocusItem = document.getElementById(
+                sortedItems[focusedItem]
               );
-              Object.assign(
-                TriggerInputRef.current.style,
-                TriggerInputOffAnimation
+              if (endingFocusItem) endingFocusItem.style.backgroundColor = "";
+              const applingFocusItem = document.getElementById(
+                sortedItems[focusedItem - 1]
               );
-            } else if (TriggerInputRef.current) {
-              Object.assign(
-                TriggerInputRef.current.style,
-                TriggerInputOffAnimation
-              );
+              if (applingFocusItem)
+                applingFocusItem.style.backgroundColor =
+                  "var(--nextui-colors-neutralLight)";
+              if (focusedItem >= 0) setFocusedItem(focusedItem - 1);
+            } else if (e.key == "Enter") {
+              if (focusedItem >= 0 && focusedItem <= sortedItems.length) {
+                setSelectedOrSearchValue(sortedItems[focusedItem]);
+                InputTriggerRef.current?.blur();
+              } else {
+                sortedItems[0];
+              }
             }
           }}
-        >
-          <Dropdown.Button
-            onMouseEnter={() => {
-              if (TriggerInputRef.current)
-                TriggerInputRef.current.style.border = Error
-                  ? "2px solid var(--nextui-colors-error)"
-                  : "2px solid white";
-            }}
-            onMouseLeave={() => {
-              if (TriggerInputRef.current && !isOpen)
-                TriggerInputRef.current.style.border =
-                  "2px solid var(--nextui-colors-border)";
-            }}
-            ref={TriggerInputRef}
-            css={TriggerInputClass}
-            onBlur={field.onBlur}
-          >
-            {selectedValue}
-          </Dropdown.Button>
-          <Dropdown.Menu
-            containerCss={DropdownMenu}
-            disallowEmptySelection={option?.required ? true : false}
-            selectionMode="single"
-            selectedKeys={[field.value]}
-            onSelectionChange={(keys: Set<Key> | any) => {
-              setSelectedOption(keys);
-              field.onChange(SetConverter(keys));
-            }}
-          >
-            <Dropdown.Section
-              items={filteredItems}
-              title={
-                <Input
-                  fullWidth
-                  aria-label="Searchbar"
-                  role="searchbox"
-                  placeholder="Search"
-                  bordered
-                  size="sm"
-                  value={searchInput}
-                  onChange={(e: React.ChangeEvent<FormElement>) => {
-                    setSearchInput(e.target.value);
-                  }}
-                  css={SearchBarClass}
-                />
+          onFocus={(e) => {
+            if (!shouldClose && !openPopover) {
+              // When the popover gets opened it's blur the
+              // input so that the focus animation gets stopt
+              // this prevent it.
+              setOpenPopover(true);
+              setTimeout(() => {
+                e.target?.focus();
+              }, 10);
+            } else if (shouldClose) {
+              e.target?.blur();
+            }
+          }}
+          onBlur={(e) => {
+            // bc the input gets blur, when opened the
+            // popover. It's getting a timeout to
+            // insure sooth ux.
+            field.onBlur();
+            setTimeout(() => {
+              if (document.activeElement != e.target) {
+                setShouldClose(true);
+                setOpenPopover(false);
+                setTimeout(() => {
+                  setShouldClose(false);
+                }, 300);
               }
-            >
-              {(item) => (
-                <Dropdown.Item
-                  css={{
-                    fontSize: "$sm",
-                    fontWeight: "$normal",
-                    p: "$sm",
-                  }}
-                  key={item.value}
-                >
-                  {item.label}
-                </Dropdown.Item>
-              )}
-            </Dropdown.Section>
-          </Dropdown.Menu>
-        </Dropdown>
-        <Text css={ErrorMessageClass}>{Error && "" + Error.message}</Text>
+            }, 100);
+          }}
+          onChange={(e: ChangeEvent<FormElement>) => {
+            setSelectedOrSearchValue(e.target.value);
+          }}
+        />
+
+        <Popover
+          placement="bottom-left"
+          shouldFlip={false}
+          isOpen={openPopover}
+          shouldCloseOnBlur={false}
+          onClose={() => {
+            // s. onBlur :60
+            setOpenPopover(false);
+            setShouldClose(true);
+            setTimeout(() => {
+              setShouldClose(false);
+            }, 300);
+            setTimeout(() => {
+              InputTriggerRef.current?.blur();
+            }, 10);
+          }}
+        >
+          {/* A  Popover need a trigger with a element, so this is necessary*/}
+          <Popover.Trigger>
+            <div style={TriggerStyling} />
+          </Popover.Trigger>
+          <Popover.Content css={DropdownMenuStyling}>
+            <ul style={ListStyling}>
+              {/* Checking if items is grouped or not */}
+              {Array.isArray(items)
+                ? searchedList.map((item, idx) => (
+                    <li key={idx}>
+                      <Grid.Container
+                        justify="space-between"
+                        css={SelectItemStyling}
+                        onMouseEnter={(e) => {
+                          // hover
+                          // gave type as HTMLDivElement
+                          // bc e.target doesn't have
+                          // style property
+                          const target = e.target as HTMLDivElement;
+                          target.style.backgroundColor =
+                            "var(--nextui-colors-neutralLight)";
+                        }}
+                        onMouseLeave={(e) => {
+                          // hover
+                          // s. MouseEnter :100
+                          const target = e.target as HTMLDivElement;
+                          target.style.backgroundColor = "";
+                        }}
+                        onClick={() => {
+                          // select and deselect mechanic
+                          if (selectedOrSearchValue === item) {
+                            setSelectedOrSearchValue("");
+                          } else {
+                            setSelectedOrSearchValue(item.toString());
+                          }
+                        }}
+                        id={item as string}
+                      >
+                        <Grid css={GridContainerStyling}>
+                          {item.toString()}
+                        </Grid>
+                        <Grid css={GridContainerStyling}>
+                          <Check
+                            size={15}
+                            display={
+                              selectedOrSearchValue != item ? "none" : ""
+                            }
+                          />
+                        </Grid>
+                      </Grid.Container>
+                    </li>
+                  ))
+                : searchedList.map((groups, idx) => (
+                    <Fragment key={idx}>
+                      {groups[1].length > 0 && (
+                        <Fragment>
+                          <li>
+                            <Text css={GroupNameStyling}>{groups[0]}</Text>
+                          </li>
+                          {/* Check if Array for typescript */}
+                          {Array.isArray(groups[1]) &&
+                            groups[1].map((item, indx) => (
+                              <li key={indx}>
+                                <Grid.Container
+                                  justify="space-between"
+                                  css={SelectItemStyling}
+                                  onMouseEnter={(e: MouseEvent<HTMLDivElement>) => {
+                                    // hover
+                                    const element = e.target as HTMLDivElement
+                                    element.style.backgroundColor =
+                                      "var(--nextui-colors-neutralLight)";
+                                  }}
+                                  onMouseLeave={(e: MouseEvent<HTMLDivElement>) => {
+                                    // hover
+                                    const element = e.target as HTMLDivElement
+                                    element.style.backgroundColor = "";
+                                  }}
+                                  onClick={() => {
+                                    // select and deselect mechanic
+                                    if (selectedOrSearchValue === item) {
+                                      setSelectedOrSearchValue("");
+                                    } else {
+                                      setSelectedOrSearchValue(item);
+                                    }
+                                  }}
+                                  id={item as string}
+                                >
+                                  <Grid css={GridContainerStyling}>{item}</Grid>
+                                  <Grid css={GridContainerStyling}>
+                                    <Check
+                                      size={15}
+                                      display={
+                                        selectedOrSearchValue != item
+                                          ? "none"
+                                          : ""
+                                      }
+                                    />
+                                  </Grid>
+                                </Grid.Container>
+                              </li>
+                            ))}
+                        </Fragment>
+                      )}
+                    </Fragment>
+                  ))}
+            </ul>
+          </Popover.Content>
+        </Popover>
       </div>
     </Fragment>
   );

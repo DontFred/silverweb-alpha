@@ -5,7 +5,16 @@ import React from 'react'
 export default function error({error, reset}: {error: any, reset: any}){
   return (
     <div>
-        <Modal open={true} blur preventClose width="20%">
+        <Modal open={true} blur preventClose width="100%" css={{
+                  width: '90%',
+                  m: '0 auto',
+                  "@md": {
+                      width: '45%',
+                  },
+                  "@lg": {
+                      width: '45%',
+                  },
+        }}>
           <Modal.Header>
           <Text h2 css={{display: "inline"}}>A error is occurred!</Text>
           </Modal.Header>

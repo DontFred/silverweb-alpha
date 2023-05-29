@@ -80,7 +80,7 @@ export type TextFieldProps = FieldSchema &
 export type SelectFieldProps = FieldSchema &
   DefaultPops & {
     type: "select";
-    items: Array<{ label: string; value: string }>;
+    items: Array<string> | Record<string, Array<string>>;
   };
 
 export type AddressFieldProps = FieldSchema &
