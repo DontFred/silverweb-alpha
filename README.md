@@ -24,11 +24,13 @@ is a SaaS. It is build with the personalized Stack **SilverStack**. SilverWeb in
 
 ## SilverStack
 
-**Client:** NextJS, RSuite, D3.js
+**Client:** NextJS, NextUI
 
-**Server:** NextJS, NodeJS, [SilverBase](https://github.com/DontFred/SilverBase)
+**Testing:** Jest
 
-**SilverBase** (BaaS): Golang, Svelte, TOTP, SQLite
+**Server:** NextJS, NodeJS
+
+**Backend:** Prisma, tRPC, WebAuthN, PostgreSQL
 
 
 ## Used By
