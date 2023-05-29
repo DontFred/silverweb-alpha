@@ -23,7 +23,7 @@ export default function AddressField(
     ) {
       checkAddress();
     }
-  }, [formState]);
+  }, [formState.isValidating]);
   async function checkAddress() {
     const result = await Nominatim.createClient({
       useragent: "SilverWeb",
@@ -55,6 +55,7 @@ export default function AddressField(
       });
     }
   }
+
 
   return (
     <Grid.Container>

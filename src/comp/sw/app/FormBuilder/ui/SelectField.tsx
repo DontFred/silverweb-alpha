@@ -61,10 +61,10 @@ const InputDropdownContainerStyling: StyleObject.Properties = {
 
 const TriggerStyling: StyleObject.Properties = {
   position: "absolute",
-  top: "40px"
+  top: "40px",
 };
 
-export default function Select_Field(
+export default function SelectField(
   props: SelectFieldProps & { name: string }
 ) {
   // Destruction
@@ -72,34 +72,34 @@ export default function Select_Field(
   const rules = option || {};
   const ValidationRule = rules.validate || {};
   Object.assign(ValidationRule, {
-    isSelectable: (value: string) => {
-      if (Array.isArray(items)) {
-        if (items.includes(value)) {
-          return true;
-        } else {
-          return "Please select a option";
-        }
-      } else {
-        if (
-          Object.entries(items)
-            .map((groups) => groups[1].includes(value))
-            .includes(true)
-        ) {
-          return true;
-        } else {
-          return "Please select a option";
-        }
-      }
-    },
+    isSelectable: (value: string) => {},
   }),
     (rules.validate = ValidationRule);
 
-  const { control, formState } = useFormContext();
+  const { control, formState, watch, setError } = useFormContext();
   const { field } = useController({
     name: name,
     control: control,
     rules: rules,
   });
+
+  useEffect(() => {
+    if (watch(name)) {
+      if (Array.isArray(items)) {
+        if (!items.includes(watch(name))) {
+          setError(name, { message: "Please enter a selectable option" });
+        }
+      } else {
+        if (
+          Object.entries(items)
+            .map((groups) => groups[1].includes(watch(name)))
+            .includes(true)
+        ) {
+          setError(name, { message: "Please enter a selectable option" });
+        }
+      }
+    }
+  }, [formState.isValidating]);
 
   // Errors
 
@@ -330,15 +330,19 @@ export default function Select_Field(
                                 <Grid.Container
                                   justify="space-between"
                                   css={SelectItemStyling}
-                                  onMouseEnter={(e: MouseEvent<HTMLDivElement>) => {
+                                  onMouseEnter={(
+                                    e: MouseEvent<HTMLDivElement>
+                                  ) => {
                                     // hover
-                                    const element = e.target as HTMLDivElement
+                                    const element = e.target as HTMLDivElement;
                                     element.style.backgroundColor =
                                       "var(--nextui-colors-neutralLight)";
                                   }}
-                                  onMouseLeave={(e: MouseEvent<HTMLDivElement>) => {
+                                  onMouseLeave={(
+                                    e: MouseEvent<HTMLDivElement>
+                                  ) => {
                                     // hover
-                                    const element = e.target as HTMLDivElement
+                                    const element = e.target as HTMLDivElement;
                                     element.style.backgroundColor = "";
                                   }}
                                   onClick={() => {

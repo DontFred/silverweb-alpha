@@ -117,7 +117,8 @@ export type ArrayProps = FieldSchema &
       | "contact"
       | "phone"
       | "password";
-  };
+counterMessage?: string  
+    };
 
 export type Field =
   | TitleProps

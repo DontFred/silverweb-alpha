@@ -139,7 +139,8 @@ const fields: FormProps["fields"] = [
     },
     TestArray: {
       type: "array",
-      item: "contact"
+      item: "contact",
+      counterMessage: "Colleague No."
     }
   },
 ];
