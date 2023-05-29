@@ -14,6 +14,7 @@ import React, { ChangeEvent, Fragment, useRef, useState } from "react";
 import StyleObject from "csstype";
 import { PhoneFieldProps } from "../types";
 import { useController, useFormContext } from "react-hook-form";
+import TooltipHelper from "./TooltipHelper";
 
 type PrefixEntry = { country: string; name: string; prefix: string };
 
@@ -1291,7 +1292,7 @@ const TriggerStyling: StyleObject.Properties = {
 
 export default function PhoneField(props: PhoneFieldProps & { name: string }) {
   // Destruction
-  const { name, option } = props;
+  const { name, option, helpText } = props;
 
   const rules = option || {};
   Object.assign(rules, { pattern: /^\+[-0-9]+$/ });
@@ -1463,6 +1464,17 @@ export default function PhoneField(props: PhoneFieldProps & { name: string }) {
             </ul>
           </Popover.Content>
         </Popover>
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            transform: "translate(0, -50%)",
+            right: -20,
+            display: helpText ? "block" : "none",
+          }}
+        >
+          <TooltipHelper content={helpText ? helpText : ""} />
+        </div>
       </div>
     </Fragment>
   );

@@ -6,7 +6,7 @@ import {
   ValidationRule,
 } from "react-hook-form";
 
-type FieldSchema = {
+export type FieldSchema = {
   type:
     | "title"
     | "description"
@@ -19,7 +19,8 @@ type FieldSchema = {
     | "address"
     | "contact"
     | "password"
-    | "phone";
+    | "phone"
+    | "array";
 };
 
 type DefaultPops = {
@@ -102,8 +103,21 @@ export type PasswordFieldProps = FieldSchema &
 
 export type PhoneFieldProps = FieldSchema &
   DefaultPops & {
-    type: "phone"
-  }
+    type: "phone";
+  };
+
+export type ArrayProps = FieldSchema &
+  DefaultPops & {
+    type: "array";
+    item:
+      | "text"
+      | "number"
+      | "select"
+      | "address"
+      | "contact"
+      | "phone"
+      | "password";
+  };
 
 export type Field =
   | TitleProps
@@ -116,7 +130,8 @@ export type Field =
   | AddressFieldProps
   | ContactFieldProps
   | PasswordFieldProps
-  | PhoneFieldProps;
+  | PhoneFieldProps
+  | ArrayProps;
 
 type Fields = Record<string, Field>;
 

@@ -21,98 +21,127 @@ const fields: FormProps["fields"] = [
         "Please fill out upcoming the form, after you identify yourself with the Identification Number you got. Once completed a member of the SilverBack team will be in contact with you to go through all details so we can commence in an efficient manner.",
     },
     spacerEins: {
-        type: "spacer",
-        double: true,
+      type: "spacer",
+      double: true,
     },
     authCode: {
       type: "password",
       label: "Password",
       option: {
         required: {
-            value: true,
-            message: "Please enter your password"
+          value: true,
+          message: "Please enter your password",
         },
         pattern: {
-            value: /^[A-Z2-7]{16}$/,
-            message: "Please enter a valid password"
+          value: /^[A-Z2-7]{16}$/,
+          message: "Please enter a valid password",
         },
-      }
+      },
     },
     spacerZwei: {
-        type: "spacer",
-    }
+      type: "spacer",
+    },
   },
   {
     title: {
-        type: "title",
-        content: "About you",
+      type: "title",
+      content: "About you",
     },
     description: {
-        type: "description",
-        content: "This section of the form is to give us an information on your company and colleagues who will be involved in our collaboration"
+      type: "description",
+      content:
+        "This section of the form is to give us an information on your company and colleagues who will be involved in our collaboration",
     },
     spacerEins: {
-        type: "spacer",
-        double: true,
+      type: "spacer",
+      double: true,
     },
-    headingEins:{
-        type: "heading",
-        content: "Official Company Name"
+    headingEins: {
+      type: "heading",
+      content: "Official Company Name",
     },
-    subheadingEins:{
-        type: "subheading",
-        content: "for contract purposes."
+    subheadingEins: {
+      type: "subheading",
+      content: "for contract purposes.",
     },
     spacerZwei: {
-        type: "spacer",
+      type: "spacer",
     },
     officialCompanyName: {
-        type: "text",
-        label: "Company Name",
-        option: {
-            required: {
-                value: true,
-                message: "Please enter your company name"
-            }
-        }
+      type: "text",
+      label: "Company Name",
+      option: {
+        required: {
+          value: true,
+          message: "Please enter your company name",
+        },
+      },
     },
     spacerDrei: {
-        type: "spacer",
-        double: true,       
+      type: "spacer",
+      double: true,
     },
     headingZwei: {
-        type: "heading",
-        content: "Registered company address"
+      type: "heading",
+      content: "Registered company address",
     },
     spacerVier: {
-        type: "spacer"
+      type: "spacer",
     },
     companyAddress: {
-        type: "address",
-        label: "Company Address",
-        option: {
-            required: {
-                value: true,
-                message: "Please enter your company address"
-            }
-        }
+      type: "address",
+      label: "Company Address",
+      option: {
+        required: {
+          value: true,
+          message: "Please enter your company address",
+        },
+      },
     },
     spacerFunf: {
-        type: "spacer",  
-        double: true     
+      type: "spacer",
+      double: true,
     },
     headingDrei: {
-        type: "heading",
-        content: "Personal Contact Details"
+      type: "heading",
+      content: "Personal Contact Details",
     },
     spacerSechs: {
-        type: "spacer",       
+      type: "spacer",
     },
     personalContact: {
-        type: "contact",
-        label: "Personal Contact"
+      type: "contact",
+      label: "Personal Contact",
+      option: {
+        required: {
+          message: "Please enter your details",
+          value: true,
+        }
+      }
+    },
+    spacerSieben: {
+      type: "spacer",
+      double: true,
+    },
+    headingVier: {
+      type: "heading",
+      content: "Your Colleagues Contact Details"
+    },
+    subheadingZwei: {
+      type: "subheading",
+      content: "who will be involved in our collaboration."
+    },
+    spacerAcht: {
+      type: "spacer",
+    },
+    colleagesContactDetails: {
+      type: "contact",
+    },
+    TestArray: {
+      type: "array",
+      item: "contact"
     }
-  }
+  },
 ];
 
 export default function OrderForm() {

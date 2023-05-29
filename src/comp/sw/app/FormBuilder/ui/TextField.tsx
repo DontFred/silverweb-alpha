@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { TextFieldProps } from "../types";
-import { useFormContext } from "react-hook-form";
+import { useFieldArray, useFormContext } from "react-hook-form";
 import { Input } from "@nextui-org/react";
 import TooltipHelper from "./TooltipHelper";
 

@@ -19,6 +19,7 @@ import StyleObject from "csstype";
 import { Check } from "lucide-react";
 import { useController, useFormContext } from "react-hook-form";
 import { SelectFieldProps } from "../types";
+import TooltipHelper from "./TooltipHelper";
 
 const DropdownMenuStyling: CSS = {
   bs: "0 0 10px black",
@@ -67,7 +68,7 @@ export default function Select_Field(
   props: SelectFieldProps & { name: string }
 ) {
   // Destruction
-  const { name, label, option, items } = props;
+  const { name, label, option, items, helpText } = props;
   const rules = option || {};
   const ValidationRule = rules.validate || {};
   Object.assign(ValidationRule, {
@@ -371,6 +372,17 @@ export default function Select_Field(
             </ul>
           </Popover.Content>
         </Popover>
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            transform: "translate(0, -50%)",
+            right: -20,
+            display: helpText ? "block" : "none",
+          }}
+        >
+          <TooltipHelper content={helpText ? helpText : ""} />
+        </div>
       </div>
     </Fragment>
   );
