@@ -63,6 +63,9 @@ export default function RadioField(props: RadioFieldProps & { name: string }) {
             width: 100%;
             margin-left: 7px;
           }
+          .nextui-radio-point{
+            width: 16.395px
+          }
         `}
       </style>
       <Radio.Group
