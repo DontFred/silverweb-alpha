@@ -11,11 +11,15 @@ import HeadingField from "./HeadingField";
 import { Button, Spacer } from "@nextui-org/react";
 import { Minus, Plus } from "lucide-react";
 import EmailField from "./EmailField";
+import RadioField from "./RadioField";
+import CheckboxField from "./CheckboxField";
 
 const lookup: Record<ArrayProps["item"], any> = {
   text: TextField,
   number: <div />,
   select: SelectField,
+  radio: RadioField,
+  checkbox: CheckboxField,
   address: AddressField,
   phone: PhoneField,
   contact: ContactField,

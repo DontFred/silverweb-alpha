@@ -64,9 +64,6 @@ const fields: FormProps["fields"] = [
       type: "subheading",
       content: "for contract purposes.",
     },
-    spacerZwei: {
-      type: "spacer",
-    },
     officialCompanyName: {
       type: "text",
       label: "Company Name",
@@ -77,20 +74,20 @@ const fields: FormProps["fields"] = [
         },
       },
     },
-    spacerDrei: {
+    spacerZwei: {
       type: "spacer",
       double: true,
     },
     headingZwei: {
       type: "heading",
-      content: "Registered company address",
+      content: "Registered address",
     },
-    spacerVier: {
-      type: "spacer",
+    subheadingZwei: {
+      type: "subheading",
+      content: "of the company",
     },
     companyAddress: {
       type: "address",
-      label: "Company Address",
       option: {
         required: {
           value: true,
@@ -98,16 +95,17 @@ const fields: FormProps["fields"] = [
         },
       },
     },
-    spacerFunf: {
+    spacerDrei: {
       type: "spacer",
       double: true,
     },
     headingDrei: {
       type: "heading",
-      content: "Personal Contact Details",
+      content: "Your",
     },
-    spacerSechs: {
-      type: "spacer",
+    subheadingDrei: {
+      type: "subheading",
+      content: "contact details"
     },
     personalContact: {
       type: "contact",
@@ -119,7 +117,7 @@ const fields: FormProps["fields"] = [
         },
       },
     },
-    spacerSieben: {
+    spacerVier: {
       type: "spacer",
       double: true,
     },
@@ -127,19 +125,16 @@ const fields: FormProps["fields"] = [
       type: "heading",
       content: "Your Colleagues Contact Details",
     },
-    subheadingZwei: {
+    subheadingVier: {
       type: "subheading",
       content: "who will be involved in our collaboration.",
-    },
-    spacerAcht: {
-      type: "spacer",
     },
     colleaguesContactDetails: {
       type: "array",
       item: "contact",
       counterMessage: "Colleague No.",
     },
-    spacerNeun: {
+    spacerFunf: {
       type: "spacer",
       double: true,
     },
@@ -160,10 +155,11 @@ const fields: FormProps["fields"] = [
     },
     headingEins: {
       type: "heading",
-      content: "Project name or code",
+      content: "The name or code",
     },
-    spacerZwei: {
-      type: "spacer",
+    subheadingEins: {
+      type: "subheading",
+      content: "of the project.",
     },
     projectName: {
       type: "text",
@@ -175,16 +171,17 @@ const fields: FormProps["fields"] = [
         }
       }
     },
-    spacerDrei: {
+    spacerZwei: {
       type: "spacer",
       double: true
     },
     headingZwei: {
       type: "heading",
-      content: "Project address"
+      content: "The address"
     },
-    spacerVier: {
-      type: "spacer"
+    subheadingZwei: {
+      type: "subheading",
+      content: "of the project",
     },
     projectAddress: {
       type: "address",
@@ -195,16 +192,17 @@ const fields: FormProps["fields"] = [
         }
       }
     },
-    spacerFunf: {
+    spacerVier: {
       type: "spacer",
       double: true
     },
     headingDrei: {
       type: "heading",
-      content: "Type of project"
+      content: "What type"
     },
-    spacerSechs: {
-      type: "spacer"
+    subheadingDrei: {
+      type: "subheading",
+      content: "of the project"
     },
     typeOfProject: {
       type: "radio",
@@ -217,6 +215,22 @@ const fields: FormProps["fields"] = [
         }
       },
       otherOpt: true
+    },
+    spacerFunf: {
+      type: "spacer",
+      double: true
+    },
+    headingVier: {
+      type: "heading",
+      content: "What type of work"
+    },
+    subheadingVier: {
+      type: "subheading",
+      content: "is being performed"
+    },
+    performedWork: {
+      type: "checkbox",
+      items: ["Hello"]
     }
   },
 ];

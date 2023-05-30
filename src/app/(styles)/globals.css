@@ -22,3 +22,7 @@ a:hover {
   filter: brightness(0) saturate(100%) invert(93%) sepia(1%) saturate(31%)
     hue-rotate(158deg) brightness(98%) contrast(94%);
 }
+
+html {
+  scroll-behavior: smooth;
+}

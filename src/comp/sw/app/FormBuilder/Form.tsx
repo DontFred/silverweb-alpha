@@ -1,11 +1,8 @@
-import { Fragment, useState } from "react";
-import { Button, Grid, Modal } from "@nextui-org/react";
+import { Fragment, useEffect, useRef, useState } from "react";
+import { Button, Grid, Modal, useModal } from "@nextui-org/react";
 import { FormProvider, useForm } from "react-hook-form";
 
-import {
-  Field,
-  FormProps,
-} from "./types";
+import { Field, FormProps } from "./types";
 import TextField from "./ui/TextField";
 import TitleField from "./ui/TitleField";
 import DescriptionField from "./ui/DescriptionField";
@@ -23,13 +20,14 @@ import ArrayField from "./ui/ArrayField";
 import { DevTool } from "@hookform/devtools";
 import EmailField from "./ui/EmailField";
 import RadioField from "./ui/RadioField";
+import CheckboxField from "./ui/CheckboxField";
 
 function renderFields([name, fieldProps]: [string, Field], idx: number) {
   switch (fieldProps.type) {
     case "title":
       return <TitleField {...fieldProps} key={idx} />;
     case "description":
-      return <DescriptionField {...fieldProps} key={idx}/>;
+      return <DescriptionField {...fieldProps} key={idx} />;
     case "heading":
       return <HeadingField {...fieldProps} key={idx} />;
     case "subheading":
@@ -42,6 +40,8 @@ function renderFields([name, fieldProps]: [string, Field], idx: number) {
       return <SelectField {...fieldProps} name={name} key={idx} />;
     case "radio":
       return <RadioField {...fieldProps} name={name} key={idx} />;
+    case "checkbox":
+      return <CheckboxField {...fieldProps} name={name} key={idx} />;
     case "address":
       return <AddressField {...fieldProps} name={name} key={idx} />;
     case "contact":
@@ -54,8 +54,10 @@ function renderFields([name, fieldProps]: [string, Field], idx: number) {
       return <PhoneField {...fieldProps} name={name} key={idx} />;
     case "array":
       return <ArrayField {...fieldProps} name={name} key={idx} />;
-    default: 
-      return <div key={idx}>Unknown type: &apos;{fieldProps["type"]}&apos;</div>;
+    default:
+      return (
+        <div key={idx}>Unknown type: &apos;{fieldProps["type"]}&apos;</div>
+      );
   }
 }
 
@@ -79,6 +81,7 @@ export function Form({ fields, onSubmit }: FormProps) {
       <Modal
         open={true}
         blur
+        id="modal"
         preventClose
         width="100%"
         css={{
@@ -147,7 +150,11 @@ export function Form({ fields, onSubmit }: FormProps) {
                       ghost
                       auto
                       onPress={async () => {
-                        setPages(pages + 1)
+                        document.getElementsByClassName("nextui-backdrop nextui-backdrop--open nextui-backdrop-wrapper-enter nextui-backdrop-wrapper-enter-active")[0].scrollTo({
+                          top: 0,
+                          behavior: "smooth",
+                        });
+                        setPages(pages + 1);
                         // const Errors = await Promise.all(
                         //   Object.entries(fields[pages]).map(async (field) => {
                         //     // Checking field

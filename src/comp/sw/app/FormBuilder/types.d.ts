@@ -17,6 +17,7 @@ export type FieldSchema = {
     | "number"
     | "select"
     | "radio"
+    | "checkbox"
     | "address"
     | "contact"
     | "password"
@@ -25,7 +26,7 @@ export type FieldSchema = {
     | "array";
 };
 
-type DefaultPops = {
+type DefaultProps = {
   label?: string;
   htmlType?: HTMLInputTypeAttribute;
   helpText?: string;
@@ -78,56 +79,66 @@ export type SpacerProps = FieldSchema & {
 };
 
 export type TextFieldProps = FieldSchema &
-  DefaultPops & {
+  DefaultProps & {
     type: "text";
   };
 
 export type SelectFieldProps = FieldSchema &
-  DefaultPops & {
+  DefaultProps & {
     type: "select";
     items: Array<string> | Record<string, Array<string>>;
   };
 
 export type RadioFieldProps = FieldSchema &
-  DefaultPops & {
+  DefaultProps & {
     type: "radio";
-    items: RadioItemProps[];
+    items: RadioAndCheckboxItemProps[];
+    columnWidth?: number;
+    otherOpt?: boolean;
+  };
+
+export type CheckboxFieldProps = FieldSchema &
+  DefaultProps & {
+    type: "checkbox";
+    items: RadioAndCheckboxItemProps[];
     columnWidth?: number;
     otherOpt?: boolean;
   };
 
 export type AddressFieldProps = FieldSchema &
-  DefaultPops & {
+  DefaultProps & {
     type: "address";
   };
 
 export type ContactFieldProps = FieldSchema &
-  DefaultPops & {
+  DefaultProps & {
     type: "contact";
   };
 
 export type PasswordFieldProps = FieldSchema &
-  DefaultPops & {
+  DefaultProps & {
     type: "password";
   };
 
 export type EmailFieldProps = FieldSchema &
-  DefaultPops & {
+  DefaultProps & {
     type: "email";
   };
 
 export type PhoneFieldProps = FieldSchema &
-  DefaultPops & {
+  DefaultProps & {
     type: "phone";
   };
 
 export type ArrayProps = FieldSchema &
-  DefaultPops & {
+  DefaultProps & {
     type: "array";
     item:
       | "text"
       | "number"
       | "select"
+      | "radio"
+      | "checkbox"
       | "address"
       | "contact"
       | "phone"
@@ -145,6 +156,7 @@ export type Field =
   | TextFieldProps
   | SelectFieldProps
   | RadioFieldProps
+  | CheckboxFieldProps
   | AddressFieldProps
   | ContactFieldProps
   | PasswordFieldProps
@@ -164,6 +176,6 @@ export interface Meta {
   arg: any;
 }
 
-export type RadioItemProps =
+export type RadioAndCheckboxItemProps =
   | string
-  | { value: string; label?: string, description? : string}
+  | { value: string; label?: string; description?: string };
