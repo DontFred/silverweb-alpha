@@ -90,7 +90,7 @@ export default function RadioField(props: RadioFieldProps & { name: string }) {
             <Radio
               color={Error ? "error" : "secondary"}
               labelColor={Error ? "error" : "secondary"}
-              size="sm"
+              size="xs"
               key={idx}
               arial-label={item.toString}
               value={typeof item == "string" ? item : item.value}
@@ -112,7 +112,7 @@ export default function RadioField(props: RadioFieldProps & { name: string }) {
           {otherOpt && (
             <Radio
               value="other"
-              size="sm"
+              size="xs"
               color={Error ? "error" : "secondary"}
               labelColor={Error ? "error" : "secondary"}
             >
