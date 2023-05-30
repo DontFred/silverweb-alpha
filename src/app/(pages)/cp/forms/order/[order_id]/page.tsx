@@ -208,7 +208,14 @@ const fields: FormProps["fields"] = [
     },
     typeOfProject: {
       type: "radio",
-      items: [{value: "1", description: "One and only"}],
+      items: ["Apartments", "Battery Factory", "Data Centre", "Hospital", "Mine", "Museum", "Paper Mill", "Pre-Cast Factory", "School", "Shopping Centre", "Windfarm"],
+      columnWidth: 2,
+      option: {
+        required: {
+          value: true,
+          message: "Please select a option"
+        }
+      },
       otherOpt: true
     }
   },

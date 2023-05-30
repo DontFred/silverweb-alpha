@@ -6,8 +6,14 @@ import {
   FormElement,
   Input,
   Radio,
+  Text,
 } from "@nextui-org/react";
-import { useController, useFormContext } from "react-hook-form";
+import {
+  FieldErrors,
+  FieldValues,
+  useController,
+  useFormContext,
+} from "react-hook-form";
 
 export default function RadioField(props: RadioFieldProps & { name: string }) {
   const { name, items, otherOpt, option, columnWidth } = props;
@@ -20,10 +26,9 @@ export default function RadioField(props: RadioFieldProps & { name: string }) {
     rules: option,
   });
 
-  const Error = name
+  const Error: FieldErrors<FieldValues> = name
     .split(".")
     .reduce((err, path): any => err && err[path], formState.errors);
-
 
   const RadioContainer: CSS = {
     w: "100%",
@@ -38,6 +43,14 @@ export default function RadioField(props: RadioFieldProps & { name: string }) {
 
   const RadioOtherInput: CSS = {
     ml: 10,
+  };
+
+  const ErrorMessageStyling: CSS = {
+    fs: "var(--nextui-space-5)",
+    color: "$error",
+    w: "100%",
+    ta: "right",
+    p: "$1 $8 0 0",
   };
   return (
     <Fragment>
@@ -75,7 +88,8 @@ export default function RadioField(props: RadioFieldProps & { name: string }) {
         <Container css={RadioContainer}>
           {items.map((item: RadioItemProps, idx: number) => (
             <Radio
-              color="secondary"
+              color={Error ? "error" : "secondary"}
+              labelColor={Error ? "error" : "secondary"}
               size="sm"
               key={idx}
               arial-label={item.toString}
@@ -96,12 +110,17 @@ export default function RadioField(props: RadioFieldProps & { name: string }) {
             </Radio>
           ))}
           {otherOpt && (
-            <Radio value="other" size="sm" color="secondary">
-              {(!items.find((item) =>
+            <Radio
+              value="other"
+              size="sm"
+              color={Error ? "error" : "secondary"}
+              labelColor={Error ? "error" : "secondary"}
+            >
+              {!items.find((item) =>
                 typeof item == "string"
                   ? item === field.value
                   : item.value == field.value
-              ) && field.value)  ? (
+              ) && field.value ? (
                 <Input
                   css={RadioOtherInput}
                   name={name}
@@ -120,6 +139,11 @@ export default function RadioField(props: RadioFieldProps & { name: string }) {
           )}
         </Container>
       </Radio.Group>
+      {Error && (
+        <Text css={ErrorMessageStyling}>
+          {Error.message ? Error.message.toString() : ""}
+        </Text>
+      )}
     </Fragment>
   );
 }
