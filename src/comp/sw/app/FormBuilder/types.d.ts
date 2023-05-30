@@ -88,12 +88,13 @@ export type SelectFieldProps = FieldSchema &
     items: Array<string> | Record<string, Array<string>>;
   };
 
-export type RadioFieldProps = FieldSchema & 
+export type RadioFieldProps = FieldSchema &
   DefaultPops & {
-    type: "radio",
-    items: Array<string>;
+    type: "radio";
+    items: RadioItemProps[];
+    columnWidth?: number;
     otherOpt?: boolean;
-  }
+  };
 
 export type AddressFieldProps = FieldSchema &
   DefaultPops & {
@@ -132,8 +133,8 @@ export type ArrayProps = FieldSchema &
       | "phone"
       | "email"
       | "password";
-counterMessage?: string  
-    };
+    counterMessage?: string;
+  };
 
 export type Field =
   | TitleProps
@@ -162,3 +163,7 @@ export interface Meta {
   title: string;
   arg: any;
 }
+
+export type RadioItemProps =
+  | string
+  | { value: string; label?: string, description? : string}

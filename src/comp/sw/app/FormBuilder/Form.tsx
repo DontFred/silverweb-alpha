@@ -147,16 +147,17 @@ export function Form({ fields, onSubmit }: FormProps) {
                       ghost
                       auto
                       onPress={async () => {
-                        const Errors = await Promise.all(
-                          Object.entries(fields[pages]).map(async (field) => {
-                            // Checking field
-                            return await form.trigger(field[0]);
-                          })
-                        );
-                        if (Errors.every((value) => value === true)) {
-                          // No errors found
-                          setPages(pages + 1);
-                        }
+                        setPages(pages + 1)
+                        // const Errors = await Promise.all(
+                        //   Object.entries(fields[pages]).map(async (field) => {
+                        //     // Checking field
+                        //     return await form.trigger(field[0]);
+                        //   })
+                        // );
+                        // if (Errors.every((value) => value === true)) {
+                        //   // No errors found
+                        //   setPages(pages + 1);
+                        // }
                       }}
                     >
                       Next

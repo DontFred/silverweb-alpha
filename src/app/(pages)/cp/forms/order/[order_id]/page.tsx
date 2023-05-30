@@ -208,7 +208,8 @@ const fields: FormProps["fields"] = [
     },
     typeOfProject: {
       type: "radio",
-      items: ["hello"]
+      items: [{value: "1", description: "One and only"}],
+      otherOpt: true
     }
   },
 ];
