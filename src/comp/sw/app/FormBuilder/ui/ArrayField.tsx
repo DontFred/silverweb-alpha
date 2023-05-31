@@ -1,6 +1,8 @@
 import { Fragment, useEffect } from "react";
-import { ArrayProps } from "../types";
 import { useFieldArray, useFormContext } from "react-hook-form";
+import { Button, Spacer } from "@nextui-org/react";
+import { Minus, Plus } from "lucide-react";
+import { ArrayProps } from "../types";
 import TextField from "./TextField";
 import PhoneField from "./PhoneField";
 import SelectField from "./SelectField";
@@ -8,15 +10,14 @@ import AddressField from "./AddressField";
 import PasswordField from "./PasswordField";
 import ContactField from "./ContactField";
 import HeadingField from "./HeadingField";
-import { Button, Spacer } from "@nextui-org/react";
-import { Minus, Plus } from "lucide-react";
 import EmailField from "./EmailField";
 import RadioField from "./RadioField";
 import CheckboxField from "./CheckboxField";
+import NumberField from "./NumberField";
 
 const lookup: Record<ArrayProps["item"], any> = {
   text: TextField,
-  number: <div />,
+  number: NumberField,
   select: SelectField,
   radio: RadioField,
   checkbox: CheckboxField,

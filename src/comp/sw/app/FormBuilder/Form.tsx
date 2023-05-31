@@ -1,5 +1,5 @@
-import { Fragment, useEffect, useRef, useState } from "react";
-import { Button, Grid, Modal, useModal } from "@nextui-org/react";
+import { Fragment, useState } from "react";
+import { Button, Grid, Modal } from "@nextui-org/react";
 import { FormProvider, useForm } from "react-hook-form";
 
 import { Field, FormProps } from "./types";
@@ -15,14 +15,16 @@ import AddressField from "./ui/AddressField";
 import ContactField from "./ui/ContactField";
 import PhoneField from "./ui/PhoneField";
 import ArrayField from "./ui/ArrayField";
-
-//Dev
-import { DevTool } from "@hookform/devtools";
 import EmailField from "./ui/EmailField";
 import RadioField from "./ui/RadioField";
 import CheckboxField from "./ui/CheckboxField";
+import NumberField from "./ui/NumberField";
 
-function renderFields([name, fieldProps]: [string, Field], idx: number) {
+//Dev
+import { DevTool } from "@hookform/devtools";
+import GridField from "./ui/GridField";
+
+export function renderFields([name, fieldProps]: [string, Field], idx: number) {
   switch (fieldProps.type) {
     case "title":
       return <TitleField {...fieldProps} key={idx} />;
@@ -36,6 +38,8 @@ function renderFields([name, fieldProps]: [string, Field], idx: number) {
       return <SpacerField {...fieldProps} key={idx} />;
     case "text":
       return <TextField {...fieldProps} name={name} key={idx} />;
+    case "number":
+      return <NumberField {...fieldProps} name={name} key={idx} />;
     case "select":
       return <SelectField {...fieldProps} name={name} key={idx} />;
     case "radio":
@@ -54,6 +58,8 @@ function renderFields([name, fieldProps]: [string, Field], idx: number) {
       return <PhoneField {...fieldProps} name={name} key={idx} />;
     case "array":
       return <ArrayField {...fieldProps} name={name} key={idx} />;
+    case "grid":
+      return <GridField {...fieldProps} name={name} key={idx} />;
     default:
       return (
         <div key={idx}>Unknown type: &apos;{fieldProps["type"]}&apos;</div>

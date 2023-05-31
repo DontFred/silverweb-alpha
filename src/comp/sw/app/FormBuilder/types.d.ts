@@ -1,4 +1,5 @@
-import { HTMLInputTypeAttribute } from "react";
+import { CSS } from "@nextui-org/react";
+import { HTMLInputTypeAttribute, ReactNode } from "react";
 import {
   FieldValues,
   SubmitHandler,
@@ -23,7 +24,8 @@ export type FieldSchema = {
     | "password"
     | "email"
     | "phone"
-    | "array";
+    | "array"
+    | "grid";
 };
 
 type DefaultProps = {
@@ -54,22 +56,22 @@ type DefaultProps = {
 
 export type TitleProps = FieldSchema & {
   type: "title";
-  content: string;
+  content: ReactNode;
 };
 
 export type DescriptionProps = FieldSchema & {
   type: "description";
-  content: string;
+  content: ReactNode;
 };
 
 export type HeadingProps = {
   type: "heading";
-  content: string;
+  content: ReactNode;
 };
 
 export type SubheadingProps = {
   type: "subheading";
-  content: string;
+  content: ReactNode;
 };
 
 export type SpacerProps = FieldSchema & {
@@ -82,6 +84,11 @@ export type TextFieldProps = FieldSchema &
   DefaultProps & {
     type: "text";
   };
+
+export type NumberFieldProps = FieldSchema &
+  DefaultProps & {
+    type: "number"
+  }
 
 export type SelectFieldProps = FieldSchema &
   DefaultProps & {
@@ -147,6 +154,14 @@ export type ArrayProps = FieldSchema &
     counterMessage?: string;
   };
 
+  export type GirdProps = FieldSchema &
+    DefaultProps & {
+      type: "grid",
+      properties: Fields,
+      columnWidth: number,
+      gap?: CSS["gap"]
+    }
+
 export type Field =
   | TitleProps
   | DescriptionProps
@@ -154,6 +169,7 @@ export type Field =
   | SubheadingProps
   | SpacerProps
   | TextFieldProps
+  | NumberFieldProps
   | SelectFieldProps
   | RadioFieldProps
   | CheckboxFieldProps
@@ -162,7 +178,8 @@ export type Field =
   | PasswordFieldProps
   | EmailFieldProps
   | PhoneFieldProps
-  | ArrayProps;
+  | ArrayProps
+  | GirdProps;
 
 type Fields = Record<string, Field>;
 

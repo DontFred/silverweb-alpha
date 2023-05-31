@@ -2,6 +2,7 @@
 import Footer from "@/comp/sb/ui/Footer";
 import Nav from "@/comp/sb/ui/Nav";
 import { Form, FormProps, Meta } from "@/comp/sw/app/FormBuilder";
+import { Text } from "@nextui-org/react";
 import React, { Fragment } from "react";
 
 const fields: FormProps["fields"] = [
@@ -105,7 +106,7 @@ const fields: FormProps["fields"] = [
     },
     subheadingDrei: {
       type: "subheading",
-      content: "contact details"
+      content: "contact details",
     },
     personalContact: {
       type: "contact",
@@ -151,7 +152,7 @@ const fields: FormProps["fields"] = [
     },
     spacerEins: {
       type: "spacer",
-      double: true
+      double: true,
     },
     headingEins: {
       type: "heading",
@@ -167,17 +168,17 @@ const fields: FormProps["fields"] = [
       option: {
         required: {
           message: "Please enter the project name",
-          value: true
-        }
-      }
+          value: true,
+        },
+      },
     },
     spacerZwei: {
       type: "spacer",
-      double: true
+      double: true,
     },
     headingZwei: {
       type: "heading",
-      content: "The address"
+      content: "The address",
     },
     subheadingZwei: {
       type: "subheading",
@@ -188,51 +189,214 @@ const fields: FormProps["fields"] = [
       option: {
         required: {
           message: "Please enter the project address",
-          value: true
-        }
-      }
+          value: true,
+        },
+      },
     },
     spacerVier: {
       type: "spacer",
-      double: true
+      double: true,
     },
     headingDrei: {
       type: "heading",
-      content: "What type"
+      content: "What type",
     },
     subheadingDrei: {
       type: "subheading",
-      content: "of the project"
+      content: "of the project",
     },
     typeOfProject: {
       type: "radio",
-      items: ["Apartments", "Battery Factory", "Data Centre", "Hospital", "Mine", "Museum", "Paper Mill", "Pre-Cast Factory", "School", "Shopping Centre", "Windfarm"],
+      items: [
+        "Apartments",
+        "Battery Factory",
+        "Data Centre",
+        "Hospital",
+        "Mine",
+        "Museum",
+        "Paper Mill",
+        "Pre-Cast Factory",
+        "School",
+        "Shopping Centre",
+        "Windfarm",
+      ],
       columnWidth: 2,
       option: {
         required: {
           value: true,
-          message: "Please select a option"
-        }
+          message: "Please select a option",
+        },
       },
-      otherOpt: true
+      otherOpt: true,
     },
     spacerFunf: {
       type: "spacer",
-      double: true
+      double: true,
     },
     headingVier: {
       type: "heading",
-      content: "What type of work"
+      content: "What type of work",
     },
     subheadingVier: {
       type: "subheading",
-      content: "is being performed"
+      content: "is being performed",
     },
     performedWork: {
       type: "checkbox",
-      items: ["1st & 2nd Fix", "CCTV", "Cable pulling"],
+      items: [
+        "1st & 2nd Fix",
+        "CCTV",
+        "Cable pulling",
+        "Commissioning",
+        "Fire alarm",
+        "General containment",
+        "Glanding",
+        "Installing switchgear",
+        "Isolations and bussbar",
+        "Ladder",
+        "Metal conduit",
+        "Non-FAB cable tray & trucking",
+        "Pre-FAB cable tray & trucking",
+        "Plastic conduit",
+        "Quality control and assurance",
+        "Rack",
+        "Security door system",
+        "Terminations of < 150m2",
+        "Terminations of > 150m2",
+        "Testing and inspection",
+      ],
       otherOpt: true,
-      columnWidth: 2
+      columnWidth: 2,
+      option: {
+        required: {
+          value: true,
+          message: "Please select a option",
+        },
+      },
+    },
+    spacerSechs: {
+      type: "spacer",
+      double: true,
+    },
+    headingFunf: {
+      type: "heading",
+      content: "Which workers",
+    },
+    subheadingFunf: {
+      type: "subheading",
+      content: "are needed from us",
+    },
+    workerNeeded: {
+      type: "checkbox",
+      items: [
+        "Electrician",
+        "Electrician Assistant",
+        "Electrician Team Leader",
+        "General Operative",
+        "Skilled General Operative",
+        "MEWP Spotter",
+        "Mechanic",
+        "Mechanic Team Leader",
+        "Storeperson",
+        "Teleporter Driver",
+      ],
+      otherOpt: true,
+      columnWidth: 2,
+      option: {
+        required: {
+          value: true,
+          message: "Please select a option",
+        },
+      },
+    },
+    spacerSieben: {
+      type: "spacer",
+      double: true,
+    },
+    headingSechs: {
+      type: "heading",
+      content: "The rotation",
+    },
+    subheadingSechs: {
+      type: "subheading",
+      content: "will be",
+    },
+    descriptionZwei: {
+      type: "description",
+      content: (
+        <Text size="$sm">
+          The rotation will be 6 weeks on / 2 weeks off. The hours we work per
+          week breaks down as follows which averages 40 p/w:
+          <br />
+          <b>W1 - W4 (54hrs):</b>
+          <br />
+          <i>Mon-Thurs: 11 hrs (07:00 - 19:00) &</i>
+          <br />
+          <i>Fri 10 hrs (07:00 - 18:00)</i>
+          <br />
+          <b>W5 - W6 (52hrs):</b>
+          <br />
+          <i>Mon-Thurs: 11 hrs (07:00 - 19:00) &</i>
+          <br />
+          <i>Fri 8 hrs (07:00 - 16:00)</i>
+          <br />
+          <b>W7 - W8 (0hrs):</b>
+          <br />
+          <i>Home on rotation</i>
+          <br />
+          We are conscious of likelihood that your direct staff finish earlier
+          than our teams which is why your consideration is import. Please
+          confirm your understanding.
+        </Text>
+      ),
+    },
+    confirmRoation: {
+      type: "checkbox",
+      items: ["I confirm"],
+      option: {
+        required: {
+          value: true,
+          message: "Please confirm the rotation.",
+        },
+      },
+    },
+    spacerAcht: {
+      type: "spacer",
+      double: true,
+    },
+    headingSieben: {
+      type: "heading",
+      content: "The number of workers always on site,"
+    },
+    subheadingSieben: {
+      type: "subheading",
+      content: "due to the 6/2-Rotation schedule,"
+    },
+    subheadingAcht: {
+      type: "subheading",
+      content: "will always be a multiple of 3"
+    },
+    workerOnSite: {
+      type: "grid",
+      columnWidth: 2,
+      properties: {
+        electrician: {
+          type: "number",
+          label: "Number of Electrician",
+        }
+      }
+    },
+    numberTest: {
+      type: "number",
+      label: "Test"
+    },
+    numberTest1: {
+      type: "number",
+      label: "Test"
+    },
+    numberTest11: {
+      type: "number",
+      label: "Test"
     }
   },
 ];

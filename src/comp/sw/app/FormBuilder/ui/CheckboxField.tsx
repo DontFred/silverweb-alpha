@@ -1,4 +1,4 @@
-import { ChangeEvent, Fragment, useState } from "react";
+import { ChangeEvent, Fragment } from "react";
 import { CheckboxFieldProps, RadioAndCheckboxItemProps } from "../types";
 import {
   CSS,
@@ -34,6 +34,7 @@ export default function CheckboxField(
     .reduce((err, path): any => err && err[path], formState.errors);
 
   const CheckboxContainerStyling: CSS = {
+    p: 0,
     w: "100%",
     display: "grid",
     gridTemplateColumns: "1fr ".repeat(columnWidth || 1),

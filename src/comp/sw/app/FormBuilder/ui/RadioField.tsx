@@ -31,6 +31,7 @@ export default function RadioField(props: RadioFieldProps & { name: string }) {
     .reduce((err, path): any => err && err[path], formState.errors);
 
   const RadioContainer: CSS = {
+    p: 0,
     w: "100%",
     display: "grid",
     gridTemplateColumns: "1fr ".repeat(columnWidth || 1),
