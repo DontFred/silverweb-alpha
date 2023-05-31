@@ -43,6 +43,9 @@ export default function RadioField(props: RadioFieldProps & { name: string }) {
 
   const RadioOtherInput: CSS = {
     ml: 10,
+    position: "relative",
+    mt: -11,
+    top: 8
   };
 
   const ErrorMessageStyling: CSS = {
@@ -61,10 +64,16 @@ export default function RadioField(props: RadioFieldProps & { name: string }) {
           }
           .nextui-radio-text {
             width: 100%;
-            margin-left: 7px;
+            // margin-left: 7px;
           }
           .nextui-radio-point{
-            width: 16.395px
+            width: 15.85px;
+            top: 50%;
+            transform: translate(0, -70%);
+          }
+          .nextui-radio-point:after{
+            // top: 50%;
+            // transform: translate(0, -40%);
           }
         `}
       </style>
@@ -125,6 +134,7 @@ export default function RadioField(props: RadioFieldProps & { name: string }) {
                   : item.value == field.value
               ) && field.value ? (
                 <Input
+                  size="sm"
                   css={RadioOtherInput}
                   name={name}
                   bordered

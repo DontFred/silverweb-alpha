@@ -1,4 +1,4 @@
-import { ChangeEvent, Fragment } from "react";
+import { ChangeEvent, Fragment, useState } from "react";
 import { CheckboxFieldProps, RadioAndCheckboxItemProps } from "../types";
 import {
   CSS,
@@ -18,7 +18,7 @@ import {
 export default function CheckboxField(
   props: CheckboxFieldProps & { name: string }
 ) {
-  const { name, items, otherOpt, option, columnWidth } = props;
+  const { items, name, columnWidth, option, otherOpt } = props;
 
   const { control, formState } = useFormContext();
 
@@ -26,21 +26,44 @@ export default function CheckboxField(
     name: name,
     control: control,
     rules: option,
+    defaultValue: [],
   });
 
   const Error: FieldErrors<FieldValues> = name
     .split(".")
     .reduce((err, path): any => err && err[path], formState.errors);
 
-  const CheckboxContainer: CSS = {
+  const CheckboxContainerStyling: CSS = {
     w: "100%",
     display: "grid",
     gridTemplateColumns: "1fr ".repeat(columnWidth || 1),
     gap: "$5",
   };
 
-  const CheckboxOtherInput: CSS = {
+  const CheckboxStyling: CSS = {
+    ...(typeof items[0] !== "string" && items[0].description && { pb: 17.86 }),
+  };
+
+  const LabelStyling: CSS = {
+    fs: "var(--nextui-space-7)",
+    lh: "21px",
+    ml: -2.73,
+  };
+
+  const DescriptionStyling: CSS = {
+    position: "absolute",
+    color: "$accents7",
+    fs: "calc(var(--nextui-space-7)*0.85)",
+    m: "21px 0 0 calc(var(--nextui-space-7) + var(--nextui-space-7) * 0.375)",
+  };
+
+  const RadioOtherInput: CSS = {
     ml: 10,
+    position: "relative",
+    mt: -15,
+    mb: -25,
+    top: 2,
+    zIndex: "$max",
   };
 
   const ErrorMessageStyling: CSS = {
@@ -54,73 +77,181 @@ export default function CheckboxField(
   return (
     <Fragment>
       <Checkbox.Group
-        orientation="horizontal"
+        aria-label={"Checkbox group for" + name}
         name={field.name}
         value={
-          items.find((item) =>
-            typeof item == "string"
-              ? item === field.value
-              : item.value == field.value
-          )
+          (typeof items[0] == "string" &&
+            field.value.every((item: string) => items.includes(item))) ||
+          (typeof items[0] !== "string" &&
+            field.value.every((item: string) =>
+              items
+                .map(
+                  (entry) =>
+                    (
+                      entry as {
+                        value: string;
+                        description?: string;
+                        label?: string;
+                      }
+                    ).value
+                )
+                .includes(item)
+            ))
             ? field.value
-            : field.value
-            ? "other"
-            : ""
+            : field.value.map((item: string, idx: number) =>
+                idx ==
+                field.value.findIndex((item: string) =>
+                  typeof items[0] == "string"
+                    ? !items.includes(item)
+                    : !items
+                        .map(
+                          (entry) =>
+                            (
+                              entry as {
+                                value: string;
+                                description?: string;
+                                label?: string;
+                              }
+                            ).value
+                        )
+                        .includes(item)
+                )
+                  ? "other"
+                  : item
+              )
         }
-        onChange={(value: string[]) => {
-          field.onChange(value);
+        orientation="horizontal"
+        onChange={(values: string[]) => {
+          field.onChange(values);
         }}
-        aria-label={"Checkbox input for " + name}
       >
-        <Container css={CheckboxContainer}>
+        <Container css={CheckboxContainerStyling}>
           {items.map((item: RadioAndCheckboxItemProps, idx: number) => (
-            <Checkbox
-              color={Error ? "error" : "secondary"}
-            //   labelColor={Error ? "error" : "default"}
-              size="xs"
-              key={idx}
-              value={typeof item == "string" ? item : item.value}
-              //   description={
-              //     typeof item == "string"
-              //       ? ""
-              //       : item.description
-              //       ? item.description
-              //       : ""
-              //   }
-            >
-              {typeof item == "string"
-                ? item
-                : item.label
-                ? item.label
-                : item.value}
-            </Checkbox>
+            <Fragment key={idx}>
+              <Checkbox
+                value={typeof item == "string" ? item : item.value}
+                size="xs"
+                color="secondary"
+                css={CheckboxStyling}
+              >
+                <Text css={LabelStyling}>
+                  {typeof item == "string"
+                    ? item
+                    : item.label
+                    ? item.label
+                    : item.value}
+                </Text>
+              </Checkbox>
+              {typeof item !== "string" && item.description && (
+                <Text css={DescriptionStyling}>{item.description}</Text>
+              )}
+            </Fragment>
           ))}
           {otherOpt && (
             <Checkbox
               value="other"
               size="xs"
-              color={Error ? "error" : "secondary"}
-            //   labelColor={Error ? "error" : "default"}
+              color="secondary"
+              css={CheckboxStyling}
             >
-              {!items.find((item) =>
-                typeof item == "string"
-                  ? item === field.value
-                  : item.value == field.value
-              ) && field.value ? (
-                <Input
-                  css={CheckboxOtherInput}
-                  name={name}
-                  bordered
-                  aria-label="Other"
-                  fullWidth
-                  value={field.value !== "other" ? field.value : ""}
-                  onChange={(e: ChangeEvent<FormElement>) => {
-                    field.onChange(e.target.value);
-                  }}
-                />
-              ) : (
-                "Other"
-              )}
+              <Text css={LabelStyling}>
+                {(typeof items[0] == "string" &&
+                  field.value.every((item: string) => items.includes(item))) ||
+                (typeof items[0] !== "string" &&
+                  field.value.every((item: string) =>
+                    items
+                      .map(
+                        (entry) =>
+                          (
+                            entry as {
+                              value: string;
+                              description?: string;
+                              label?: string;
+                            }
+                          ).value
+                      )
+                      .includes(item)
+                  )) ? (
+                  "Other"
+                ) : (
+                  <Input
+                    size="sm"
+                    css={RadioOtherInput}
+                    name={name}
+                    value={
+                      field.value[
+                        field.value.findIndex((item: string) =>
+                          typeof items[0] == "string"
+                            ? !items.includes(item)
+                            : !items
+                                .map(
+                                  (entry) =>
+                                    (
+                                      entry as {
+                                        value: string;
+                                        description?: string;
+                                        label?: string;
+                                      }
+                                    ).value
+                                )
+                                .includes(item)
+                        )
+                      ] == "other"
+                        ? ""
+                        : field.value[
+                            field.value.findIndex((item: string) =>
+                              typeof items[0] == "string"
+                                ? !items.includes(item)
+                                : !items
+                                    .map(
+                                      (entry) =>
+                                        (
+                                          entry as {
+                                            value: string;
+                                            description?: string;
+                                            label?: string;
+                                          }
+                                        ).value
+                                    )
+                                    .includes(item)
+                            )
+                          ]
+                    }
+                    bordered
+                    aria-label="Other"
+                    onChange={(e: ChangeEvent<FormElement>) => {
+                      field.onChange(
+                        field.value.map((item: string, idx: number) =>
+                          idx ==
+                          field.value.findIndex((item: string) =>
+                            typeof items[0] == "string"
+                              ? !items.includes(item)
+                              : !items
+                                  .map(
+                                    (entry) =>
+                                      (
+                                        entry as {
+                                          value: string;
+                                          description?: string;
+                                          label?: string;
+                                        }
+                                      ).value
+                                  )
+                                  .includes(item)
+                          )
+                            ? e.target.value
+                            : item
+                        )
+                      );
+                    }}
+                    fullWidth
+                    onClick={(e) => {
+                      const element = e.target as FormElement;
+                      element.focus();
+                    }}
+                  />
+                )}
+              </Text>
             </Checkbox>
           )}
         </Container>
@@ -130,25 +261,6 @@ export default function CheckboxField(
           {Error.message ? Error.message.toString() : ""}
         </Text>
       )}
-      <Checkbox.Group aria-label={"Checkbox group for " + name}>
-        <Container css={CheckboxContainer}>
-          <Checkbox size="xs" color="secondary" value="A">
-            A
-          </Checkbox>
-          <Checkbox size="xs" color="secondary" value="B">
-            B
-          </Checkbox>
-          <Checkbox size="xs" color="secondary" value="C">
-            C
-          </Checkbox>
-          <Checkbox size="xs" color="secondary" value="D">
-            D
-          </Checkbox>
-          <Checkbox size="xs" color="secondary" value="E">
-            E
-          </Checkbox>
-        </Container>
-      </Checkbox.Group>
     </Fragment>
   );
 }

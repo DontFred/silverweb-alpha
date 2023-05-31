@@ -230,7 +230,9 @@ const fields: FormProps["fields"] = [
     },
     performedWork: {
       type: "checkbox",
-      items: ["Hello"]
+      items: ["1st & 2nd Fix", "CCTV", "Cable pulling"],
+      otherOpt: true,
+      columnWidth: 2
     }
   },
 ];
