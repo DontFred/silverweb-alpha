@@ -386,17 +386,8 @@ const fields: FormProps["fields"] = [
         }
       }
     },
-    numberTest: {
-      type: "number",
-      label: "Test"
-    },
-    numberTest1: {
-      type: "number",
-      label: "Test"
-    },
-    numberTest11: {
-      type: "number",
-      label: "Test"
+    spacer: {
+      type: "spacer"
     }
   },
 ];
