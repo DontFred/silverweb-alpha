@@ -23,6 +23,8 @@ import NumberField from "./ui/NumberField";
 //Dev
 import { DevTool } from "@hookform/devtools";
 import GridField from "./ui/GridField";
+import { z } from "zod";
+import RelationNumberField from "./ui/RelationNumberField";
 
 export function renderFields([name, fieldProps]: [string, Field], idx: number) {
   switch (fieldProps.type) {
@@ -60,6 +62,8 @@ export function renderFields([name, fieldProps]: [string, Field], idx: number) {
       return <ArrayField {...fieldProps} name={name} key={idx} />;
     case "grid":
       return <GridField {...fieldProps} name={name} key={idx} />;
+    case "relationNumber":
+      return <RelationNumberField {...fieldProps} name={name} key={idx} />;
     default:
       return (
         <div key={idx}>Unknown type: &apos;{fieldProps["type"]}&apos;</div>
@@ -156,10 +160,14 @@ export function Form({ fields, onSubmit }: FormProps) {
                       ghost
                       auto
                       onPress={async () => {
-                        document.getElementsByClassName("nextui-backdrop nextui-backdrop--open nextui-backdrop-wrapper-enter nextui-backdrop-wrapper-enter-active")[0].scrollTo({
-                          top: 0,
-                          behavior: "smooth",
-                        });
+                        document
+                          .getElementsByClassName(
+                            "nextui-backdrop nextui-backdrop--open nextui-backdrop-wrapper-enter nextui-backdrop-wrapper-enter-active"
+                          )[0]
+                          .scrollTo({
+                            top: 0,
+                            behavior: "smooth",
+                          });
                         setPages(pages + 1);
                         // const Errors = await Promise.all(
                         //   Object.entries(fields[pages]).map(async (field) => {

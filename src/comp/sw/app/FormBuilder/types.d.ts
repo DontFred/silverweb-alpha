@@ -6,6 +6,7 @@ import {
   Validate,
   ValidationRule,
 } from "react-hook-form";
+import { ZodTypeAny } from "zod";
 
 export type FieldSchema = {
   type:
@@ -25,7 +26,8 @@ export type FieldSchema = {
     | "email"
     | "phone"
     | "array"
-    | "grid";
+    | "grid"
+    | "relationNumber";
 };
 
 type DefaultProps = {
@@ -87,8 +89,8 @@ export type TextFieldProps = FieldSchema &
 
 export type NumberFieldProps = FieldSchema &
   DefaultProps & {
-    type: "number"
-  }
+    type: "number";
+  };
 
 export type SelectFieldProps = FieldSchema &
   DefaultProps & {
@@ -154,13 +156,19 @@ export type ArrayProps = FieldSchema &
     counterMessage?: string;
   };
 
-  export type GirdProps = FieldSchema &
-    DefaultProps & {
-      type: "grid",
-      properties: Fields,
-      columnWidth: number,
-      gap?: CSS["gap"]
-    }
+export type GirdProps = FieldSchema &
+  DefaultProps & {
+    type: "grid";
+    properties: Fields;
+    columnWidth: number;
+    gap?: CSS["gap"];
+  };
+
+export type RelationNumberProps = FieldSchema &
+  DefaultProps & {
+    type: "relationNumber";
+    relatedField: string;
+  };
 
 export type Field =
   | TitleProps
@@ -179,9 +187,10 @@ export type Field =
   | EmailFieldProps
   | PhoneFieldProps
   | ArrayProps
-  | GirdProps;
+  | GirdProps
+  | RelationNumberProps;
 
-type Fields = Record<string, Field>;
+export type Fields = Record<string, Field>;
 
 export interface FormProps {
   fields: Array<Fields>;

@@ -72,7 +72,7 @@ export default function NumberField(
         <Input
             ref={InputRef}
           contentRightStyling={false}
-          value={field.value}
+          value={field.value || ""}
           status={Error ? "error" : "default"}
           {...(Error && {
             helperText: "" + Error.message,
@@ -113,7 +113,7 @@ export default function NumberField(
                 }}
                 onPress={()=>{
                     InputRef.current?.focus()
-                    field.onChange(field.value + 1)
+                    field.onChange((field.value || 0) + 1)
                 }}
               >
                 <Plus size={13} />
@@ -130,7 +130,7 @@ export default function NumberField(
                 }}
                 onPress={()=>{
                     InputRef.current?.focus()
-                    field.onChange(field.value - 1)
+                    field.onChange((field.value || 0) - 1)
                 }}
               >
                 <Minus size={13} />
