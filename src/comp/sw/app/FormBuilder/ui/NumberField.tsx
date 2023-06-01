@@ -1,6 +1,6 @@
-import { Fragment, useState } from "react";
+import { ChangeEvent, Fragment, useRef, useState } from "react";
 import { NumberFieldProps } from "../types";
-import { Button, CSS, Input } from "@nextui-org/react";
+import { Button, CSS, FormElement, Input } from "@nextui-org/react";
 import { useController, useFormContext } from "react-hook-form";
 import TooltipHelper from "./TooltipHelper";
 import { Minus, Plus } from "lucide-react";
@@ -25,11 +25,13 @@ export default function NumberField(
   const [hoverButtonIn, setHoverButtonIn] = useState<boolean>(false);
   const [hoverButtonDe, setHoverButtonDe] = useState<boolean>(false);
 
+  const InputRef = useRef<HTMLInputElement>(null)
+
   const InCreaseButton: CSS = {
-    bg: "transparent",
+    bg: hoverButtonIn ? "$accents4" : "transparent",
     h: "auto",
     ml: -16,
-    color: hoverButtonIn ? "white" : "$accents6",
+    color: hoverInput ? "white" : "$accents6",
     p: "4px 3.5px 2px 3.5px",
     borderWidth: "0px 0px 1px 2px",
     borderStyle: "solid",
@@ -38,10 +40,10 @@ export default function NumberField(
   };
 
   const DeCreaseButton: CSS = {
-    bg: "transparent",
+    bg: hoverButtonDe ? "$accents4" : "transparent",
     h: "auto",
     ml: -16,
-    color: hoverButtonDe ? "white" : "$accents6",
+    color: hoverInput ? "white" : "$accents6",
     p: "2px 3.5px 4px 3.5px",
     borderWidth: "1px 0px 0px 2px",
     borderStyle: "solid",
@@ -58,9 +60,6 @@ export default function NumberField(
           input[type="number"] {
             -moz-appearance: textfield;
           }
-          //   .nextui-input-content--right{
-          //     padding: 0px !important;
-          //   }
         `}
       </style>
 
@@ -71,7 +70,9 @@ export default function NumberField(
         }}
       >
         <Input
+            ref={InputRef}
           contentRightStyling={false}
+          value={field.value}
           status={Error ? "error" : "default"}
           {...(Error && {
             helperText: "" + Error.message,
@@ -90,6 +91,9 @@ export default function NumberField(
             setFocusInput(false);
             setHoverInput(false);
           }}
+          onChange={(e: ChangeEvent<FormElement>)=>{
+            field.onChange(parseInt(e.target.value))
+          }}
           type="number"
           inputMode="numeric"
           fullWidth
@@ -107,6 +111,10 @@ export default function NumberField(
                   setHoverButtonIn(false);
                   !focusInput && setHoverInput(false);
                 }}
+                onPress={()=>{
+                    InputRef.current?.focus()
+                    field.onChange(field.value + 1)
+                }}
               >
                 <Plus size={13} />
               </Button>
@@ -120,13 +128,16 @@ export default function NumberField(
                   setHoverButtonDe(false);
                   !focusInput && setHoverInput(false);
                 }}
+                onPress={()=>{
+                    InputRef.current?.focus()
+                    field.onChange(field.value - 1)
+                }}
               >
                 <Minus size={13} />
               </Button>
             </Button.Group>
           }
           labelPlaceholder={label}
-          //   {...register(name, { ...option })}
         />
         <div
           style={{
