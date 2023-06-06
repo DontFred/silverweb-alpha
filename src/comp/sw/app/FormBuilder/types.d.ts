@@ -20,6 +20,7 @@ export type FieldSchema = {
     | "select"
     | "radio"
     | "checkbox"
+    | "date"
     | "address"
     | "contact"
     | "password"
@@ -114,6 +115,11 @@ export type CheckboxFieldProps = FieldSchema &
     otherOpt?: boolean;
   };
 
+export type DatePickerFieldProps = FieldSchema &
+  DefaultProps & {
+    type: "date";
+  };
+
 export type AddressFieldProps = FieldSchema &
   DefaultProps & {
     type: "address";
@@ -162,6 +168,7 @@ export type GirdProps = FieldSchema &
     properties: Fields;
     columnWidth: number;
     gap?: CSS["gap"];
+    justify?: boolean
   };
 
 export type RelationNumberProps = FieldSchema &
@@ -181,6 +188,7 @@ export type Field =
   | SelectFieldProps
   | RadioFieldProps
   | CheckboxFieldProps
+  | DatePickerFieldProps
   | AddressFieldProps
   | ContactFieldProps
   | PasswordFieldProps

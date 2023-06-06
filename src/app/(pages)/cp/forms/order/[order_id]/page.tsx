@@ -381,17 +381,105 @@ export default function OrderForm() {
         type: "subheading",
         content: "will always be a multiple of 3"
       },
+      spacerNeun: {
+        type: "spacer",
+      },
       workerOnSite: {
         type: "relationNumber",
         relatedField: "workerNeeded"
       },
-      spacer: {
-        type: "spacer"
+      spacerZehn: {
+        type: "spacer",
+        double: true
+      },
+      headingAcht: {
+        type: "heading",
+        content: "When is the start"
+      },
+      subheadingNeun: {
+        type: "subheading",
+        content: "for the Silverback team"
+      },
+      projectStart: {
+        type: "date",
+        label: "Start Date",
+      },
+      spacerElf: {
+        type: "spacer",
+        double: true
+      },
+      headingNeun: {
+        type: "heading",
+        content: "How long"
+      },
+      subheadingZehn: {
+        type: "subheading",
+        content: "are we needed"
+      },
+      projectDuration: {
+        type: "grid",
+        justify: true,
+        columnWidth: 0,
+        properties: {
+          weeks: {
+            type: "number",
+            label: "Weeks"
+          }
+        }
+      },
+      spacerZwolf: {
+        type: "spacer",
+        double: true
       }
     },
+    {
+      titleEins: {
+        type: "title",
+        content: "Trainings and Inductions"
+      },
+      descriptionEins: {
+        type: "description",
+        content: "This part of the form is to give us information of the induction process and training courses required to have the SilverBack Team start in an efficient manner."
+      },
+      descriptionZwei: {
+        type: "description",
+        content: "You will have access to all required documentation via a link to a secure client portal that we host on a system called Sharefile by Citrix. With the focus on data protection and GDPR compliance, this system enables us to share all relevant information about the SilverBack team with you in a controlled and secure manner. The information that we will share with you on this includes:"
+      },
+      descriptionDrei: {
+        type: "description",
+        content: (
+          <Fragment>
+            <ul>
+              <li style={{margin: 0}}>∙ Electrical qualification / certificates</li>
+              <li style={{margin: 0}}>∙ Training courses</li>
+              <li style={{margin: 0}}>∙ ID06</li>
+              <li style={{margin: 0}}>∙ Induction forms</li>
+            </ul>
+          </Fragment>
+        )
+      },
+      headingEins: {
+        type: "heading",
+        content: "Are training courses required,"
+      },
+      subheadingEins: {
+        type: "subheading",
+        content: "with all employees having the Safe Construction course"
+      },
+      subheadingZwei: {
+        type: "subheading",
+        content: ""
+      },
+      subheadingDrei: {
+        type: "subheading",
+        content: "done as a standard"
+      },
+      requiredTrainingCourses: {
+        type: "checkbox",
+        items: []
+      }
+    }
   ];
-
-
   const meta: Meta = {
     title: "Order form",
     arg: {

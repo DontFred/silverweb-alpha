@@ -19,12 +19,12 @@ import EmailField from "./ui/EmailField";
 import RadioField from "./ui/RadioField";
 import CheckboxField from "./ui/CheckboxField";
 import NumberField from "./ui/NumberField";
+import GridField from "./ui/GridField";
+import RelationNumberField from "./ui/RelationNumberField";
+import DatePickerField from "./ui/DatePickerField";
 
 //Dev
 import { DevTool } from "@hookform/devtools";
-import GridField from "./ui/GridField";
-import { z } from "zod";
-import RelationNumberField from "./ui/RelationNumberField";
 
 export function renderFields([name, fieldProps]: [string, Field], idx: number) {
   switch (fieldProps.type) {
@@ -48,6 +48,8 @@ export function renderFields([name, fieldProps]: [string, Field], idx: number) {
       return <RadioField {...fieldProps} name={name} key={idx} />;
     case "checkbox":
       return <CheckboxField {...fieldProps} name={name} key={idx} />;
+    case "date": 
+      return <DatePickerField {...fieldProps} name={name} key={idx} />;
     case "address":
       return <AddressField {...fieldProps} name={name} key={idx} />;
     case "contact":

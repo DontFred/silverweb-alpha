@@ -3,14 +3,15 @@ import { renderFields } from "../Form";
 import { GirdProps } from "../types";
 
 export default function GridField(props: GirdProps & { name: string }) {
-  const { name, properties, columnWidth, gap } = props;
+  const { name, properties, columnWidth, gap, justify } = props;
 
   const CheckboxContainerStyling: CSS = {
     p: 0,
     w: "100%",
     display: "grid",
-    gridTemplateColumns: "1fr ".repeat(columnWidth || 1),
+    gridTemplateColumns: "1fr ".repeat(columnWidth || 0),
     gap: gap || "$5",
+    ...justify && {justifyContent: "center"}
   };
   return (
     <Container css={CheckboxContainerStyling}>
