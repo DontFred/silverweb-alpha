@@ -25,6 +25,7 @@ import DatePickerField from "./ui/DatePickerField";
 
 //Dev
 import { DevTool } from "@hookform/devtools";
+import FileField from "./ui/FileField";
 
 export function renderFields([name, fieldProps]: [string, Field], idx: number) {
   switch (fieldProps.type) {
@@ -50,6 +51,8 @@ export function renderFields([name, fieldProps]: [string, Field], idx: number) {
       return <CheckboxField {...fieldProps} name={name} key={idx} />;
     case "date": 
       return <DatePickerField {...fieldProps} name={name} key={idx} />;
+    case "file": 
+      return <FileField {...fieldProps} name={name} key={idx} />;
     case "address":
       return <AddressField {...fieldProps} name={name} key={idx} />;
     case "contact":
@@ -148,6 +151,7 @@ export function Form({ fields, onSubmit }: FormProps) {
                       color={"default"}
                       size="sm"
                       ghost
+                      draggable="true"
                       auto
                       type="button"
                       onClick={form.handleSubmit(onSubmit)}
@@ -156,6 +160,7 @@ export function Form({ fields, onSubmit }: FormProps) {
                     </Button>
                   ) : (
                     <Button
+
                       type="button"
                       role="button"
                       size="sm"

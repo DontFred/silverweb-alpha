@@ -6,10 +6,7 @@ import { Text } from "@nextui-org/react";
 import React, { Fragment } from "react";
 import { useFormContext } from "react-hook-form";
 
-
-
 export default function OrderForm() {
-
   const fields: FormProps["fields"] = [
     {
       title: {
@@ -231,6 +228,15 @@ export default function OrderForm() {
             value: true,
             message: "Please select a option",
           },
+          validate: {
+            OtherOption: (value: string[]) => {
+              if (value.indexOf("other") !== -1 || value.indexOf("") !== -1) {
+                return "Please enter something in the other field";
+              } else {
+                return true;
+              }
+            },
+          },
         },
         otherOpt: true,
       },
@@ -277,6 +283,15 @@ export default function OrderForm() {
             value: true,
             message: "Please select a option",
           },
+          validate: {
+            OtherOption: (value: string[]) => {
+              if (value.indexOf("other") !== -1 || value.indexOf("") !== -1) {
+                return "Please enter something in the other field";
+              } else {
+                return true;
+              }
+            },
+          },
         },
       },
       spacerSechs: {
@@ -311,6 +326,15 @@ export default function OrderForm() {
           required: {
             value: true,
             message: "Please select a option",
+          },
+          validate: {
+            OtherOption: (value: string[]) => {
+              if (value.indexOf("other") !== -1 || value.indexOf("") !== -1) {
+                return "Please enter something in the other field";
+              } else {
+                return true;
+              }
+            },
           },
         },
       },
@@ -371,50 +395,56 @@ export default function OrderForm() {
       },
       headingSieben: {
         type: "heading",
-        content: "The number of workers always on site,"
+        content: "The number of workers always on site,",
       },
       subheadingSieben: {
         type: "subheading",
-        content: "due to the 6/2-Rotation schedule,"
+        content: "due to the 6/2-Rotation schedule,",
       },
       subheadingAcht: {
         type: "subheading",
-        content: "will always be a multiple of 3"
+        content: "will always be a multiple of 3",
       },
       spacerNeun: {
         type: "spacer",
       },
       workerOnSite: {
         type: "relationNumber",
-        relatedField: "workerNeeded"
+        relatedField: "workerNeeded",
       },
       spacerZehn: {
         type: "spacer",
-        double: true
+        double: true,
       },
       headingAcht: {
         type: "heading",
-        content: "When is the start"
+        content: "When is the start",
       },
       subheadingNeun: {
         type: "subheading",
-        content: "for the Silverback team"
+        content: "for the Silverback team",
       },
       projectStart: {
         type: "date",
         label: "Start Date",
+        option: {
+          required: {
+            message: "Please enter a start date",
+            value: true,
+          },
+        },
       },
       spacerElf: {
         type: "spacer",
-        double: true
+        double: true,
       },
       headingNeun: {
         type: "heading",
-        content: "How long"
+        content: "How long",
       },
       subheadingZehn: {
         type: "subheading",
-        content: "are we needed"
+        content: "are we needed",
       },
       projectDuration: {
         type: "grid",
@@ -423,62 +453,158 @@ export default function OrderForm() {
         properties: {
           weeks: {
             type: "number",
-            label: "Weeks"
-          }
-        }
+            label: "Weeks",
+            option: {
+              required: {
+                message: "Please enter a duration",
+                value: true,
+              },
+          },
+        },
+        },
       },
       spacerZwolf: {
         type: "spacer",
-        double: true
-      }
+        double: true,
+      },
     },
     {
       titleEins: {
         type: "title",
-        content: "Trainings and Inductions"
+        content: "Trainings and Inductions",
       },
       descriptionEins: {
         type: "description",
-        content: "This part of the form is to give us information of the induction process and training courses required to have the SilverBack Team start in an efficient manner."
+        content:
+          "This part of the form is to give us information of the induction process and training courses required to have the SilverBack Team start in an efficient manner.",
       },
       descriptionZwei: {
         type: "description",
-        content: "You will have access to all required documentation via a link to a secure client portal that we host on a system called Sharefile by Citrix. With the focus on data protection and GDPR compliance, this system enables us to share all relevant information about the SilverBack team with you in a controlled and secure manner. The information that we will share with you on this includes:"
+        content:
+          "You will have access to all required documentation via a link to a secure client portal that we host on a system called Sharefile by Citrix. With the focus on data protection and GDPR compliance, this system enables us to share all relevant information about the SilverBack team with you in a controlled and secure manner. The information that we will share with you on this includes:",
       },
       descriptionDrei: {
         type: "description",
         content: (
           <Fragment>
             <ul>
-              <li style={{margin: 0}}>∙ Electrical qualification / certificates</li>
-              <li style={{margin: 0}}>∙ Training courses</li>
-              <li style={{margin: 0}}>∙ ID06</li>
-              <li style={{margin: 0}}>∙ Induction forms</li>
+              <li style={{ margin: 0 }}>
+                ∙ Electrical qualification / certificates
+              </li>
+              <li style={{ margin: 0 }}>∙ Training courses</li>
+              <li style={{ margin: 0 }}>∙ ID06</li>
+              <li style={{ margin: 0 }}>∙ Induction forms</li>
             </ul>
           </Fragment>
-        )
+        ),
       },
       headingEins: {
         type: "heading",
-        content: "Are training courses required,"
+        content: "Are training courses required,",
       },
       subheadingEins: {
         type: "subheading",
-        content: "with all employees having the Safe Construction course"
+        content: "with all employees having the Safe Construction course",
       },
       subheadingZwei: {
         type: "subheading",
-        content: ""
-      },
-      subheadingDrei: {
-        type: "subheading",
-        content: "done as a standard"
+        content: "done as a standard",
       },
       requiredTrainingCourses: {
         type: "checkbox",
-        items: []
+        items: [
+          "Confined space",
+          "Construction safety",
+          "Harness",
+          "MEWP",
+          "Manual handling",
+          "SSG",
+        ],
+        columnWidth: 2,
+        otherOpt: true,
+        option: {
+          required: {
+            value: true,
+            message: "Please select an option",
+          },
+          validate: {
+            OtherOption: (value: string[]) => {
+              if (value.indexOf("other") !== -1 || value.indexOf("") !== -1) {
+                return "Please enter something in the other field";
+              } else {
+                return true;
+              }
+            },
+          },
+        },
+      },
+      spacerEins: {
+        type: "spacer",
+        double: true
+      },
+      headingZwei: {
+        type: "heading",
+        content: "Induction Forms needed "
+      },
+      subheadingDrei: {
+        type: "subheading",
+        content: "to be completed before staring on site"
+      },
+      inductionForms: {
+        type: "file"
+      },
+      spacerZwei: {
+        type: "spacer",
+        double: true
+      },
+      headingDrei: {
+        type: "heading",
+        content: "Meeting person contact details",
+      },
+      subheadingVier: {
+        type: "subheading",
+        content: "of who the SilverBack Team will meet",
+      },      
+      subheadingFunf: {
+        type: "subheading",
+        content: "or call on the first day",
+      },
+      meetingPerson: {
+        type: "contact",
+        option: {
+          required: {
+            message: "Please enter the details",
+            value: true
+          }
+        }
+      },
+      spacerDrei: {
+        type: "spacer",
+        double: true
+      },
+      headingVier: {
+        type: "heading",
+        content: "Delivery address for ID06 cards,",
+      },
+      subheadingSechs: {
+        type: 
+          "subheading",
+        content: "if we have to deliver a new card "
+      },
+      subheadingAcht: {
+        type: "subheading",
+        content: "for our staff onsite",
+      },
+      deliveryAddress: {
+        type: "address",
+        option: {
+          required: {
+            message: "Please enter the delivery address",
+            value: true
+          }
+        }
       }
-    }
+    },
   ];
   const meta: Meta = {
     title: "Order form",

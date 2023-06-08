@@ -21,6 +21,7 @@ export type FieldSchema = {
     | "radio"
     | "checkbox"
     | "date"
+    | "file"
     | "address"
     | "contact"
     | "password"
@@ -120,6 +121,11 @@ export type DatePickerFieldProps = FieldSchema &
     type: "date";
   };
 
+export type FileFieldProps = FieldSchema &
+  DefaultProps & {
+    type: "file"
+  }
+
 export type AddressFieldProps = FieldSchema &
   DefaultProps & {
     type: "address";
@@ -191,6 +197,7 @@ export type Field =
   | DatePickerFieldProps
   | AddressFieldProps
   | ContactFieldProps
+  | FileFieldProps
   | PasswordFieldProps
   | EmailFieldProps
   | PhoneFieldProps

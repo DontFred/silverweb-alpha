@@ -80,7 +80,7 @@ export default function RootLayout({
         <meta name="application-name" content="SilverBack" />
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="msapplication-config" content="/icon/browserconfig.xml" />
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="dark" />
       </head>
       <body className={graphik.className}>
         <Providers>{children}</Providers>

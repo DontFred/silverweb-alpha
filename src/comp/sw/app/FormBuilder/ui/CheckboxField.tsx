@@ -47,6 +47,7 @@ export default function CheckboxField(
 
   const LabelStyling: CSS = {
     fs: "var(--nextui-space-7)",
+    color: Error ? "$error" : "$text",
     lh: "21px",
     ml: -2.73,
   };
