@@ -2,11 +2,13 @@
 import Footer from "@/comp/sb/ui/Footer";
 import Nav from "@/comp/sb/ui/Nav";
 import { Form, FormProps, Meta } from "@/comp/sw/app/FormBuilder";
-import { Text } from "@nextui-org/react";
-import React, { Fragment } from "react";
-import { useFormContext } from "react-hook-form";
+import { Button, Modal, Text } from "@nextui-org/react";
+import React, { Fragment, useState } from "react";
 
 export default function OrderForm() {
+  
+  const [openSubmissionModal, setOpenSubmissionModal] = useState<boolean>(false);
+
   const fields: FormProps["fields"] = [
     {
       title: {
@@ -229,8 +231,9 @@ export default function OrderForm() {
             message: "Please select a option",
           },
           validate: {
-            OtherOption: (value: string[]) => {
-              if (value.indexOf("other") !== -1 || value.indexOf("") !== -1) {
+            OtherOption: (value: string) => {
+              console.log(value);
+              if (value == "other" || value == "") {
                 return "Please enter something in the other field";
               } else {
                 return true;
@@ -459,8 +462,8 @@ export default function OrderForm() {
                 message: "Please enter a duration",
                 value: true,
               },
+            },
           },
-        },
         },
       },
       spacerZwolf: {
@@ -540,22 +543,22 @@ export default function OrderForm() {
       },
       spacerEins: {
         type: "spacer",
-        double: true
+        double: true,
       },
       headingZwei: {
         type: "heading",
-        content: "Induction Forms needed "
+        content: "Induction Forms needed ",
       },
       subheadingDrei: {
         type: "subheading",
-        content: "to be completed before staring on site"
+        content: "to be completed before staring on site",
       },
       inductionForms: {
-        type: "file"
+        type: "file",
       },
       spacerZwei: {
         type: "spacer",
-        double: true
+        double: true,
       },
       headingDrei: {
         type: "heading",
@@ -564,7 +567,7 @@ export default function OrderForm() {
       subheadingVier: {
         type: "subheading",
         content: "of who the SilverBack Team will meet",
-      },      
+      },
       subheadingFunf: {
         type: "subheading",
         content: "or call on the first day",
@@ -574,22 +577,21 @@ export default function OrderForm() {
         option: {
           required: {
             message: "Please enter the details",
-            value: true
-          }
-        }
+            value: true,
+          },
+        },
       },
       spacerDrei: {
         type: "spacer",
-        double: true
+        double: true,
       },
       headingVier: {
         type: "heading",
         content: "Delivery address for ID06 cards,",
       },
       subheadingSechs: {
-        type: 
-          "subheading",
-        content: "if we have to deliver a new card "
+        type: "subheading",
+        content: "if we have to deliver a new card ",
       },
       subheadingAcht: {
         type: "subheading",
@@ -600,23 +602,402 @@ export default function OrderForm() {
         option: {
           required: {
             message: "Please enter the delivery address",
-            value: true
-          }
-        }
-      }
+            value: true,
+          },
+        },
+      },
+      spacerVier: {
+        type: "spacer",
+        double: true,
+      },
+    },
+    {
+      titleEins: {
+        type: "title",
+        content: "Invoicing Details and Charge rates",
+      },
+      descriptionEins: {
+        type: "description",
+        content:
+          "This part of the form is to give us invoice, billing and charge rates information",
+      },
+      heaingEins: {
+        type: "heading",
+        content: "Pay term",
+      },
+      subheadingEins: {
+        type: "subheading",
+        content: "will be",
+      },
+      descriptionZwei: {
+        type: "description",
+        content:
+          "SilverBack will send a weekly invoice with a 30 days payment term. Please confirm your understanding.",
+      },
+      confirmPayterm: {
+        type: "checkbox",
+        items: ["I confirm"],
+        option: {
+          required: {
+            value: true,
+            message: "Please confirm the pay term.",
+          },
+        },
+      },
+      spacerEins: {
+        type: "spacer",
+        double: true,
+      },
+      headingZwei: {
+        type: "heading",
+        content: "The address",
+      },
+      subheadingZwei: {
+        type: "subheading",
+        content: "for the invoicing",
+      },
+      invoicingAddress: {
+        type: "address",
+        option: {
+          required: {
+            message: "Please enter the invoicing address",
+            value: true,
+          },
+        },
+      },
+      spacerZwei: {
+        type: "spacer",
+        double: true,
+      },
+      headingDrei: {
+        type: "heading",
+        content: "The organization number",
+      },
+      subheadingDrei: {
+        type: "subheading",
+        content: "of the company",
+      },
+      orgaNumber: {
+        type: "text",
+        label: "ORGANR",
+        option: {
+          required: {
+            value: true,
+            message: "Please enter the ORGA number",
+          },
+        },
+      },
+      spacerDrei: {
+        type: "spacer",
+        double: true,
+      },
+      headingVier: {
+        type: "heading",
+        content: "Company VAT",
+      },
+      subheadingVier: {
+        type: "subheading",
+        content: "or MOMS number",
+      },
+      vatNumber: {
+        type: "text",
+        label: "VAT/ MOMS",
+        option: {
+          required: {
+            value: true,
+            message: "Please enter the VAT/ MOMS number",
+          },
+        },
+      },
+      spacerVier: {
+        type: "spacer",
+        double: true,
+      },
+      headingFunf: {
+        type: "heading",
+        content: "The charge rates",
+      },
+      subheading: {
+        type: "subheading",
+        content: "will be",
+      },
+      descriptionDrei: {
+        type: "description",
+        content: (
+          <Text size="$sm">
+            Please confirm to the following hourly charge rate for the first 54
+            hours Monday - Friday:
+          </Text>
+        ),
+      },
+      descriptionVier: {
+        type: "description",
+        content: (
+          <Fragment>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                padding: "0 20px",
+                gap: 10,
+              }}
+            >
+              {[
+                {
+                  name: "Mechanic",
+                  ncr: "100",
+                  ot1: "150",
+                  ot2: "200",
+                  ot3: "250",
+                  ot4: "300",
+                  cy: "SEK",
+                },
+                {
+                  name: "Mechanic",
+                  ncr: "100",
+                  ot1: "150",
+                  ot2: "200",
+                  ot3: "250",
+                  ot4: "300",
+                  cy: "SEK",
+                },
+                {
+                  name: "Mechanic",
+                  ncr: "100",
+                  ot1: "150",
+                  ot2: "200",
+                  ot3: "250",
+                  ot4: "300",
+                  cy: "SEK",
+                },
+                {
+                  name: "Mechanic",
+                  ncr: "100",
+                  ot1: "150",
+                  ot2: "200",
+                  ot3: "250",
+                  ot4: "300",
+                  cy: "SEK",
+                },
+              ].map((cr) => (
+                <Fragment>
+                  <Text size="$sm">
+                    <b>{cr.name}:</b>
+                    <br />
+                    <i>
+                      {cr.ncr} {cr.cy}
+                    </i>
+                  </Text>
+                </Fragment>
+              ))}
+            </div>
+          </Fragment>
+        ),
+      },
+      confirmChargerates: {
+        type: "checkbox",
+        items: ["I confirm"],
+        option: {
+          required: {
+            value: true,
+            message: "Please confirm the charge rates",
+          },
+        },
+      },
+      spacerFunf: {
+        type: "spacer",
+        double: true,
+      },
+      headingSechs: {
+        type: "heading",
+        content: "The overtime charge rates",
+      },
+      subhadingSechs: {
+        type: "subheading",
+        content: "will be",
+      },
+      descriptionFunf: {
+        type: "description",
+        content: (
+          <Text size={"$sm"}>
+            Please confirm to the following overtime hourly charge rates:
+          </Text>
+        ),
+      },
+      descriptionSechs: {
+        type: "description",
+        content: (
+          <Fragment>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                padding: "0 20px",
+                gap: 10,
+              }}
+            >
+              {[
+                {
+                  name: "Mechanic",
+                  ncr: "100",
+                  ot1: "150",
+                  ot2: "200",
+                  ot3: "250",
+                  ot4: "300",
+                  cy: "SEK",
+                },
+                {
+                  name: "Mechanic",
+                  ncr: "100",
+                  ot1: "150",
+                  ot2: "200",
+                  ot3: "250",
+                  ot4: "300",
+                  cy: "SEK",
+                },
+                {
+                  name: "Mechanic",
+                  ncr: "100",
+                  ot1: "150",
+                  ot2: "200",
+                  ot3: "250",
+                  ot4: "300",
+                  cy: "SEK",
+                },
+                {
+                  name: "Mechanic",
+                  ncr: "100",
+                  ot1: "150",
+                  ot2: "200",
+                  ot3: "250",
+                  ot4: "300",
+                  cy: "SEK",
+                },
+              ].map((cr) => (
+                <Fragment>
+                  <Text size="$sm">
+                    <b>{cr.name}:</b>
+                    <br />
+                    <i>
+                      OT1¹: {cr.ot1} {cr.cy}
+                      <br />
+                      OT2²: {cr.ot2} {cr.cy}
+                      <br />
+                      OT3³: {cr.ot3} {cr.cy}
+                      <br />
+                      OT4⁴: {cr.ot4} {cr.cy}
+                    </i>
+                  </Text>
+                </Fragment>
+              ))}
+            </div>
+          </Fragment>
+        ),
+      },
+      confirmOTChargerates: {
+        type: "checkbox",
+        items: ["I confirm"],
+        option: {
+          required: {
+            value: true,
+            message: "Please confirm the overtime change rates",
+          },
+        },
+      },
+      spacerSechs: {
+        type: "spacer",
+        half: true,
+      },
+      descriptionSieben: {
+        type: "description",
+        content: (
+          <Fragment>
+            <Text
+              css={{
+                color: "$primary",
+                fs: "$xs",
+                lh: "$sm",
+              }}
+            >
+              OT1¹: 1st 2nd hour immediately after normal working hours
+              <br />
+              OT2²: Overtime hours after OT1 until midnight
+              <br />
+              OT3³: After midnight on weekday plus Saturday and Sundays
+              <br />
+              OT4⁴: Most public holidays
+            </Text>
+          </Fragment>
+        ),
+      },
     },
   ];
+  
   const meta: Meta = {
     title: "Order form",
     arg: {
       fields,
       onSubmit: (values: Object) => {
+        setOpenSubmissionModal(true);
         console.log("values", values);
       },
     },
   };
   return (
     <Fragment>
+      <Modal
+        width="100%"
+        css={{
+          width: "90%",
+          m: "0 auto",
+          "@sm": {
+            width: "60%",
+          },
+          "@md": {
+            width: "45%",
+          },
+          "@lg": {
+            width: "45%",
+          },
+        }}
+        blur 
+        open={openSubmissionModal} 
+        preventClose
+      >
+        <Modal.Header>
+          <Text h2>Submitting form</Text>
+        </Modal.Header>
+        <Modal.Body>
+          <Text css={{ p: "0 50px" }}>
+            <b>Thank you</b> for providing us with the details of your project.
+            We appreciate your business and are <b>grateful</b> for the
+            opportunity to <b>work</b> with you. <br />
+            Your account manager of the SilverBack Team will be in touch with
+            you shortly to discuss your project further and to provide any
+            additional information you or we may need. <br />
+            In the meantime, please don't hesitate to <b>
+              contact us
+            </b> with <b>any questions</b> or concerns. We are here to help and
+            want to ensure that your experience with our company is a{" "}
+            <b>positive</b> one. <br />
+            Thank you again for choosing to work with us. We look forward to
+            partnering with you on your project.
+          </Text>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+           onPress={()=>{
+            window.location.href= "https://silverback.ie"
+           }}
+           ghost
+           css={{
+            m: "auto"
+           }}
+          >
+            Redirect
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <Form {...meta.arg} />
       <div
         style={{

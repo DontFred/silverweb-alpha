@@ -22,10 +22,10 @@ import NumberField from "./ui/NumberField";
 import GridField from "./ui/GridField";
 import RelationNumberField from "./ui/RelationNumberField";
 import DatePickerField from "./ui/DatePickerField";
+import FileField from "./ui/FileField";
 
 //Dev
 import { DevTool } from "@hookform/devtools";
-import FileField from "./ui/FileField";
 
 export function renderFields([name, fieldProps]: [string, Field], idx: number) {
   switch (fieldProps.type) {
@@ -49,9 +49,9 @@ export function renderFields([name, fieldProps]: [string, Field], idx: number) {
       return <RadioField {...fieldProps} name={name} key={idx} />;
     case "checkbox":
       return <CheckboxField {...fieldProps} name={name} key={idx} />;
-    case "date": 
+    case "date":
       return <DatePickerField {...fieldProps} name={name} key={idx} />;
-    case "file": 
+    case "file":
       return <FileField {...fieldProps} name={name} key={idx} />;
     case "address":
       return <AddressField {...fieldProps} name={name} key={idx} />;
@@ -140,7 +140,17 @@ export function Form({ fields, onSubmit }: FormProps) {
                     ghost
                     auto
                     type="button"
-                    onPress={() => setPages(pages > 0 ? pages - 1 : 0)}
+                    onPress={() => {
+                      document
+                        .getElementsByClassName(
+                          "nextui-backdrop nextui-backdrop--open nextui-backdrop-wrapper-enter nextui-backdrop-wrapper-enter-active"
+                        )[0]
+                        .scrollTo({
+                          top: 0,
+                          behavior: "smooth",
+                        });
+                      setPages(pages > 0 ? pages - 1 : 0);
+                    }}
                   >
                     Back
                   </Button>
@@ -154,13 +164,12 @@ export function Form({ fields, onSubmit }: FormProps) {
                       draggable="true"
                       auto
                       type="button"
-                      onClick={form.handleSubmit(onSubmit)}
+                      onPress={form.handleSubmit(onSubmit) as any}
                     >
                       Submit
                     </Button>
                   ) : (
                     <Button
-
                       type="button"
                       role="button"
                       size="sm"
@@ -175,17 +184,16 @@ export function Form({ fields, onSubmit }: FormProps) {
                             top: 0,
                             behavior: "smooth",
                           });
-                        setPages(pages + 1);
-                        // const Errors = await Promise.all(
-                        //   Object.entries(fields[pages]).map(async (field) => {
-                        //     // Checking field
-                        //     return await form.trigger(field[0]);
-                        //   })
-                        // );
-                        // if (Errors.every((value) => value === true)) {
-                        //   // No errors found
-                        //   setPages(pages + 1);
-                        // }
+                        const Errors = await Promise.all(
+                          Object.entries(fields[pages]).map(async (field) => {
+                            // Checking field
+                            return await form.trigger(field[0]);
+                          })
+                        );
+                        if (Errors.every((value) => value === true)) {
+                          // No errors found
+                          setPages(pages + 1);
+                        }
                       }}
                     >
                       Next
