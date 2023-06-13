@@ -17,7 +17,7 @@ export default function NavCard({
 }) {
   return (
     <Link
-      href={link}
+      href={link}  
       style={{
         ...(disabled && {
           filter:

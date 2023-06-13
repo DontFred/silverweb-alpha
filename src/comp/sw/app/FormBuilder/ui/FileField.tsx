@@ -4,7 +4,6 @@ import React, {
   DragEvent,
   Fragment,
   useEffect,
-  useState,
 } from "react";
 import { FileFieldProps } from "../types";
 import { FileCheck2, FileX2, X } from "lucide-react";

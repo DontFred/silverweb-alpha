@@ -1,7 +1,7 @@
 "use client";
 
 import { Grid } from "@nextui-org/react";
-import { Fragment } from "react";
+import { Fragment, ReactNode } from "react";
 import Sidebar from "./Sidebar";
 import UserMenu from "./UserMenu";
 
@@ -9,7 +9,7 @@ import { faker } from "@faker-js/faker";
 import { createRandomMessages, createRandomUser } from "@/faker";
 import Copyright from "./Copyright";
 
-export default function Layout({ children }: any) {
+export default function Layout({ children }: {children: ReactNode[] | ReactNode}) {
   return (
     <Fragment>
       <Grid.Container css={{ p: 0 }}>

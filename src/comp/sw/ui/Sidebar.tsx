@@ -41,15 +41,15 @@ export default function Sidebar() {
               draggable={false}
             />
           </div>
-          <NavCard name="Home" link="/" icon={<LineChart color="white" size={16} />}/>
+          <NavCard name="Home" link="/sw" icon={<LineChart color="white" size={16} />}/>
           <Spacer y={0.5} />
-          <NavCard name="SilverSuite" link="/" icon={<LayoutDashboard color="white" size={16} />}/>
+          <NavCard name="SilverSuite" link="/sw" icon={<LayoutDashboard color="white" size={16} />}/>
           <Spacer y={0.5} />
-          <NavCard name="SilverBase" link="/" icon={<Server color="white" size={16} />}/>
+          <NavCard name="SilverBase" link="/sw" icon={<Server color="white" size={16} />}/>
           <Spacer y={0.5} />
-          <NavCard name="SilverBoard" link="" disabled icon={<Send color="white" size={16} />}/>
+          <NavCard name="SilverBoard" link="/sw" disabled icon={<Send color="white" size={16} />}/>
           <Spacer y={0.5} />
-          <NavCard name="SilverBlog" link="" disabled icon={<Newspaper color="white" size={16} />}/>
+          <NavCard name="SilverBlog" link="/sw" disabled icon={<Newspaper color="white" size={16} />}/>
           <Spacer y={0.5} />
         </div>
       </div>

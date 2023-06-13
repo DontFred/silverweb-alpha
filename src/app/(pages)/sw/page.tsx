@@ -8,6 +8,8 @@ import { Grid, Loading, Spacer, Text } from "@nextui-org/react";
 import React from "react";
 import dynamic from "next/dynamic";
 import ContainerCard from "@/comp/sw/ui/cards/ContainerCard";
+import Link from "next/link";
+import { createRandomProjects } from "@/faker";
 
 const Map = dynamic(() => import("@/comp/sw/app/Map"), {
   loading: () => (
@@ -84,7 +86,25 @@ export default function page() {
                         width: "100%",
                       }}
                     >
-                      <Text weight="light">Map Charts</Text>
+                      <Grid.Container
+                        justify="space-between"
+                        alignItems="flex-end"
+                      >
+                        <Grid>
+                          <Text weight="light">Map Charts</Text>
+                        </Grid>
+                        <Grid>
+                          <Text
+                            css={{
+                              m: "0 20px -10px 0",
+                            }}
+                            size="$sm"
+                            weight="light"
+                          >
+                            <Link href="/sb/projects">See all</Link>
+                          </Text>
+                        </Grid>
+                      </Grid.Container>
                       <Grid.Container
                         gap={2}
                         justify="space-between"
@@ -94,7 +114,17 @@ export default function page() {
                       >
                         <Grid xs={12}>
                           <ContainerCard>
-                            <Map />
+                            <Map
+                              marker={[
+                                  ...faker.helpers.multiple(
+                                    createRandomProjects,
+                                    {
+                                      count: 12,
+                                    }
+                                  ),
+                                ]
+                              }
+                            />
                           </ContainerCard>
                         </Grid>
                       </Grid.Container>

@@ -381,7 +381,7 @@ export default function OrderForm() {
           </Text>
         ),
       },
-      confirmRoation: {
+      confirmRotation: {
         type: "checkbox",
         items: ["I confirm"],
         option: {
