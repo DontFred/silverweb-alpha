@@ -38,10 +38,13 @@ export default function ArrayField(props: ArrayProps & { name: string }) {
   });
 
   const Component = lookup[item];
+  function addNull(){
+    update(0, { item: null });
+  }
 
   useEffect(() => {
-    update(0, { item: null });
-  }, []);
+    addNull()
+  });
 
   return (
     <Fragment>

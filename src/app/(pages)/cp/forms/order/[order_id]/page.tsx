@@ -6,7 +6,6 @@ import { Button, Modal, Text } from "@nextui-org/react";
 import React, { Fragment, useState } from "react";
 
 export default function OrderForm() {
-  
   const [openSubmissionModal, setOpenSubmissionModal] = useState<boolean>(false);
 
   const fields: FormProps["fields"] = [
@@ -779,8 +778,8 @@ export default function OrderForm() {
                   ot4: "300",
                   cy: "SEK",
                 },
-              ].map((cr) => (
-                <Fragment>
+              ].map((cr, idx) => (
+                <Fragment key={idx}>
                   <Text size="$sm">
                     <b>{cr.name}:</b>
                     <br />
@@ -873,8 +872,8 @@ export default function OrderForm() {
                   ot4: "300",
                   cy: "SEK",
                 },
-              ].map((cr) => (
-                <Fragment>
+              ].map((cr, idx) => (
+                <Fragment key={idx}>
                   <Text size="$sm">
                     <b>{cr.name}:</b>
                     <br />
@@ -975,7 +974,7 @@ export default function OrderForm() {
             Your account manager of the SilverBack Team will be in touch with
             you shortly to discuss your project further and to provide any
             additional information you or we may need. <br />
-            In the meantime, please don't hesitate to <b>
+            In the meantime, please don&apos;t hesitate to <b>
               contact us
             </b> with <b>any questions</b> or concerns. We are here to help and
             want to ensure that your experience with our company is a{" "}

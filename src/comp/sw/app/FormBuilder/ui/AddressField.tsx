@@ -23,38 +23,38 @@ export default function AddressField(
     ) {
       checkAddress();
     }
-  }, [formState.isValidating]);
-  async function checkAddress() {
-    const result = await Nominatim.createClient({
-      useragent: "SilverWeb",
-      referer: `${process.env.NEXT_PUBLIC_HOST_DOMAIN}`,
-    }).search({
-      q: `${watch(name).streetNo}, ${watch(name).postalCode} ${
-        watch(name).city
-      }, ${watch(name).country}`,
-      addressdetails: 1,
-    });
-    if (result.length != 0) {
-      clearErrors(name);
-    } else {
-      setError(name + ".streetNo", {
-        type: "validate",
-        message: "Please enter a valid Address",
+    async function checkAddress() {
+      const result = await Nominatim.createClient({
+        useragent: "SilverWeb",
+        referer: `${process.env.NEXT_PUBLIC_HOST_DOMAIN}`,
+      }).search({
+        q: `${watch(name).streetNo}, ${watch(name).postalCode} ${
+          watch(name).city
+        }, ${watch(name).country}`,
+        addressdetails: 1,
       });
-      setError(name + ".postalCode", {
-        type: "validate",
-        message: "Please enter a valid Address",
-      });
-      setError(name + ".city", {
-        type: "validate",
-        message: "Please enter a valid Address",
-      });
-      setError(name + ".country", {
-        type: "validate",
-        message: "Please enter a valid Address",
-      });
+      if (result.length != 0) {
+        clearErrors(name);
+      } else {
+        setError(name + ".streetNo", {
+          type: "validate",
+          message: "Please enter a valid Address",
+        });
+        setError(name + ".postalCode", {
+          type: "validate",
+          message: "Please enter a valid Address",
+        });
+        setError(name + ".city", {
+          type: "validate",
+          message: "Please enter a valid Address",
+        });
+        setError(name + ".country", {
+          type: "validate",
+          message: "Please enter a valid Address",
+        });
+      }
     }
-  }
+  }, [watch, option, formState.isValidating, name, clearErrors, setError]);
 
 
   return (

@@ -109,7 +109,7 @@ export default function FileField(props: FileFieldProps & { name: string }) {
         clearErrors(name)
      }
     }
-  }, [ watch(name)]);
+  }, [clearErrors, formState.isValidating, name, setError, watch]);
 
   //convert to base64
 
