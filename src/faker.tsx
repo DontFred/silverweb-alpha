@@ -320,7 +320,7 @@ export function createRandomPassportInformation() {
   };
 }
 
-export function createRandomBankInformaton() {
+export function createRandomBankInformation() {
   return {
     id: faker.string.uuid(),
     employee: createRandomEmployee(),
@@ -385,111 +385,111 @@ export function createRandomEmergencyContact() {
   };
 }
 
-export function createRandomTrainingCertificate(){
+export function createRandomTrainingCertificate() {
   return {
     id: faker.string.uuid(),
     employee: createRandomEmployee(),
     course: createRandomTrainingCourse(),
     effectiveDate: faker.date.recent(),
     expiryDate: faker.date.future(),
-  }
+  };
 }
 
-export function createRandomTradeCertificate(){
+export function createRandomTradeCertificate() {
   return {
     id: faker.string.uuid(),
     employee: createRandomEmployee(),
     tradeCertificate: faker.lorem.words(),
-  }
+  };
 }
 
-export function createRandomInductionForm(){
+export function createRandomInductionForm() {
   return {
     id: faker.string.uuid(),
     order: createRandomOrder(),
     file: faker.internet.avatar(),
-    name: faker.system.commonFileName()
-  }
+    name: faker.system.commonFileName(),
+  };
 }
 
-export function createRandomProjectHistory(){
+export function createRandomProjectHistory() {
   return {
     id: faker.string.uuid(),
     employee: createRandomEmployee(),
     order: createRandomOrder(),
     jobRole: createRandomJobRole(),
-  }
+  };
 }
 
-export function createRandomTrainingCourseRequired(){
+export function createRandomTrainingCourseRequired() {
   return {
     id: faker.string.uuid(),
     order: createRandomOrder(),
-    course: createRandomTrainingCourse()
-  }
+    course: createRandomTrainingCourse(),
+  };
 }
 
-export function createRandomWorkPerformed(){
+export function createRandomWorkPerformed() {
   return {
     id: faker.string.uuid(),
     order: createRandomOrder(),
-    work: createRandomWorkType()
-  }
+    work: createRandomWorkType(),
+  };
 }
 
-export function createRandomWorkerRequired(){
-  return { 
+export function createRandomWorkerRequired() {
+  return {
     id: faker.string.uuid(),
     order: createRandomOrder(),
     jobRole: createRandomJobRole(),
     quantity: faker.number.int(20),
-  }
+  };
 }
 
-export function createRandomPayChargeRate(){
+export function createRandomPayChargeRate() {
   return {
     id: faker.string.uuid(),
     order: createRandomOrder(),
     jobRole: createRandomJobRole(),
     payRate: {
-      normal: faker.number.int({min: 200, max: 300}),
-      ot1: faker.number.int({min: 300, max: 400}),
-      ot2: faker.number.int({min: 400, max: 500}),
-      ot3: faker.number.int({min: 500, max: 600}),
-      ot4: faker.number.int({min: 600, max: 700}),
+      normal: faker.number.int({ min: 200, max: 300 }),
+      ot1: faker.number.int({ min: 300, max: 400 }),
+      ot2: faker.number.int({ min: 400, max: 500 }),
+      ot3: faker.number.int({ min: 500, max: 600 }),
+      ot4: faker.number.int({ min: 600, max: 700 }),
     },
     chargeRate: {
-      normal: faker.number.int({min: 400, max: 500}),
-      ot1: faker.number.int({min: 500, max: 600}),
-      ot2: faker.number.int({min: 600, max: 700}),
-      ot3: faker.number.int({min: 700, max: 800}),
-      ot4: faker.number.int({min: 800, max: 900}),
+      normal: faker.number.int({ min: 400, max: 500 }),
+      ot1: faker.number.int({ min: 500, max: 600 }),
+      ot2: faker.number.int({ min: 600, max: 700 }),
+      ot3: faker.number.int({ min: 700, max: 800 }),
+      ot4: faker.number.int({ min: 800, max: 900 }),
     },
     appliedAt: faker.date.soon(),
     old: {
       payRate: {
-        normal: faker.number.int({min: 200, max: 300}),
-        ot1: faker.number.int({min: 300, max: 400}),
-        ot2: faker.number.int({min: 400, max: 500}),
-        ot3: faker.number.int({min: 500, max: 600}),
-        ot4: faker.number.int({min: 600, max: 700}),
+        normal: faker.number.int({ min: 200, max: 300 }),
+        ot1: faker.number.int({ min: 300, max: 400 }),
+        ot2: faker.number.int({ min: 400, max: 500 }),
+        ot3: faker.number.int({ min: 500, max: 600 }),
+        ot4: faker.number.int({ min: 600, max: 700 }),
       },
       chargeRate: {
-        normal: faker.number.int({min: 400, max: 500}),
-        ot1: faker.number.int({min: 500, max: 600}),
-        ot2: faker.number.int({min: 600, max: 700}),
-        ot3: faker.number.int({min: 700, max: 800}),
-        ot4: faker.number.int({min: 800, max: 900}),
+        normal: faker.number.int({ min: 400, max: 500 }),
+        ot1: faker.number.int({ min: 500, max: 600 }),
+        ot2: faker.number.int({ min: 600, max: 700 }),
+        ot3: faker.number.int({ min: 700, max: 800 }),
+        ot4: faker.number.int({ min: 800, max: 900 }),
       },
-    }
-  }
+    },
+  };
 }
 
-export function createRandomContactOrder(){
-  return  {
+export function createRandomContactOrder() {
+  return {
     id: faker.string.uuid(),
     order: createRandomOrder(),
     contact: createRandomContact(),
-    orderNo: faker.number.int(5)
-  }
+    orderNo: faker.number.int(5),
+  };
 }
