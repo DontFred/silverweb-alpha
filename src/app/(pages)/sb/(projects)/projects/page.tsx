@@ -42,9 +42,19 @@ export default function page() {
         </Grid>
         <Grid xs={12} css={{ h: "calc(100% - 80px)" }}>
           <ContainerCard>
-            <Map marker={[...faker.helpers.multiple(createRandomProjects, {
-                count: 40
-            })]} />
+            <Map
+              marker={[
+                ...faker.helpers.multiple(() => ({
+                  id: createRandomProjects().id,
+                  name: createRandomProjects().name,
+                  company: createRandomProjects().company.name,
+                  type: createRandomProjects().type,
+                  address: createRandomProjects().address.coordinates
+                  }), {
+                  count: 40,
+                }),
+              ]}
+            />
           </ContainerCard>
         </Grid>
       </Grid.Container>

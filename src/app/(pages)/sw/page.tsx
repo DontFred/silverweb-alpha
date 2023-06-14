@@ -116,14 +116,22 @@ export default function page() {
                           <ContainerCard>
                             <Map
                               marker={[
-                                  ...faker.helpers.multiple(
-                                    createRandomProjects,
-                                    {
-                                      count: 12,
-                                    }
-                                  ),
-                                ]
-                              }
+                                ...faker.helpers.multiple(
+                                  () => ({
+                                    id: createRandomProjects().id,
+                                    name: createRandomProjects().name,
+                                    company:
+                                      createRandomProjects().company.name,
+                                    type: createRandomProjects().type,
+                                    address:
+                                      createRandomProjects().address
+                                        .coordinates,
+                                  }),
+                                  {
+                                    count: 12,
+                                  }
+                                ),
+                              ]}
                             />
                           </ContainerCard>
                         </Grid>

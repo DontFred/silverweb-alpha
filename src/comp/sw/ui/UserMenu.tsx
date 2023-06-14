@@ -9,18 +9,14 @@ import {
   Table,
   Text,
 } from "@nextui-org/react";
+import { UserProps } from "@/faker.d";
 
 
 export default function UserMenu({
   user,
   messages,
 }: {
-  user: {
-    name: string;
-    dept: string;
-    avatar: string;
-    color: "primary" | "secondary" | "error" | "warning" | "success";
-  };
+  user: UserProps;
   messages:
       Array<{
         id: string;
@@ -118,7 +114,7 @@ export default function UserMenu({
                   <User
                     name={user.name}
                     src={user.avatar}
-                    description={user.dept}
+                    description={user.dept.name}
                     bordered
                     color={user.color}
                   />

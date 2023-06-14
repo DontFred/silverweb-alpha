@@ -20,9 +20,19 @@ export default function Layout({ children }: {children: ReactNode[] | ReactNode}
         >
           <Copyright />
           <UserMenu
-            user={{ ...createRandomUser() }}
+            user={{ ...createRandomUser()}}
             messages={[
-              ...faker.helpers.multiple(createRandomMessages, {
+              ...faker.helpers.multiple(()=>({
+                id: createRandomMessages().id,
+                read: createRandomMessages().read,
+                user: {
+                  name: createRandomMessages().sourceUser.name,
+                  dept: createRandomMessages().sourceUser.dept.name,
+                  avatar: createRandomMessages().sourceUser.avatar,
+                },
+                message: createRandomMessages().message,
+                date: createRandomMessages().date
+              }), {
                 count: 12,
               }),
             ]}
