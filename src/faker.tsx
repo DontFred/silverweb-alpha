@@ -32,9 +32,7 @@ export function createRandomUser() {
 export function createRandomProjects() {
   return {
     id: faker.string.uuid(),
-    name: `${faker.airline.airline().iataCode}${faker.airline.flightNumber({
-      addLeadingZeros: true,
-    })}`,
+    name: `${faker.airline.airport().iataCode}${faker.airline.flightNumber()}`,
     type: faker.helpers.arrayElement([
       "Apartments",
       "Battery Factory",
@@ -228,7 +226,7 @@ export function createRandomDepartment() {
 export function createRandomOrder() {
   return {
     id: faker.string.uuid(),
-    orderCode: faker.airline.flightNumber({ addLeadingZeros: true }),
+    orderCode: `${faker.airline.airport().iataCode}${faker.airline.flightNumber()}`,
     client: createRandomClient(),
     accountManager: createRandomEmployee(),
     project: createRandomProjects(),
@@ -238,7 +236,7 @@ export function createRandomOrder() {
     invoicingAddress: createRandomAddress(),
     invoicingEmail: faker.internet.email(),
     inductionAddress: createRandomAddress(),
-    orderNumber: faker.number.hex({ min: 0, max: 65535 }),
+    orgaNumber: faker.number.hex({ min: 0, max: 65535 }),
     vatNumber: faker.number.hex({ min: 0, max: 65535 }),
     payTerm: faker.helpers.arrayElement(["weekly", "monthly", "advance"]),
     rct: faker.lorem.words(),
@@ -482,6 +480,7 @@ export function createRandomPayChargeRate() {
         ot4: faker.number.int({ min: 800, max: 900 }),
       },
     },
+    currency:  faker.finance.currency().code
   };
 }
 

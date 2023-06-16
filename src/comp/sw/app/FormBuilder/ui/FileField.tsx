@@ -91,20 +91,17 @@ export default function FileField(props: FileFieldProps & { name: string }) {
     .reduce((err, path): any => err && err[path], formState.errors);
 
   useEffect(() => {
-    console.log("error", formState.isValidating)
     if (watch(name)) {
      if(
          watch(name).find(
            (file: { filename: string; uri: string }) => file.uri === "zugross"
          )
      ){
-        console.log("error")
         setError(name, {
             message: "The file size is to big",
             type: "maxLength"
         })
      }else{
-        console.log("clear")
         clearErrors(name)
      }
     }

@@ -1,24 +1,33 @@
-"use client"
-import Layout from "@/comp/sw/ui/Layout";
-import { Grid, Text } from "@nextui-org/react";
+import { Fragment } from "react";
+import ProjectInterfaceContent from "./content";
 
-export default function page() {
+import { createRandomOrder, createRandomProjects } from "@/faker";
+import { OrderProps, ProjectProps } from "@/faker.d";
+import { faker } from "@faker-js/faker";
+
+export type ProjectDataProps = ProjectProps & {
+    order: Array<OrderProps>;
+  };
+  
+async function getProjectData(){
+    const projectData = createRandomProjects();
+  
+    Object.assign(projectData, {
+      order: [...faker.helpers.multiple(createRandomOrder, { count: 6 })],
+    }) as ProjectDataProps;
+  
+    return projectData as ProjectDataProps
+  }
+
+export default async function ProjectInterface() {
+
+  const projectData = await getProjectData()
+
   return (
-    <Layout>
-      <Grid.Container gap={0} css={{ m: 30 }}>
-        <Grid xs={12} css={{ h: "60px" }}>
-          <div
-            style={{
-              textAlign: "end",
-            }}
-          >
-            <Text h2 role="banner">
-              Project | 
-            </Text>
-          </div>
-        </Grid>
-        <Grid xs={12} css={{ h: "calc(100% - 80px)" }}></Grid>
-      </Grid.Container>
-    </Layout>
+    <Fragment>
+      <ProjectInterfaceContent projectData={projectData}/>
+    </Fragment>
   );
 }
+
+

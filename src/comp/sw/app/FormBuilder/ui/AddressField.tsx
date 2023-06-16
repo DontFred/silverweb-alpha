@@ -4,7 +4,7 @@ import SelectField from "./SelectField";
 import { AddressFieldProps } from "../types";
 import { useFormContext } from "react-hook-form";
 import Nominatim from "nominatim-client";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect} from "react";
 
 export default function AddressField(
   props: AddressFieldProps & { name: string }
@@ -15,10 +15,10 @@ export default function AddressField(
   useEffect(() => {
     if (
       option &&
-      watch(name).streetNo &&
-      watch(name).postalCode &&
-      watch(name).city &&
-      watch(name).country &&
+      watch(name)?.streetNo &&
+      watch(name)?.postalCode &&
+      watch(name)?.city &&
+      watch(name)?.country &&
       formState.isValidating
     ) {
       checkAddress();

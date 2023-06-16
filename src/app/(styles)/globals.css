@@ -26,3 +26,36 @@ a:hover {
 html {
   scroll-behavior: smooth;
 }
+
+.nextui-input-main-container {
+  --nextui--inputHoverBorderColor: var(--nextui-colors-gray600) !important;
+  --nextui--inputLabelColor: var(--nextui-colors-gray900) !important;
+}
+
+.nextui-input-main-container[class*="-status-error"] {
+  --nextui--inputHoverBorderColor: var(--nextui-colors-error) !important;
+  --nextui--inputLabelColor: var(--nextui-colors-errorLightContrast) !important;
+}
+
+.nextui-input-block-label {
+  transition: var(--nextui-transitions-default) !important;
+}
+.nextui-input-main-container.nextui-input-main-container--with-value
+  .nextui-input-block-label {
+  top: -37%;
+  color: var(--nextui--inputLabelColor);
+}
+.nextui-input-main-container.nextui-input-main-container--hover
+  .nextui-input-block-label {
+  top: -37%;
+  transform: translateY(calc(var(--nextui-space-1) * -1));
+  color: var(--nextui--inputLabelColor);
+}
+
+input:disabled{
+  color: var(--nextui-colors-text) !important;
+}
+
+input:disabled ~ .nextui-input-clear-button {
+  display: none;
+}

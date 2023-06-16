@@ -14,11 +14,13 @@ import EmailField from "./EmailField";
 import RadioField from "./RadioField";
 import CheckboxField from "./CheckboxField";
 import NumberField from "./NumberField";
+import TextAreaField from "./TextAreaField";
 
 const lookup: Record<ArrayProps["item"], any> = {
   text: TextField,
   number: NumberField,
   select: SelectField,
+  textarea: TextAreaField,
   radio: RadioField,
   checkbox: CheckboxField,
   address: AddressField,
@@ -38,13 +40,13 @@ export default function ArrayField(props: ArrayProps & { name: string }) {
   });
 
   const Component = lookup[item];
-  function addNull(){
-    update(0, { item: null });
-  }
-
+  
   useEffect(() => {
+    function addNull(){
+      update(0, { item: null });
+    }
     addNull()
-  });
+  },[update]);
 
   return (
     <Fragment>

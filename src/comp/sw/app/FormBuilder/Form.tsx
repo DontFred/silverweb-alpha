@@ -26,6 +26,7 @@ import FileField from "./ui/FileField";
 
 //Dev
 import { DevTool } from "@hookform/devtools";
+import TextAreaField from "./ui/TextAreaField";
 
 export function renderFields([name, fieldProps]: [string, Field], idx: number) {
   switch (fieldProps.type) {
@@ -45,6 +46,8 @@ export function renderFields([name, fieldProps]: [string, Field], idx: number) {
       return <NumberField {...fieldProps} name={name} key={idx} />;
     case "select":
       return <SelectField {...fieldProps} name={name} key={idx} />;
+    case "textarea":
+      return <TextAreaField {...fieldProps} name={name} key={idx} />;
     case "radio":
       return <RadioField {...fieldProps} name={name} key={idx} />;
     case "checkbox":

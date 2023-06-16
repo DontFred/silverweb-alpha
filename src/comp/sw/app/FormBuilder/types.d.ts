@@ -18,6 +18,7 @@ export type FieldSchema = {
     | "text"
     | "number"
     | "select"
+    | "textarea"
     | "radio"
     | "checkbox"
     | "date"
@@ -56,6 +57,7 @@ type DefaultProps = {
     shouldUnregister?: boolean;
     deps?: string | string[];
   };
+  readonly?: boolean;
 };
 
 export type TitleProps = FieldSchema & {
@@ -88,6 +90,11 @@ export type TextFieldProps = FieldSchema &
   DefaultProps & {
     type: "text";
   };
+
+export type TextAreaFieldProps = FieldSchema &
+  DefaultProps & {
+    type: "textarea"
+  }
 
 export type NumberFieldProps = FieldSchema &
   DefaultProps & {
@@ -161,6 +168,7 @@ export type ArrayProps = FieldSchema &
       | "radio"
       | "checkbox"
       | "address"
+      | "textarea"
       | "contact"
       | "phone"
       | "email"
@@ -191,6 +199,7 @@ export type Field =
   | SpacerProps
   | TextFieldProps
   | NumberFieldProps
+  | TextAreaFieldProps
   | SelectFieldProps
   | RadioFieldProps
   | CheckboxFieldProps

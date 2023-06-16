@@ -5,7 +5,7 @@ import { Input } from "@nextui-org/react";
 import TooltipHelper from "./TooltipHelper";
 
 export default function TextField(props: TextFieldProps & { name: string }) {
-  const { register, formState } = useFormContext();
+  const { register, watch, formState } = useFormContext();
   const { label, name, option, helpText } = props;
 
   const Error = name
@@ -26,6 +26,7 @@ export default function TextField(props: TextFieldProps & { name: string }) {
             helperText: "" + Error.message,
           })}
           fullWidth
+          initialValue={watch(name)}
           helperColor="error"
           bordered
           clearable

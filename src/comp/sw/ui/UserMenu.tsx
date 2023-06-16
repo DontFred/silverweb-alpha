@@ -11,20 +11,18 @@ import {
 } from "@nextui-org/react";
 import { UserProps } from "@/faker.d";
 
-
 export default function UserMenu({
   user,
   messages,
 }: {
   user: UserProps;
-  messages:
-      Array<{
-        id: string;
-        read: boolean;
-        user: { name: string; dept: string; avatar: string };
-        message: string;
-        date: Date;
-      }>;
+  messages: Array<{
+    id: string;
+    read: boolean;
+    user: { name: string; dept: string; avatar: string };
+    message: string;
+    date: Date;
+  }>;
 }) {
   const [visible, setVisible] = useState(false);
   const handler = () => setVisible(true);
@@ -34,7 +32,20 @@ export default function UserMenu({
   return (
     <Fragment>
       <Modal
-        width="40%"
+        width="100%"
+        css={{
+          width: "90%",
+          m: "0 auto",
+          "@sm": {
+            width: "55%",
+          },
+          "@md": {
+            width: "40%",
+          },
+          "@lg": {
+            width: "40%",
+          },
+        }}
         autoMargin
         closeButton
         blur
@@ -61,7 +72,7 @@ export default function UserMenu({
             </Table.Header>
             <Table.Body items={messages}>
               {(message) => (
-                <Table.Row key={message.date.toDateString()}>
+                <Table.Row key={message.id}>
                   <Table.Cell>
                     <User
                       name={message.user.name}
@@ -69,7 +80,15 @@ export default function UserMenu({
                       description={message.user.dept}
                     />
                   </Table.Cell>
-                  <Table.Cell><Badge content="new" color="error" isInvisible={!message.read}>{message.message}</Badge></Table.Cell>
+                  <Table.Cell>
+                    <Badge
+                      content="new"
+                      color="error"
+                      isInvisible={!message.read}
+                    >
+                      {message.message}
+                    </Badge>
+                  </Table.Cell>
                   <Table.Cell>
                     <Text b size={13}>
                       {message.date.toLocaleTimeString("en-IE", {})}
@@ -97,12 +116,17 @@ export default function UserMenu({
       </Modal>
       <div
         style={{
+          zIndex: 10000,
           position: "fixed",
           right: 30,
           top: 30,
         }}
       >
-        <Badge content="new" color="error">
+        <Badge
+          content="new"
+          color="error"
+          isInvisible={!messages.find((message) => !message.read) && true}
+        >
           <Dropdown>
             <Dropdown.Trigger>
               <Card isPressable>

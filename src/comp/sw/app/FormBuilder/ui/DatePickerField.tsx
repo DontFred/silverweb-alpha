@@ -7,7 +7,7 @@ import TooltipHelper from "./TooltipHelper";
 export default function DatePickerField(
   props: DatePickerFieldProps & { name: string }
 ) {
-  const { register, formState } = useFormContext();
+  const { register, watch, formState } = useFormContext();
   const { label, name, option, helpText } = props;
 
   const Error = name
@@ -30,6 +30,7 @@ export default function DatePickerField(
           })}
           type="datetime-local"
           fullWidth
+          initialValue={watch(name)}
           helperColor="error"
           bordered
           clearable

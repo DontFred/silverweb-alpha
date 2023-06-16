@@ -36,7 +36,7 @@ function getIcon(type: MarkerProps["type"]) {
   });
 }
 
-export default function Map({ marker }: { marker?: MarkerProps[] }) {
+export default function Map({ marker, centerMarker }: { marker?: MarkerProps[], centerMarker?: boolean }) {
   const router = useRouter()
   return (
     <Fragment>
@@ -63,7 +63,7 @@ export default function Map({ marker }: { marker?: MarkerProps[] }) {
           display: none !important;
         }
       `}</style>
-      <MapContainer center={{ lat: 53.36512, lng: 10.27083 }} zoom={4}>
+      <MapContainer center={(centerMarker && marker) ? {...marker[0].address} : { lat: 53.36512, lng: 10.27083 }} zoom={4}>
         <TileLayer
           attribution=""
           url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"

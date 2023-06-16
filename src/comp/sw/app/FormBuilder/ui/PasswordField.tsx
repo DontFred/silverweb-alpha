@@ -7,7 +7,7 @@ import TooltipHelper from "./TooltipHelper";
 export default function PasswordField(
   props: PasswordFieldProps & { name: string }
 ) {
-  const { register, formState } = useFormContext();
+  const { register,watch, formState } = useFormContext();
   const { label, name, option, helpText } = props;
 
   const Error = name
@@ -23,6 +23,7 @@ export default function PasswordField(
         }}
       >
         <Input.Password
+          initialValue={watch(name)}
           status={Error ? "error" : "default"}
           {...(Error && {
             helperText: "" + Error.message,

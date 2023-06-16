@@ -8,7 +8,7 @@ import { Minus, Plus } from "lucide-react";
 export default function NumberField(
   props: NumberFieldProps & { name: string }
 ) {
-  const { formState, control } = useFormContext();
+  const { formState, control, watch } = useFormContext();
   const { label, name, option, helpText } = props;
   const { field } = useController({
     name: name,
@@ -97,6 +97,7 @@ export default function NumberField(
           type="number"
           inputMode="numeric"
           fullWidth
+          initialValue={watch(name)}
           helperColor="error"
           bordered
           contentRight={

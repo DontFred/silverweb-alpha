@@ -18,7 +18,7 @@ export default function EmailField(props: EmailFieldProps & { name: string }) {
             setError(name, {message: "Please enter a valid email", type: "pattern"})
           }
         }
-      }, [formState.isValidating]);
+      }, [formState.isValidating, watch, setError, name]);
 
   return (
     <Fragment>
@@ -36,6 +36,7 @@ export default function EmailField(props: EmailFieldProps & { name: string }) {
           fullWidth
           helperColor="error"
           bordered
+          initialValue={watch(name)}
           clearable
           labelPlaceholder={label}
           {...register(name, { ...option })}

@@ -1307,7 +1307,7 @@ export default function PhoneField(props: PhoneFieldProps & { name: string }) {
         setError(name, {message: "Please enter a valid phone number", type: "pattern"})
       }
     }
-  }, [formState.isValidating]);
+  }, [formState.isValidating, name, setError, watch]);
 
   // Errors
 
@@ -1332,6 +1332,7 @@ export default function PhoneField(props: PhoneFieldProps & { name: string }) {
           {...(Error && {
             helperText: "" + Error.message,
           })}
+          initialValue={watch(name)}
           value={field.value}
           labelLeft={
             <div style={InputLabelDropdownHandlerContainerStyling}>

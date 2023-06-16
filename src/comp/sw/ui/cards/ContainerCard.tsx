@@ -3,12 +3,12 @@
 import { Card } from "@nextui-org/react";
 import { ReactNode } from "react";
 
-export default function ContainerCard({children}: {children: ReactNode}){
+export default function ContainerCard({children, noBorder, noPadding}: {children?: ReactNode, noBorder?: boolean, noPadding?: boolean}){
   return (
     <Card
-      variant="bordered"
+    {...!noBorder && {variant: "bordered"} }
     >
-      <Card.Body css={{ p: 15.5 }}>
+      <Card.Body css={{p: noPadding ? 0 : 15.5}}>
         <div
             style={{
                 width: "100%",
