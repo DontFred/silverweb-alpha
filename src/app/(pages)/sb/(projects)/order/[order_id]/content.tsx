@@ -1,34 +1,15 @@
-"use client";
+"use client"
 import Toolbar from "@/comp/sw/app/DataDisplay/Toolbar";
-import AddressField from "@/comp/sw/app/FormBuilder/ui/AddressField";
 import Layout from "@/comp/sw/ui/Layout";
 import ContainerCard from "@/comp/sw/ui/cards/ContainerCard";
-import { Grid, Loading, Text } from "@nextui-org/react";
+import { Grid, Text } from "@nextui-org/react";
+import { useRouter } from "next/navigation";
+import { Fragment, useRef, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import StyleObject from "csstype";
-import { useRef, useState } from "react";
-import dynamic from "next/dynamic";
-import TextField from "@/comp/sw/app/FormBuilder/ui/TextField";
-import TwoRowCard from "@/comp/sw/ui/cards/TwoRowCard";
-import { useRouter } from "next/navigation";
-import { ProjectDataProps } from "./page";
-import TextAreaField from "@/comp/sw/app/FormBuilder/ui/TextAreaField";
-const Map = dynamic(() => import("@/comp/sw/app/Map"), {
-  loading: () => (
-    <div
-      style={{
-        width: "100%",
-        height: "100%",
-        position: "relative",
-        background: "var(--nextui-colors-gray100)",
-      }}
-    >
-      <Loading
-        css={{ left: "50%", top: "50%", transform: "translate(-50%, -50%)" }}
-      />
-    </div>
-  ),
-});
+import ContactCard from "@/comp/sw/ui/cards/ContactCard";
+import { createRandomContact } from "@/faker";
+
 
 const FieldsetStyling: StyleObject.Properties = {
   margin: 0,
@@ -37,23 +18,19 @@ const FieldsetStyling: StyleObject.Properties = {
   minInlineSize: "unset",
 };
 
-export default function ProjectInterfaceContent({
-  projectData,
-}: {
-  projectData: ProjectDataProps;
-}) {
+export default function OrderInterfaceContent() {
   const form = useForm({
-    defaultValues: {
-      projectAddress: {
-        streetNo: projectData?.address?.streetNo,
-        city: projectData?.address?.city,
-        postalCode: projectData?.address?.postCode,
-        country: projectData?.address?.country,
-      },
-      companyName: projectData?.company?.name,
-      projectSize: projectData?.size,
-      projectComment: projectData?.projectComment,
-    },
+    // defaultValues: {
+    //   projectAddress: {
+    //     streetNo: projectData?.address?.streetNo,
+    //     city: projectData?.address?.city,
+    //     postalCode: projectData?.address?.postCode,
+    //     country: projectData?.address?.country,
+    //   },
+    //   companyName: projectData?.company?.name,
+    //   projectSize: projectData?.size,
+    //   projectComment: projectData?.projectComment,
+    // },
   });
   const {
     formState: { isSubmitting },
@@ -88,7 +65,7 @@ export default function ProjectInterfaceContent({
                   }}
                 >
                   <Text h2 role="banner">
-                    Project | {projectData.name}
+                    Project | 
                   </Text>
                 </div>
               </Grid>
@@ -97,8 +74,34 @@ export default function ProjectInterfaceContent({
                   <Grid xs={12}>
                     <div style={{ width: "100%" }}>
                       <Grid.Container alignContent="stretch">
-                        <Grid xs={12} sm={7.5}>
+                        <Grid xs={12} sm={6}>
                           <div
+                            style={{
+                              width: "100%",
+                              display: "flex",
+                              flexFlow: "column",
+                            }}
+                          >
+                            <Text css={{ flex: "0 1 auto" }} weight="light">
+                              Contacts:
+                            </Text>
+                            <Grid.Container
+                              gap={2}
+                              justify="space-between"
+                              css={{ flex: "1 1 auto" }}
+                            >
+                              <Grid xs={12}>
+                                <ContainerCard>
+                                  <Grid.Container gap={2} alignItems="stretch">
+                                    <ContactCard contact={createRandomContact()}/>
+                                  </Grid.Container>
+                                </ContainerCard>
+                              </Grid>
+                            </Grid.Container>
+                          </div>
+                        </Grid>
+                        <Grid xs={12} sm={6}>
+                        <div
                             style={{
                               width: "100%",
                               display: "flex",
@@ -116,105 +119,6 @@ export default function ProjectInterfaceContent({
                               <Grid xs={12}>
                                 <ContainerCard>
                                   <Grid.Container gap={2} alignItems="stretch">
-                                    <Grid xs={6}>
-                                      <AddressField
-                                        type="address"
-                                        name="projectAddress"
-                                        option={{
-                                          required: {
-                                            message:
-                                              "This field can't be empty",
-                                            value: true,
-                                          },
-                                        }}
-                                      />
-                                    </Grid>
-                                    <Grid xs={6}>
-                                      <ContainerCard noBorder noPadding overflowHidden>
-                                        <Map
-                                          centerMarker
-                                          marker={[
-                                            {
-                                              name: projectData?.name,
-                                              id: projectData?.id,
-                                              company:
-                                                projectData?.company?.name,
-                                              type: projectData?.type,
-                                              address:
-                                                projectData?.address
-                                                  ?.coordinates,
-                                            },
-                                          ]}
-                                        />
-                                      </ContainerCard>
-                                    </Grid>
-                                  </Grid.Container>
-                                </ContainerCard>
-                              </Grid>
-                            </Grid.Container>
-                          </div>
-                        </Grid>
-                        <Grid xs={12} sm={4.5}>
-                          <div
-                            style={{
-                              width: "100%",
-                              display: "flex",
-                              flexFlow: "column",
-                            }}
-                          >
-                            <Text weight="light" css={{ flex: "0 1 auto" }}>
-                              Information
-                            </Text>
-                            <Grid.Container
-                              gap={2}
-                              justify="space-between"
-                              css={{ flex: "1 1 auto" }}
-                            >
-                              <Grid xs={12}>
-                                <ContainerCard>
-                                  <Grid.Container gap={2} alignItems="stretch">
-                                    <Grid xs={12}>
-                                      <TextField
-                                        type="text"
-                                        name="companyName"
-                                        label="Company name"
-                                        option={{
-                                          required: {
-                                            message:
-                                              "This field can't be empty",
-                                            value: true,
-                                          },
-                                        }}
-                                      />
-                                    </Grid>
-                                    <Grid xs={12}>
-                                      <TextField
-                                        type="text"
-                                        name="projectSize"
-                                        label="Size"
-                                        option={{
-                                          required: {
-                                            message:
-                                              "This field can't be empty",
-                                            value: true,
-                                          },
-                                        }}
-                                      />
-                                    </Grid>
-                                    <Grid xs={12}>
-                                      <TextAreaField
-                                        type="textarea"
-                                        name="projectComment"
-                                        label="Comment"
-                                        option={{
-                                          required: {
-                                            message:
-                                              "This field can't be empty",
-                                            value: true,
-                                          },
-                                        }}
-                                      />
-                                    </Grid>
                                   </Grid.Container>
                                 </ContainerCard>
                               </Grid>
@@ -251,17 +155,6 @@ export default function ProjectInterfaceContent({
                                       minHeight: 140,
                                     }}
                                   >
-                                    {projectData?.order?.map((order) => (
-                                      <Grid key={order.id}>
-                                        <TwoRowCard
-                                          heading={order?.orderCode}
-                                          description={order?.client?.company?.name}
-                                          onPress={() => {
-                                            router.push("/sb/order/"+order.id)
-                                          }}
-                                        />
-                                      </Grid>
-                                    ))}
                                   </Grid.Container>
                                 </ContainerCard>
                               </Grid>
@@ -319,5 +212,5 @@ export default function ProjectInterfaceContent({
         </form>
       </FormProvider>
     </Layout>
-  );
+  )
 }

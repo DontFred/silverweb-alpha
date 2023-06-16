@@ -5,8 +5,6 @@ import { Fragment, useState } from "react";
 const ToolbarContainerStyling: CSS = {
   position: "fixed",
   zIndex: 10000,
-  right: 30,
-  top: "50%",
   transform: "translate(0, -50%)",
   width: "fit-content",
   height: "fit-content",
@@ -61,6 +59,15 @@ export default function Toolbar({
 
   return (
     <Fragment>
+      <div
+        style={{
+          position: "absolute",
+          right: 30,
+          top: "50%",
+          display: "flex",
+          justifyContent: "flex-end"
+        }}
+      >
       <Card css={ToolbarContainerStyling}>
         <Card.Body css={ButtonContainerStyling}>
           <Button.Group vertical css={ButtonGroupStyling}>
@@ -94,6 +101,7 @@ export default function Toolbar({
           </Button.Group>
         </Card.Body>
       </Card>
+      </div>
     </Fragment>
   );
 }

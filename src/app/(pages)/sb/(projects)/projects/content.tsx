@@ -5,8 +5,6 @@ import { Grid, Loading, Text } from "@nextui-org/react";
 import React from "react";
 import dynamic from "next/dynamic";
 import ContainerCard from "@/comp/sw/ui/cards/ContainerCard";
-import { faker } from "@faker-js/faker";
-import { createRandomProjects } from "@/faker";
 import { MapFriendlyProjectData } from "./page";
 
 const Map = dynamic(() => import("@/comp/sw/app/Map"), {
@@ -29,7 +27,7 @@ const Map = dynamic(() => import("@/comp/sw/app/Map"), {
 export default function ProjectsContent({projectsData}: {projectsData: MapFriendlyProjectData[]}) {
   return (
     <Layout>
-      <Grid.Container gap={0} css={{ m: 30 }}>
+      <Grid.Container gap={0} css={{ p: 30 }}>
         <Grid xs={12} css={{ h: "60px" }}>
           <div
             style={{

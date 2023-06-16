@@ -9,7 +9,11 @@ import React from "react";
 import dynamic from "next/dynamic";
 import ContainerCard from "@/comp/sw/ui/cards/ContainerCard";
 import Link from "next/link";
-import { createRandomProjects } from "@/faker";
+import {
+  HoursFriendlyProjectHistoryData,
+  MapFriendlyProjectData,
+  StatisticsFriendlyProjectData,
+} from "./page";
 
 const Map = dynamic(() => import("@/comp/sw/app/Map"), {
   loading: () => (
@@ -28,10 +32,18 @@ const Map = dynamic(() => import("@/comp/sw/app/Map"), {
   ),
 });
 
-export default function HomeContent() {
+export default function HomeContent({
+  mapFriendlyAllProjectsData,
+  statisticFriendlyAllProjectsData,
+  hoursFriendlyAllProjectsHistoryData,
+}: {
+  mapFriendlyAllProjectsData: MapFriendlyProjectData[];
+  statisticFriendlyAllProjectsData: StatisticsFriendlyProjectData;
+  hoursFriendlyAllProjectsHistoryData: HoursFriendlyProjectHistoryData;
+}) {
   return (
     <Layout>
-      <Grid.Container gap={0} css={{ m: 30 }}>
+      <Grid.Container gap={0} css={{ p: 30 }}>
         <Grid xs={12} css={{ h: "120px" }}>
           <div
             style={{
@@ -65,14 +77,14 @@ export default function HomeContent() {
                       <Text weight="light">Monthly Hours Statistics</Text>
                       <Grid.Container gap={2} justify="space-between">
                         <Grid>
-                          <TwoRowCard heading={300} description="Mechanic" />
+                          <TwoRowCard heading={hoursFriendlyAllProjectsHistoryData.mech} description="Mechanic" />
                         </Grid>
                         <Grid>
-                          <TwoRowCard heading={300} description="Electrician" />
+                          <TwoRowCard heading={hoursFriendlyAllProjectsHistoryData.elec} description="Electrician" />
                         </Grid>
                         <Grid>
                           <TwoRowCard
-                            heading={300}
+                            heading={hoursFriendlyAllProjectsHistoryData.white}
                             description="White collar"
                           />
                         </Grid>
@@ -113,26 +125,8 @@ export default function HomeContent() {
                         }}
                       >
                         <Grid xs={12}>
-                          <ContainerCard>
-                            <Map
-                              marker={[
-                                ...faker.helpers.multiple(
-                                  () => ({
-                                    id: createRandomProjects().id,
-                                    name: createRandomProjects().name,
-                                    company:
-                                      createRandomProjects().company.name,
-                                    type: createRandomProjects().type,
-                                    address:
-                                      createRandomProjects().address
-                                        .coordinates,
-                                  }),
-                                  {
-                                    count: 12,
-                                  }
-                                ),
-                              ]}
-                            />
+                          <ContainerCard overflowHidden>
+                            <Map marker={mapFriendlyAllProjectsData} />
                           </ContainerCard>
                         </Grid>
                       </Grid.Container>
@@ -158,9 +152,8 @@ export default function HomeContent() {
                       "@md": {
                         visibility: "unset !important",
                         w: "auto !important",
-                        h: "auto !important"
+                        h: "auto !important",
                       },
-
                     }}
                   >
                     <div style={{ width: "100%" }}>
@@ -183,15 +176,23 @@ export default function HomeContent() {
                       <Grid.Container gap={2} justify="space-between">
                         <Grid>
                           <TwoRowCard
-                            heading={26}
-                            description="Battery Factory"
+                            heading={
+                              statisticFriendlyAllProjectsData.greenProjects
+                            }
+                            description="Green Projects"
                           />
                         </Grid>
                         <Grid>
-                          <TwoRowCard heading={32} description="Data Centre" />
+                          <TwoRowCard
+                            heading={statisticFriendlyAllProjectsData.factories}
+                            description="Factories"
+                          />
                         </Grid>
                         <Grid>
-                          <TwoRowCard heading={6} description="Factory" />
+                          <TwoRowCard
+                            heading={statisticFriendlyAllProjectsData.buildings}
+                            description="Buildings"
+                          />
                         </Grid>
                         <Grid
                           css={{
@@ -201,11 +202,14 @@ export default function HomeContent() {
                             "@md": {
                               visibility: "unset !important",
                               w: "auto !important",
-                              h: "auto !important"
+                              h: "auto !important",
                             },
                           }}
                         >
-                          <TwoRowCard heading={2} description="Substation" />
+                          <TwoRowCard
+                            heading={statisticFriendlyAllProjectsData.other}
+                            description="Other"
+                          />
                         </Grid>
                       </Grid.Container>
                     </div>

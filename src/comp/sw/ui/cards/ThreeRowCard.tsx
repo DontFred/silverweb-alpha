@@ -17,7 +17,7 @@ export default function ThreeRowCard({
   return (
     <Card
       variant="bordered"
-      css={{ ...(!width ? { minWidth: 269 } : { width: width }) }}
+      css={{ ...(!width ? { minWidth: 267 } : { width: width }) }}
     >
       <Card.Body css={{ p: 15 }}>
         <Text h6 role="heading" css={{ mb: 0 }}>

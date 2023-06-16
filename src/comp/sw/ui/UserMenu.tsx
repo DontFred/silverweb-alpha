@@ -11,24 +11,35 @@ import {
 } from "@nextui-org/react";
 import { UserProps } from "@/faker.d";
 
+type MessageProps = {
+  id: string;
+  read: boolean;
+  user: { name: string; dept: string; avatar: string };
+  message: string;
+  date: Date;
+}
+
 export default function UserMenu({
   user,
   messages,
 }: {
   user: UserProps;
-  messages: Array<{
-    id: string;
-    read: boolean;
-    user: { name: string; dept: string; avatar: string };
-    message: string;
-    date: Date;
-  }>;
+  messages: MessageProps[];
 }) {
   const [visible, setVisible] = useState(false);
   const handler = () => setVisible(true);
   const closeHandler = () => {
     setVisible(false);
   };
+
+  messages.sort(getSortedMessagesByDateAndReadStatus)
+  function getSortedMessagesByDateAndReadStatus(a: MessageProps, b: MessageProps){
+      if (a.read !== b.read) {
+        return a.read ? -1 : 1;
+      } else {
+        return a.date > b.date ? -1 : 1;
+      }
+  }
   return (
     <Fragment>
       <Modal
@@ -40,10 +51,10 @@ export default function UserMenu({
             width: "55%",
           },
           "@md": {
-            width: "40%",
+            width: "50%",
           },
           "@lg": {
-            width: "40%",
+            width: "50%",
           },
         }}
         autoMargin
@@ -84,6 +95,7 @@ export default function UserMenu({
                     <Badge
                       content="new"
                       color="error"
+                      disableAnimation
                       isInvisible={!message.read}
                     >
                       {message.message}
@@ -108,79 +120,86 @@ export default function UserMenu({
             <Table.Pagination
               noMargin
               align="center"
-              rowsPerPage={3}
-              onPageChange={(page) => console.log({ page })}
+              rowsPerPage={5}
             />
           </Table>
         </Modal.Body>
       </Modal>
       <div
         style={{
-          zIndex: 10000,
-          position: "fixed",
+          position: "absolute",
           right: 30,
           top: 30,
+          display: "flex",
+          justifyContent: "flex-end"
         }}
       >
-        <Badge
-          content="new"
-          color="error"
-          isInvisible={!messages.find((message) => !message.read) && true}
+        <div
+          style={{
+            zIndex: 10000,
+            position: "fixed",
+          }}
         >
-          <Dropdown>
-            <Dropdown.Trigger>
-              <Card isPressable>
-                <Card.Body
-                  css={{
-                    p: "12px 0",
-                  }}
-                >
-                  <User
-                    name={user.name}
-                    src={user.avatar}
-                    description={user.dept.name}
-                    bordered
-                    color={user.color}
-                  />
-                </Card.Body>
-              </Card>
-            </Dropdown.Trigger>
-            <Dropdown.Menu
-              color="secondary"
-              aria-label="User Action"
-              disabledKeys={["chat"]}
-              onAction={(key) => {
-                switch (key) {
-                  case "logout":
-                    break;
-                  case "messages":
-                    handler();
-                    break;
-                  case "profile":
-                    break;
-                  case "settings":
-                    break;
-                  default:
-                    break;
-                }
-              }}
-            >
-              <Dropdown.Item key="logout" color="error">
-                Log Out
-              </Dropdown.Item>
-              <Dropdown.Item key="messages" withDivider>
-                Messages
-              </Dropdown.Item>
-              <Dropdown.Item key="chat">SilverChat</Dropdown.Item>
-              <Dropdown.Item key="profile" withDivider>
-                Profile
-              </Dropdown.Item>
-              <Dropdown.Item key="settings" withDivider>
-                Settings
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-        </Badge>
+          <Badge
+            content="new"
+            color="error"
+            isInvisible={!messages.find((message) => !message.read) && true}
+          >
+            <Dropdown>
+              <Dropdown.Trigger>
+                <Card isPressable>
+                  <Card.Body
+                    css={{
+                      p: "12px 0",
+                    }}
+                  >
+                    <User
+                      name={user.name}
+                      src={user.avatar}
+                      description={user.dept.name}
+                      bordered
+                      color={user.color}
+                    />
+                  </Card.Body>
+                </Card>
+              </Dropdown.Trigger>
+              <Dropdown.Menu
+                color="secondary"
+                aria-label="User Action"
+                disabledKeys={["chat"]}
+                onAction={(key) => {
+                  switch (key) {
+                    case "logout":
+                      break;
+                    case "messages":
+                      handler();
+                      break;
+                    case "profile":
+                      break;
+                    case "settings":
+                      break;
+                    default:
+                      break;
+                  }
+                }}
+              >
+                <Dropdown.Item key="logout" color="error">
+                  Log Out
+                </Dropdown.Item>
+                <Dropdown.Item key="messages" withDivider>
+                  Messages
+                </Dropdown.Item>
+                <Dropdown.Item key="chat">SilverChat</Dropdown.Item>
+                <Dropdown.Item key="profile" withDivider>
+                  Profile
+                </Dropdown.Item>
+                <Dropdown.Item key="settings" withDivider>
+                  Settings
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </Badge>
+        </div>
       </div>
     </Fragment>
   );

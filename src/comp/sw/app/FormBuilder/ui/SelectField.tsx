@@ -83,24 +83,6 @@ export default function SelectField(
     rules: rules,
   });
 
-  useEffect(() => {
-    if (watch(name)) {
-      if (Array.isArray(items)) {
-        if (!items.includes(watch(name))) {
-          setError(name, { message: "Please enter a selectable option" });
-        }
-      } else {
-        if (
-          Object.entries(items)
-            .map((groups) => groups[1].includes(watch(name)))
-            .includes(true)
-        ) {
-          setError(name, { message: "Please enter a selectable option" });
-        }
-      }
-    }
-  }, [formState.isValidating]);
-
   // Errors
 
   const Error = name
@@ -115,15 +97,6 @@ export default function SelectField(
   const [selectedOrSearchValue, setSelectedOrSearchValue] = useState<string>(
     field.value || ""
   );
-
-  useEffect(() => {
-    const endingFocusItem = document.getElementById(sortedItems[focusedItem]);
-    if (endingFocusItem) endingFocusItem.style.backgroundColor = "";
-    setFocusedItem(-1);
-    selectedOrSearchValue
-      ? field.onChange(selectedOrSearchValue)
-      : field.onChange();
-  }, [selectedOrSearchValue]);
 
   // For external blur and react-hook-form
   const InputTriggerRef = useRef<HTMLInputElement>(null);
@@ -161,6 +134,15 @@ export default function SelectField(
   const sortedItems = !Array.isArray(items)
     ? searchedList.flatMap((item) => item[1]).flat()
     : (searchedList as Array<string>);
+
+  useEffect(() => {
+    const endingFocusItem = document.getElementById(sortedItems[focusedItem]);
+    if (endingFocusItem) endingFocusItem.style.backgroundColor = "";
+    setFocusedItem(-1);
+    selectedOrSearchValue
+      ? field.onChange(selectedOrSearchValue)
+      : field.onChange();
+  }, [field, focusedItem, selectedOrSearchValue, sortedItems]);
 
   return (
     <Fragment>

@@ -13,7 +13,7 @@ export type MapFriendlyProjectData = {
 }
 
 async function getMapFriendlyProjectsData(){
-  const projectsData = faker.helpers.multiple(createRandomProjects, {count: 40})
+  const projectsData = faker.helpers.multiple(createRandomProjects, {count: 80})
 
   const mapFriendlyProjectsData: MapFriendlyProjectData[] = projectsData.map(project => ({
     id: project?.id,

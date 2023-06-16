@@ -3,7 +3,7 @@
 import { Card } from "@nextui-org/react";
 import { ReactNode } from "react";
 
-export default function ContainerCard({children, noBorder, noPadding}: {children?: ReactNode, noBorder?: boolean, noPadding?: boolean}){
+export default function ContainerCard({children, noBorder, noPadding, overflowHidden}: {children?: ReactNode, noBorder?: boolean, noPadding?: boolean, overflowHidden?: boolean}){
   return (
     <Card
     {...!noBorder && {variant: "bordered"} }
@@ -13,7 +13,7 @@ export default function ContainerCard({children, noBorder, noPadding}: {children
             style={{
                 width: "100%",
                 height: "100%",
-                overflow: "hidden",
+                ...overflowHidden && {overflow: "hidden"},
                 borderRadius: "var(--nextui-radii-lg)"
             }}
         >

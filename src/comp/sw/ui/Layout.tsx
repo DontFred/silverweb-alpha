@@ -1,6 +1,6 @@
 "use client";
 
-import { Grid } from "@nextui-org/react";
+import { Container, Grid } from "@nextui-org/react";
 import { Fragment, ReactNode } from "react";
 import Sidebar from "./Sidebar";
 import UserMenu from "./UserMenu";
@@ -15,7 +15,7 @@ export default function Layout({ children }: {children: ReactNode[] | ReactNode}
       <Grid.Container css={{ p: 0 }}>
         <Grid
           css={{
-            p: 0,
+            p: 0
           }}
         >
           <Copyright />
@@ -39,7 +39,9 @@ export default function Layout({ children }: {children: ReactNode[] | ReactNode}
           />
           <Sidebar />
         </Grid>
-        <Grid xs>{children}</Grid>
+        <Grid xs justify="center"><Container lg css={{p: 0}}>
+        {children}
+          </Container></Grid>
       </Grid.Container>
     </Fragment>
   );

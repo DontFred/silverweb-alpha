@@ -22,7 +22,7 @@ export default function TwoRowCard({
         isPressable: true,
         onPress: onPress,
       }}
-      css={{ ...(!width ? { minWidth: 269} : { width: width }) }}
+      css={{ ...(!width ? { minWidth: 267} : { width: width }) }}
     >
       <Card.Body css={{ p: 15.5 }}>
         <Text h3 role="heading" css={{ mb: 2 }}>
