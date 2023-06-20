@@ -91,7 +91,9 @@ export default function Map({ marker, centerMarker }: { marker?: MarkerProps[], 
                       eleme.style.color = "white";
                     }}
                     onClick={()=>{
-                      router.push("/sb/project/"+marker.id)
+                      if(marker.id){
+                        router.push("/sb/project/"+marker.id)
+                      }
                     }}
                   >
                     {marker.name}
@@ -99,7 +101,7 @@ export default function Map({ marker, centerMarker }: { marker?: MarkerProps[], 
                   <br />
                   <i>{marker.type}</i>
                   <br />
-                  <small>by {marker.company}</small>
+                  {marker.company && <small>by {marker.company}</small>}
                 </Text>
               </Popup>
             </Marker>

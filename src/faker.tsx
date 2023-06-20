@@ -144,13 +144,22 @@ export function createRandomWorkType() {
   };
 }
 
+export function createRandomComment() {
+  return {
+    id: faker.string.uuid(),
+    user: createRandomUser(),
+    date: faker.date.recent(),
+    comment: faker.lorem.sentence(),
+  };
+}
+
 export function createRandomCompany() {
   return {
     id: faker.string.uuid(),
     name: faker.company.name(),
     workingField: faker.company.buzzPhrase(),
-    comment: faker.lorem.sentence(),
     address: createRandomAddress(),
+    // comment: createRandomComment(),
   };
 }
 
@@ -163,7 +172,7 @@ export function createRandomContact() {
     jobPosition: faker.person.jobTitle(),
     phoneNumber: faker.phone.number("+## ## ### ## ##"),
     company: createRandomCompany(),
-    comment: faker.lorem.sentence(),
+    // comment: createRandomComment(),
   };
 }
 
@@ -226,7 +235,9 @@ export function createRandomDepartment() {
 export function createRandomOrder() {
   return {
     id: faker.string.uuid(),
-    orderCode: `${faker.airline.airport().iataCode}${faker.airline.flightNumber()}`,
+    orderCode: `${
+      faker.airline.airport().iataCode
+    }${faker.airline.flightNumber()}`,
     client: createRandomClient(),
     accountManager: createRandomEmployee(),
     project: createRandomProjects(),
@@ -405,8 +416,15 @@ export function createRandomInductionForm() {
   return {
     id: faker.string.uuid(),
     order: createRandomOrder(),
-    file: faker.internet.avatar(),
-    name: faker.system.commonFileName(),
+    file: createRandomFile(),
+  };
+}
+
+export function createRandomFile() {
+  return {
+    id: faker.string.uuid(),
+    fileUri: faker.image.dataUri(),
+    name: faker.system.commonFileName().replace(/\.[^/.]+$/, "") + ".svg",
   };
 }
 
@@ -480,7 +498,7 @@ export function createRandomPayChargeRate() {
         ot4: faker.number.int({ min: 800, max: 900 }),
       },
     },
-    currency:  faker.finance.currency().code
+    currency: faker.finance.currency().code,
   };
 }
 

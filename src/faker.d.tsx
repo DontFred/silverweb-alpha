@@ -31,6 +31,8 @@ import {
   createRandomWorkPerformed,
   createRandomWorkType,
   createRandomWorkerRequired,
+  createRandomComment,
+  createRandomFile,
 } from "./faker";
 
 export type MessageProps = ReturnType<typeof createRandomMessages>;
@@ -49,7 +51,11 @@ export type ClothingSizeProps = ReturnType<typeof createRandomClothingSize>;
 
 export type CompanyProps = ReturnType<typeof createRandomCompany>;
 
+export type CommentProps = ReturnType<typeof createRandomComment>;
+
 export type ContactProps = ReturnType<typeof createRandomContact>;
+
+export type FileProps = ReturnType<typeof createRandomFile>;
 
 export type ContactOrderProps = ReturnType<typeof createRandomContactOrder>;
 

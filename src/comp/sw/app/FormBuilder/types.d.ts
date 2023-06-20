@@ -126,6 +126,8 @@ export type CheckboxFieldProps = FieldSchema &
 export type DatePickerFieldProps = FieldSchema &
   DefaultProps & {
     type: "date";
+    date?: boolean;
+    time?: boolean;
   };
 
 export type FileFieldProps = FieldSchema &

@@ -30,6 +30,7 @@ const Map = dynamic(() => import("@/comp/sw/app/Map"), {
       />
     </div>
   ),
+  ssr: false
 });
 
 export default function HomeContent({

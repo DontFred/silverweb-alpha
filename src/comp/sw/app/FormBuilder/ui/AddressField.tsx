@@ -3,58 +3,11 @@ import TextField from "./TextField";
 import SelectField from "./SelectField";
 import { AddressFieldProps } from "../types";
 import { useFormContext } from "react-hook-form";
-import Nominatim from "nominatim-client";
-import { useEffect} from "react";
 
 export default function AddressField(
   props: AddressFieldProps & { name: string }
 ) {
   const { name, option } = props;
-  const { formState, watch, setError, clearErrors } = useFormContext();
-  // Address validation
-  useEffect(() => {
-    if (
-      option &&
-      watch(name)?.streetNo &&
-      watch(name)?.postalCode &&
-      watch(name)?.city &&
-      watch(name)?.country &&
-      formState.isValidating
-    ) {
-      checkAddress();
-    }
-    async function checkAddress() {
-      const result = await Nominatim.createClient({
-        useragent: "SilverWeb",
-        referer: `${process.env.NEXT_PUBLIC_HOST_DOMAIN}`,
-      }).search({
-        q: `${watch(name).streetNo}, ${watch(name).postalCode} ${
-          watch(name).city
-        }, ${watch(name).country}`,
-        addressdetails: 1,
-      });
-      if (result.length != 0) {
-        clearErrors(name);
-      } else {
-        setError(name + ".streetNo", {
-          type: "validate",
-          message: "Please enter a valid Address",
-        });
-        setError(name + ".postalCode", {
-          type: "validate",
-          message: "Please enter a valid Address",
-        });
-        setError(name + ".city", {
-          type: "validate",
-          message: "Please enter a valid Address",
-        });
-        setError(name + ".country", {
-          type: "validate",
-          message: "Please enter a valid Address",
-        });
-      }
-    }
-  }, [watch, option, formState.isValidating, name, clearErrors, setError]);
 
 
   return (

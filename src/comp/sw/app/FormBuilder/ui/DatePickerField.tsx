@@ -8,7 +8,7 @@ export default function DatePickerField(
   props: DatePickerFieldProps & { name: string }
 ) {
   const { register, watch, formState } = useFormContext();
-  const { label, name, option, helpText } = props;
+  const {label, date, time, name, option, helpText } = props;
 
   const Error = name
     .split(".")
@@ -24,11 +24,12 @@ export default function DatePickerField(
       >
         <Input
           aria-label={"datepicker-"+ name}
+          label={label}
           status={Error ? "error" : "default"}
           {...(Error && {
             helperText: "" + Error.message,
           })}
-          type="datetime-local"
+          type={date ? "date" : time ? "time" : "datetime-local"}
           fullWidth
           initialValue={watch(name)}
           helperColor="error"

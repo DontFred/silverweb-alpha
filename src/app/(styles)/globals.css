@@ -39,9 +39,30 @@ html {
 
 .nextui-input-block-label {
   transition: var(--nextui-transitions-default) !important;
+  position: absolute;
+  top: -37%;
 }
+
+input {
+  color: var(--nextui-colors-accents6) !important;
+}
+
+input[data-state="with-value"]{
+  color: var(--nextui-colors-text) !important;
+}
+
+input:disabled {
+  color: var(--nextui-colors-accents6) !important;
+}
+
+input[data-state="with-value"]:disabled {
+  color: var(--nextui-colors-text) !important;
+}
+
+
+
 .nextui-input-main-container.nextui-input-main-container--with-value
-  .nextui-input-block-label {
+  .nextui-input-block-label[class*="-asPlaceholder-true"] {
   top: -37%;
   color: var(--nextui--inputLabelColor);
 }
@@ -50,10 +71,6 @@ html {
   top: -37%;
   transform: translateY(calc(var(--nextui-space-1) * -1));
   color: var(--nextui--inputLabelColor);
-}
-
-input:disabled{
-  color: var(--nextui-colors-text) !important;
 }
 
 input:disabled ~ .nextui-input-clear-button {

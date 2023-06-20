@@ -28,6 +28,7 @@ const Map = dynamic(() => import("@/comp/sw/app/Map"), {
       />
     </div>
   ),
+  ssr: false
 });
 
 const FieldsetStyling: StyleObject.Properties = {
@@ -192,13 +193,7 @@ export default function ProjectInterfaceContent({
                                         type="text"
                                         name="projectSize"
                                         label="Size"
-                                        option={{
-                                          required: {
-                                            message:
-                                              "This field can't be empty",
-                                            value: true,
-                                          },
-                                        }}
+
                                       />
                                     </Grid>
                                     <Grid xs={12}>
@@ -206,13 +201,6 @@ export default function ProjectInterfaceContent({
                                         type="textarea"
                                         name="projectComment"
                                         label="Comment"
-                                        option={{
-                                          required: {
-                                            message:
-                                              "This field can't be empty",
-                                            value: true,
-                                          },
-                                        }}
                                       />
                                     </Grid>
                                   </Grid.Container>
@@ -236,7 +224,7 @@ export default function ProjectInterfaceContent({
                             }}
                           >
                             <Text css={{ flex: "0 1 auto" }} weight="light">
-                              Clients on the project:
+                              Clients on the project
                             </Text>
                             <Grid.Container
                               gap={2}
@@ -283,7 +271,7 @@ export default function ProjectInterfaceContent({
                             }}
                           >
                             <Text css={{ flex: "0 1 auto" }} weight="light">
-                              Other on the project:
+                              Other on the project
                             </Text>
                             <Grid.Container
                               gap={2}

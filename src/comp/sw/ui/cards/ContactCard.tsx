@@ -1,7 +1,8 @@
-import { ContactProps as FakerContactProps } from "@/faker.d";
+import { CommentProps, ContactProps as FakerContactProps } from "@/faker.d";
 import {
   Avatar,
   Button,
+  CSS,
   Card,
   Container,
   Grid,
@@ -11,10 +12,46 @@ import {
 } from "@nextui-org/react";
 import { AtSign, Building, Smartphone, User } from "lucide-react";
 import React, { Fragment } from "react";
+import StyleObject from "csstype";
+
 
 type ContactProps = FakerContactProps;
 
-export default function ContactCard({ contact }: { contact: ContactProps }) {
+export default function ContactCard({
+  contact,
+}: {
+  contact: ContactProps & { comment: CommentProps };
+}) {
+
+  const TriggerStyling: CSS = {
+    w: "100%"
+  }
+
+  const ContactCardBodyStyling: CSS = {
+    p: "12px 0"
+  }
+
+  const PopoverContentStyling: CSS = {
+    bs: "0 0 10px black",
+    p: 6,
+  }
+
+  const DisplayContainer: CSS = {
+    w: 350
+  }
+
+  const ButtonStyling: CSS = {
+    m: "0 $sm"
+  }
+
+  const DividerStyling: CSS = {
+    h: 0, border: "0.25px solid $border", p: 0 
+  }
+
+  const ContactInfoStyling: CSS = {
+    color: "$accents8"
+  }
+
   return (
     <Fragment>
       <Popover>
@@ -23,14 +60,10 @@ export default function ContactCard({ contact }: { contact: ContactProps }) {
             variant="bordered"
             isHoverable
             isPressable
-            css={{
-              width: "fit-content",
-            }}
+            css={TriggerStyling}
           >
             <Card.Body
-              css={{
-                p: "12px 0",
-              }}
+              css={ContactCardBodyStyling}
             >
               <UserDisplay
                 job={contact.jobPosition}
@@ -40,12 +73,9 @@ export default function ContactCard({ contact }: { contact: ContactProps }) {
           </Card>
         </Popover.Trigger>
         <Popover.Content
-          css={{
-            bs: "0 0 10px black",
-            p: 6,
-          }}
+          css={PopoverContentStyling}
         >
-          <Grid.Container css={{ w: 350 }} gap={1} justify="space-between">
+          <Grid.Container css={DisplayContainer} gap={1} justify="space-between">
             <Grid xs={8}>
               <UserDisplay
                 noIcon
@@ -54,23 +84,21 @@ export default function ContactCard({ contact }: { contact: ContactProps }) {
               />
             </Grid>
             <Grid alignItems="center" xs={4} justify="flex-end">
-              <Button size="xs" css={{ m: "0 $sm" }}>
+              <Button size="xs" css={ButtonStyling}>
                 Edit
               </Button>
             </Grid>
             <Spacer y={0.25} />
             <Grid
               xs={12}
-              css={{ h: 0, border: "0.25px solid $border", p: 0 }}
+              css={DividerStyling}
             />
             <Spacer y={0.5} />
             <Grid xs={12}>
               <Grid.Container gap={0.5} justify="space-between">
                 <Grid xs={3.5}>
                   <Grid.Container
-                    css={{
-                      color: "$accents8",
-                    }}
+                    css={ContactInfoStyling}
                   >
                     <Grid alignItems="center" xs={3}>
                       <Building size={15} />
@@ -93,9 +121,7 @@ export default function ContactCard({ contact }: { contact: ContactProps }) {
               <Grid.Container gap={0.5} justify="space-between">
                 <Grid xs={3.5}>
                   <Grid.Container
-                    css={{
-                      color: "$accents8",
-                    }}
+                    css={ContactInfoStyling}
                   >
                     <Grid alignItems="center" xs={3}>
                       <AtSign size={15} />
@@ -118,9 +144,7 @@ export default function ContactCard({ contact }: { contact: ContactProps }) {
               <Grid.Container gap={0.5} justify="space-between">
                 <Grid xs={3.5}>
                   <Grid.Container
-                    css={{
-                      color: "$accents8",
-                    }}
+                    css={ContactInfoStyling}
                   >
                     <Grid alignItems="center" xs={3}>
                       <Smartphone size={15} />
@@ -142,7 +166,7 @@ export default function ContactCard({ contact }: { contact: ContactProps }) {
             <Spacer y={0.5} />
             <Grid
               xs={12}
-              css={{ h: 0, border: "0.25px solid $border", p: 0 }}
+              css={DividerStyling}
             />
             <Spacer y={0.25} />
             <Grid xs={12}>
@@ -159,16 +183,22 @@ export default function ContactCard({ contact }: { contact: ContactProps }) {
                   </Text>
                 </Grid>
                 <Grid>
-                  <Text
-                    size="$xs"
-                    color="$accents6"
-                    weight={"bold"}
-                  >
+                  <Text size="$xs" color="$accents6" weight={"bold"}>
                     1
                   </Text>
                 </Grid>
               </Grid.Container>
             </Grid>
+            <Grid xs={12}>
+              <Comment
+                name={contact?.comment?.user?.name}
+                color={contact?.comment?.user?.color}
+                avatar={contact?.comment?.user?.avatar}
+                date={contact?.comment?.date}
+                comment={contact?.comment?.comment}
+              />
+            </Grid>
+            <Spacer y={0.5} />
           </Grid.Container>
         </Popover.Content>
       </Popover>
@@ -185,55 +215,145 @@ function UserDisplay({
   job: string;
   noIcon?: boolean;
 }) {
+
+  const ContactDisplayContainerStyling: StyleObject.Properties = {
+    display: "inline-flex",
+    padding: "0 var(--nextui-space-sm)",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "max-content",
+    maxWidth: "100%",
+    transition: "transform 250ms ease 0ms, box-shadow 0.25s ease 0s",
+  }
+
+  const ContactDisplayTextStyling: CSS = {
+    ml: "$sm",
+    d: "inline-flex",
+    fd: "column",
+    p: 0,
+    alignItems: "flex-start",
+    whiteSpace: "nowrap",
+    textOverflow: "ellipsis",
+    maxWidth: `calc(100% - ${!noIcon && "52px"})`,
+  }
+
+  const ContactDisplayContactNameStyling: StyleObject.Properties = {
+    fontSize: "var(--nextui-fontSizes-sm)",
+    color: "var(--nextui-colors-text)",
+    lineHeight: "var(--nextui-lineHeights-sm)",
+    fontWeight: "var(--nextui-fontWeights-medium)",
+    maxWidth: "100%",
+    textOverflow: "ellipsis",
+    overflow: "hidden",
+  }
+
+  const ContactDisplayContactJobStyling: StyleObject.Properties = {
+    fontSize: "var(--nextui-fontSizes-xs)",
+    color: "var(--nextui-colors-accents7)",
+    marginTop: "0",
+    maxWidth: "100%",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+  }
+
   return (
     <Fragment>
       <div
-        style={{
-          display: "inline-flex",
-          padding: "0 var(--nextui-space-sm)",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "max-content",
-          maxWidth: "100%",
-          transition: "transform 250ms ease 0ms, box-shadow 0.25s ease 0s",
-        }}
+        style={ContactDisplayContainerStyling}
       >
         {!noIcon && <Avatar icon={<User />} squared />}
         <Container
-          css={{
-            ml: "$sm",
-            d: "inline-flex",
-            fd: "column",
-            p: 0,
-            alignItems: "flex-start",
-            whiteSpace: "nowrap",
-          }}
+          css={ContactDisplayTextStyling}
           fluid
         >
           <span
-            style={{
-              fontSize: "var(--nextui-fontSizes-sm)",
-              color: "var(--nextui-colors-text)",
-              lineHeight: "var(--nextui-lineHeights-sm)",
-              fontWeight: "var(--nextui-fontWeights-medium)",
-              maxWidth: "var(--nextui-space-60)",
-              textOverflow: "ellipsis",
-              overflow: "hidden",
-            }}
+            style={ContactDisplayContactNameStyling}
           >
             {name}
           </span>
           <span
-            style={{
-              fontSize: "var(--nextui-fontSizes-xs)",
-              color: "var(--nextui-colors-accents7)",
-              marginTop: "0",
-            }}
+            style={ContactDisplayContactJobStyling}
           >
             {job}
           </span>
         </Container>
       </div>
+    </Fragment>
+  );
+}
+
+function Comment({
+  avatar,
+  color,
+  name,
+  date,
+  comment,
+}: {
+  avatar: string;
+  color?: "error" | "default" | "primary" | "secondary" | "success" | "warning" | "gradient";
+  name: string;
+  date: Date;
+  comment: string;
+}) {
+
+  const CommentContainerStyling: CSS = {
+    m: "0 15px",
+  }
+
+  const CommentStyling: CSS = {
+    lh: "$sm"
+  }
+
+  const CommentContentStyling: CSS = {
+    m: "2px 0"
+  }
+  return (
+    <Fragment>
+      <Grid.Container
+        alignItems="flex-start"
+        css={CommentContainerStyling}
+      >
+        <Grid xs={1.5}>
+          <Avatar bordered color={color} src={avatar} size={"sm"} />
+        </Grid>
+        <Grid xs={10.5}>
+          <Grid.Container justify="space-between">
+            <Grid>
+              <Text
+                size={"$sm"}
+                weight={"semibold"}
+                css={CommentStyling}
+              >
+                {name}
+              </Text>
+            </Grid>
+            <Grid>
+              <Text
+                size={"$sm"}
+                css={CommentStyling}
+                color="$accents7"
+              >
+                {date.toLocaleString("en-IE", {
+                  day: "2-digit",
+                  month: "short",
+                  year: "numeric",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  hour12: false,
+                })}
+              </Text>
+            </Grid>
+            <Grid xs={12}>
+              <Text
+                css={CommentContentStyling}
+                size={"$sm"}
+              >
+                {comment}
+              </Text>
+            </Grid>
+          </Grid.Container>
+        </Grid>
+      </Grid.Container>
     </Fragment>
   );
 }

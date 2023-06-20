@@ -118,11 +118,11 @@ export default function FileField(props: FileFieldProps & { name: string }) {
           ? await new Promise((resolve, reject) => {
               const reader = new FileReader();
               reader.readAsDataURL(file);
-              reader.onload = () => resolve(reader.result);
+              reader.onload = () => resolve(reader.result as string);
               reader.onerror = reject;
             })
           : "zugross";
-      return { filename: file.name, uri: fileString as string };
+      return { filename: file.name, uri: fileString };
     }
   }
 

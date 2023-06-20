@@ -1,8 +1,8 @@
 export type MarkerProps = {
-        id: string,
+        id?: string,
         name: string,
-        company: string,
-        type: 
+        company?: string,
+        type?: 
           "Apartments" |
           "Battery Factory" |
           "Data Centre" |
@@ -13,7 +13,8 @@ export type MarkerProps = {
           "Pre-Cast Factory" |
           "School" |
           "Shopping Centre" |
-          "Windfarm"
+          "Windfarm" |
+          string
         ,
         address: {
           lat: number,
