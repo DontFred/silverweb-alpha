@@ -27,6 +27,11 @@ export type HoursFriendlyProjectHistoryData = {
   white: number;
 };
 
+/**
+ * Retrieves all project data.
+ *
+ * @returns {Promise<ProjectProps[]>} An array of ProjectProps objects.
+ */
 async function getAllProjectData() {
   const projectsData: ProjectProps[] = faker.helpers.uniqueArray(
     createRandomProjects,
@@ -36,6 +41,12 @@ async function getAllProjectData() {
   return projectsData;
 }
 
+/**
+ * Returns an array of map-friendly project data objects by mapping over an array of project data.
+ *
+ * @param {ProjectProps[]} allProjectData - An array of ProjectProps objects.
+ * @return {MapFriendlyProjectData[]} - An array of MapFriendlyProjectData objects with only the necessary properties for map display.
+ */
 async function getMapFriendlyAllProjectsData(allProjectData: ProjectProps[]) {
   const projectsData = allProjectData;
   const mapFriendlyAllProjectsData: MapFriendlyProjectData[] = projectsData.map(
@@ -51,6 +62,12 @@ async function getMapFriendlyAllProjectsData(allProjectData: ProjectProps[]) {
   return mapFriendlyAllProjectsData;
 }
 
+/**
+ * Returns an object with statistics-friendly data from the given array of project data.
+ *
+ * @param {ProjectProps[]} allProjectData - An array of project data.
+ * @return {StatisticsFriendlyProjectData} An object containing the count of projects in each category.
+ */
 async function getStaticFriendlyAllProjectsData(allProjectData: ProjectProps[]) {
   const projectsData = allProjectData;
 
@@ -87,6 +104,11 @@ async function getStaticFriendlyAllProjectsData(allProjectData: ProjectProps[]) 
   return statisticFriendlyAllProjectsData;
 }
 
+/**
+ * Asynchronously retrieves the hours-friendly history data for all projects.
+ *
+ * @return {Promise<HoursFriendlyProjectHistoryData>} The object containing the hours-friendly history data for all projects.
+ */
 async function getHoursFriendlyAllProjectsData() {
   const hoursFriendlyAllProjectsHistoryData: HoursFriendlyProjectHistoryData = {
     elec: faker.number.int(9000),
@@ -97,6 +119,11 @@ async function getHoursFriendlyAllProjectsData() {
   return hoursFriendlyAllProjectsHistoryData;
 }
 
+/**
+ * This function is the Home component, which is responsible for rendering the homepage of the website.
+ *
+ * @return {JSX.Element} The JSX element representing the homepage.
+ */
 export default async function Home() {
 
   const allProjectData = await getAllProjectData()
