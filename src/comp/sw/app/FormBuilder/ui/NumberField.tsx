@@ -5,6 +5,13 @@ import { useController, useFormContext } from "react-hook-form";
 import TooltipHelper from "./TooltipHelper";
 import { Minus, Plus } from "lucide-react";
 
+/**
+ * Renders a number field with increment and decrement buttons.
+ *
+ * @param {NumberFieldProps & { name: string }} props - The props object containing the
+ * number field's properties and a string name.
+ * @return {JSX.Element} The JSX element representing the number field.
+ */
 export default function NumberField(
   props: NumberFieldProps & { name: string }
 ) {

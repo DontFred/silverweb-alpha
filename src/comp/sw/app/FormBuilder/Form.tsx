@@ -28,6 +28,13 @@ import FileField from "./ui/FileField";
 import { DevTool } from "@hookform/devtools";
 import TextAreaField from "./ui/TextAreaField";
 
+/**
+ * Renders a form field based on its type and properties.
+ *
+ * @param {[string, Field]} name - the name and properties of the field
+ * @param {number} idx - the index of the field
+ * @return {JSX.Element} the rendered form field
+ */
 export function renderFields([name, fieldProps]: [string, Field], idx: number) {
   switch (fieldProps.type) {
     case "title":
@@ -79,6 +86,16 @@ export function renderFields([name, fieldProps]: [string, Field], idx: number) {
   }
 }
 
+/**
+ * Renders a form with dynamic fields and pagination.
+ *
+ * @param {Object[]} fields - an array of objects describing each field. Each object must contain:
+ *   @param {string} name - the name of the field.
+ *   @param {string} label - the label of the field.
+ *   @param {string} type - the type of the field (e.g. "text", "email").
+ * @param {Function} onSubmit - a callback function to be called when the form is submitted.
+ * @return {JSX.Element} - a React component representing the form.
+ */
 export function Form({ fields, onSubmit }: FormProps) {
   const [pages, setPages] = useState<number>(0);
 

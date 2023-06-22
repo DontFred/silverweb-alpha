@@ -4,6 +4,16 @@ import { useController, useFormContext } from "react-hook-form";
 import TooltipHelper from "./TooltipHelper";
 import StyleObject from "csstype";
 
+/**
+ * Renders a textarea form field with label, clear button, and optional help text.
+ *
+ * @param {TextAreaFieldProps & { name: string }} props - Object containing props for the TextAreaField component.
+ * @param {string} props.name - The name of the field.
+ * @param {string} props.label - The label for the field.
+ * @param {Record<string, unknown>} props.option - The rules for the field.
+ * @param {string} props.helpText - The help text for the field.
+ * @return {JSX.Element} The rendered TextAreaField component.
+ */
 export default function TextAreaField(
   props: TextAreaFieldProps & { name: string }
 ) {

@@ -4,6 +4,12 @@ import { useFormContext } from "react-hook-form";
 import { Input } from "@nextui-org/react";
 import TooltipHelper from "./TooltipHelper";
 
+/**
+ * Renders an email input field with validation.
+ *
+ * @param {EmailFieldProps & { name: string }} props - An object containing the props passed to the component.
+ * @return {JSX.Element} A React component representing the email input field.
+ */
 export default function EmailField(props: EmailFieldProps & { name: string }) {
   const { register, formState, watch, setError } = useFormContext();
   const { label, name, option, helpText } = props;

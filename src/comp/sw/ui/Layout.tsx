@@ -9,6 +9,12 @@ import { faker } from "@faker-js/faker";
 import { createRandomMessages, createRandomUser } from "@/faker";
 import Copyright from "./Copyright";
 
+/**
+ * Renders a layout component with a sidebar, user menu, and main content section.
+ *
+ * @param {Object} children - The main content to be rendered.
+ * @return {JSX.Element} The rendered layout component.
+ */
 export default function Layout({ children }: {children: ReactNode[] | ReactNode}) {
   return (
     <Fragment>

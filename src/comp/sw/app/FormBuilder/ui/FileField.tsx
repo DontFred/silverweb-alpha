@@ -74,6 +74,13 @@ const ListItemStyling: StyleObject.Properties = {
   margin: 0,
 };
 
+
+/**
+ * Renders a file input field with drag-and-drop functionality, file validation, and error handling.
+ *
+ * @param {FileFieldProps & { name: string }} props - The props object containing the fields to be used in the form.
+ * @return {JSX.Element} The JSX element representing the file input field.
+ */
 export default function FileField(props: FileFieldProps & { name: string }) {
   const { name, option } = props;
 

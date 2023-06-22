@@ -17,6 +17,32 @@ import StyleObject from "csstype";
 
 type ClientProps = FakerClientProps;
 
+/**
+ * Renders a company card with detailed information about the company
+ *
+ * @param {Object} props - The props object
+ * @param {Object} props.company - Object containing information about the company
+ * @param {string} props.company.registerName - The name of the company
+ * @param {Object} props.company.company - Object containing information about the company
+ * @param {string} props.company.company.workingField - the working field of the company
+ * @param {string} props.company.company.name - The name of the company
+ * @param {string} props.company.company.email - The email of the company
+ * @param {string} props.company.company.phone - The phone of the company
+ * @param {Object} props.company.registerAddress - Object containing information about the address of the company
+ * @param {string} props.company.registerAddress.streetNo - The street number of the company's address
+ * @param {string} props.company.registerAddress.city - The city of the company's address
+ * @param {string} props.company.registerAddress.postCode - The postcode of the company's address
+ * @param {string} props.company.registerAddress.country - The country of the company's address
+ * @param {Object} props.company.comment - Object containing information about the comment
+ * @param {Object} props.company.comment.user - Object containing information about the user
+ * @param {string} props.company.comment.user.name - The name of the user who made the comment
+ * @param {string} props.company.comment.user.color - The color of the user who made the comment
+ * @param {string} props.company.comment.user.avatar - The avatar of the user who made the comment
+ * @param {string} props.company.comment.date - The date of the comment
+ * @param {string} props.company.comment.comment - The content of the comment
+ *
+ * @return {JSX.Element} A CompanyCard component
+ */
 export default function CompanyCard({
   company,
 }: {
@@ -281,6 +307,14 @@ export default function CompanyCard({
   );
 }
 
+/**
+ * Renders a company display with a name and field. Optionally, an icon can be included.
+ *
+ * @param {string} name - the name of the company
+ * @param {string} field - the field the company is in
+ * @param {boolean} [noIcon] - whether to exclude the icon (default false)
+ * @return {JSX.Element} the company display component
+ */
 function CompanyDisplay({
   name,
   field,
@@ -357,6 +391,16 @@ function CompanyDisplay({
   );
 }
 
+/**
+ * Renders a comment with avatar, name, date, and comment content.
+ *
+ * @param {string} avatar - The URL of the avatar image.
+ * @param {("error" | "default" | "primary" | "secondary" | "success" | "warning" | "gradient")=} color - The color of the avatar border.
+ * @param {string} name - The name of the commenter.
+ * @param {Date} date - The date of the comment.
+ * @param {string} comment - The content of the comment.
+ * @return {JSX.Element} A React component representing the comment.
+ */
 function Comment({
   avatar,
   color,

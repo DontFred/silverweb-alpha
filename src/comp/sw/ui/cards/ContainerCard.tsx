@@ -3,6 +3,15 @@
 import { Card } from "@nextui-org/react";
 import { ReactNode } from "react";
 
+/**
+ * Renders a container card with optional styling props.
+ *
+ * @param {ReactNode} children - the content to render inside the card.
+ * @param {boolean} noBorder - whether or not to render the card with a border.
+ * @param {boolean} noPadding - whether or not to add padding to the card.
+ * @param {boolean} overflowHidden - whether or not to hide overflow on the card.
+ * @return {JSX.Element} the rendered container card.
+ */
 export default function ContainerCard({children, noBorder, noPadding, overflowHidden}: {children?: ReactNode, noBorder?: boolean, noPadding?: boolean, overflowHidden?: boolean}){
   return (
     <Card

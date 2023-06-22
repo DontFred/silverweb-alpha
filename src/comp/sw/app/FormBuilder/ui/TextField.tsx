@@ -4,6 +4,12 @@ import { useFormContext } from "react-hook-form";
 import { Input } from "@nextui-org/react";
 import TooltipHelper from "./TooltipHelper";
 
+/**
+ * Renders a text input field with validation errors and help text.
+ *
+ * @param {TextFieldProps & { name: string }} props - The props for the TextField component.
+ * @return {JSX.Element} A text input field with validation errors and help text.
+ */
 export default function TextField(props: TextFieldProps & { name: string }) {
   const { register, watch, formState } = useFormContext();
   const { label, name, option, helpText } = props;

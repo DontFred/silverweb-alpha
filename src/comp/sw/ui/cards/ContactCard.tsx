@@ -17,6 +17,14 @@ import StyleObject from "csstype";
 
 type ContactProps = FakerContactProps;
 
+/**
+ * Renders a contact card with details such as name, job, company, email, phone and comments.
+ *
+ * @param {object} props - The props object containing contact details and comment information.
+ * @param {object} props.contact - The contact object containing all the details such as firstName, lastName, jobPosition, email, phoneNumber and company.
+ * @param {object} props.contact.comment - The comment object containing details of the comment such as user, date and comment.
+ * @return {JSX.Element} A React JSX element that renders the contact card with details and comments.
+ */
 export default function ContactCard({
   contact,
 }: {
@@ -206,6 +214,14 @@ export default function ContactCard({
   );
 }
 
+/**
+ * Renders a user display component with name and job information.
+ *
+ * @param {string} name - The name of the user.
+ * @param {string} job - The job of the user.
+ * @param {boolean} [noIcon] - Optional boolean to not display an icon.
+ * @return {JSX.Element} A fragment containing the user display component.
+ */
 function UserDisplay({
   name,
   job,
@@ -282,6 +298,16 @@ function UserDisplay({
   );
 }
 
+/**
+ * Renders a comment with the given avatar, color, name, date, and comment.
+ *
+ * @param {string} avatar - The URL of the avatar image.
+ * @param {string} [color="default"] - The color of the comment. Defaults to "default".
+ * @param {string} name - The name of the person who wrote the comment.
+ * @param {Date} date - The date the comment was written.
+ * @param {string} comment - The text of the comment.
+ * @return {JSX.Element} The rendered comment as a JSX element.
+ */
 function Comment({
   avatar,
   color,

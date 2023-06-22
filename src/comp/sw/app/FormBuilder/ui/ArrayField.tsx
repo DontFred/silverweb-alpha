@@ -30,6 +30,12 @@ const lookup: Record<ArrayProps["item"], any> = {
   password: PasswordField,
 };
 
+/**
+ * Renders an array field and provides functionality to add or remove items
+ *
+ * @param {ArrayProps & { name: string }} props - An object containing properties for the array field
+ * @return {JSX.Element} A fragment containing the array field and add/remove buttons
+ */
 export default function ArrayField(props: ArrayProps & { name: string }) {
   const { name, item, counterMessage, ...rest } = props;
 

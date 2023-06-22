@@ -3,6 +3,16 @@
 import { Card, Text } from "@nextui-org/react";
 import { ReactNode } from "react";
 
+/**
+ * Renders a three-row card component with the given heading, description,
+ * subdescription, and width.
+ *
+ * @param {ReactNode|string|number} heading - The heading of the card.
+ * @param {ReactNode|string|number} description - The main description of the card.
+ * @param {ReactNode|string|number} subdescription - The subdescription of the card.
+ * @param {number|string} [width] - The optional width of the card.
+ * @return {JSX.Element} The rendered card component.
+ */
 export default function ThreeRowCard({
   heading,
   description,

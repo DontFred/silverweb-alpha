@@ -29,6 +29,11 @@ export type OrderDataProps = OrderProps & {
   contacts: Array<ContactOrderProps>;
 };
 
+/**
+ * Asynchronously generates a set of random order data and returns it as an OrderDataProps object.
+ *
+ * @return {Promise<OrderDataProps>} The randomly generated order data as an OrderDataProps object.
+ */
 async function getOrderData() {
   const orderData = createRandomOrder();
 
@@ -47,6 +52,11 @@ async function getOrderData() {
   return orderData as OrderDataProps;
 }
 
+/**
+ * Asynchronous function that retrieves order data and returns JSX to render an order interface.
+ *
+ * @return {JSX.Element} The rendered order interface component.
+ */
 export default async function OrderInterface() {
   const orderData = await getOrderData();
   return (

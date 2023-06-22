@@ -3,6 +3,15 @@
 import { Card, Text } from "@nextui-org/react";
 import { ReactNode } from "react";
 
+/**
+ * Renders a card component with a heading and description in two separate rows.
+ *
+ * @param {ReactNode | string | number} heading - The main text in the first row.
+ * @param {ReactNode | string | number} description - The text in the second row.
+ * @param {number | string} [width] - The width of the card. Defaults to 267px.
+ * @param {() => void} [onPress] - The function to execute on press.
+ * @return {JSX.Element} The resulting card component.
+ */
 export default function TwoRowCard({
   heading,
   description,

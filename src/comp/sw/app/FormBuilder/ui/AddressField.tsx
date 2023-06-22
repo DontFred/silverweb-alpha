@@ -3,6 +3,13 @@ import TextField from "./TextField";
 import SelectField from "./SelectField";
 import { AddressFieldProps } from "../types";
 
+
+/**
+ * Renders an address form with street number, city, postal code, and country fields.
+ *
+ * @param {AddressFieldProps & { name: string }} props - AddressField component props
+ * @return {JSX.Element} The rendered address form
+ */
 export default function AddressField(
   props: AddressFieldProps & { name: string }
 ) {

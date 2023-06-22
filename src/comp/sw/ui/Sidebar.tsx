@@ -6,6 +6,11 @@ import {  Spacer } from "@nextui-org/react";
 import { LineChart, LayoutDashboard, Newspaper, Send, Server } from "lucide-react";
 import NavCard from "./cards/NavCard";
 
+/**
+ * Renders a sidebar component with multiple NavCards displaying the different pages of the website.
+ *
+ * @return {JSX.Element} The Sidebar component.
+ */
 export default function Sidebar() {
   return (
     <Fragment>

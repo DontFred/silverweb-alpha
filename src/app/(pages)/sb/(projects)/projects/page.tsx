@@ -12,6 +12,11 @@ export type MapFriendlyProjectData = {
   address: ProjectProps["address"]["coordinates"]
 }
 
+/**
+ * Retrieves an array of map-friendly project data using faker and returns it.
+ *
+ * @return {Promise<MapFriendlyProjectData[]>} An array of map-friendly project data
+ */
 async function getMapFriendlyProjectsData(){
   const projectsData = faker.helpers.uniqueArray(createRandomProjects, 80)
 
@@ -26,6 +31,13 @@ async function getMapFriendlyProjectsData(){
   return mapFriendlyProjectsData
 }
 
+/**
+ * Asynchronously renders the Projects component that displays the content of 
+ * all the projects.
+ *
+ * @return {JSX.Element} A fragment component that contains the ProjectsContent 
+ * component with the data of all projects.
+ */
 export default async function Projects() {
 
   const mapFriendlyProjectsData = await getMapFriendlyProjectsData()

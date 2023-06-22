@@ -1,5 +1,11 @@
 import { Text } from "@nextui-org/react";
 
+/**
+ * Renders the copyright information as a fixed text at the bottom right corner of 
+ * the screen.
+ *
+ * @return {JSX.Element} The JSX element containing the copyright information
+ */
 export default function Copyright() {
   return (
     <div

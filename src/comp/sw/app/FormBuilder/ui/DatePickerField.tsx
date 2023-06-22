@@ -4,6 +4,12 @@ import { Input } from "@nextui-org/react";
 import { useFormContext } from "react-hook-form";
 import TooltipHelper from "./TooltipHelper";
 
+/**
+ * Renders a customizable date/time picker input field with optional error and help text.
+ *
+ * @param {DatePickerFieldProps & { name: string }} props - An object containing props for the component.
+ * @return {JSX.Element} A DatepickerField component.
+ */
 export default function DatePickerField(
   props: DatePickerFieldProps & { name: string }
 ) {

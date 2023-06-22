@@ -15,6 +15,17 @@ import {
   useFormContext,
 } from "react-hook-form";
 
+/**
+ * Renders a radio input field with options and an optional "other" field.
+ *
+ * @param {RadioFieldProps & { name: string }} props - An object containing the props for the RadioField component.
+ * @param {string} props.name - The name of the radio field.
+ * @param {RadioAndCheckboxItemProps[]} props.items - An array of radio and/or checkbox items.
+ * @param {boolean} props.otherOpt - Whether or not to include an "other" field.
+ * @param {Record<string, unknown>} props.option - An object containing rules for the field.
+ * @param {number} [props.columnWidth] - The number of columns to display the radio items in.
+ * @return {JSX.Element} The rendered RadioField component.
+ */
 export default function RadioField(props: RadioFieldProps & { name: string }) {
   const { name, items, otherOpt, option, columnWidth } = props;
 

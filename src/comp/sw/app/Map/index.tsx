@@ -6,6 +6,12 @@ import L from "leaflet";
 import { Text } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 
+/**
+ * Returns a Leaflet icon based on the type of marker specified in the parameter.
+ *
+ * @param {MarkerProps["type"]} type - The type of marker to get an icon for.
+ * @return {L.Icon} The Leaflet icon object for the specified marker type.
+ */
 function getIcon(type: MarkerProps["type"]) {
   let marker;
   switch (type) {
@@ -36,6 +42,13 @@ function getIcon(type: MarkerProps["type"]) {
   });
 }
 
+/**
+ * Renders a map with markers on it.
+ *
+ * @param {MarkerProps[]} marker - An array of markers to display on the map.
+ * @param {boolean} centerMarker - If true, the first marker in the array will be centered on the map.
+ * @return {JSX.Element} A MapContainer component displaying the map with markers.
+ */
 export default function Map({ marker, centerMarker }: { marker?: MarkerProps[], centerMarker?: boolean }) {
   const router = useRouter()
   return (
@@ -63,7 +76,7 @@ export default function Map({ marker, centerMarker }: { marker?: MarkerProps[], 
           display: none !important;
         }
       `}</style>
-      {/* <MapContainer center={(centerMarker && marker) ? {...marker[0].address} : { lat: 53.36512, lng: 10.27083 }} zoom={4}>
+      <MapContainer center={(centerMarker && marker) ? {...marker[0].address} : { lat: 53.36512, lng: 10.27083 }} zoom={4}>
         <TileLayer
           attribution=""
           url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
@@ -106,7 +119,7 @@ export default function Map({ marker, centerMarker }: { marker?: MarkerProps[], 
               </Popup>
             </Marker>
           ))}
-      </MapContainer> */}
+      </MapContainer>
     </Fragment>
   );
 }

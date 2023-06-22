@@ -24,6 +24,12 @@ import StyleObject from "csstype";
 
 type FileProps = FakerFileProps;
 
+/**
+ * Renders a file card component that displays file information and allows for downloading.
+ *
+ * @param {Object} props - object containing a file property of type FileProps
+ * @return {JSX.Element} a file card component
+ */
 export default function FileCard({ file }: { file: FileProps }) {
   const [fileData, setFileData] = useState<File>();
 
@@ -187,6 +193,16 @@ export default function FileCard({ file }: { file: FileProps }) {
 }
 
 
+/**
+ * Renders a file display with an icon and a name. The icon is automatically
+ * selected based on the file type. The file name and type are displayed
+ * underneath the icon.
+ *
+ * @param {Object} props - The props object
+ * @param {File} props.file - The file to display
+ * @param {boolean} props.noIcon - True to hide the icon
+ * @return {JSX.Element} The file display
+ */
 function FileDisplay({
   file,
   noIcon

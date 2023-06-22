@@ -2,6 +2,12 @@ import { Fragment } from "react";
 import { DescriptionProps } from "../types";
 import { Container } from "@nextui-org/react";
 
+/**
+ * Renders a description field with the given content.
+ *
+ * @param {DescriptionProps} props - The props object containing the content to be rendered.
+ * @returns {JSX.Element} A React Fragment containing the DescriptionField component.
+ */
 export default function DescriptionField(props: DescriptionProps) {
   const { content } = props;
   return (

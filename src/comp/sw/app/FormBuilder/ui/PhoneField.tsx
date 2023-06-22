@@ -1290,6 +1290,15 @@ const TriggerStyling: StyleObject.Properties = {
   top: "40px",
 };
 
+/**
+ * Renders a phone field component.
+ *
+ * @param {PhoneFieldProps & { name: string }} props - The props object containing:
+ *  - name: The name of the field
+ *  - option: The rules to apply to the field
+ *  - helpText: The help text to display when hovering over the tooltip
+ * @return {JSX.Element} The phone field component
+ */
 export default function PhoneField(props: PhoneFieldProps & { name: string }) {
   // Destruction
   const { name, option, helpText } = props;

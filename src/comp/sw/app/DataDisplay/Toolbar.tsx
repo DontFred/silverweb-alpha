@@ -45,6 +45,16 @@ const LoaderStyling: CSS = {
  alignItems: "center",
 }
 
+/**
+ * Renders a toolbar component with buttons for toggling the mode and saving content.
+ *
+ * @param {object} props - The props object containing the following properties:
+ *   - onModeChange (optional): A callback function that takes a boolean argument indicating if the
+ *     mode has been toggled.
+ *   - onSafe (optional): A callback function that returns a promise or void.
+ *   - isLoading (optional): A boolean indicating if the component is in a loading state.
+ * @return {JSX.Element} The toolbar component.
+ */
 export default function Toolbar({
   onModeChange,
   onSafe,

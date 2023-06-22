@@ -19,6 +19,14 @@ type MessageProps = {
   date: Date;
 }
 
+/**
+ * Renders a user menu with a list of messages.
+ *
+ * @param {object} props - The component props.
+ * @param {UserProps} props.user - The user object.
+ * @param {MessageProps[]} props.messages - An array of message objects.
+ * @return {JSX.Element} The JSX element representing the user menu.
+ */
 export default function UserMenu({
   user,
   messages,

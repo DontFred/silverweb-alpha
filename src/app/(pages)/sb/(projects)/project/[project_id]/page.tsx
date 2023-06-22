@@ -9,6 +9,11 @@ export type ProjectDataProps = ProjectProps & {
     order: Array<OrderProps>;
   };
   
+/**
+ * Asynchronously generates and returns a new set of ProjectDataProps.
+ *
+ * @return {Promise<ProjectDataProps>} The newly generated ProjectDataProps.
+ */
 async function getProjectData(){
     const projectData = createRandomProjects();
   
@@ -19,6 +24,11 @@ async function getProjectData(){
     return projectData as ProjectDataProps
   }
 
+/**
+ * Asynchronous function that returns a fragment containing the ProjectInterfaceContent component.
+ *
+ * @return {JSX.Element} A fragment containing the ProjectInterfaceContent component.
+ */
 export default async function ProjectInterface() {
 
   const projectData = await getProjectData()

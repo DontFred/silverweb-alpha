@@ -64,6 +64,18 @@ const TriggerStyling: StyleObject.Properties = {
   top: "40px",
 };
 
+
+/**
+ * Renders a select field component.
+ *
+ * @param {SelectFieldProps & { name: string }} props - the props object which should have the following properties:
+ *   * name: string - the name of the select field
+ *   * label: string - the label of the select field
+ *   * option?: Record<string, unknown> - the options for the select field
+ *   * items: string[] | Record<string, string[]> - the items of the select field
+ *   * helpText?: string - the help text of the select field
+ * @return {JSX.Element} the select field component
+ */
 export default function SelectField(
   props: SelectFieldProps & { name: string }
 ) {

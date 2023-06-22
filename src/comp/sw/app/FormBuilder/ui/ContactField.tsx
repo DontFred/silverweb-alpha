@@ -5,6 +5,12 @@ import TextField from "./TextField";
 import PhoneField from "./PhoneField";
 import EmailField from "./EmailField";
 
+/**
+ * Renders a contact field with multiple text and phone input fields.
+ *
+ * @param {ContactFieldProps & { name: string }} props - The props object containing the name and the option
+ * @return {JSX.Element} A fragment containing multiple input fields
+ */
 export default function ContactField(
   props: ContactFieldProps & { name: string }
 ) {

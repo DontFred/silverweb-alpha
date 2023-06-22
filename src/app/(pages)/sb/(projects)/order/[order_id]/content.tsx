@@ -1107,13 +1107,25 @@ export default function OrderInterfaceContent({
                                                   />
                                                 </Grid>
                                                 <Grid xs={12}>
-                                                  <TextField type="text" name="orgaNumber" label="Orga. number"/>
+                                                  <TextField
+                                                    type="text"
+                                                    name="orgaNumber"
+                                                    label="Orga. number"
+                                                  />
                                                 </Grid>
                                                 <Grid xs={12}>
-                                                  <TextField type="text" name="vatNumber" label="VAT. number"/>
+                                                  <TextField
+                                                    type="text"
+                                                    name="vatNumber"
+                                                    label="VAT. number"
+                                                  />
                                                 </Grid>
                                                 <Grid xs={12}>
-                                                  <TextField type="text" name="rct" label="Reverse RCT"/>
+                                                  <TextField
+                                                    type="text"
+                                                    name="rct"
+                                                    label="Reverse RCT"
+                                                  />
                                                 </Grid>
                                               </Grid.Container>
                                             </ContainerCard>
@@ -1147,13 +1159,159 @@ export default function OrderInterfaceContent({
                                                 alignItems="stretch"
                                               >
                                                 <Grid xs={12}>
-                                                  <TextField type="text" name="invoicingFrequency" label="Invoicing Frequency" />
+                                                  <TextField
+                                                    type="text"
+                                                    name="invoicingFrequency"
+                                                    label="Invoicing Frequency"
+                                                  />
                                                 </Grid>
                                                 <Grid xs={12}>
-                                                  <TextField type="text" name="payTerm" label="Pay term" />
+                                                  <TextField
+                                                    type="text"
+                                                    name="payTerm"
+                                                    label="Pay term"
+                                                  />
                                                 </Grid>
                                                 <Grid xs={12}>
-                                                  <TextAreaField type="textarea" name="invoicingComment" label="Comment" />
+                                                  <TextAreaField
+                                                    type="textarea"
+                                                    name="invoicingComment"
+                                                    label="Comment"
+                                                  />
+                                                </Grid>
+                                              </Grid.Container>
+                                            </ContainerCard>
+                                          </Grid>
+                                        </Grid.Container>
+                                      </div>
+                                    </Grid>
+                                  </Grid.Container>
+                                </ContainerCard>
+                              </Grid>
+                            </Grid.Container>
+                          </div>
+                        </Grid>
+                      </Grid.Container>
+                    </div>
+                  </Grid>
+                  <Grid xs={12}>
+                    <div style={{ width: "100%" }}>
+                      <Grid.Container alignContent="stretch">
+                        <Grid xs={12}>
+                          <div
+                            style={{
+                              width: "100%",
+                              display: "flex",
+                              flexFlow: "column",
+                            }}
+                          >
+                            <Text css={{ flex: "0 1 auto" }} weight="light">
+                              Pay and Charge rates
+                            </Text>
+                            <Grid.Container
+                              gap={2}
+                              justify="space-between"
+                              css={{ flex: "1 1 auto" }}
+                            >
+                              <Grid xs={12}>
+                                <ContainerCard>
+                                  <Grid.Container
+                                    gap={2}
+                                    css={{
+                                      minHeight: 140,
+                                    }}
+                                  >
+                                    <Grid xs={4}>
+                                      <div
+                                        style={{
+                                          width: "100%",
+                                          display: "flex",
+                                          flexFlow: "column",
+                                        }}
+                                      >
+                                        <Text
+                                          css={{ flex: "0 1 auto" }}
+                                          weight="light"
+                                        >
+                                          Legacy
+                                        </Text>
+                                        <Grid.Container
+                                          gap={2}
+                                          justify="space-between"
+                                          css={{ flex: "1 1 auto" }}
+                                        >
+                                          <Grid xs={12}>
+                                            <ContainerCard>
+                                              <Grid.Container
+                                                gap={2}
+                                                alignItems="stretch"
+                                              >
+                                                <Grid xs={12}>
+                                                  <div>
+                                                    <Text
+                                                      size={"$sm"}
+                                                      css={{
+                                                        pl: "$3",
+                                                        lh: "$xs",
+                                                        mb: "$3"
+                                                      }}
+                                                    >
+                                                      <b>OT1</b>
+                                                      <br />
+                                                      1st 2 hours immediately
+                                                      after normal working hours
+                                                    </Text>
+                                                    <Text
+                                                      size={"$sm"}
+                                                      css={{
+                                                        pl: "$3",
+                                                        lh: "$xs",
+                                                        mb: "$3"
+                                                      }}
+                                                    >
+                                                      <b>OT2</b>
+                                                      <br />
+                                                      Overtime hours after that
+                                                      until midnight
+                                                    </Text>
+                                                    <Text
+                                                      size={"$sm"}
+                                                      css={{
+                                                        pl: "$3",
+                                                        lh: "$xs",
+                                                        mb: "$3"
+                                                      }}
+                                                    >
+                                                      <b>OT3</b>
+                                                      <br />
+                                                      After midnight on weekday
+                                                      plus Sat and Sun plus
+                                                      minor public holidays
+                                                    </Text>
+                                                    <Text
+                                                      size={"$sm"}
+                                                      css={{
+                                                        pl: "$3",
+                                                        lh: "$xs",
+                                                        mb: "$3"
+                                                      }}
+                                                    >
+                                                      <b>OT4</b>
+                                                      <br />
+                                                      Most public holidays
+                                                    </Text>
+                                                    <Text
+                                                      size={"$sm"}
+                                                      css={{
+                                                        pl: "$3",
+                                                        lh: "$xs",
+                                                      }}
+                                                    >
+                                                      <b>Currency</b>
+                                                      <br />
+                                                      {orderData?.payChargeRate?.[0].currency}
+                                                    </Text>
+                                                  </div>
                                                 </Grid>
                                               </Grid.Container>
                                             </ContainerCard>
@@ -1180,6 +1338,15 @@ export default function OrderInterfaceContent({
   );
 }
 
+
+/**
+ * Renders a table of worker requirements. Allows changing the worker quantity for each requirement.
+ *
+ * @param {object} props - The props object
+ * @param {Array} props.workerRequired - An array of objects representing the worker requirements, each object should have an `id`, `quantity`, and `jobRole` property.
+ * @param {function} [props.onChange] - An optional function that will be called whenever a worker quantity is changed. The function will be called with an object containing an `id` and `quantity` property.
+ * @return {JSX.Element} A table element containing the worker requirements.
+ */
 function WorkerReqTable({
   workerRequired,
   onChange,

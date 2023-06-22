@@ -15,6 +15,12 @@ import {
   useFormContext,
 } from "react-hook-form";
 
+/**
+ * Renders a checkbox group with various options for users to select and an optional "Other" input field.
+ *
+ * @param {CheckboxFieldProps & { name: string }} props - An object containing the properties for the CheckboxField component.
+ * @return {JSX.Element} The rendered CheckboxField component.
+ */
 export default function CheckboxField(
   props: CheckboxFieldProps & { name: string }
 ) {

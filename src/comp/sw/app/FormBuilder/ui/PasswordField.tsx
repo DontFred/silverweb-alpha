@@ -4,6 +4,12 @@ import { useFormContext } from "react-hook-form";
 import { Input } from "@nextui-org/react";
 import TooltipHelper from "./TooltipHelper";
 
+/**
+ * Renders a password input field with label, validation, and help text.
+ *
+ * @param {PasswordFieldProps & { name: string }} props - The props object that contains the component's properties and the name of the field.
+ * @return {JSX.Element} The password input field with label, validation, and help text.
+ */
 export default function PasswordField(
   props: PasswordFieldProps & { name: string }
 ) {
