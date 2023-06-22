@@ -17,7 +17,7 @@ export default function template({
       <Container
         xl
       >
-        <div style={{ width: "100%", position: "relative" }}>{children}</div>
+        <div style={{ width: "100%", position: "relative", height: "100vh" }}>{children}</div>
       </Container>
     </Fragment>
   );

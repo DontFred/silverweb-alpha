@@ -33,23 +33,15 @@ async function getOrderData() {
   const orderData = createRandomOrder();
 
   Object.assign(orderData, {
-    payChargeRate: faker.helpers.multiple(createRandomPayChargeRate, {
-      count: 5,
-    }),
-    workerRequired: faker.helpers.multiple(createRandomWorkerRequired, {
-      count: 5,
-    }),
-    workPerformed: faker.helpers.multiple(createRandomWorkPerformed, {
-      count: 5,
-    }),
-    trainingCoursesRequired: faker.helpers.multiple(
+    payChargeRate: faker.helpers.uniqueArray(createRandomPayChargeRate, 5),
+    workerRequired: faker.helpers.uniqueArray(createRandomWorkerRequired, 5),
+    workPerformed: faker.helpers.uniqueArray(createRandomWorkPerformed, 5),
+    trainingCoursesRequired: faker.helpers.uniqueArray(
       createRandomTrainingCourseRequired,
-      { count: 5 }
+      5
     ),
-    inductionForms: faker.helpers.multiple(createRandomInductionForm, {
-      count: 5,
-    }),
-    contacts: faker.helpers.multiple(createRandomContactOrder, { count: 5 }),
+    inductionForms: faker.helpers.uniqueArray(createRandomInductionForm, 5),
+    contacts: faker.helpers.uniqueArray(createRandomContactOrder, 5),
   });
 
   return orderData as OrderDataProps;

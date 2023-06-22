@@ -23,6 +23,7 @@ export default function DatePickerField(
         }}
       >
         <Input
+          inputMode="numeric"
           aria-label={"datepicker-"+ name}
           label={label}
           status={Error ? "error" : "default"}
@@ -34,7 +35,6 @@ export default function DatePickerField(
           initialValue={watch(name)}
           helperColor="error"
           bordered
-          clearable
           {...register(name, { ...option })}
         />
         <div

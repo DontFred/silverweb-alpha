@@ -24,8 +24,13 @@ export default function NumberField(
   const [hoverInput, setHoverInput] = useState<boolean>(false);
   const [hoverButtonIn, setHoverButtonIn] = useState<boolean>(false);
   const [hoverButtonDe, setHoverButtonDe] = useState<boolean>(false);
+  const [undisabled, setUndisabled] = useState<boolean>(false);
 
-  const InputRef = useRef<HTMLInputElement>(null)
+  setTimeout(() => {
+    setUndisabled(!InputRef.current?.closest("fieldset")?.disabled);
+  }, 10);
+
+  const InputRef = useRef<HTMLInputElement>(null);
 
   const InCreaseButton: CSS = {
     bg: hoverButtonIn ? "$accents4" : "transparent",
@@ -36,7 +41,7 @@ export default function NumberField(
     borderWidth: "0px 0px 1px 2px",
     borderStyle: "solid",
     borderRadius: "0 var(--nextui-space-6)",
-    borderColor: hoverInput ? "white" : "$border",
+    borderColor: hoverInput ? "$gray600" : "$border",
   };
 
   const DeCreaseButton: CSS = {
@@ -48,7 +53,7 @@ export default function NumberField(
     borderWidth: "1px 0px 0px 2px",
     borderStyle: "solid",
     borderRadius: "var(--nextui-space-6) 0",
-    borderColor: hoverInput ? "white" : "$border",
+    borderColor: hoverInput ? "$gray600" : "$border",
   };
   return (
     <Fragment>
@@ -70,7 +75,7 @@ export default function NumberField(
         }}
       >
         <Input
-            ref={InputRef}
+          ref={InputRef}
           contentRightStyling={false}
           value={field.value || ""}
           status={Error ? "error" : "default"}
@@ -91,8 +96,8 @@ export default function NumberField(
             setFocusInput(false);
             setHoverInput(false);
           }}
-          onChange={(e: ChangeEvent<FormElement>)=>{
-            field.onChange(parseInt(e.target.value))
+          onChange={(e: ChangeEvent<FormElement>) => {
+            field.onChange(parseInt(e.target.value));
           }}
           type="number"
           inputMode="numeric"
@@ -103,6 +108,7 @@ export default function NumberField(
           contentRight={
             <Button.Group vertical size="xs" css={{ w: 0 }}>
               <Button
+                disabled={!undisabled}
                 css={InCreaseButton}
                 onMouseEnter={() => {
                   setHoverButtonIn(true);
@@ -112,14 +118,17 @@ export default function NumberField(
                   setHoverButtonIn(false);
                   !focusInput && setHoverInput(false);
                 }}
-                onPress={()=>{
-                    InputRef.current?.focus()
-                    field.onChange((field.value || 0) + 1)
+                onPress={() => {
+                  InputRef.current?.focus();
+                  field.onChange((field.value || 0) + 1);
                 }}
+                type="button"
               >
                 <Plus size={13} />
               </Button>
               <Button
+                disabled={!undisabled}
+                type="button"
                 css={DeCreaseButton}
                 onMouseEnter={() => {
                   setHoverButtonDe(true);
@@ -129,9 +138,9 @@ export default function NumberField(
                   setHoverButtonDe(false);
                   !focusInput && setHoverInput(false);
                 }}
-                onPress={()=>{
-                    InputRef.current?.focus()
-                    field.onChange((field.value || 0) - 1)
+                onPress={() => {
+                  InputRef.current?.focus();
+                  field.onChange((field.value || 0) - 1);
                 }}
               >
                 <Minus size={13} />

@@ -28,9 +28,9 @@ export type HoursFriendlyProjectHistoryData = {
 };
 
 async function getAllProjectData() {
-  const projectsData: ProjectProps[] = faker.helpers.multiple(
+  const projectsData: ProjectProps[] = faker.helpers.uniqueArray(
     createRandomProjects,
-    { count: 60 }
+    60
   );
 
   return projectsData;

@@ -26,6 +26,7 @@ export default function TextField(props: TextFieldProps & { name: string }) {
             helperText: "" + Error.message,
           })}
           fullWidth
+          aria-label={"textfield-" + label + name }
           initialValue={watch(name)}
           helperColor="error"
           bordered

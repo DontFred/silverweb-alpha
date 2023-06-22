@@ -1,4 +1,4 @@
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { TextAreaFieldProps } from "../types";
 import { useController, useFormContext } from "react-hook-form";
 import TooltipHelper from "./TooltipHelper";
@@ -7,7 +7,7 @@ import StyleObject from "csstype";
 export default function TextAreaField(
   props: TextAreaFieldProps & { name: string }
 ) {
-  const { control, formState } = useFormContext();
+  const { control, formState, watch } = useFormContext();
 
   const { label, name, option, helpText } = props;
   const { field } = useController({
@@ -31,6 +31,14 @@ export default function TextAreaField(
   setTimeout(() => {
     setClearable(!TextAreaRef.current?.closest("fieldset")?.disabled);
   }, 10);
+
+  const valueOfTextArea = watch(name)
+  useEffect(() => {
+    if(TextAreaRef.current){
+      TextAreaRef.current.style.height = "auto";
+      TextAreaRef.current.style.height = TextAreaRef.current.scrollHeight + "px";
+    }
+  }, [valueOfTextArea])
 
   const TextAreaContainerStyling: StyleObject.Properties = {
     width: "100%",
@@ -151,8 +159,6 @@ export default function TextAreaField(
             value={field.value}
             onChange={(e) => {
               field.onChange(e.target.value);
-              e.target.style.height = "auto";
-              e.target.style.height = e.target.scrollHeight + "px";
             }}
           />
           <label

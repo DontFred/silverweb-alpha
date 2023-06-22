@@ -670,9 +670,31 @@ export default function OrderFormContent() {
       },
       headingDrei: {
         type: "heading",
-        content: "The organization number",
+        content: "The email(s)"
       },
       subheadingDrei: {
+        type: "subheading",
+        content: "for the invoice"
+      },
+      invoicingEmail: {
+        type: "textarea",
+        label: "Invoicing email",
+        option: {
+          required: {
+            message: "Please enter an invoicing email",
+            value: true,
+          },
+        },
+      },
+      spacerDrei: {
+        type: "spacer",
+        double: true
+      },
+      headingVier: {
+        type: "heading",
+        content: "The organization number",
+      },
+      subheadingVier: {
         type: "subheading",
         content: "of the company",
       },
@@ -686,15 +708,15 @@ export default function OrderFormContent() {
           },
         },
       },
-      spacerDrei: {
+      spacerVier: {
         type: "spacer",
         double: true,
       },
-      headingVier: {
+      headingFunf: {
         type: "heading",
         content: "Company VAT",
       },
-      subheadingVier: {
+      subheadingFunf: {
         type: "subheading",
         content: "or MOMS number",
       },
@@ -708,15 +730,15 @@ export default function OrderFormContent() {
           },
         },
       },
-      spacerVier: {
+      spacerFunf: {
         type: "spacer",
         double: true,
       },
-      headingFunf: {
+      headingSechs: {
         type: "heading",
         content: "The charge rates",
       },
-      subheading: {
+      subheadingSechs: {
         type: "subheading",
         content: "will be",
       },
@@ -803,15 +825,15 @@ export default function OrderFormContent() {
           },
         },
       },
-      spacerFunf: {
+      spacerSechs: {
         type: "spacer",
         double: true,
       },
-      headingSechs: {
+      headingSieben: {
         type: "heading",
         content: "The overtime charge rates",
       },
-      subhadingSechs: {
+      subheadingSieben: {
         type: "subheading",
         content: "will be",
       },
@@ -903,7 +925,7 @@ export default function OrderFormContent() {
           },
         },
       },
-      spacerSechs: {
+      spacerSieben: {
         type: "spacer",
         half: true,
       },

@@ -63,7 +63,7 @@ export default function Map({ marker, centerMarker }: { marker?: MarkerProps[], 
           display: none !important;
         }
       `}</style>
-      <MapContainer center={(centerMarker && marker) ? {...marker[0].address} : { lat: 53.36512, lng: 10.27083 }} zoom={4}>
+      {/* <MapContainer center={(centerMarker && marker) ? {...marker[0].address} : { lat: 53.36512, lng: 10.27083 }} zoom={4}>
         <TileLayer
           attribution=""
           url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
@@ -106,7 +106,7 @@ export default function Map({ marker, centerMarker }: { marker?: MarkerProps[], 
               </Popup>
             </Marker>
           ))}
-      </MapContainer>
+      </MapContainer> */}
     </Fragment>
   );
 }

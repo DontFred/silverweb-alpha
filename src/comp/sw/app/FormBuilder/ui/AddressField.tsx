@@ -2,7 +2,6 @@ import { Grid, Spacer } from "@nextui-org/react";
 import TextField from "./TextField";
 import SelectField from "./SelectField";
 import { AddressFieldProps } from "../types";
-import { useFormContext } from "react-hook-form";
 
 export default function AddressField(
   props: AddressFieldProps & { name: string }
@@ -21,7 +20,7 @@ export default function AddressField(
         />
       </Grid>
       <Grid xs={12}>
-        <Spacer x={1} />
+        <Spacer y={0.5}/>
       </Grid>
       <Grid xs>
         <TextField
@@ -31,7 +30,9 @@ export default function AddressField(
           option={option}
         />
       </Grid>
-      <Spacer y={1} />
+      <Grid>
+        <Spacer x={0.5} />
+      </Grid>
       <Grid xs>
         <TextField
           name={`${name}.postalCode`}
@@ -41,7 +42,7 @@ export default function AddressField(
         />
       </Grid>
       <Grid xs={12}>
-        <Spacer x={1} />
+        <Spacer y={0.5}/>
       </Grid>
       <Grid xs={12}>
         <SelectField

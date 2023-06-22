@@ -105,15 +105,11 @@ export default function FileCard({ file }: { file: FileProps }) {
                 css={ButtonStyling}
                 onPress={() => {
                   const link = document.createElement("a");
-
                   link.setAttribute("href", file.fileUri);
                   link.setAttribute("download", file.name);
                   link.style.display = "none";
-
                   document.body.appendChild(link);
-
                   link.click();
-
                   document.body.removeChild(link);
                 }}
               >

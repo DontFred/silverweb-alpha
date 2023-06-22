@@ -22,7 +22,7 @@ export default function Layout({ children }: {children: ReactNode[] | ReactNode}
           <UserMenu
             user={{ ...createRandomUser()}}
             messages={[
-              ...faker.helpers.multiple(()=>({
+              ...faker.helpers.uniqueArray(()=>({
                 id: createRandomMessages().id,
                 read: createRandomMessages().read,
                 user: {
@@ -32,9 +32,7 @@ export default function Layout({ children }: {children: ReactNode[] | ReactNode}
                 },
                 message: createRandomMessages().message,
                 date: createRandomMessages().date
-              }), {
-                count: 12,
-              }),
+              }), 12),
             ]}
           />
           <Sidebar />

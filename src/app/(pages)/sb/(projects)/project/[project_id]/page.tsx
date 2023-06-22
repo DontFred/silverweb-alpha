@@ -13,7 +13,7 @@ async function getProjectData(){
     const projectData = createRandomProjects();
   
     Object.assign(projectData, {
-      order: [...faker.helpers.multiple(createRandomOrder, { count: 6 })],
+      order: [...faker.helpers.uniqueArray(createRandomOrder, 6)],
     }) as ProjectDataProps;
   
     return projectData as ProjectDataProps
