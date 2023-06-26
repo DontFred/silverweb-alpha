@@ -52,11 +52,6 @@ async function getOrderData() {
   return orderData as OrderDataProps;
 }
 
-/**
- * Asynchronous function that retrieves order data and returns JSX to render an order interface.
- *
- * @return {JSX.Element} The rendered order interface component.
- */
 export default async function OrderInterface() {
   const orderData = await getOrderData();
   return (

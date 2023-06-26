@@ -11,19 +11,19 @@ import NavCard from "./cards/NavCard";
  *
  * @return {JSX.Element} The Sidebar component.
  */
-export default function Sidebar() {
+export default function Sidebar({ compact }: { compact?: boolean }) {
   return (
     <Fragment>
       <div
         style={{
           height: "100vh",
-          width: 150,
+          width: compact ? 46 : 150,
         }}
       >
         <div
           style={{
             position: "fixed",
-            width: 150,
+            width: compact ? 46 : 150,
           }}
         >
           <div
@@ -32,6 +32,9 @@ export default function Sidebar() {
               justifyContent: "center",
               alignItems: "center",
               display: "flex",
+              ...compact && {
+                padding: "35px 0",
+              }
             }}
           >
             <Image
@@ -39,22 +42,22 @@ export default function Sidebar() {
               style={{
                 margin: "auto",
               }}
-              src={"/svg/logo-silverweb.svg"}
+              src={`/svg/logo-silverweb${compact ? "-compact" : ""}.svg`}
               width={130}
-              height={100}
+              height={compact ? 30 : 100}
               alt="silverweb-logo"
               draggable={false}
             />
           </div>
-          <NavCard name="Home" link="/sw" icon={<LineChart color="white" size={16} />}/>
+          <NavCard name="Home" compact={compact} link="/sw" icon={<LineChart color="white" size={16} />}/>
           <Spacer y={0.5} />
-          <NavCard name="SilverSuite" link="/sw" icon={<LayoutDashboard color="white" size={16} />}/>
+          <NavCard name="SilverSuite" compact={compact} link="/sw/apps" icon={<LayoutDashboard color="white" size={16} />}/>
           <Spacer y={0.5} />
-          <NavCard name="SilverBase" link="/sw" icon={<Server color="white" size={16} />}/>
+          <NavCard name="SilverBase" compact={compact} link="/sw" icon={<Server color="white" size={16} />}/>
           <Spacer y={0.5} />
-          <NavCard name="SilverBoard" link="/sw" disabled icon={<Send color="white" size={16} />}/>
+          <NavCard name="SilverBoard" compact={compact} link="" disabled icon={<Send color="white" size={16} />}/>
           <Spacer y={0.5} />
-          <NavCard name="SilverBlog" link="/sw" disabled icon={<Newspaper color="white" size={16} />}/>
+          <NavCard name="SilverBlog" compact={compact} link="" disabled icon={<Newspaper color="white" size={16} />}/>
           <Spacer y={0.5} />
         </div>
       </div>

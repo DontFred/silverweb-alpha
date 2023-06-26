@@ -391,7 +391,7 @@ export function createRandomDepartment() {
 }
 
 /**
- * Creates a random order object with various properties such as id, orderCode,
+ * Creates a random order object with various properties such as id, orderCode, answered 
  * client, accountManager, project, commentToGeneralInformation, projectAddress,
  * deliveryAddress, invoicingAddress, invoicingEmail, inductionAddress, orgaNumber,
  * vatNumber, payTerm, rct, invoicingFrequency, commentToInvoicing, inductionDateTime,
@@ -406,6 +406,7 @@ export function createRandomOrder() {
     orderCode: `${
       faker().airline.airport().iataCode
     }${faker().airline.flightNumber()}`,
+    answered: faker().datatype.boolean(),
     client: createRandomClient(),
     accountManager: createRandomEmployee(),
     project: createRandomProjects(),

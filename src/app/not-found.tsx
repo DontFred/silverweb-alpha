@@ -45,11 +45,11 @@ export default function NotFound() {
     "    Maybe this page isn't implemented yet",
     "    or it will never be implemented",
     " ",
-    "    --------------------------------------------------------- ",
+    "   ---------------------------------------------------------- ",
     " ",
     (<div key="heading">    type <u>back</u> to go back to an implemented page</div>),
     " ",
-    "    --------------------------------------------------------- ",
+    "   ---------------------------------------------------------- ",
     " ",
     " ",
 
@@ -70,7 +70,7 @@ export default function NotFound() {
         setDisplayedItems([]);
         break;
       case "back":
-        router.back();
+        router.replace("javascript:history.back()")
         break;
       default:
         setDisplayedItems([...startLine, "command not found: " + cmd, " "]);

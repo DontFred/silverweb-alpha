@@ -52,7 +52,8 @@ export default function ArrayField(props: ArrayProps & { name: string }) {
       update(0, { item: null });
     }
     addNull()
-  },[update]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Fragment>

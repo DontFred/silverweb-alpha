@@ -96,10 +96,12 @@ export function renderFields([name, fieldProps]: [string, Field], idx: number) {
  * @param {Function} onSubmit - a callback function to be called when the form is submitted.
  * @return {JSX.Element} - a React component representing the form.
  */
-export function Form({ fields, onSubmit }: FormProps) {
+export function Form({ fields, onSubmit, defaultValues }: FormProps) {
   const [pages, setPages] = useState<number>(0);
 
-  const form = useForm();
+  const form = useForm({
+    defaultValues: defaultValues
+  });
   return (
     <Fragment>
       <style jsx global>

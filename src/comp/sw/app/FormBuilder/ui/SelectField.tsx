@@ -84,11 +84,26 @@ export default function SelectField(
   const rules = option || {};
   const ValidationRule = rules.validate || {};
   Object.assign(ValidationRule, {
-    isSelectable: (value: string) => {},
+    isSelectable: (value: string) => {
+      if(Array.isArray(items)){
+        if(items.includes(value)){
+          return true;
+        }else{
+          return "Please select an option";
+        }
+      }else{
+        const selectAbleOptions = ([] as string[]).concat(...Object.values(items));
+        if(selectAbleOptions.includes(value)){
+          return true;
+        }else{
+          return "Please select an option";
+        }
+      }
+    },
   }),
     (rules.validate = ValidationRule);
 
-  const { control, formState, watch, setError } = useFormContext();
+  const { control, formState,  } = useFormContext();
   const { field } = useController({
     name: name,
     control: control,
@@ -147,14 +162,14 @@ export default function SelectField(
     ? searchedList.flatMap((item) => item[1]).flat()
     : (searchedList as Array<string>);
 
-  useEffect(() => {
-    const endingFocusItem = document.getElementById(sortedItems[focusedItem]);
-    if (endingFocusItem) endingFocusItem.style.backgroundColor = "";
-    setFocusedItem(-1);
-    selectedOrSearchValue
-      ? field.onChange(selectedOrSearchValue)
-      : field.onChange();
-  }, [field, focusedItem, selectedOrSearchValue, sortedItems]);
+    useEffect(() => {
+      const endingFocusItem = document.getElementById(sortedItems[focusedItem]);
+      if (endingFocusItem) endingFocusItem.style.backgroundColor = "";
+      setFocusedItem(-1);
+      selectedOrSearchValue
+        ? field.onChange(selectedOrSearchValue)
+        : field.onChange("");
+    }, [selectedOrSearchValue]);
 
   return (
     <Fragment>

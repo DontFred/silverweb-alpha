@@ -28,7 +28,7 @@ const Map = dynamic(() => import("@/comp/sw/app/Map"), {
 export default function ProjectsContent({projectsData}: {projectsData: MapFriendlyProjectData[]}) {
   return (
     <Layout>
-      <Grid.Container gap={0} css={{ p: 30 }}>
+      <Grid.Container gap={0} css={{ p: 30, height: "100%" }}>
         <Grid xs={12} css={{ h: "60px" }}>
           <div
             style={{

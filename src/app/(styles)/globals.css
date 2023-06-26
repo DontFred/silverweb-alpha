@@ -41,7 +41,7 @@ html {
   transition: var(--nextui-transitions-default) !important;
   z-index: 10000;
   position: absolute;
-  top: -37%;
+  top: -50%;
 }
 
 
@@ -81,19 +81,19 @@ input[type="text"]{
 
 .nextui-input-main-container.nextui-input-main-container--with-value
   .nextui-input-block-label[class*="-asPlaceholder-true"] {
-  top: -37% !important; 
+  top: -50% !important; 
   color: var(--nextui--inputLabelColor);
 }
 
 .nextui-input-main-container--read-only
 .nextui-input-block-label{
-  top: -37% !important; 
+  top: -50% !important; 
   color: var(--nextui--inputLabelColor);
 }
 
 .nextui-input-main-container.nextui-input-main-container--hover
   .nextui-input-block-label {
-  top: -37% !important;
+  top: -50% !important;
   transform: translateY(calc(var(--nextui-space-1) * -1));
   color: var(--nextui--inputLabelColor);
 }

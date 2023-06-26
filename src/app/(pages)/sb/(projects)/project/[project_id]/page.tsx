@@ -24,11 +24,6 @@ async function getProjectData(){
     return projectData as ProjectDataProps
   }
 
-/**
- * Asynchronous function that returns a fragment containing the ProjectInterfaceContent component.
- *
- * @return {JSX.Element} A fragment containing the ProjectInterfaceContent component.
- */
 export default async function ProjectInterface() {
 
   const projectData = await getProjectData()

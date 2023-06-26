@@ -11,12 +11,16 @@ import {
   Button,
   Spacer,
   Input,
+  Switch,
+  Modal,
+  Pagination,
+  Checkbox,
 } from "@nextui-org/react";
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import StyleObject from "csstype";
 import ContactCard from "@/comp/sw/ui/cards/ContactCard";
-import { createRandomComment } from "@/faker";
+import { createRandomComment, createRandomJobRole } from "@/faker";
 import { faker } from "@faker-js/faker";
 import TextAreaField from "@/comp/sw/app/FormBuilder/ui/TextAreaField";
 import AddressField from "@/comp/sw/app/FormBuilder/ui/AddressField";
@@ -28,6 +32,7 @@ import { Pencil } from "lucide-react";
 import TextField from "@/comp/sw/app/FormBuilder/ui/TextField";
 import CompanyCard from "@/comp/sw/ui/cards/CompanyCard";
 import NumberField from "@/comp/sw/app/FormBuilder/ui/NumberField";
+import { date, string } from "zod";
 
 const Map = dynamic(() => import("@/comp/sw/app/Map"), {
   loading: () => (
@@ -69,7 +74,7 @@ export default function OrderInterfaceContent({
         country: orderData?.projectAddress?.country,
       },
       startDate: orderData?.start.toISOString().split("T")[0],
-      startTime: orderData?.start.toLocaleTimeString(),
+      startTime: orderData?.start.toTimeString().split(" ")[0],
       deliveryAddress: {
         streetNo: orderData?.deliveryAddress?.streetNo,
         city: orderData?.deliveryAddress?.city,
@@ -83,7 +88,7 @@ export default function OrderInterfaceContent({
         country: orderData?.inductionAddress?.country,
       },
       inductionDate: orderData?.inductionDateTime.toISOString().split("T")[0],
-      inductionTime: orderData?.inductionDateTime.toLocaleTimeString(),
+      inductionTime: orderData?.inductionDateTime.toTimeString().split(" ")[0],
       duration: orderData?.estDuration,
       endDate: orderData?.end.toISOString().split("T")[0],
       durationComment: orderData?.commentToDuration,
@@ -117,50 +122,53 @@ export default function OrderInterfaceContent({
   }
 
   const [editable, setEditable] = useState<boolean>(false);
+
+  const [version, setVersion] = useState<"new" | "old">("new");
+  const [openEditAddModal, setOpenEditAddModal] = useState<boolean>(false);
   const FormRef = useRef<HTMLFormElement>(null);
   return (
     <Layout>
       <FormProvider {...form}>
-        <form ref={FormRef} onSubmit={form.handleSubmit(saveChangedData)}>
-          <fieldset style={FieldsetStyling} disabled={!editable}>
-            <Toolbar
-              onSafe={async () => {
-                FormRef.current?.requestSubmit();
+        <Toolbar
+          onSafe={async () => {
+            FormRef.current?.requestSubmit();
+          }}
+          onModeChange={(seeMode) => {
+            setEditable(!seeMode);
+          }}
+          isLoading={isSubmitting}
+        />
+        <Grid.Container gap={0} css={{ p: 30 }}>
+          <Grid xs={12} css={{ h: "60px" }}>
+            <div
+              style={{
+                textAlign: "end",
               }}
-              onModeChange={(seeMode) => {
-                setEditable(!seeMode);
-              }}
-              isLoading={isSubmitting}
-            />
-            <Grid.Container gap={0} css={{ p: 30 }}>
-              <Grid xs={12} css={{ h: "60px" }}>
-                <div
-                  style={{
-                    textAlign: "end",
-                  }}
-                >
-                  <Text h2 role="banner">
-                    Order | {orderData?.orderCode}
-                  </Text>
-                </div>
-              </Grid>
-              <Grid xs={12} css={{ h: "30px" }}>
-                <Text size="$sm" css={{ m: "0 0 0 24px" }}>
-                  Created at 
-                </Text>
-                <Text weight="light" size="$sm">
-                  {faker.date.past().toLocaleString("en-IE", {
-                    day: "2-digit",
-                    month: "short",
-                    year: "numeric",
-                    hour: "2-digit",
-                    minute: "2-digit",
-                    hour12: false,
-                  })}
-                </Text>
-              </Grid>
-              <Grid xs={12} css={{ h: "calc(100% - 120px)" }}>
-                <Grid.Container gap={1}>
+            >
+              <Text h2 role="banner">
+                Order | {orderData?.orderCode}
+              </Text>
+            </div>
+          </Grid>
+          <Grid xs={12} css={{ h: "30px" }}>
+            <Text size="$sm" css={{ m: "0 0 0 24px" }}>
+              Created at 
+            </Text>
+            <Text weight="light" size="$sm">
+              {faker.date.past().toLocaleString("en-IE", {
+                day: "2-digit",
+                month: "short",
+                year: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: false,
+              })}
+            </Text>
+          </Grid>
+          <Grid xs={12} css={{ h: "calc(100% - 120px)" }}>
+            <Grid.Container gap={1}>
+              <form ref={FormRef} onSubmit={form.handleSubmit(saveChangedData)}>
+                <fieldset style={FieldsetStyling} disabled={!editable}>
                   <Grid xs={12}>
                     <div style={{ width: "100%" }}>
                       <Grid.Container alignContent="stretch">
@@ -273,7 +281,7 @@ export default function OrderInterfaceContent({
                                       minHeight: 140,
                                     }}
                                   >
-                                    <Grid xs={6}>
+                                    <Grid xs={12} sm={6}>
                                       <div
                                         style={{
                                           width: "100%",
@@ -338,7 +346,7 @@ export default function OrderInterfaceContent({
                                         </Grid.Container>
                                       </div>
                                     </Grid>
-                                    <Grid xs={6}>
+                                    <Grid xs={12} sm={6}>
                                       <div
                                         style={{
                                           width: "100%",
@@ -413,7 +421,7 @@ export default function OrderInterfaceContent({
                                         </Grid.Container>
                                       </div>
                                     </Grid>
-                                    <Grid xs={6}>
+                                    <Grid xs={12} sm={6}>
                                       <div
                                         style={{
                                           width: "100%",
@@ -478,7 +486,7 @@ export default function OrderInterfaceContent({
                                         </Grid.Container>
                                       </div>
                                     </Grid>
-                                    <Grid xs={6}>
+                                    <Grid xs={12} sm={6}>
                                       <div
                                         style={{
                                           width: "100%",
@@ -629,9 +637,9 @@ export default function OrderInterfaceContent({
                                   >
                                     <Grid xs={12}>
                                       <Grid.Container gap={0}>
-                                        <Grid xs={8}>
+                                        <Grid xs={12} sm={8}>
                                           <Grid.Container gap={2}>
-                                            <Grid xs={6}>
+                                            <Grid xs={12} sm={6}>
                                               <div
                                                 style={{
                                                   width: "100%",
@@ -662,7 +670,7 @@ export default function OrderInterfaceContent({
                                                 </Grid.Container>
                                               </div>
                                             </Grid>
-                                            <Grid xs={6}>
+                                            <Grid xs={12} sm={6}>
                                               <div
                                                 style={{
                                                   width: "100%",
@@ -872,7 +880,7 @@ export default function OrderInterfaceContent({
                                             </Grid>
                                           </Grid.Container>
                                         </Grid>
-                                        <Grid xs={4}>
+                                        <Grid xs={12} sm={4}>
                                           <Grid.Container gap={2}>
                                             <Grid xs={12}>
                                               <div
@@ -994,6 +1002,7 @@ export default function OrderInterfaceContent({
                       </Grid.Container>
                     </div>
                   </Grid>
+
                   <Grid xs={12}>
                     <div style={{ width: "100%" }}>
                       <Grid.Container alignContent="stretch">
@@ -1021,7 +1030,7 @@ export default function OrderInterfaceContent({
                                       minHeight: 140,
                                     }}
                                   >
-                                    <Grid xs={4}>
+                                    <Grid xs={12} sm={4}>
                                       <div
                                         style={{
                                           width: "100%",
@@ -1072,7 +1081,7 @@ export default function OrderInterfaceContent({
                                         </Grid.Container>
                                       </div>
                                     </Grid>
-                                    <Grid xs={4}>
+                                    <Grid xs={12} sm={4}>
                                       <div
                                         style={{
                                           width: "100%",
@@ -1133,7 +1142,7 @@ export default function OrderInterfaceContent({
                                         </Grid.Container>
                                       </div>
                                     </Grid>
-                                    <Grid xs={4}>
+                                    <Grid xs={12} sm={4}>
                                       <div
                                         style={{
                                           width: "100%",
@@ -1194,150 +1203,229 @@ export default function OrderInterfaceContent({
                       </Grid.Container>
                     </div>
                   </Grid>
-                  <Grid xs={12}>
-                    <div style={{ width: "100%" }}>
-                      <Grid.Container alignContent="stretch">
-                        <Grid xs={12}>
-                          <div
-                            style={{
-                              width: "100%",
-                              display: "flex",
-                              flexFlow: "column",
-                            }}
-                          >
-                            <Text css={{ flex: "0 1 auto" }} weight="light">
-                              Pay and Charge rates
-                            </Text>
-                            <Grid.Container
-                              gap={2}
-                              justify="space-between"
-                              css={{ flex: "1 1 auto" }}
-                            >
-                              <Grid xs={12}>
-                                <ContainerCard>
-                                  <Grid.Container
-                                    gap={2}
-                                    css={{
-                                      minHeight: 140,
+                </fieldset>
+              </form>
+              <Grid xs={12}>
+                <div style={{ width: "100%" }}>
+                  <Grid.Container alignContent="stretch">
+                    <Grid xs={12}>
+                      <div
+                        style={{
+                          width: "100%",
+                          display: "flex",
+                          flexFlow: "column",
+                        }}
+                      >
+                        <Text css={{ flex: "0 1 auto" }} weight="light">
+                          Pay and Charge rates
+                        </Text>
+                        <Grid.Container
+                          gap={2}
+                          justify="space-between"
+                          css={{ flex: "1 1 auto" }}
+                        >
+                          <Grid xs={12}>
+                            <ContainerCard>
+                              <Grid.Container
+                                gap={2}
+                                css={{
+                                  minHeight: 140,
+                                }}
+                              >
+                                {orderData?.payChargeRate?.map(
+                                  (payChargeRate) => (
+                                    <Fragment key={payChargeRate.id}>
+                                      <Grid xs={12} sm={4}>
+                                        <PayChargeRateTable
+                                          payChargeRate={payChargeRate}
+                                          version={version}
+                                        />
+                                      </Grid>
+                                    </Fragment>
+                                  )
+                                )}
+                                <Grid xs={12} sm={4}>
+                                  <div
+                                    style={{
+                                      width: "100%",
+                                      display: "flex",
+                                      flexFlow: "column",
                                     }}
                                   >
-                                    <Grid xs={4}>
-                                      <div
-                                        style={{
-                                          width: "100%",
-                                          display: "flex",
-                                          flexFlow: "column",
-                                        }}
-                                      >
-                                        <Text
-                                          css={{ flex: "0 1 auto" }}
-                                          weight="light"
-                                        >
-                                          Legacy
-                                        </Text>
-                                        <Grid.Container
-                                          gap={2}
-                                          justify="space-between"
-                                          css={{ flex: "1 1 auto" }}
-                                        >
-                                          <Grid xs={12}>
-                                            <ContainerCard>
-                                              <Grid.Container
-                                                gap={2}
-                                                alignItems="stretch"
-                                              >
-                                                <Grid xs={12}>
-                                                  <div>
-                                                    <Text
-                                                      size={"$sm"}
-                                                      css={{
-                                                        pl: "$3",
-                                                        lh: "$xs",
-                                                        mb: "$3"
-                                                      }}
-                                                    >
-                                                      <b>OT1</b>
-                                                      <br />
-                                                      1st 2 hours immediately
-                                                      after normal working hours
-                                                    </Text>
-                                                    <Text
-                                                      size={"$sm"}
-                                                      css={{
-                                                        pl: "$3",
-                                                        lh: "$xs",
-                                                        mb: "$3"
-                                                      }}
-                                                    >
-                                                      <b>OT2</b>
-                                                      <br />
-                                                      Overtime hours after that
-                                                      until midnight
-                                                    </Text>
-                                                    <Text
-                                                      size={"$sm"}
-                                                      css={{
-                                                        pl: "$3",
-                                                        lh: "$xs",
-                                                        mb: "$3"
-                                                      }}
-                                                    >
-                                                      <b>OT3</b>
-                                                      <br />
-                                                      After midnight on weekday
-                                                      plus Sat and Sun plus
-                                                      minor public holidays
-                                                    </Text>
-                                                    <Text
-                                                      size={"$sm"}
-                                                      css={{
-                                                        pl: "$3",
-                                                        lh: "$xs",
-                                                        mb: "$3"
-                                                      }}
-                                                    >
-                                                      <b>OT4</b>
-                                                      <br />
-                                                      Most public holidays
-                                                    </Text>
-                                                    <Text
-                                                      size={"$sm"}
-                                                      css={{
-                                                        pl: "$3",
-                                                        lh: "$xs",
-                                                      }}
-                                                    >
-                                                      <b>Currency</b>
-                                                      <br />
-                                                      {orderData?.payChargeRate?.[0].currency}
-                                                    </Text>
-                                                  </div>
-                                                </Grid>
-                                              </Grid.Container>
-                                            </ContainerCard>
-                                          </Grid>
-                                        </Grid.Container>
-                                      </div>
-                                    </Grid>
-                                  </Grid.Container>
-                                </ContainerCard>
-                              </Grid>
-                            </Grid.Container>
-                          </div>
-                        </Grid>
-                      </Grid.Container>
-                    </div>
-                  </Grid>
-                </Grid.Container>
+                                    <Text
+                                      css={{ flex: "0 1 auto" }}
+                                      weight="light"
+                                    >
+                                      Legacy
+                                    </Text>
+                                    <Grid.Container
+                                      gap={2}
+                                      justify="space-between"
+                                      css={{ flex: "1 1 auto" }}
+                                    >
+                                      <Grid xs={12}>
+                                        <ContainerCard>
+                                          <Grid.Container
+                                            gap={2}
+                                            alignItems="stretch"
+                                          >
+                                            <Grid xs={12}>
+                                              <div>
+                                                <Text
+                                                  size={"$sm"}
+                                                  css={{
+                                                    pl: "$3",
+                                                    lh: "$xs",
+                                                    mb: "$3",
+                                                  }}
+                                                >
+                                                  <b>OT1</b>
+                                                  <br />
+                                                  1st 2 hours immediately after
+                                                  normal working hours
+                                                </Text>
+                                                <Text
+                                                  size={"$sm"}
+                                                  css={{
+                                                    pl: "$3",
+                                                    lh: "$xs",
+                                                    mb: "$3",
+                                                  }}
+                                                >
+                                                  <b>OT2</b>
+                                                  <br />
+                                                  Overtime hours after that
+                                                  until midnight
+                                                </Text>
+                                                <Text
+                                                  size={"$sm"}
+                                                  css={{
+                                                    pl: "$3",
+                                                    lh: "$xs",
+                                                    mb: "$3",
+                                                  }}
+                                                >
+                                                  <b>OT3</b>
+                                                  <br />
+                                                  After midnight on weekday plus
+                                                  Sat and Sun plus minor public
+                                                  holidays
+                                                </Text>
+                                                <Text
+                                                  size={"$sm"}
+                                                  css={{
+                                                    pl: "$3",
+                                                    lh: "$xs",
+                                                    mb: "$3",
+                                                  }}
+                                                >
+                                                  <b>OT4</b>
+                                                  <br />
+                                                  Most public holidays
+                                                </Text>
+                                                <Text
+                                                  size={"$sm"}
+                                                  css={{
+                                                    pl: "$3",
+                                                    lh: "$xs",
+                                                  }}
+                                                >
+                                                  <b>Currency</b>
+                                                  <br />
+                                                  {
+                                                    orderData
+                                                      ?.payChargeRate?.[0]
+                                                      .currency
+                                                  }
+                                                </Text>
+                                              </div>
+                                            </Grid>
+                                          </Grid.Container>
+                                        </ContainerCard>
+                                      </Grid>
+                                    </Grid.Container>
+                                  </div>
+                                </Grid>
+                                <Grid xs={12} sm={4}>
+                                  <div
+                                    style={{
+                                      width: "100%",
+                                      display: "flex",
+                                      flexFlow: "column",
+                                    }}
+                                  >
+                                    <Text
+                                      css={{ flex: "0 1 auto" }}
+                                      weight="light"
+                                    >
+                                      Controller
+                                    </Text>
+                                    <Grid.Container
+                                      gap={2}
+                                      justify="space-between"
+                                      css={{ flex: "1 1 auto" }}
+                                    >
+                                      <Grid xs={12}>
+                                        <ContainerCard>
+                                          <Grid.Container gap={2}>
+                                            <Grid xs={6}>
+                                              <Text weight={"light"}>
+                                                New/ Old Version
+                                              </Text>
+                                            </Grid>
+                                            <Grid xs={6}>
+                                              <Switch
+                                                css={{
+                                                  m: "auto",
+                                                }}
+                                                initialChecked
+                                                color={"secondary"}
+                                                bordered
+                                                onChange={(ev) => {
+                                                  if (ev.target.checked) {
+                                                    setVersion("new");
+                                                  } else {
+                                                    setVersion("old");
+                                                  }
+                                                }}
+                                              />
+                                            </Grid>
+                                            <Grid xs={12} justify="center">
+                                              <EditAddPayChargeRates
+                                                open={openEditAddModal}
+                                                payChargeRates={
+                                                  orderData?.payChargeRate
+                                                }
+                                                onClose={() =>
+                                                  setOpenEditAddModal(false)
+                                                }
+                                              />
+                                              <Button size={"sm"} type="button" onPress={() => setOpenEditAddModal(true)}>
+                                                Edit / Add
+                                              </Button>
+                                            </Grid>
+                                          </Grid.Container>
+                                        </ContainerCard>
+                                      </Grid>
+                                    </Grid.Container>
+                                  </div>
+                                </Grid>
+                              </Grid.Container>
+                            </ContainerCard>
+                          </Grid>
+                        </Grid.Container>
+                      </div>
+                    </Grid>
+                  </Grid.Container>
+                </div>
               </Grid>
             </Grid.Container>
-          </fieldset>
-        </form>
+          </Grid>
+        </Grid.Container>
       </FormProvider>
     </Layout>
   );
 }
-
 
 /**
  * Renders a table of worker requirements. Allows changing the worker quantity for each requirement.
@@ -1373,8 +1461,8 @@ function WorkerReqTable({
         }}
       >
         <Table.Header>
-          <Table.Column>Job</Table.Column>
-          <Table.Column>Quantity</Table.Column>
+          <Table.Column>JOB</Table.Column>
+          <Table.Column>QUANTITY</Table.Column>
           <Table.Column> </Table.Column>
         </Table.Header>
         <Table.Body items={workerRequired}>
@@ -1462,6 +1550,716 @@ function WorkerReqTable({
           )}
         </Table.Body>
       </Table>
+    </Fragment>
+  );
+}
+
+/**
+ * Renders a table with the pay and charge rates of an order, formatted based on the value of the version parameter.
+ *
+ * @param {Object} props - An object containing the pay and charge rate data and the version string indicating the table format.
+ * @param {Object} props.payChargeRate - An object containing the order's pay and charge rate data.
+ * @param {string} props.version - A string indicating the format of the table.
+ * @param {Array} props.payChargeRate.chargeRate - An array containing the charge rate data for the order.
+ * @param {Array} props.payChargeRate.payRate - An array containing the pay rate data for the order.
+ * @param {string} props.payChargeRate.old.chargeRate - An array containing the charge rate data for the old format of the order.
+ * @param {string} props.payChargeRate.old.payRate - An array containing the pay rate data for the old format of the order.
+ * @return {Array} An array of objects containing the type, charge rate, and pay rate of the order.
+ */
+function PayChargeRateTable({
+  payChargeRate,
+  version,
+}: {
+  payChargeRate: OrderDataProps["payChargeRate"][0];
+  version: "old" | "new";
+}) {
+  /**
+   * Generates a table friendly version of pay and charge rates based on the version of the rates object.
+   *
+   * @return {Array} An array of objects containing the type, charge rate, and pay rate.
+   */
+  const payChargeRateTableFriendly = () => {
+    if (version === "new") {
+      const payChargeRateTableFriendlyData: {
+        type: string;
+        ch: number;
+        pay: number;
+      }[] = [];
+      Object.entries(payChargeRate.chargeRate).map(([key, value]) => {
+        payChargeRateTableFriendlyData.push({
+          type: key,
+          ch: value,
+          pay: 0,
+        });
+      });
+      Object.entries(payChargeRate.payRate).map(([key, value]) => {
+        Object.assign(
+          payChargeRateTableFriendlyData[
+            payChargeRateTableFriendlyData.findIndex(
+              (item) => item.type === key
+            )
+          ],
+          { pay: value }
+        );
+      });
+      return payChargeRateTableFriendlyData;
+    } else if (version === "old") {
+      const payChargeRateTableFriendlyData: {
+        type: string;
+        ch: number;
+        pay: number;
+      }[] = [];
+      Object.entries(payChargeRate.old.chargeRate).map(([key, value]) => {
+        payChargeRateTableFriendlyData.push({
+          type: key,
+          ch: value,
+          pay: 0,
+        });
+      });
+      Object.entries(payChargeRate.old.payRate).map(([key, value]) => {
+        Object.assign(
+          payChargeRateTableFriendlyData[
+            payChargeRateTableFriendlyData.findIndex(
+              (item) => item.type === key
+            )
+          ],
+          { pay: value }
+        );
+      });
+      return payChargeRateTableFriendlyData;
+    }
+  };
+
+  return (
+    <Fragment>
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          flexFlow: "column",
+        }}
+      >
+        <Grid.Container css={{ flex: "0 1 auto" }}>
+          <Grid>
+            <Text weight="light">{payChargeRate?.jobRole?.name}</Text>
+          </Grid>
+          <Grid alignItems="flex-end" justify="flex-end" xs>
+            <Text
+              weight="light"
+              color="$accents7"
+              size={"$sm"}
+              css={{
+                pr: "$5",
+              }}
+            >
+              {version == "new" ? "at " : "before "}
+              {payChargeRate?.appliedAt.toLocaleString("en-IE", {
+                day: "2-digit",
+                month: "short",
+                year: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: false,
+              })}
+            </Text>
+          </Grid>
+        </Grid.Container>
+        <Grid.Container
+          gap={2}
+          justify="space-between"
+          css={{ flex: "1 1 auto" }}
+        >
+          <Grid xs={12}>
+            <ContainerCard noPadding>
+              <Table
+                shadow={false}
+                aria-label="WorkerReqTable"
+                compact
+                css={{
+                  height: "auto",
+                  minWidth: "100%",
+                }}
+              >
+                <Table.Header>
+                  <Table.Column
+                    css={{ height: "calc(30px - 7.53333px) !important" }}
+                  >
+                    TYPE
+                  </Table.Column>
+                  <Table.Column
+                    css={{ height: "calc(30px - 7.53333px) !important" }}
+                  >
+                    CHARGE RATE
+                  </Table.Column>
+                  <Table.Column
+                    css={{ height: "calc(30px - 7.53333px) !important" }}
+                  >
+                    PAY RATE
+                  </Table.Column>
+                </Table.Header>
+                <Table.Body items={payChargeRateTableFriendly()}>
+                  {(payChargeRate) => (
+                    <Table.Row key={payChargeRate.type}>
+                      <Table.Cell>
+                        <Text size={"$xs"} weight={"bold"} color="$accents7">
+                          {payChargeRate.type.toUpperCase()}
+                        </Text>
+                      </Table.Cell>
+                      <Table.Cell>
+                        <Text size={"$sm"}>{payChargeRate.ch}</Text>
+                      </Table.Cell>
+                      <Table.Cell>
+                        <Text size={"$sm"}>{payChargeRate.pay}</Text>
+                      </Table.Cell>
+                    </Table.Row>
+                  )}
+                </Table.Body>
+              </Table>
+            </ContainerCard>
+          </Grid>
+        </Grid.Container>
+      </div>
+    </Fragment>
+  );
+}
+
+/**
+ * Renders a modal component for editing and adding pay and charge rates for a job role. 
+ *
+ * @param {object} props - An object containing the following properties:
+ *    @param {boolean} props.open - Determines whether the modal is open or not.
+ *    @param {function} props.onClose - A callback function to close the modal.
+ *    @param {function} [props.onEdit] - A callback function to edit the pay and charge rates.
+ *    @param {function} [props.onAdd] - A callback function to add new pay and charge rates.
+ *    @param {object[]} props.payChargeRates - An array of objects containing pay and charge rate data.
+ * @return {JSX.Element} The modal component.
+ */
+function EditAddPayChargeRates({
+  open,
+  onClose,
+  onEdit,
+  onAdd,
+  payChargeRates,
+}: {
+  open: boolean;
+  payChargeRates: OrderDataProps["payChargeRate"];
+  onClose: () => void;
+  onEdit?: ([]: {
+    appliedAt: Date;
+    rateID: string;
+    pay: {
+      normal: number;
+      ot1: number;
+      ot2: number;
+      ot3: number;
+      ot4: number;
+    };
+    charge: {
+      normal: number;
+      ot1: number;
+      ot2: number;
+      ot3: number;
+      ot4: number;
+    };
+  }[]) => void;
+  onAdd?: ([]: string[]) => void;
+}) {
+  const initValues = [
+    ...payChargeRates.map((rate) => ({
+      appliedAt: new Date(),
+      rateID: rate.id,
+      pay: rate.payRate,
+      charge: rate.chargeRate,
+    })),
+  ];
+
+  const [value, setValue] = useState<
+    {
+      appliedAt: Date;
+      rateID: string;
+      pay: {
+        normal: number;
+        ot1: number;
+        ot2: number;
+        ot3: number;
+        ot4: number;
+      };
+      charge: {
+        normal: number;
+        ot1: number;
+        ot2: number;
+        ot3: number;
+        ot4: number;
+      };
+    }[]
+  >(initValues);
+  const [page, setPage] = useState<number>(1);
+  return (
+    <Fragment>
+      <Modal open={open} onClose={onClose}>
+        <Modal.Body>
+          <Grid.Container>
+            <Grid xs={12}>
+              {page <= payChargeRates.length ? (
+                <Fragment>
+                  <Grid.Container gap={2}>
+                    <Grid xs={12} justify="center">
+                      <div>
+                        <Text size={"$lg"} weight={"bold"}>
+                          Edit Pay and Charge Rates
+                        </Text>
+                        <Text>{payChargeRates[page - 1]?.jobRole?.name}</Text>
+                      </div>
+                    </Grid>
+                    <Grid
+                      xs={12}
+                      css={{ h: 0, border: "0.25px solid $border", p: 0 }}
+                    />
+                    <Spacer y={1} />
+                    <Grid xs={12}>
+                      <ContainerCard>
+                        <Grid.Container gap={1}>
+                          <Grid xs={3} alignItems="center">
+                            <Text size={"$sm"}>Apply at</Text>
+                          </Grid>
+                          <Grid xs>
+                            <Input
+                              aria-label={
+                                "Apply at" + payChargeRates[page - 1].id
+                              }
+                              name={"appliedAt" + payChargeRates[page - 1].id}
+                              value={
+                                value[page - 1].appliedAt
+                                  .toISOString()
+                                  .split("T")[0]
+                              }
+                              onChange={(e) => {
+                                setValue((prev) => {
+                                  return {
+                                    ...prev,
+                                    [page - 1]: {
+                                      ...prev[page - 1],
+                                      appliedAt: new Date(e.target.value),
+                                    },
+                                  };
+                                });
+                              }}
+                              min={new Date().toISOString().split("T")[0]}
+                              bordered
+                              fullWidth
+                              type="date"
+                            />
+                          </Grid>
+                          <Grid xs={3} alignItems="center"></Grid>
+                          <Grid xs={4.5} alignItems="center">
+                            <Text size={"$sm"}>Pay rate</Text>
+                          </Grid>
+                          <Grid xs={4.5} alignItems="center">
+                            <Text size={"$sm"}>Ch. rate</Text>
+                          </Grid>
+                          <Grid xs={3} alignItems="center">
+                            <Text size={"$sm"}>Normal</Text>
+                          </Grid>
+                          <Grid xs={4.5} alignItems="center">
+                            <Input
+                              aria-label={
+                                "normalPay" + payChargeRates[page - 1].id
+                              }
+                              name={"normalPay" + payChargeRates[page - 1].id}
+                              type="number"
+                              bordered
+                              placeholder={value[
+                                page - 1
+                              ].pay.normal.toString()}
+                              fullWidth
+                              onChange={(e) => {
+                                setValue((prev) => {
+                                  return {
+                                    ...prev,
+                                    [page - 1]: {
+                                      ...prev[page - 1],
+                                      pay: {
+                                        ...prev[page - 1].pay,
+                                        normal: Number(e.target.value),
+                                      },
+                                    },
+                                  };
+                                });
+                              }}
+                              value={value[page - 1].pay.normal}
+                            />
+                          </Grid>
+                          <Grid xs={4.5} alignItems="center">
+                            <Input
+                              aria-label={
+                                "normalCharge" + payChargeRates[page - 1].id
+                              }
+                              name={
+                                "normalCharge" + payChargeRates[page - 1].id
+                              }
+                              type="number"
+                              bordered
+                              placeholder={value[
+                                page - 1
+                              ].pay.normal.toString()}
+                              fullWidth
+                              onChange={(e) => {
+                                setValue((prev) => {
+                                  return {
+                                    ...prev,
+                                    [page - 1]: {
+                                      ...prev[page - 1],
+                                      charge: {
+                                        ...prev[page - 1].charge,
+                                        normal: Number(e.target.value),
+                                      },
+                                    },
+                                  };
+                                });
+                              }}
+                              value={value[page - 1].charge.normal}
+                            />
+                          </Grid>
+                          <Grid xs={3} alignItems="center">
+                            <Text size={"$sm"}>OT1</Text>
+                          </Grid>
+                          <Grid xs={4.5} alignItems="center">
+                            <Input
+                              name={"ot1Pay" + payChargeRates[page - 1].id}
+                              aria-label={
+                                "ot1Pay" + payChargeRates[page - 1].id
+                              }
+                              type="number"
+                              bordered
+                              placeholder={value[page - 1].pay.ot1.toString()}
+                              fullWidth
+                              onChange={(e) => {
+                                setValue((prev) => {
+                                  return {
+                                    ...prev,
+                                    [page - 1]: {
+                                      ...prev[page - 1],
+                                      pay: {
+                                        ...prev[page - 1].pay,
+                                        ot1: Number(e.target.value),
+                                      },
+                                    },
+                                  };
+                                });
+                              }}
+                              value={value[page - 1].pay.ot1}
+                            />
+                          </Grid>
+                          <Grid xs={4.5} alignItems="center">
+                            <Input
+                              name={"ot1Charge" + payChargeRates[page - 1].id}
+                              aria-label={
+                                "ot1Charge" + payChargeRates[page - 1].id
+                              }
+                              type="number"
+                              bordered
+                              placeholder={value[page - 1].pay.ot1.toString()}
+                              fullWidth
+                              onChange={(e) => {
+                                setValue((prev) => {
+                                  return {
+                                    ...prev,
+                                    [page - 1]: {
+                                      ...prev[page - 1],
+                                      charge: {
+                                        ...prev[page - 1].charge,
+                                        ot1: Number(e.target.value),
+                                      },
+                                    },
+                                  };
+                                });
+                              }}
+                              value={value[page - 1].charge.ot1}
+                            />
+                          </Grid>
+                          <Grid xs={3} alignItems="center">
+                            <Text size={"$sm"}>OT2</Text>
+                          </Grid>
+                          <Grid xs={4.5} alignItems="center">
+                            <Input
+                              name={"ot2Pay" + payChargeRates[page - 1].id}
+                              aria-label={
+                                "ot2Pay" + payChargeRates[page - 1].id
+                              }
+                              type="number"
+                              bordered
+                              placeholder={value[page - 1].pay.ot2.toString()}
+                              fullWidth
+                              onChange={(e) => {
+                                setValue((prev) => {
+                                  return {
+                                    ...prev,
+                                    [page - 1]: {
+                                      ...prev[page - 1],
+                                      pay: {
+                                        ...prev[page - 1].pay,
+                                        ot2: Number(e.target.value),
+                                      },
+                                    },
+                                  };
+                                });
+                              }}
+                              value={value[page - 1].pay.ot2}
+                            />
+                          </Grid>
+                          <Grid xs={4.5} alignItems="center">
+                            <Input
+                              name={"ot2Charge" + payChargeRates[page - 1].id}
+                              aria-label={
+                                "ot2Charge" + payChargeRates[page - 1].id
+                              }
+                              type="number"
+                              bordered
+                              placeholder={value[page - 1].pay.ot2.toString()}
+                              fullWidth
+                              onChange={(e) => {
+                                setValue((prev) => {
+                                  return {
+                                    ...prev,
+                                    [page - 1]: {
+                                      ...prev[page - 1],
+                                      charge: {
+                                        ...prev[page - 1].charge,
+                                        ot2: Number(e.target.value),
+                                      },
+                                    },
+                                  };
+                                });
+                              }}
+                              value={value[page - 1].charge.ot2}
+                            />
+                          </Grid>
+                          <Grid xs={3} alignItems="center">
+                            <Text size={"$sm"}>OT3</Text>
+                          </Grid>
+                          <Grid xs={4.5} alignItems="center">
+                            <Input
+                              name={"ot3Pay" + payChargeRates[page - 1].id}
+                              aria-label={
+                                "ot3Pay" + payChargeRates[page - 1].id
+                              }
+                              type="number"
+                              bordered
+                              placeholder={value[page - 1].pay.ot3.toString()}
+                              fullWidth
+                              onChange={(e) => {
+                                setValue((prev) => {
+                                  return {
+                                    ...prev,
+                                    [page - 1]: {
+                                      ...prev[page - 1],
+                                      pay: {
+                                        ...prev[page - 1].pay,
+                                        ot3: Number(e.target.value),
+                                      },
+                                    },
+                                  };
+                                });
+                              }}
+                              value={value[page - 1].pay.ot3}
+                            />
+                          </Grid>
+                          <Grid xs={4.5} alignItems="center">
+                            <Input
+                              name={"ot3Charge" + payChargeRates[page - 1].id}
+                              aria-label={
+                                "ot3Charge" + payChargeRates[page - 1].id
+                              }
+                              type="number"
+                              bordered
+                              placeholder={value[
+                                page - 1
+                              ].charge.ot3.toString()}
+                              fullWidth
+                              onChange={(e) => {
+                                setValue((prev) => {
+                                  return {
+                                    ...prev,
+                                    [page - 1]: {
+                                      ...prev[page - 1],
+                                      charge: {
+                                        ...prev[page - 1].charge,
+                                        ot3: Number(e.target.value),
+                                      },
+                                    },
+                                  };
+                                });
+                              }}
+                              value={value[page - 1].charge.ot3}
+                            />
+                          </Grid>
+                          <Grid xs={3} alignItems="center">
+                            <Text size={"$sm"}>OT4</Text>
+                          </Grid>
+                          <Grid xs={4.5} alignItems="center">
+                            <Input
+                              name={"ot4Pay" + payChargeRates[page - 1].id}
+                              aria-label={
+                                "ot4Pay" + payChargeRates[page - 1].id
+                              }
+                              type="number"
+                              bordered
+                              placeholder={value[page - 1].pay.ot4.toString()}
+                              fullWidth
+                              onChange={(e) => {
+                                setValue((prev) => {
+                                  return {
+                                    ...prev,
+                                    [page - 1]: {
+                                      ...prev[page - 1],
+                                      pay: {
+                                        ...prev[page - 1].pay,
+                                        ot4: Number(e.target.value),
+                                      },
+                                    },
+                                  };
+                                });
+                              }}
+                              value={value[page - 1].pay.ot4}
+                            />
+                          </Grid>
+                          <Grid xs={4.5} alignItems="center">
+                            <Input
+                              name={"ot4Charge" + payChargeRates[page - 1].id}
+                              aria-label={
+                                "ot4Charge" + payChargeRates[page - 1].id
+                              }
+                              type="number"
+                              bordered
+                              placeholder={value[
+                                page - 1
+                              ].charge.ot4.toString()}
+                              fullWidth
+                              onChange={(e) => {
+                                setValue((prev) => {
+                                  return {
+                                    ...prev,
+                                    [page - 1]: {
+                                      ...prev[page - 1],
+                                      charge: {
+                                        ...prev[page - 1].charge,
+                                        ot4: Number(e.target.value),
+                                      },
+                                    },
+                                  };
+                                });
+                              }}
+                              value={value[page - 1].charge.ot4}
+                            />
+                          </Grid>
+                        </Grid.Container>
+                      </ContainerCard>
+                    </Grid>
+                    <Spacer y={1} />
+                    <Grid
+                      xs={12}
+                      css={{ h: 0, border: "0.25px solid $border", p: 0 }}
+                    />
+                    <Spacer y={1} />
+                  </Grid.Container>
+                </Fragment>
+              ) : (
+                <Fragment>
+                  <Grid.Container gap={2}>
+                    <Grid xs={12} justify="center">
+                      <div>
+                        <Text size={"$lg"} weight={"bold"}>
+                          Add Pay and Charge Rates
+                        </Text>
+                        <Text>{payChargeRates[page - 1]?.jobRole?.name}</Text>
+                      </div>
+                    </Grid>
+                    <Grid
+                      xs={12}
+                      css={{ h: 0, border: "0.25px solid $border", p: 0 }}
+                    />
+                    <Spacer y={1} />
+                    <Grid xs={12}>
+                      <ContainerCard>
+                        <Grid.Container gap={1}>
+                          <Grid xs={12} alignItems="center">
+                            <Checkbox.Group
+                              aria-label="Checkbox group for rates"
+                              // should be id not name 
+                              defaultValue={[
+                                ...payChargeRates.map(
+                                  (item) => item.jobRole.name
+                                ),
+                              ]}
+                              onChange={(value)=>{
+                                if(onAdd){
+                                  onAdd(value)
+                                }
+                              }}
+                            >
+                              {faker.helpers
+                                .uniqueArray(
+                                  faker.helpers
+                                    .uniqueArray(createRandomJobRole, 40)
+                                    .map((jobRole) => jobRole.name),
+                                  11
+                                )
+                                .map((jobRole) => ({
+                                  id: faker.string.uuid(),
+                                  name: jobRole,
+                                }))
+                                .map((jobRole) => (
+                                  <Fragment key={jobRole.id}>
+                                    <Checkbox
+                                      //should be id not name
+                                      value={jobRole.name}
+                                      size="xs"
+                                      isDisabled={
+                                        payChargeRates.findIndex(
+                                          (item) =>
+                                            item.jobRole.name === jobRole.name
+                                        ) !== -1
+                                      }
+                                      label={jobRole.name}
+                                      color="secondary"
+                                    >
+                                      {jobRole.name}
+                                    </Checkbox>
+                                  </Fragment>
+                                ))}
+                            </Checkbox.Group>
+                          </Grid>
+                        </Grid.Container>
+                      </ContainerCard>
+                    </Grid>
+                  </Grid.Container>
+                </Fragment>
+              )}
+            </Grid>
+            <Grid xs={12}>
+              <Grid.Container gap={2}>
+                <Grid xs={12} justify="center">
+                  <Pagination
+                    page={page}
+                    onChange={(page) => {
+                      setPage(page);
+                      if (onEdit && value !== initValues) {
+                        onEdit(value);
+                      }
+                    }}
+                    loop
+                    size="lg"
+                    onlyDots
+                    rounded
+                    total={payChargeRates.length + 1}
+                    bordered
+                  />
+                </Grid>
+              </Grid.Container>
+            </Grid>
+          </Grid.Container>
+        </Modal.Body>
+      </Modal>
     </Fragment>
   );
 }

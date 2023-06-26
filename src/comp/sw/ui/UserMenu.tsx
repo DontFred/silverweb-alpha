@@ -8,6 +8,7 @@ import {
   User,
   Table,
   Text,
+  Avatar,
 } from "@nextui-org/react";
 import { UserProps } from "@/faker.d";
 
@@ -17,22 +18,28 @@ type MessageProps = {
   user: { name: string; dept: string; avatar: string };
   message: string;
   date: Date;
-}
+};
 
 /**
- * Renders a user menu with a list of messages.
+ * Renders a UserMenu component that displays a dropdown menu with user options, including
+ * messages. When the "messages" option is clicked, a modal with a table of messages is displayed,
+ * sorted by read status and date. The component accepts props for the user, an array of message
+ * objects, and an optional boolean for compact mode.
  *
- * @param {object} props - The component props.
- * @param {UserProps} props.user - The user object.
- * @param {MessageProps[]} props.messages - An array of message objects.
- * @return {JSX.Element} The JSX element representing the user menu.
+ * @param {Object} props - the component's props object
+ * @param {UserProps} props.user - the user object to display in the dropdown menu
+ * @param {MessageProps[]} props.messages - an array of message objects to display in the modal table
+ * @param {boolean} [props.compact] - an optional boolean to display the menu in compact mode
+ * @return {JSX.Element} the rendered UserMenu component
  */
 export default function UserMenu({
   user,
   messages,
+  compact,
 }: {
   user: UserProps;
   messages: MessageProps[];
+  compact?: boolean;
 }) {
   const [visible, setVisible] = useState(false);
   const handler = () => setVisible(true);
@@ -40,13 +47,16 @@ export default function UserMenu({
     setVisible(false);
   };
 
-  messages.sort(getSortedMessagesByDateAndReadStatus)
-  function getSortedMessagesByDateAndReadStatus(a: MessageProps, b: MessageProps){
-      if (a.read !== b.read) {
-        return a.read ? -1 : 1;
-      } else {
-        return a.date > b.date ? -1 : 1;
-      }
+  messages.sort(getSortedMessagesByDateAndReadStatus);
+  function getSortedMessagesByDateAndReadStatus(
+    a: MessageProps,
+    b: MessageProps
+  ) {
+    if (a.read !== b.read) {
+      return a.read ? -1 : 1;
+    } else {
+      return a.date > b.date ? -1 : 1;
+    }
   }
   return (
     <Fragment>
@@ -125,11 +135,7 @@ export default function UserMenu({
                 </Table.Row>
               )}
             </Table.Body>
-            <Table.Pagination
-              noMargin
-              align="center"
-              rowsPerPage={5}
-            />
+            <Table.Pagination noMargin align="center" rowsPerPage={5} />
           </Table>
         </Modal.Body>
       </Modal>
@@ -139,7 +145,7 @@ export default function UserMenu({
           right: 30,
           top: 30,
           display: "flex",
-          justifyContent: "flex-end"
+          justifyContent: "flex-end",
         }}
       >
         <div
@@ -149,25 +155,30 @@ export default function UserMenu({
           }}
         >
           <Badge
-            content="new"
+            content={"new"}
+            variant={compact ? "dot" : "default"}
             color="error"
             isInvisible={!messages.find((message) => !message.read) && true}
           >
-            <Dropdown>
+            <Dropdown placement="bottom-right">
               <Dropdown.Trigger>
                 <Card isPressable>
                   <Card.Body
                     css={{
-                      p: "12px 0",
+                      p: compact ? 0 : "12px 0",
                     }}
                   >
-                    <User
-                      name={user.name}
-                      src={user.avatar}
-                      description={user.dept.name}
-                      bordered
-                      color={user.color}
-                    />
+                    {compact ? (
+                      <Avatar src={user.avatar} color={user.color} bordered />
+                    ) : (
+                      <User
+                        name={user.name}
+                        src={user.avatar}
+                        description={user.dept.name}
+                        bordered
+                        color={user.color}
+                      />
+                    )}
                   </Card.Body>
                 </Card>
               </Dropdown.Trigger>

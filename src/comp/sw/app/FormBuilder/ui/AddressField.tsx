@@ -2,7 +2,8 @@ import { Grid, Spacer } from "@nextui-org/react";
 import TextField from "./TextField";
 import SelectField from "./SelectField";
 import { AddressFieldProps } from "../types";
-
+import Nominatim from "nominatim-client";
+import { useFormContext } from "react-hook-form";
 
 /**
  * Renders an address form with street number, city, postal code, and country fields.
@@ -13,8 +14,48 @@ import { AddressFieldProps } from "../types";
 export default function AddressField(
   props: AddressFieldProps & { name: string }
 ) {
+  const { watch, setError, clearErrors } = useFormContext();
+
   const { name, option } = props;
 
+  /**
+   * Asynchronously checks if the provided address is valid.
+   *
+   * @return {Promise<void>} A Promise that resolves when the function completes.
+   */
+  // async function checkAddress() {
+  //   const result = await Nominatim.createClient({
+  //     useragent: "SilverWeb",
+  //     referer: `${process.env.NEXT_PUBLIC_HOST_DOMAIN}`,
+  //   }).search({
+  //     q: `${watch(name).streetNo}, ${watch(name).postalCode} ${
+  //       watch(name).city
+  //     }, ${watch(name).country}`,
+  //     addressdetails: 1,
+  //   });
+  //   if (result.length != 0) {
+  //     clearErrors(name);
+  //     return false
+  //   } else {
+  //     setError(name + ".streetNo", {
+  //       type: "validate",
+  //       message: "Please enter a valid Address",
+  //     });
+  //     setError(name + ".postalCode", {
+  //       type: "validate",
+  //       message: "Please enter a valid Address",
+  //     });
+  //     setError(name + ".city", {
+  //       type: "validate",
+  //       message: "Please enter a valid Address",
+  //     });
+  //     setError(name + ".country", {
+  //       type: "validate",
+  //       message: "Please enter a valid Address",
+  //     });
+  //     return "Please enter a valid Address"
+  //   }
+  // }
 
   return (
     <Grid.Container>
@@ -27,7 +68,7 @@ export default function AddressField(
         />
       </Grid>
       <Grid xs={12}>
-        <Spacer y={0.5}/>
+        <Spacer y={1} />
       </Grid>
       <Grid xs>
         <TextField
@@ -38,7 +79,7 @@ export default function AddressField(
         />
       </Grid>
       <Grid>
-        <Spacer x={0.5} />
+        <Spacer x={1} />
       </Grid>
       <Grid xs>
         <TextField
@@ -49,7 +90,7 @@ export default function AddressField(
         />
       </Grid>
       <Grid xs={12}>
-        <Spacer y={0.5}/>
+        <Spacer y={1} />
       </Grid>
       <Grid xs={12}>
         <SelectField
@@ -57,13 +98,7 @@ export default function AddressField(
           label="Country"
           type="select"
           items={{
-            Estimated: [
-              "Sweden",
-              "Denmark",
-              "Norway",
-              "Ireland",
-              "Poland"
-            ],
+            Estimated: ["Sweden", "Denmark", "Norway", "Ireland", "Poland"],
             Africa: [
               "Algeria",
               "Angola",
@@ -276,7 +311,51 @@ export default function AddressField(
               "Venezuela",
             ],
           }}
-          option={option}
+          option={{...option, validate: {
+            ...option?.validate,
+            checkAddress: async (_, ) => {
+              try {
+                if(watch(name).streetNo && watch(name).postalCode && watch(name).city && watch(name).country) {
+                  const result = await Nominatim.createClient({
+                        useragent: "SilverWeb Nominatim" + name,
+                        referer: `${process.env.NEXT_PUBLIC_HOST_DOMAIN}`,
+                      }).search({
+                        q: `${watch(name).streetNo}, ${watch(name).postalCode} ${
+                          watch(name).city
+                        }, ${watch(name).country}`,
+                        addressdetails: 1,
+                      });
+                      console.log(result, "result")
+                      if (result.length != 0) {
+                        clearErrors(name);
+                        return false
+                      } else {
+                        setError(name + ".streetNo", {
+                          type: "validate",
+                          message: "Please enter a valid Address",
+                        });
+                        setError(name + ".postalCode", {
+                          type: "validate",
+                          message: "Please enter a valid Address",
+                        });
+                        setError(name + ".city", {
+                          type: "validate",
+                          message: "Please enter a valid Address",
+                        });
+                        setError(name + ".country", {
+                          type: "validate",
+                          message: "Please enter a valid Address",
+                        });
+                        return "Please enter a valid Address"
+                      }
+                      
+                }
+              } catch (error) {
+                console.error(error, "error");
+                return true
+              }
+            }, 
+          }}}
         />
       </Grid>
     </Grid.Container>

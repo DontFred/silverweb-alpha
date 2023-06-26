@@ -37,6 +37,7 @@ type DefaultProps = {
   label?: string;
   htmlType?: HTMLInputTypeAttribute;
   helpText?: string;
+  placeholder?: string;
   option?: {
     required?: ValidationRule<boolean>;
     min?: ValidationRule<number>;
@@ -221,6 +222,7 @@ export type Fields = Record<string, Field>;
 export interface FormProps {
   fields: Array<Fields>;
   onSubmit: SubmitHandler<FieldValues>;
+  defaultValues?: Record<string, boolean | string | number | undefined | Record<string, Record<string, boolean | string | number | undefined | Record<string, Record<string, boolean | string | number | undefined | Record<string, any>>>>>>;
 }
 
 export interface Meta {

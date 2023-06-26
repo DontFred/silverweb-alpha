@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from "react";
+import { Fragment } from "react";
 import { EmailFieldProps } from "../types";
 import { useFormContext } from "react-hook-form";
 import { Input } from "@nextui-org/react";
@@ -17,14 +17,6 @@ export default function EmailField(props: EmailFieldProps & { name: string }) {
   const Error = name
     .split(".")
     .reduce((err, path): any => err && err[path], formState.errors);
-
-    useEffect(() => {
-        if (watch(name)) {
-          if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(watch(name))){
-            setError(name, {message: "Please enter a valid email", type: "pattern"})
-          }
-        }
-      }, [formState.isValidating, watch, setError, name]);
 
   return (
     <Fragment>
@@ -45,7 +37,7 @@ export default function EmailField(props: EmailFieldProps & { name: string }) {
           initialValue={watch(name)}
           clearable
           labelPlaceholder={label}
-          {...register(name, { ...option })}
+          {...register(name, { ...option, ...option && {validate: (value: string) => value.includes("@") ? "" : "Please enter a valid email address" }}) }
         />
         <div
           style={{

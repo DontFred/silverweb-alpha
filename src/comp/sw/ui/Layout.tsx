@@ -13,9 +13,10 @@ import Copyright from "./Copyright";
  * Renders a layout component with a sidebar, user menu, and main content section.
  *
  * @param {Object} children - The main content to be rendered.
+ * @param {boolean} compact - Whether the layout should be compact.
  * @return {JSX.Element} The rendered layout component.
  */
-export default function Layout({ children }: {children: ReactNode[] | ReactNode}) {
+export default function Layout({ children, compact }: {children: ReactNode[] | ReactNode, compact?: boolean}) {
   return (
     <Fragment>
       <Grid.Container css={{ p: 0 }}>
@@ -26,6 +27,7 @@ export default function Layout({ children }: {children: ReactNode[] | ReactNode}
         >
           <Copyright />
           <UserMenu
+            compact={compact}
             user={{ ...createRandomUser()}}
             messages={[
               ...faker.helpers.uniqueArray(()=>({
@@ -41,7 +43,9 @@ export default function Layout({ children }: {children: ReactNode[] | ReactNode}
               }), 12),
             ]}
           />
-          <Sidebar />
+          <Sidebar 
+            compact={compact}
+            />
         </Grid>
         <Grid xs justify="center"><Container lg css={{p: 0}}>
         {children}

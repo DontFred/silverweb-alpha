@@ -12,7 +12,7 @@ import TooltipHelper from "./TooltipHelper";
  */
 export default function TextField(props: TextFieldProps & { name: string }) {
   const { register, watch, formState } = useFormContext();
-  const { label, name, option, helpText } = props;
+  const { label, name, option, helpText, placeholder } = props;
 
   const Error = name
     .split(".")
@@ -37,6 +37,7 @@ export default function TextField(props: TextFieldProps & { name: string }) {
           helperColor="error"
           bordered
           clearable
+          placeholder={!label ? placeholder : undefined}
           labelPlaceholder={label}
           {...register(name, { ...option })}
         />

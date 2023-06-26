@@ -123,7 +123,7 @@ export default function TextAreaField(
             ? "var(--nextui-colors-errorLightContrast)"
             : "var(--nextui-colors-gray900)",
           left: "var(--nextui-space-2)",
-          top: "-14px",
+          top: "-21px",
         }),
   };
 

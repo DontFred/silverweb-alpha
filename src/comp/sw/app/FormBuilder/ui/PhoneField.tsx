@@ -10,7 +10,7 @@ import {
 } from "@nextui-org/react";
 import { Check, Play } from "lucide-react";
 import Image from "next/image";
-import React, { ChangeEvent, Fragment, useEffect, useRef, useState } from "react";
+import React, { ChangeEvent, Fragment, useRef, useState } from "react";
 import StyleObject from "csstype";
 import { PhoneFieldProps } from "../types";
 import { useController, useFormContext } from "react-hook-form";
@@ -1307,16 +1307,11 @@ export default function PhoneField(props: PhoneFieldProps & { name: string }) {
   const { field } = useController({
     name: name,
     control: control,
-    rules: option,
+    rules: {...option, pattern: {
+      message: "Please enter a valid phone number",
+      value: /^\+[-0-9]+$/
+    }},
   });
-
-  useEffect(() => {
-    if (watch(name)) {
-      if (!/^\+[-0-9]+$/.test(watch(name))){
-        setError(name, {message: "Please enter a valid phone number", type: "pattern"})
-      }
-    }
-  }, [formState.isValidating, name, setError, watch]);
 
   // Errors
 

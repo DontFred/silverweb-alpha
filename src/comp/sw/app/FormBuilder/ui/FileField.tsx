@@ -3,7 +3,6 @@ import React, {
   ChangeEvent,
   DragEvent,
   Fragment,
-  useEffect,
 } from "react";
 import { FileFieldProps } from "../types";
 import { FileCheck2, FileX2, X } from "lucide-react";
@@ -89,7 +88,10 @@ export default function FileField(props: FileFieldProps & { name: string }) {
   const { field } = useController({
     name: name,
     control: control,
-    rules: option,
+    rules: {...option, validate: {
+      ...option?.validate,
+      validate: (value: { filename: string; uri: string }) => value.uri !== "zugross",
+    }},
     defaultValue: [],
   });
 
@@ -97,22 +99,6 @@ export default function FileField(props: FileFieldProps & { name: string }) {
     .split(".")
     .reduce((err, path): any => err && err[path], formState.errors);
 
-  useEffect(() => {
-    if (watch(name)) {
-     if(
-         watch(name).find(
-           (file: { filename: string; uri: string }) => file.uri === "zugross"
-         )
-     ){
-        setError(name, {
-            message: "The file size is to big",
-            type: "maxLength"
-        })
-     }else{
-        clearErrors(name)
-     }
-    }
-  }, [clearErrors, formState.isValidating, name, setError, watch]);
 
   //convert to base64
 
