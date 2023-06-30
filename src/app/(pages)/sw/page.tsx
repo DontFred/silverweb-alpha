@@ -1,108 +1,38 @@
+"use client";
+
 import { Fragment } from "react";
 import HomeContent from "./content";
-import { ProjectProps as FakerProjectProps } from "@/faker.d";
 import { faker } from "@faker-js/faker";
-import { createRandomProjects } from "@/faker";
+import { trpc } from "@/lib/trpc/csTRPC";
+import LoadingComponent from "@/app/loading";
+import { Decimal } from "@prisma/client/runtime";
 
-export type ProjectProps = FakerProjectProps;
+
 
 export type MapFriendlyProjectData = {
-  id: ProjectProps["id"];
-  type: ProjectProps["type"];
-  name: ProjectProps["name"];
-  company: ProjectProps["company"]["name"];
-  address: ProjectProps["address"]["coordinates"];
-};
+  id: string,
+  type: string,
+  name: string,
+  company: string,
+  address: {
+    lat: Decimal,
+    lng: Decimal,
+  }
+}[] | undefined;
 
 export type StatisticsFriendlyProjectData = {
-  greenProjects: number;
-  factories: number;
-  buildings: number;
-  other: number;
+  greenProjects: number | undefined;
+  factories: number | undefined;
+  buildings: number | undefined;
+  other: number | undefined;
 };
 
 export type HoursFriendlyProjectHistoryData = {
-  elec: number;
-  mech: number;
-  white: number;
+  elec: number | undefined;
+  mech: number | undefined;
+  white: number | undefined;
 };
 
-/**
- * Retrieves all project data.
- *
- * @returns {Promise<ProjectProps[]>} An array of ProjectProps objects.
- */
-async function getAllProjectData() {
-  const projectsData: ProjectProps[] = faker.helpers.uniqueArray(
-    createRandomProjects,
-    60
-  );
-
-  return projectsData;
-}
-
-/**
- * Returns an array of map-friendly project data objects by mapping over an array of project data.
- *
- * @param {ProjectProps[]} allProjectData - An array of ProjectProps objects.
- * @return {MapFriendlyProjectData[]} - An array of MapFriendlyProjectData objects with only the necessary properties for map display.
- */
-async function getMapFriendlyAllProjectsData(allProjectData: ProjectProps[]) {
-  const projectsData = allProjectData;
-  const mapFriendlyAllProjectsData: MapFriendlyProjectData[] = projectsData.map(
-    (project) => ({
-      id: project?.id,
-      type: project?.type,
-      name: project?.name,
-      company: project?.company?.name,
-      address: project?.address?.coordinates,
-    })
-  );
-
-  return mapFriendlyAllProjectsData;
-}
-
-/**
- * Returns an object with statistics-friendly data from the given array of project data.
- *
- * @param {ProjectProps[]} allProjectData - An array of project data.
- * @return {StatisticsFriendlyProjectData} An object containing the count of projects in each category.
- */
-async function getStaticFriendlyAllProjectsData(allProjectData: ProjectProps[]) {
-  const projectsData = allProjectData;
-
-  const ProjectCategory = {
-    greenProjects: ["Battery Factory", "Data Centre", "Windfarm"],
-    factories: ["Pre-Cast Factory", "Paper Mill"],
-    building: ["Apartments", "Museum", "Shopping Centre"],
-    other: [
-      "Battery Factory",
-      "Data Centre",
-      "Windfarm",
-      "Pre-Cast Factory",
-      "Paper Mill",
-      "Apartments",
-      "Museum",
-      "Shopping Centre",
-    ],
-  };
-
-  const statisticFriendlyAllProjectsData: StatisticsFriendlyProjectData = {
-    greenProjects: projectsData.filter((p) =>
-      ProjectCategory.greenProjects.includes(p.type)
-    ).length,
-    factories: projectsData.filter((p) =>
-      ProjectCategory.factories.includes(p.type)
-    ).length,
-    buildings: projectsData.filter((p) =>
-      ProjectCategory.building.includes(p.type)
-    ).length,
-    other: projectsData.filter((p) => !ProjectCategory.other.includes(p.type))
-      .length,
-  };
-
-  return statisticFriendlyAllProjectsData;
-}
 
 /**
  * Asynchronously retrieves the hours-friendly history data for all projects.
@@ -125,12 +55,66 @@ async function getHoursFriendlyAllProjectsData() {
  * @return {JSX.Element} The JSX element representing the homepage.
  */
 export default async function Home() {
+  
+  let { data, isLoading, isFetching } = trpc.getAllProjects.useQuery();
+  if (isLoading || isFetching) {
+    return <LoadingComponent />;
+  }
+  function getMapFriendlyAllProjectsData(allProjectData: typeof data ) {
+    const projectsData = allProjectData;
+    const mapFriendlyAllProjectsData: MapFriendlyProjectData = projectsData?.map(
+      (project) => ({
+        id: project.id,
+        type: project.type.name,
+        name: project.name,
+        company: project.company,
+        address: { lat: project.address.coordinates.lat, lng: project.address.coordinates.lng},
+      })
+    );
+  
+    return mapFriendlyAllProjectsData;
+  }
 
-  const allProjectData = await getAllProjectData()
-  const mapFriendlyAllProjectsData = await getMapFriendlyAllProjectsData(allProjectData);
+  function getStaticFriendlyAllProjectsData(allProjectData: typeof data) {
+    const projectsData = allProjectData;
+  
+    const ProjectCategory = {
+      greenProjects: ["Battery Factory", "Data Centre", "Windfarm"],
+      factories: ["Pre-Cast Factory", "Paper Mill"],
+      building: ["Apartments", "Museum", "Shopping Centre"],
+      other: [
+        "Battery Factory",
+        "Data Centre",
+        "Windfarm",
+        "Pre-Cast Factory",
+        "Paper Mill",
+        "Apartments",
+        "Museum",
+        "Shopping Centre",
+      ],
+    };
+  
+    const statisticFriendlyAllProjectsData: StatisticsFriendlyProjectData = {
+      greenProjects: projectsData?.filter((p) =>
+        ProjectCategory.greenProjects.includes(p.type.name)
+      ).length,
+      factories: projectsData?.filter((p) =>
+        ProjectCategory.factories.includes(p.type.name)
+      ).length,
+      buildings: projectsData?.filter((p) =>
+        ProjectCategory.building.includes(p.type.name)
+      ).length,
+      other: projectsData?.filter((p) => !ProjectCategory.other.includes(p.type.name))
+        .length,
+    };
+  
+    return statisticFriendlyAllProjectsData;
+  }
+
+  const mapFriendlyAllProjectsData = await getMapFriendlyAllProjectsData(data);
 
   const statisticFriendlyAllProjectsData =
-    await getStaticFriendlyAllProjectsData(allProjectData);
+    await getStaticFriendlyAllProjectsData(data);
 
   const hoursFriendlyAllProjectsHistoryData =
     await getHoursFriendlyAllProjectsData();
@@ -138,7 +122,7 @@ export default async function Home() {
   return (
     <Fragment>
       <HomeContent
-        mapFriendlyAllProjectsData={mapFriendlyAllProjectsData}
+        {...mapFriendlyAllProjectsData && { mapFriendlyAllProjectsData: mapFriendlyAllProjectsData }}
         statisticFriendlyAllProjectsData={statisticFriendlyAllProjectsData}
         hoursFriendlyAllProjectsHistoryData={
           hoursFriendlyAllProjectsHistoryData

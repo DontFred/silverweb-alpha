@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 import { Fragment, useState } from "react";
 import { Button, Grid, Modal } from "@nextui-org/react";
 import { FormProvider, useForm } from "react-hook-form";

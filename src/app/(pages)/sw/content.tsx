@@ -38,9 +38,9 @@ export default function HomeContent({
   statisticFriendlyAllProjectsData,
   hoursFriendlyAllProjectsHistoryData,
 }: {
-  mapFriendlyAllProjectsData: MapFriendlyProjectData[];
-  statisticFriendlyAllProjectsData: StatisticsFriendlyProjectData;
-  hoursFriendlyAllProjectsHistoryData: HoursFriendlyProjectHistoryData;
+  mapFriendlyAllProjectsData?: MapFriendlyProjectData;
+  statisticFriendlyAllProjectsData?: StatisticsFriendlyProjectData;
+  hoursFriendlyAllProjectsHistoryData?: HoursFriendlyProjectHistoryData;
 }) {
   return (
     <Layout>
@@ -78,14 +78,14 @@ export default function HomeContent({
                       <Text weight="light">Monthly Hours Statistics</Text>
                       <Grid.Container gap={2} justify="space-between">
                         <Grid>
-                          <TwoRowCard heading={hoursFriendlyAllProjectsHistoryData.mech} description="Mechanic" />
+                          <TwoRowCard heading={hoursFriendlyAllProjectsHistoryData?.mech} description="Mechanic" />
                         </Grid>
                         <Grid>
-                          <TwoRowCard heading={hoursFriendlyAllProjectsHistoryData.elec} description="Electrician" />
+                          <TwoRowCard heading={hoursFriendlyAllProjectsHistoryData?.elec} description="Electrician" />
                         </Grid>
                         <Grid>
                           <TwoRowCard
-                            heading={hoursFriendlyAllProjectsHistoryData.white}
+                            heading={hoursFriendlyAllProjectsHistoryData?.white}
                             description="White collar"
                           />
                         </Grid>
@@ -127,7 +127,7 @@ export default function HomeContent({
                       >
                         <Grid xs={12}>
                           <ContainerCard overflowHidden>
-                            <Map marker={mapFriendlyAllProjectsData} />
+                            <Map {...mapFriendlyAllProjectsData && {marker:mapFriendlyAllProjectsData}} />
                           </ContainerCard>
                         </Grid>
                       </Grid.Container>
@@ -178,20 +178,20 @@ export default function HomeContent({
                         <Grid>
                           <TwoRowCard
                             heading={
-                              statisticFriendlyAllProjectsData.greenProjects
+                              statisticFriendlyAllProjectsData?.greenProjects
                             }
                             description="Green Projects"
                           />
                         </Grid>
                         <Grid>
                           <TwoRowCard
-                            heading={statisticFriendlyAllProjectsData.factories}
+                            heading={statisticFriendlyAllProjectsData?.factories}
                             description="Factories"
                           />
                         </Grid>
                         <Grid>
                           <TwoRowCard
-                            heading={statisticFriendlyAllProjectsData.buildings}
+                            heading={statisticFriendlyAllProjectsData?.buildings}
                             description="Buildings"
                           />
                         </Grid>
@@ -208,7 +208,7 @@ export default function HomeContent({
                           }}
                         >
                           <TwoRowCard
-                            heading={statisticFriendlyAllProjectsData.other}
+                            heading={statisticFriendlyAllProjectsData?.other}
                             description="Other"
                           />
                         </Grid>

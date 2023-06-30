@@ -9,7 +9,13 @@
         "Sieben",
         "silverweb",
         "Storeperson",
+        "superjson",
         "Teleporter",
+        "trpc",
         "Windfarm"
-    ]
+    ],
+    "editor.formatOnSave": true,
+    "[prisma]": {
+        "editor.defaultFormatter": "Prisma.prisma"
+      },
 }

@@ -1,3 +1,5 @@
+import { Decimal } from "@prisma/client/runtime"
+
 export type MarkerProps = {
         id?: string,
         name: string,
@@ -17,7 +19,7 @@ export type MarkerProps = {
           string
         ,
         address: {
-          lat: number,
-          lng: number,
+          lat: Decimal,
+          lng: Decimal,
         }
-      }
+      } 

@@ -2,7 +2,7 @@
 
 import { Loading } from "@nextui-org/react"
 
-export default function loading() {
+export default function LoadingComponent() {
   return (
     <div
       style={{

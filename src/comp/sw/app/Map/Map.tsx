@@ -43,6 +43,7 @@ function getIcon(type: MarkerProps["type"]) {
   });
 }
 
+
 /**
  * Renders a map with markers on it.
  *

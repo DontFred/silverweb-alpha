@@ -2,13 +2,15 @@
 import Layout from "@/comp/sw/ui/Layout";
 import ThreeRowCard from "@/comp/sw/ui/cards/ThreeRowCard";
 import TwoRowCard from "@/comp/sw/ui/cards/TwoRowCard";
-import { Grid, Modal, Pagination, Text } from "@nextui-org/react";
+import { Grid, Modal, Pagination, Spacer, Text } from "@nextui-org/react";
 import React, { Fragment, useState } from "react";
 import { OrderProps } from "./page";
 import { useRouter } from "next/navigation";
 import { FormProvider, useForm } from "react-hook-form";
 import TextField from "@/comp/sw/app/FormBuilder/ui/TextField";
 import SelectField from "@/comp/sw/app/FormBuilder/ui/SelectField";
+import HeadingField from "@/comp/sw/app/FormBuilder/ui/HeadingField";
+import SubheadingField from "@/comp/sw/app/FormBuilder/ui/SubheadingField";
 
 type AddOrderProps = {};
 
@@ -26,36 +28,74 @@ export default function OrderFormContent({
   function handleAddOrder(data: AddOrderProps) {}
   return (
     <Fragment>
-      <Modal open={open} onClose={() => setOpen(false)} width="40%" css={{ p: "$sm"}}>
+      <Modal
+        open={open}
+        onClose={() => setOpen(false)}
+        width="40%"
+        css={{ p: "$sm" }}
+      >
         <Modal.Body>
           <Grid.Container gap={2}>
-            <Grid xs={12} justify="center">
-              <Text h3>Add order</Text>
-            </Grid>
             <Grid xs={12}>
               <FormProvider {...form}>
                 <form
                   onSubmit={form.handleSubmit(handleAddOrder)}
                   style={{ width: "100%" }}
                 >
-                  <Grid.Container gap={2}>
-                    <Grid xs={12}>
-                  <TextField type="text" name="orderCode" label="Unique Order Code" option={{
-                    required: {
-                      value: true,
-                      message: "Please enter a order code",
-                    },
-                    validate: {
-                      checkIfUnique: ()=>{
-                        return true
-                      }
-                    }
-                  }} />
-                    </Grid>
-                    <Grid xs={12}>
-                      <SelectField type="select" name="projectRef" label="Project reference (opt.)" items={[]} />
-                    </Grid>
-                  </Grid.Container>
+                  <Text h3>Add order</Text>
+                  <Spacer y={2} />
+                  <HeadingField content="Order code" type="heading" />
+                  <TextField
+                    type="text"
+                    name="orderCode"
+                    label="Unique order code"
+                    option={{
+                      required: {
+                        value: true,
+                        message: "Please enter a order code",
+                      },
+                      validate: {
+                        checkIfUnique: () => {
+                          return true;
+                        },
+                      },
+                    }}
+                  />
+                  <Spacer y={2} />
+                  <HeadingField content="Project reference" type="heading" />
+                  <SubheadingField
+                    content="if not select, it generate automatically"
+                    type="subheading"
+                  />
+                  <SelectField
+                    type="select"
+                    name="projectRef"
+                    label="Project reference (opt.)"
+                    items={[]}
+                  />
+                  <Spacer y={2} />
+                  <HeadingField content="Client reference" type="heading" />
+                  <SelectField
+                    type="select"
+                    name="clientRef"
+                    label="Client reference"
+                    items={[]}
+                  />
+                  <Spacer y={2} />
+                  <HeadingField
+                    content="Register name of the client"
+                    type="heading"
+                  />
+                  <SubheadingField
+                    content="if not select, it generate automatically"
+                    type="subheading"
+                  />
+                  <SelectField
+                    type="select"
+                    name="registerName"
+                    label="Register name (opt.)"
+                    items={[]}
+                  />
                 </form>
               </FormProvider>
             </Grid>

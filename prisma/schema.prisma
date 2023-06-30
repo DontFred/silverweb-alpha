@@ -1,0 +1,515 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String      @id @default(uuid())
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  email         String      @unique
+  name          String
+  department    Department  @relation(fields: [departmentID], references: [id])
+  departmentID  String
+  userRole      UserRole    @relation(fields: [userRoleID], references: [id])
+  userRoleID    String
+  avatar        String
+  employee      Employee    @relation(fields: [employeeID], references: [id])
+  employeeID    String      @unique
+  color         AvatarColor @relation(fields: [colorID], references: [id])
+  colorID       String
+  WroteComments Comment[]
+  Order         Order[]
+  Job           Job[]
+}
+
+model Department {
+  id         String   @id @default(uuid())
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  name       String   @unique
+  DeptMember User[]
+}
+
+model UserRole {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name      String   @unique
+  RoleUser  User[]
+}
+
+model AvatarColor {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  color     String   @unique
+  User      User[]
+}
+
+model Project {
+  id        String       @id @default(uuid())
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  name      String       @unique
+  company   String
+  type      ProjectTypes @relation(fields: [typeID], references: [id])
+  typeID    String
+  comment   String
+  address   Address      @relation(fields: [addressID], references: [id])
+  addressID String       @unique
+  Order     Order[]
+}
+
+model ProjectTypes {
+  id            String    @id @default(uuid())
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  name          String    @unique
+  ProjectOfType Project[]
+}
+
+model Address {
+  id                    String      @id @default(uuid())
+  createdAt             DateTime    @default(now())
+  updatedAt             DateTime    @updatedAt
+  streetNo              String
+  postCode              String
+  city                  String
+  country               String
+  coordinates           Coordinates @relation(fields: [coordinatesID], references: [id])
+  coordinatesID         String      @unique
+  Project               Project?
+  Company               Company[]
+  Office                Office?
+  ClientRegisterAddress Client[]
+  Employee              Employee[]
+  OrderProject          Order[]     @relation("ProjectAddress")
+  OrderDelivery         Order[]     @relation("DeliveryAddress")
+  OrderInvoicing        Order[]     @relation("InvoicingAddress")
+  OrderInduction        Order[]     @relation("InductionAddress")
+}
+
+model Coordinates {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  lat       Decimal
+  lng       Decimal
+  Address   Address?
+}
+
+model TrainingCourse {
+  id                     String                   @id @default(uuid())
+  createdAt              DateTime                 @default(now())
+  updatedAt              DateTime                 @updatedAt
+  name                   String                   @unique
+  TrainingCertificate    TrainingCertificate[]
+  TrainingCourseRequired TrainingCourseRequired[]
+}
+
+model JobRole {
+  id             String           @id @default(uuid())
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  name           String           @unique
+  ProjectHistory ProjectHistory[]
+  WorkerRequired WorkerRequired[]
+  PayChargeRate  PayChargeRate[]
+}
+
+model WorkType {
+  id            String          @id @default(uuid())
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  name          String          @unique
+  WorkPerformed WorkPerformed[]
+}
+
+model Comment {
+  id             String          @id @default(uuid())
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  user           User            @relation(fields: [userID], references: [id])
+  userID         String
+  comment        String
+  ContactComment ContactComment?
+  CompanyComment CompanyComment?
+}
+
+model Company {
+  id             String           @id @default(uuid())
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  name           String
+  workingField   String
+  address        Address          @relation(fields: [addressID], references: [id])
+  addressID      String
+  email          String
+  phone          String
+  Employees      Contact[]
+  ClientProfiles Client[]
+  CompanyComment CompanyComment[]
+}
+
+model CompanyComment {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  company   Company  @relation(fields: [companyID], references: [id])
+  companyID String
+  comment   Comment  @relation(fields: [commentID], references: [id])
+  commentID String   @unique
+}
+
+model Contact {
+  id               String             @id @default(uuid())
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  firstName        String
+  lastName         String
+  email            String
+  jobPosition      String?
+  phoneNumber      String
+  company          Company?           @relation(fields: [companyID], references: [id])
+  companyID        String?
+  Employee         Employee?
+  Order            Order[]
+  EmergencyContact EmergencyContact[]
+  ContactOrder     ContactOrder[]
+  ContactComment   ContactComment[]
+}
+
+model ContactComment {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  contact   Contact  @relation(fields: [contactID], references: [id])
+  contactID String
+  comment   Comment  @relation(fields: [commentID], references: [id])
+  commentID String   @unique
+}
+
+model Office {
+  id        String     @id @default(uuid())
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  name      String     @unique
+  address   Address    @relation(fields: [addressID], references: [id])
+  addressID String     @unique
+  Employee  Employee[]
+}
+
+model Client {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name      String
+  company   Company  @relation(fields: [companyID], references: [id])
+  companyID String
+  address   Address  @relation(fields: [addressID], references: [id])
+  addressID String
+  Order     Order[]
+}
+
+model Employee {
+  id                  String                @id @default(uuid())
+  createdAt           DateTime              @default(now())
+  updatedAt           DateTime              @updatedAt
+  office              Office                @relation(fields: [officeID], references: [id])
+  officeID            String
+  contact             Contact               @relation(fields: [contactID], references: [id])
+  contactID           String                @unique
+  dob                 DateTime
+  countryOfBirth      String
+  gender              String
+  maritalStatus       String
+  ppsn                String
+  nationality         String
+  address             Address               @relation(fields: [addressID], references: [id])
+  addressID           String
+  airport             String
+  airportComment      String
+  a1Payroll           String
+  avatar              String
+  EmployeeStatus      EmployeeStatus[]
+  Job                 Job[]
+  DriversLicense      DriversLicense?
+  NationalIDCard      NationalIDCard?
+  PassportInformation PassportInformation?
+  BankInformation     BankInformation?
+  ClothingSize        ClothingSize?
+  EmergencyContact    EmergencyContact?
+  TrainingCertificate TrainingCertificate[]
+  ProjectHistory      ProjectHistory[]
+  User                User?
+}
+
+model Order {
+  id                          String                   @id @default(uuid())
+  createdAt                   DateTime                 @default(now())
+  updatedAt                   DateTime                 @updatedAt
+  orderCode                   String                   @unique
+  answered                    Boolean                  @default(false)
+  client                      Client                   @relation(fields: [clientID], references: [id])
+  clientID                    String
+  User                        User                     @relation(fields: [accountManagerID], references: [id])
+  accountManagerID            String
+  Project                     Project                  @relation(fields: [projectID], references: [id])
+  projectID                   String
+  commentToGeneralInformation String
+  projectAddress              Address                  @relation("ProjectAddress", fields: [projectAddressID], references: [id])
+  projectAddressID            String
+  deliveryAddress             Address                  @relation("DeliveryAddress", fields: [deliveryAddressID], references: [id])
+  deliveryAddressID           String
+  invoicingAddress            Address                  @relation("InvoicingAddress", fields: [invoicingAddressID], references: [id])
+  invoicingAddressID          String
+  invoiceEmail                String
+  inductionAddress            Address                  @relation("InductionAddress", fields: [inductionAddressID], references: [id])
+  inductionAddressID          String
+  orgaNumber                  String
+  vatNumber                   String
+  payTerm                     String
+  rct                         String
+  invoicingFrequency          String
+  commentToInvoicing          String
+  inductionDateTime           DateTime
+  start                       DateTime
+  end                         DateTime
+  estimatedDuration           String
+  commentToDuration           String
+  meetingPerson               Contact                  @relation(fields: [meetingPersonID], references: [id])
+  meetingPersonID             String
+  breakTime                   String
+  breaksPaid                  String
+  rotation                    String
+  workingHours                Json                     @default("{ \"mo\": \"0\", \"tu\": \"0\", \"we\": \"0\", \"th\": \"0\", \"fr\": \"0\", \"sa\": \"0\", \"su\": \"0\" }")
+  InductionForm               InductionForm[]
+  ProjectHistory              ProjectHistory[]
+  TrainingCourseRequired      TrainingCourseRequired[]
+  WorkPerformed               WorkPerformed[]
+  WorkerRequired              WorkerRequired[]
+  PayChargeRate               PayChargeRate[]
+  ContactOrder                ContactOrder[]
+}
+
+model EmployeeStatus {
+  id               String   @id @default(uuid())
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  employee         Employee @relation(fields: [employeeID], references: [id])
+  employeeID       String
+  effectiveDate    DateTime
+  employmentStatus String
+  comment          String
+}
+
+model Job {
+  id                String   @id @default(uuid())
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  employee          Employee @relation(fields: [employeeID], references: [id])
+  employeeID        String
+  hireDate          DateTime
+  professionalTrade String
+  recruitedBy       User     @relation(fields: [recruitedByID], references: [id])
+  recruitedByID     String
+}
+
+model DriversLicense {
+  id             String   @id @default(uuid())
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  employee       Employee @relation(fields: [employeeID], references: [id])
+  employeeID     String   @unique
+  issuedDate     DateTime
+  expiryDate     DateTime
+  countryOfIssue String
+}
+
+model NationalIDCard {
+  id             String   @id @default(uuid())
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  employee       Employee @relation(fields: [employeeID], references: [id])
+  employeeID     String   @unique
+  issuedDate     DateTime
+  expiryDate     DateTime
+  countryOfIssue String
+  number         String
+}
+
+model PassportInformation {
+  id             String   @id @default(uuid())
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  employee       Employee @relation(fields: [employeeID], references: [id])
+  employeeID     String   @unique
+  issuedDate     DateTime
+  expiryDate     DateTime
+  countryOfIssue String
+  number         String
+}
+
+model BankInformation {
+  id            String   @id @default(uuid())
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  employee      Employee @relation(fields: [employeeID], references: [id])
+  employeeID    String   @unique
+  iban          String
+  bicSwift      String
+  bankName      String
+  effectiveDate DateTime
+}
+
+model ClothingSize {
+  id         String   @id @default(uuid())
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  employee   Employee @relation(fields: [employeeID], references: [id])
+  employeeID String   @unique
+  jacket     String
+  waist      String
+  leg        String
+  shoes      String
+}
+
+model EmergencyContact {
+  id         String   @id @default(uuid())
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  employee   Employee @relation(fields: [employeeID], references: [id])
+  employeeID String   @unique
+  contact    Contact  @relation(fields: [contactID], references: [id])
+  contactID  String
+  relation   String
+}
+
+model TrainingCertificate {
+  id               String         @id @default(uuid())
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+  employee         Employee       @relation(fields: [employeeID], references: [id])
+  employeeID       String
+  trainingCourse   TrainingCourse @relation(fields: [trainingCourseID], references: [id])
+  trainingCourseID String
+}
+
+model File {
+  id            String         @id @default(uuid())
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  name          String
+  uri           String
+  InductionForm InductionForm?
+}
+
+model InductionForm {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  order     Order    @relation(fields: [orderID], references: [id])
+  orderID   String
+  file      File     @relation(fields: [fileID], references: [id])
+  fileID    String   @unique
+}
+
+model ProjectHistory {
+  id         String   @id @default(uuid())
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  employee   Employee @relation(fields: [employeeID], references: [id])
+  employeeID String
+  order      Order    @relation(fields: [orderID], references: [id])
+  orderID    String
+  jobRole    JobRole  @relation(fields: [jobRoleID], references: [id])
+  jobRoleID  String
+}
+
+model TrainingCourseRequired {
+  id        String         @id @default(uuid())
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+  order     Order          @relation(fields: [orderID], references: [id])
+  orderID   String
+  course    TrainingCourse @relation(fields: [courseID], references: [id])
+  courseID  String
+}
+
+model WorkerRequired {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  order     Order    @relation(fields: [orderID], references: [id])
+  orderID   String
+  jobRole   JobRole  @relation(fields: [jobRoleID], references: [id])
+  jobRoleID String
+  quantity  Int
+}
+
+model WorkPerformed {
+  id         String   @id @default(uuid())
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  order      Order    @relation(fields: [orderID], references: [id])
+  orderID    String
+  work       WorkType @relation(fields: [workTypeID], references: [id])
+  workTypeID String
+}
+
+model PayChargeRate {
+  id           String     @id @default(uuid())
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  order        Order      @relation(fields: [orderID], references: [id])
+  orderID      String
+  payRate      PayRate    @relation(fields: [payRateID], references: [id])
+  payRateID    String     @unique
+  chargeRate   ChargeRate @relation(fields: [chargeRateID], references: [id])
+  chargeRateID String     @unique
+  appliedAt    DateTime
+  currency     String
+  jobRole      JobRole    @relation(fields: [jobRoleID], references: [id])
+  jobRoleID    String
+  old          Json
+}
+
+model PayRate {
+  id            String         @id @default(uuid())
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  normal        Float
+  ot1           Float
+  ot2           Float
+  ot3           Float
+  ot4           Float
+  PayChargeRate PayChargeRate?
+}
+
+model ChargeRate {
+  id            String         @id @default(uuid())
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  normal        Float
+  ot1           Float
+  ot2           Float
+  ot3           Float
+  ot4           Float
+  PayChargeRate PayChargeRate?
+}
+
+model ContactOrder {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  order     Order    @relation(fields: [orderID], references: [id])
+  orderID   String
+  contact   Contact  @relation(fields: [contactID], references: [id])
+  contactID String
+  orderNo   Int
+}
