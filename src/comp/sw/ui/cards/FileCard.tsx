@@ -1,4 +1,3 @@
-import { FileProps as FakerFileProps } from "@/faker.d";
 import {
   Button,
   CSS,
@@ -20,9 +19,10 @@ import {
 } from "lucide-react";
 import React, { Fragment, useEffect, useState } from "react";
 import StyleObject from "csstype";
+import { Prisma } from "@prisma/client";
 
 
-type FileProps = FakerFileProps;
+type FileProps = Prisma.FileGetPayload<{}>
 
 /**
  * Renders a file card component that displays file information and allows for downloading.
@@ -36,17 +36,17 @@ export default function FileCard({ file }: { file: FileProps }) {
   useEffect(() => {
     setFileData(
       new File(
-        [new Blob([Buffer.from(Buffer.from(file.fileUri, "base64"))])],
+        [new Blob([Buffer.from(Buffer.from(file.uri, "base64"))])],
         file.name,
         {
-          type: file.fileUri.substring(
-            file.fileUri.indexOf(":") + 1,
-            file.fileUri.indexOf(";")
+          type: file.uri.substring(
+            file.uri.indexOf(":") + 1,
+            file.uri.indexOf(";")
           ),
         }
       )
     );
-  }, [file.fileUri, file.name]);
+  }, [file.uri, file.name]);
 
 
 
@@ -111,7 +111,7 @@ export default function FileCard({ file }: { file: FileProps }) {
                 css={ButtonStyling}
                 onPress={() => {
                   const link = document.createElement("a");
-                  link.setAttribute("href", file.fileUri);
+                  link.setAttribute("href", file.uri);
                   link.setAttribute("download", file.name);
                   link.style.display = "none";
                   document.body.appendChild(link);

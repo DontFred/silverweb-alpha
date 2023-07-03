@@ -156,6 +156,7 @@ async function main() {
           company: faker.company.name(),
           addressID: addressPrisma[1].id,
           comment: faker.word.words({ count: { min: 4, max: 20 } }),
+          size: faker.word.words({count: {min: 4, max: 20}})
         },
         {
           name: faker.airline.airport().iataCode + faker.airline.flightNumber(),
@@ -165,6 +166,7 @@ async function main() {
           company: faker.company.name(),
           addressID: addressPrisma[2].id,
           comment: faker.word.words({ count: { min: 4, max: 20 } }),
+          size: faker.word.words({count: {min: 4, max: 20}})
         },
         {
           name: faker.airline.airport().iataCode + faker.airline.flightNumber(),
@@ -174,6 +176,7 @@ async function main() {
           company: faker.company.name(),
           addressID: addressPrisma[3].id,
           comment: faker.word.words({ count: { min: 4, max: 20 } }),
+          size: faker.word.words({count: {min: 4, max: 20}})
         },
         {
           name: faker.airline.airport().iataCode + faker.airline.flightNumber(),
@@ -183,6 +186,7 @@ async function main() {
           company: faker.company.name(),
           addressID: addressPrisma[4].id,
           comment: faker.word.words({ count: { min: 4, max: 20 } }),
+          size: faker.word.words({count: {min: 4, max: 20}})
         },
         {
           name: faker.airline.airport().iataCode + faker.airline.flightNumber(),
@@ -192,6 +196,7 @@ async function main() {
           company: faker.company.name(),
           addressID: addressPrisma[5].id,
           comment: faker.word.words({ count: { min: 4, max: 20 } }),
+          size: faker.word.words({count: {min: 4, max: 20}})
         },
         {
           name: faker.airline.airport().iataCode + faker.airline.flightNumber(),
@@ -201,6 +206,7 @@ async function main() {
           company: faker.company.name(),
           addressID: addressPrisma[6].id,
           comment: faker.word.words({ count: { min: 4, max: 20 } }),
+          size: faker.word.words({count: {min: 4, max: 20}})
         },
         {
           name: faker.airline.airport().iataCode + faker.airline.flightNumber(),
@@ -210,6 +216,7 @@ async function main() {
           company: faker.company.name(),
           addressID: addressPrisma[7].id,
           comment: faker.word.words({ count: { min: 4, max: 20 } }),
+          size: faker.word.words({count: {min: 4, max: 20}})
         },
         {
           name: faker.airline.airport().iataCode + faker.airline.flightNumber(),
@@ -219,6 +226,7 @@ async function main() {
           company: faker.company.name(),
           addressID: addressPrisma[8].id,
           comment: faker.word.words({ count: { min: 4, max: 20 } }),
+          size: faker.word.words({count: {min: 4, max: 20}})
         },
         {
           name: faker.airline.airport().iataCode + faker.airline.flightNumber(),
@@ -228,6 +236,7 @@ async function main() {
           company: faker.company.name(),
           addressID: addressPrisma[9].id,
           comment: faker.word.words({ count: { min: 4, max: 20 } }),
+          size: faker.word.words({count: {min: 4, max: 20}})
         },
 
         {
@@ -238,6 +247,7 @@ async function main() {
           company: faker.company.name(),
           addressID: addressPrisma[10].id,
           comment: faker.word.words({ count: { min: 4, max: 20 } }),
+          size: faker.word.words({count: {min: 4, max: 20}})
         },
         {
           name: faker.airline.airport().iataCode + faker.airline.flightNumber(),
@@ -247,6 +257,7 @@ async function main() {
           company: faker.company.name(),
           addressID: addressPrisma[11].id,
           comment: faker.word.words({ count: { min: 4, max: 20 } }),
+          size: faker.word.words({count: {min: 4, max: 20}})
         },
         {
           name: faker.airline.airport().iataCode + faker.airline.flightNumber(),
@@ -256,6 +267,7 @@ async function main() {
           company: faker.company.name(),
           addressID: addressPrisma[12].id,
           comment: faker.word.words({ count: { min: 4, max: 20 } }),
+          size: faker.word.words({count: {min: 4, max: 20}})
         },
         {
           name: faker.airline.airport().iataCode + faker.airline.flightNumber(),
@@ -265,6 +277,7 @@ async function main() {
           company: faker.company.name(),
           addressID: addressPrisma[13].id,
           comment: faker.word.words({ count: { min: 4, max: 20 } }),
+          size: faker.word.words({count: {min: 4, max: 20}})
         },
         {
           name: faker.airline.airport().iataCode + faker.airline.flightNumber(),
@@ -274,6 +287,7 @@ async function main() {
           company: faker.company.name(),
           addressID: addressPrisma[14].id,
           comment: faker.word.words({ count: { min: 4, max: 20 } }),
+          size: faker.word.words({count: {min: 4, max: 20}})
         },
         {
           name: faker.airline.airport().iataCode + faker.airline.flightNumber(),
@@ -283,6 +297,7 @@ async function main() {
           company: faker.company.name(),
           addressID: addressPrisma[15].id,
           comment: faker.word.words({ count: { min: 4, max: 20 } }),
+          size: faker.word.words({count: {min: 4, max: 20}})
         },
         {
           name: faker.airline.airport().iataCode + faker.airline.flightNumber(),
@@ -292,6 +307,7 @@ async function main() {
           company: faker.company.name(),
           addressID: addressPrisma[16].id,
           comment: faker.word.words({ count: { min: 4, max: 20 } }),
+          size: faker.word.words({count: {min: 4, max: 20}})
         },
         {
           name: faker.airline.airport().iataCode + faker.airline.flightNumber(),
@@ -301,6 +317,7 @@ async function main() {
           company: faker.company.name(),
           addressID: addressPrisma[17].id,
           comment: faker.word.words({ count: { min: 4, max: 20 } }),
+          size: faker.word.words({count: {min: 4, max: 20}})
         },
         {
           name: faker.airline.airport().iataCode + faker.airline.flightNumber(),
@@ -310,6 +327,7 @@ async function main() {
           company: faker.company.name(),
           addressID: addressPrisma[18].id,
           comment: faker.word.words({ count: { min: 4, max: 20 } }),
+          size: faker.word.words({count: {min: 4, max: 20}})
         },
         {
           name: faker.airline.airport().iataCode + faker.airline.flightNumber(),
@@ -319,6 +337,7 @@ async function main() {
           company: faker.company.name(),
           addressID: addressPrisma[19].id,
           comment: faker.word.words({ count: { min: 4, max: 20 } }),
+          size: faker.word.words({count: {min: 4, max: 20}})
         },
         {
           name: faker.airline.airport().iataCode + faker.airline.flightNumber(),
@@ -328,6 +347,7 @@ async function main() {
           company: faker.company.name(),
           addressID: addressPrisma[20].id,
           comment: faker.word.words({ count: { min: 4, max: 20 } }),
+          size: faker.word.words({count: {min: 4, max: 20}})
         },
         {
           name: faker.airline.airport().iataCode + faker.airline.flightNumber(),
@@ -337,6 +357,7 @@ async function main() {
           company: faker.company.name(),
           addressID: addressPrisma[21].id,
           comment: faker.word.words({ count: { min: 4, max: 20 } }),
+          size: faker.word.words({count: {min: 4, max: 20}})
         },
         {
           name: faker.airline.airport().iataCode + faker.airline.flightNumber(),
@@ -346,6 +367,7 @@ async function main() {
           company: faker.company.name(),
           addressID: addressPrisma[22].id,
           comment: faker.word.words({ count: { min: 4, max: 20 } }),
+          size: faker.word.words({count: {min: 4, max: 20}})
         },
         {
           name: faker.airline.airport().iataCode + faker.airline.flightNumber(),
@@ -355,6 +377,7 @@ async function main() {
           company: faker.company.name(),
           addressID: addressPrisma[23].id,
           comment: faker.word.words({ count: { min: 4, max: 20 } }),
+          size: faker.word.words({count: {min: 4, max: 20}})
         },
         {
           name: faker.airline.airport().iataCode + faker.airline.flightNumber(),
@@ -364,6 +387,7 @@ async function main() {
           company: faker.company.name(),
           addressID: addressPrisma[24].id,
           comment: faker.word.words({ count: { min: 4, max: 20 } }),
+          size: faker.word.words({count: {min: 4, max: 20}})
         },
         {
           name: faker.airline.airport().iataCode + faker.airline.flightNumber(),
@@ -373,6 +397,7 @@ async function main() {
           company: faker.company.name(),
           addressID: addressPrisma[25].id,
           comment: faker.word.words({ count: { min: 4, max: 20 } }),
+          size: faker.word.words({count: {min: 4, max: 20}})
         },
         {
           name: faker.airline.airport().iataCode + faker.airline.flightNumber(),
@@ -382,6 +407,7 @@ async function main() {
           company: faker.company.name(),
           addressID: addressPrisma[26].id,
           comment: faker.word.words({ count: { min: 4, max: 20 } }),
+          size: faker.word.words({count: {min: 4, max: 20}})
         },
         {
           name: faker.airline.airport().iataCode + faker.airline.flightNumber(),
@@ -391,6 +417,7 @@ async function main() {
           company: faker.company.name(),
           addressID: addressPrisma[27].id,
           comment: faker.word.words({ count: { min: 4, max: 20 } }),
+          size: faker.word.words({count: {min: 4, max: 20}})
         },
         {
           name: faker.airline.airport().iataCode + faker.airline.flightNumber(),
@@ -400,6 +427,7 @@ async function main() {
           company: faker.company.name(),
           addressID: addressPrisma[28].id,
           comment: faker.word.words({ count: { min: 4, max: 20 } }),
+          size: faker.word.words({count: {min: 4, max: 20}})
         },
         {
           name: faker.airline.airport().iataCode + faker.airline.flightNumber(),
@@ -409,6 +437,7 @@ async function main() {
           company: faker.company.name(),
           addressID: addressPrisma[29].id,
           comment: faker.word.words({ count: { min: 4, max: 20 } }),
+          size: faker.word.words({count: {min: 4, max: 20}})
         },
         {
           name: faker.airline.airport().iataCode + faker.airline.flightNumber(),
@@ -418,6 +447,7 @@ async function main() {
           company: faker.company.name(),
           addressID: addressPrisma[30].id,
           comment: faker.word.words({ count: { min: 4, max: 20 } }),
+          size: faker.word.words({count: {min: 4, max: 20}})
         },
         {
           name: faker.airline.airport().iataCode + faker.airline.flightNumber(),
@@ -427,6 +457,7 @@ async function main() {
           company: faker.company.name(),
           addressID: addressPrisma[31].id,
           comment: faker.word.words({ count: { min: 4, max: 20 } }),
+          size: faker.word.words({count: {min: 4, max: 20}})
         },
       ].map(
         async (data) =>
@@ -6010,7 +6041,10407 @@ async function main() {
               ]
           }
         }
-      }].map(
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },{
+        orderCode:
+          faker.airline.recordLocator() +
+          faker.airline.airline().iataCode +
+          faker.airline.flightNumber({ addLeadingZeros: true }),
+        answered: true,
+        commentToGeneralInformation: faker.word.words(20),
+        clientID:
+          clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
+        accountManagerID:
+          userPrisma[faker.number.int(userPrisma.length - 1)].id,
+        projectID:
+          projectPrisma[faker.number.int(projectPrisma.length - 1)].id,
+        projectAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        deliveryAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoicingAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        invoiceEmail: faker.internet.email(),
+        inductionAddressID:
+          addressPrisma[faker.number.int({ min: 80, max: 269 })].id,
+        orgaNumber: faker.number.hex(100000000000).toUpperCase(),
+        vatNumber: faker.number.hex(100000000000).toUpperCase(),
+        payTerm: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "advance",
+        ]),
+        rct: faker.word.words({ count: { min: 1, max: 5 } }),
+        invoicingFrequency: faker.helpers.arrayElement([
+          "weekly",
+          "monthly",
+          "daily",
+        ]),
+        commentToInvoicing: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        inductionDateTime: faker.date.future(),
+        start: faker.date.future(),
+        estimatedDuration: faker.number.int(50) + " weeks",
+        end: faker.date.future(),
+        commentToDuration: faker.word.words({
+          count: { min: 5, max: 15 },
+        }),
+        breakTime: "1h / day",
+        breaksPaid: faker.helpers.arrayElement(["unpaid", "paid"]),
+        rotation: "6 weeks on / 2 weeks off",
+        workingHours: {
+          mo: faker.number.int({ min: 7, max: 12 }),
+          tu: faker.number.int({ min: 7, max: 12 }),
+          we: faker.number.int({ min: 7, max: 12 }),
+          th: faker.number.int({ min: 7, max: 12 }),
+          fr: faker.number.int({ min: 7, max: 12 }),
+          sa: faker.number.int({ min: 3, max: 8 }),
+          su: faker.number.int({ min: 1, max: 6 }),
+        },
+        meetingPersonID:
+          contactPrisma[faker.number.int(contactPrisma.length - 1)].id,
+        ContactOrder: {
+          createMany: {
+            data: [
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+              {
+                orderNo: faker.number.int(10),
+                contactID:
+                  contactPrisma[
+                    faker.number.int(contactPrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        PayChargeRate: {
+          create: {
+            payRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            chargeRate: {
+              create: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+            },
+            currency: faker.finance.currencyCode(),
+            appliedAt: faker.date.recent(),
+            old: {
+              payRate: {
+                normal: faker.number.int({ min: 200, max: 300 }),
+                ot1: faker.number.int({ min: 300, max: 400 }),
+                ot2: faker.number.int({ min: 400, max: 500 }),
+                ot3: faker.number.int({ min: 500, max: 600 }),
+                ot4: faker.number.int({ min: 600, max: 700 }),
+              },
+              chargeRate: {
+                normal: faker.number.int({ min: 400, max: 500 }),
+                ot1: faker.number.int({ min: 500, max: 600 }),
+                ot2: faker.number.int({ min: 600, max: 700 }),
+                ot3: faker.number.int({ min: 700, max: 800 }),
+                ot4: faker.number.int({ min: 800, max: 900 }),
+              },
+            },
+            jobRole: {
+              connect: {
+                id: jobRolePrisma[
+                  faker.number.int(jobRolePrisma.length - 1)
+                ].id,
+              },
+            },
+          },
+        },
+        ProjectHistory: {
+          createMany: {
+            data: [
+              {
+                employeeID:
+                  employeePrisma[
+                    faker.number.int(employeePrisma.length - 1)
+                  ].id,
+                jobRoleID:
+                  jobRolePrisma[faker.number.int(jobPrisma.length - 1)]
+                    .id,
+              },
+            ],
+          },
+        },
+        TrainingCourseRequired: {
+          createMany: {
+            data: [
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+              {
+                courseID:
+                  trainingsCoursePrisma[
+                    faker.number.int(trainingsCoursePrisma.length - 1)
+                  ].id,
+              },
+            ],
+          },
+        },
+        InductionForm: {
+          create: {
+              file: {
+                  create: {
+                      uri: faker.image.dataUri(),
+                      name:
+                        faker
+                          .system.commonFileName()
+                          .replace(/\.[^/.]+$/, "") + ".svg",
+                  }
+              }
+          }
+        },
+        WorkPerformed: {
+          createMany: {
+              data: [
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+                  {workTypeID: workTypePrisma[faker.number.int(workTypePrisma.length -1)].id},
+              ]
+          }
+        },
+        WorkerRequired: {
+          createMany: {
+              data: [
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+                  {jobRoleID: jobRolePrisma[faker.number.int(jobRolePrisma.length -1)].id, quantity: faker.number.int(20)},
+              ]
+          }
+        }
+      },].map(
         async (data) =>
           await tx.order.create({
             data: data,

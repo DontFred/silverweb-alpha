@@ -1,22 +1,25 @@
 import React, { Fragment } from 'react'
 import OrderFormContent from './content'
-import { OrderProps as FakerOrderProps } from '@/faker.d'
-import { createRandomOrder } from '@/faker'
-import { faker } from '@faker-js/faker'
+import { trpc } from '@/lib/trpc/ssTRPC'
+import { Prisma } from '@prisma/client'
 
-export type OrderProps = FakerOrderProps
+export type OrderProps = Prisma.OrderGetPayload<{
+  include: {
+    client: {
+      include: {
+        company: true
+      }
+    },
+    Project: true
+  }
+}>
 
-async function getOrderFormData(){
-    const OrderData = faker.helpers.multiple(createRandomOrder, {count: 15})
-
-    return OrderData as OrderProps[]
-}
 export default async function OrderForm() {
 
-    const OrderData = await getOrderFormData()
+  let data = await trpc.getAllOrders();
   return (
     <Fragment>
-        <OrderFormContent orderData={OrderData}/>
+        <OrderFormContent orderData={data}/>
     </Fragment>
   )
 }

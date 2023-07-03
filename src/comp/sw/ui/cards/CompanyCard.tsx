@@ -1,4 +1,3 @@
-import { CommentProps, ClientProps as FakerClientProps } from "@/faker.d";
 import {
   Avatar,
   Button,
@@ -10,12 +9,37 @@ import {
   Spacer,
   Text,
 } from "@nextui-org/react";
-import { AtSign, Building, Building2, MapPin, Smartphone, Map, Globe2 } from "lucide-react";
+import {
+  AtSign,
+  Building,
+  Building2,
+  MapPin,
+  Smartphone,
+  Map,
+  Globe2,
+} from "lucide-react";
 import React, { Fragment } from "react";
 import StyleObject from "csstype";
+import { Prisma } from "@prisma/client";
 
-
-type ClientProps = FakerClientProps;
+type CompanyProps = Prisma.CompanyGetPayload<{
+  include: {
+    CompanyComment: {
+      include: {
+        comment: {
+          include: {
+            user: {
+              include: {
+                color: true;
+              };
+            };
+          };
+        };
+      };
+    };
+    address: true;
+  };
+}>;
 
 /**
  * Renders a company card with detailed information about the company
@@ -45,68 +69,73 @@ type ClientProps = FakerClientProps;
  */
 export default function CompanyCard({
   company,
+  registerName,
+  registerAddress,
 }: {
-    company: ClientProps & { comment: CommentProps };
+  company: CompanyProps;
+  registerName?: string;
+  registerAddress?: {
+    streetNo: string;
+    city: string;
+    postCode: string;
+    country: string;
+  };
 }) {
-
   const TriggerStyling: CSS = {
-    w: "100%"
-  }
+    w: "100%",
+  };
 
   const CompanyCardBodyStyling: CSS = {
-    p: "12px 0"
-  }
+    p: "12px 0",
+  };
 
   const PopoverContentStyling: CSS = {
     bs: "0 0 10px black",
     p: 6,
-  }
+  };
 
   const DisplayContainer: CSS = {
-    w: 350
-  }
+    w: 350,
+  };
 
   const ButtonStyling: CSS = {
-    m: "0 $sm"
-  }
+    m: "0 $sm",
+  };
 
   const DividerStyling: CSS = {
-    h: 0, border: "0.25px solid $border", p: 0 
-  }
+    h: 0,
+    border: "0.25px solid $border",
+    p: 0,
+  };
 
   const CompanyInfoStyling: CSS = {
-    color: "$accents8"
-  }
+    color: "$accents8",
+  };
 
   return (
     <Fragment>
       <Popover>
         <Popover.Trigger>
-          <Card
-            variant="bordered"
-            isHoverable
-            isPressable
-            css={TriggerStyling}
-          >
-            <Card.Body
-              css={CompanyCardBodyStyling}
-            >
+          <Card variant="bordered" isHoverable isPressable css={TriggerStyling}>
+            <Card.Body css={CompanyCardBodyStyling}>
               <CompanyDisplay
-                field={company.company.workingField}
-                name={company.registerName}
+                field={company.workingField}
+                name={registerName || company.name}
               />
             </Card.Body>
           </Card>
         </Popover.Trigger>
-        <Popover.Content
-          css={PopoverContentStyling}
-        >
-          <Grid.Container css={DisplayContainer} gap={1} justify="space-between">
+        <Popover.Content css={PopoverContentStyling}>
+          <Grid.Container
+            css={DisplayContainer}
+            gap={1}
+            justify="space-between"
+          >
             <Grid xs={8}>
               <CompanyDisplay
                 noIcon
-                field={company.company.workingField}
-                name={company.registerName}
+                field={company.workingField}
+                name={registerName || company.name}
               />
             </Grid>
             <Grid alignItems="center" xs={4} justify="flex-end">
@@ -115,40 +144,35 @@ export default function CompanyCard({
               </Button>
             </Grid>
             <Spacer y={0.25} />
-            <Grid
-              xs={12}
-              css={DividerStyling}
-            />
+            <Grid xs={12} css={DividerStyling} />
             <Spacer y={0.5} />
+            {registerName && (
+              <Grid xs={12}>
+                <Grid.Container gap={0.5} justify="space-between">
+                  <Grid xs={3.5}>
+                    <Grid.Container css={CompanyInfoStyling}>
+                      <Grid alignItems="center" xs={3}>
+                        <Building2 size={15} />
+                      </Grid>
+                      <Grid alignItems="center" xs={9}>
+                        <Text size={"$sm"} color="$accents8">
+                          Group
+                        </Text>
+                      </Grid>
+                    </Grid.Container>
+                  </Grid>
+                  <Grid xs={8.5}>
+                    <Text size="$sm" weight="medium">
+                      {company.name}
+                    </Text>
+                  </Grid>
+                </Grid.Container>
+              </Grid>
+            )}
             <Grid xs={12}>
               <Grid.Container gap={0.5} justify="space-between">
                 <Grid xs={3.5}>
-                  <Grid.Container
-                    css={CompanyInfoStyling}
-                  >
-                    <Grid alignItems="center" xs={3}>
-                      <Building2 size={15} />
-                    </Grid>
-                    <Grid alignItems="center" xs={9}>
-                      <Text size={"$sm"} color="$accents8">
-                        Group
-                      </Text>
-                    </Grid>
-                  </Grid.Container>
-                </Grid>
-                <Grid xs={8.5}>
-                  <Text size="$sm" weight="medium">
-                    {company.company.name}
-                  </Text>
-                </Grid>
-              </Grid.Container>
-            </Grid>
-            <Grid xs={12}>
-              <Grid.Container gap={0.5} justify="space-between">
-                <Grid xs={3.5}>
-                  <Grid.Container
-                    css={CompanyInfoStyling}
-                  >
+                  <Grid.Container css={CompanyInfoStyling}>
                     <Grid alignItems="center" xs={3}>
                       <AtSign size={15} />
                     </Grid>
@@ -161,7 +185,7 @@ export default function CompanyCard({
                 </Grid>
                 <Grid xs={8.5}>
                   <Text size="$sm" weight="medium">
-                    {company.company.email}
+                    {company.email}
                   </Text>
                 </Grid>
               </Grid.Container>
@@ -169,9 +193,7 @@ export default function CompanyCard({
             <Grid xs={12}>
               <Grid.Container gap={0.5} justify="space-between">
                 <Grid xs={3.5}>
-                  <Grid.Container
-                    css={CompanyInfoStyling}
-                  >
+                  <Grid.Container css={CompanyInfoStyling}>
                     <Grid alignItems="center" xs={3}>
                       <Smartphone size={15} />
                     </Grid>
@@ -184,23 +206,18 @@ export default function CompanyCard({
                 </Grid>
                 <Grid xs={8.5}>
                   <Text size="$sm" weight="medium">
-                    {company.company.phone}
+                    {company.phone}
                   </Text>
                 </Grid>
               </Grid.Container>
             </Grid>
             <Spacer y={0.5} />
-            <Grid
-              xs={12}
-              css={DividerStyling}
-            />
+            <Grid xs={12} css={DividerStyling} />
             <Spacer y={0.5} />
             <Grid xs={12}>
               <Grid.Container gap={0.5} justify="space-between">
                 <Grid xs={3.5}>
-                  <Grid.Container
-                    css={CompanyInfoStyling}
-                  >
+                  <Grid.Container css={CompanyInfoStyling}>
                     <Grid alignItems="center" xs={3}>
                       <MapPin size={15} />
                     </Grid>
@@ -213,7 +230,7 @@ export default function CompanyCard({
                 </Grid>
                 <Grid xs={8.5}>
                   <Text size="$sm" weight="medium">
-                    {company?.registerAddress?.streetNo}
+                    {registerAddress?.streetNo || company.address.streetNo}
                   </Text>
                 </Grid>
               </Grid.Container>
@@ -221,9 +238,7 @@ export default function CompanyCard({
             <Grid xs={12}>
               <Grid.Container gap={0.5} justify="space-between">
                 <Grid xs={3.5}>
-                  <Grid.Container
-                    css={CompanyInfoStyling}
-                  >
+                  <Grid.Container css={CompanyInfoStyling}>
                     <Grid alignItems="center" xs={3}>
                       <Map size={15} />
                     </Grid>
@@ -236,7 +251,9 @@ export default function CompanyCard({
                 </Grid>
                 <Grid xs={8.5}>
                   <Text size="$sm" weight="medium">
-                    {company?.registerAddress?.city + " " + company?.registerAddress?.postCode}
+                    {registerAddress?.city ||
+                      company.address.city + " " + registerAddress?.postCode ||
+                      company.address.postCode}
                   </Text>
                 </Grid>
               </Grid.Container>
@@ -244,9 +261,7 @@ export default function CompanyCard({
             <Grid xs={12}>
               <Grid.Container gap={0.5} justify="space-between">
                 <Grid xs={3.5}>
-                  <Grid.Container
-                    css={CompanyInfoStyling}
-                  >
+                  <Grid.Container css={CompanyInfoStyling}>
                     <Grid alignItems="center" xs={3}>
                       <Globe2 size={15} />
                     </Grid>
@@ -259,16 +274,13 @@ export default function CompanyCard({
                 </Grid>
                 <Grid xs={8.5}>
                   <Text size="$sm" weight="medium">
-                    {company?.registerAddress?.country}
+                    {registerAddress?.country || company.address.country}
                   </Text>
                 </Grid>
               </Grid.Container>
             </Grid>
             <Spacer y={0.5} />
-            <Grid
-              xs={12}
-              css={DividerStyling}
-            />
+            <Grid xs={12} css={DividerStyling} />
             <Spacer y={0.25} />
             <Grid xs={12}>
               <Grid.Container>
@@ -285,20 +297,22 @@ export default function CompanyCard({
                 </Grid>
                 <Grid>
                   <Text size="$xs" color="$accents6" weight={"bold"}>
-                    1
+                    {company.CompanyComment.length}
                   </Text>
                 </Grid>
               </Grid.Container>
             </Grid>
-            <Grid xs={12}>
-              <Comment
-                name={company?.comment?.user?.name}
-                color={company?.comment?.user?.color}
-                avatar={company?.comment?.user?.avatar}
-                date={company?.comment?.date}
-                comment={company?.comment?.comment}
-              />
-            </Grid>
+            {company.CompanyComment.map(({ comment }) => (
+              <Grid xs={12} key={comment.id}>
+                <Comment
+                  name={comment.user.name}
+                  color={comment.user.color.color}
+                  avatar={comment.user.avatar}
+                  date={comment.createdAt}
+                  comment={comment.comment}
+                />
+              </Grid>
+            ))}
             <Spacer y={0.5} />
           </Grid.Container>
         </Popover.Content>
@@ -324,7 +338,6 @@ function CompanyDisplay({
   field: string;
   noIcon?: boolean;
 }) {
-
   const CompanyDisplayContainerStyling: StyleObject.Properties = {
     display: "inline-flex",
     padding: "0 var(--nextui-space-sm)",
@@ -333,7 +346,7 @@ function CompanyDisplay({
     width: "max-content",
     maxWidth: "100%",
     transition: "transform 250ms ease 0ms, box-shadow 0.25s ease 0s",
-  }
+  };
 
   const CompanyDisplayTextStyling: CSS = {
     ml: "$sm",
@@ -344,7 +357,7 @@ function CompanyDisplay({
     whiteSpace: "nowrap",
     textOverflow: "ellipsis",
     maxWidth: `calc(100% - ${!noIcon && "52px"})`,
-  }
+  };
 
   const CompanyDisplayCompanyNameStyling: StyleObject.Properties = {
     fontSize: "var(--nextui-fontSizes-sm)",
@@ -354,7 +367,7 @@ function CompanyDisplay({
     maxWidth: "100%",
     textOverflow: "ellipsis",
     overflow: "hidden",
-  }
+  };
 
   const CompanyDisplayCompanyJobStyling: StyleObject.Properties = {
     fontSize: "var(--nextui-fontSizes-xs)",
@@ -363,28 +376,15 @@ function CompanyDisplay({
     maxWidth: "100%",
     overflow: "hidden",
     textOverflow: "ellipsis",
-  }
+  };
 
   return (
     <Fragment>
-      <div
-        style={CompanyDisplayContainerStyling}
-      >
+      <div style={CompanyDisplayContainerStyling}>
         {!noIcon && <Avatar icon={<Building />} squared />}
-        <Container
-          css={CompanyDisplayTextStyling}
-          fluid
-        >
-          <span
-            style={CompanyDisplayCompanyNameStyling}
-          >
-            {name}
-          </span>
-          <span
-            style={CompanyDisplayCompanyJobStyling}
-          >
-            {field}
-          </span>
+        <Container css={CompanyDisplayTextStyling} fluid>
+          <span style={CompanyDisplayCompanyNameStyling}>{name}</span>
+          <span style={CompanyDisplayCompanyJobStyling}>{field}</span>
         </Container>
       </div>
     </Fragment>
@@ -409,49 +409,51 @@ function Comment({
   comment,
 }: {
   avatar: string;
-  color?: "error" | "default" | "primary" | "secondary" | "success" | "warning" | "gradient";
+  color?: string;
   name: string;
   date: Date;
   comment: string;
 }) {
-
   const CommentContainerStyling: CSS = {
     m: "0 15px",
-  }
+  };
 
   const CommentStyling: CSS = {
-    lh: "$sm"
-  }
+    lh: "$sm",
+  };
 
   const CommentContentStyling: CSS = {
-    m: "2px 0"
-  }
+    m: "2px 0",
+  };
   return (
     <Fragment>
-      <Grid.Container
-        alignItems="flex-start"
-        css={CommentContainerStyling}
-      >
+      <Grid.Container alignItems="flex-start" css={CommentContainerStyling}>
         <Grid xs={1.5}>
-          <Avatar bordered color={color} src={avatar} size={"sm"} />
+          <Avatar
+            bordered
+            color={
+              color as unknown as
+                | "error"
+                | "default"
+                | "primary"
+                | "secondary"
+                | "success"
+                | "warning"
+                | "gradient"
+            }
+            src={avatar}
+            size={"sm"}
+          />
         </Grid>
         <Grid xs={10.5}>
           <Grid.Container justify="space-between">
             <Grid>
-              <Text
-                size={"$sm"}
-                weight={"semibold"}
-                css={CommentStyling}
-              >
+              <Text size={"$sm"} weight={"semibold"} css={CommentStyling}>
                 {name}
               </Text>
             </Grid>
             <Grid>
-              <Text
-                size={"$sm"}
-                css={CommentStyling}
-                color="$accents7"
-              >
+              <Text size={"$sm"} css={CommentStyling} color="$accents7">
                 {date.toLocaleString("en-IE", {
                   day: "2-digit",
                   month: "short",
@@ -463,10 +465,7 @@ function Comment({
               </Text>
             </Grid>
             <Grid xs={12}>
-              <Text
-                css={CommentContentStyling}
-                size={"$sm"}
-              >
+              <Text css={CommentContentStyling} size={"$sm"}>
                 {comment}
               </Text>
             </Grid>

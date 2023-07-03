@@ -2,7 +2,6 @@ import { FetchCreateContextFnOptions, fetchRequestHandler} from '@trpc/server/ad
 import {appRouter} from '@/server/routers/main';
 
 const handler = (request: Request) => {
-    console.log(`incoming request ${request.url}`)
     return fetchRequestHandler({
         endpoint: '/api/trpc',
         req: request,

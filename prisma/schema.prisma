@@ -57,6 +57,7 @@ model Project {
   updatedAt DateTime     @updatedAt
   name      String       @unique
   company   String
+  size      String
   type      ProjectTypes @relation(fields: [typeID], references: [id])
   typeID    String
   comment   String
@@ -98,8 +99,8 @@ model Coordinates {
   id        String   @id @default(uuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  lat       Decimal
-  lng       Decimal
+  lat       Float
+  lng       Float
   Address   Address?
 }
 
@@ -476,7 +477,7 @@ model PayChargeRate {
   currency     String
   jobRole      JobRole    @relation(fields: [jobRoleID], references: [id])
   jobRoleID    String
-  old          Json
+  old          Json       @default("{ \"payRate\": { \"normal\": \"0\", \"ot1\": \"0\", \"ot2\": \"0\", \"ot3\": \"0\", \"ot4\": \"0\"} , \"chargeRate\": { \"normal\": \"0\", \"ot1\": \"0\", \"ot2\": \"0\", \"ot3\": \"0\", \"ot4\": \"0\"} }")
 }
 
 model PayRate {

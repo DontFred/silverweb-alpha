@@ -16,23 +16,22 @@ import {
   Pagination,
   Checkbox,
 } from "@nextui-org/react";
-import { Fragment, useEffect, useRef, useState } from "react";
+import { Fragment, useRef, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import StyleObject from "csstype";
 import ContactCard from "@/comp/sw/ui/cards/ContactCard";
-import { createRandomComment, createRandomJobRole } from "@/faker";
-import { faker } from "@faker-js/faker";
 import TextAreaField from "@/comp/sw/app/FormBuilder/ui/TextAreaField";
 import AddressField from "@/comp/sw/app/FormBuilder/ui/AddressField";
 import dynamic from "next/dynamic";
-import { OrderDataProps } from "./page";
+import { JobRolesProps, OrderDataProps } from "./page";
 import DatePickerField from "@/comp/sw/app/FormBuilder/ui/DatePickerField";
 import FileCard from "@/comp/sw/ui/cards/FileCard";
 import { Pencil } from "lucide-react";
 import TextField from "@/comp/sw/app/FormBuilder/ui/TextField";
 import CompanyCard from "@/comp/sw/ui/cards/CompanyCard";
 import NumberField from "@/comp/sw/app/FormBuilder/ui/NumberField";
-import { date, string } from "zod";
+import { Prisma } from "@prisma/client";
+import { trpc } from "@/lib/trpc/csTRPC";
 
 const Map = dynamic(() => import("@/comp/sw/app/Map"), {
   loading: () => (
@@ -61,8 +60,10 @@ const FieldsetStyling: StyleObject.Properties = {
 
 export default function OrderInterfaceContent({
   orderData,
+  jobRoles
 }: {
   orderData: OrderDataProps;
+  jobRoles: JobRolesProps[];
 }) {
   const form = useForm({
     defaultValues: {
@@ -89,10 +90,10 @@ export default function OrderInterfaceContent({
       },
       inductionDate: orderData?.inductionDateTime.toISOString().split("T")[0],
       inductionTime: orderData?.inductionDateTime.toTimeString().split(" ")[0],
-      duration: orderData?.estDuration,
+      duration: orderData?.estimatedDuration,
       endDate: orderData?.end.toISOString().split("T")[0],
       durationComment: orderData?.commentToDuration,
-      projectType: orderData?.project?.type,
+      projectType: orderData?.Project.type.name,
       workingHours: orderData?.workingHours,
       breakTime: orderData?.breakTime,
       breakPaid: orderData?.breaksPaid,
@@ -103,7 +104,7 @@ export default function OrderInterfaceContent({
         postalCode: orderData?.invoicingAddress?.postCode,
         country: orderData?.invoicingAddress?.country,
       },
-      invoicingEmail: orderData?.invoicingEmail,
+      invoicingEmail: orderData?.invoiceEmail,
       orgaNumber: orderData?.orgaNumber,
       vatNumber: orderData?.vatNumber,
       rct: orderData?.rct,
@@ -126,6 +127,23 @@ export default function OrderInterfaceContent({
   const [version, setVersion] = useState<"new" | "old">("new");
   const [openEditAddModal, setOpenEditAddModal] = useState<boolean>(false);
   const FormRef = useRef<HTMLFormElement>(null);
+  const utils = trpc.useContext();
+
+  const editPayChargeRates = trpc.editPayChargeRate.useMutation({
+    onSuccess: () => {
+      utils.getOrderById.invalidate()
+      window.location.reload();
+      setOpenEditAddModal(false);
+    }
+  })
+
+  const addPayChargeRates = trpc.addPayChargeRate.useMutation({
+    onSuccess: () => {
+      utils.getOrderById.invalidate()
+      window.location.reload();
+      setOpenEditAddModal(false);
+    }
+  })
   return (
     <Layout>
       <FormProvider {...form}>
@@ -155,7 +173,7 @@ export default function OrderInterfaceContent({
               Created at 
             </Text>
             <Text weight="light" size="$sm">
-              {faker.date.past().toLocaleString("en-IE", {
+              {orderData?.createdAt.toLocaleString("en-IE", {
                 day: "2-digit",
                 month: "short",
                 year: "numeric",
@@ -191,20 +209,17 @@ export default function OrderInterfaceContent({
                               <Grid xs={12}>
                                 <ContainerCard>
                                   <Grid.Container gap={2} alignItems="stretch">
-                                    {orderData?.contacts.map((contact, idx) => (
-                                      <Fragment key={idx}>
-                                        <Grid>
-                                          <ContactCard
-                                            contact={{
-                                              ...contact.contact,
-                                              ...{
-                                                comment: createRandomComment(),
-                                              },
-                                            }}
-                                          />
-                                        </Grid>
-                                      </Fragment>
-                                    ))}
+                                    {orderData?.ContactOrder.map(
+                                      (contact, idx) => (
+                                        <Fragment key={idx}>
+                                          <Grid>
+                                            <ContactCard
+                                              contact={contact.contact}
+                                            />
+                                          </Grid>
+                                        </Fragment>
+                                      )
+                                    )}
                                   </Grid.Container>
                                 </ContainerCard>
                               </Grid>
@@ -231,12 +246,13 @@ export default function OrderInterfaceContent({
                                 <ContainerCard>
                                   <Grid.Container gap={2} alignItems="stretch">
                                     <Grid xs={12}>
-                                      <ContactCard
-                                        contact={{
-                                          ...orderData?.accountManager?.contact,
-                                          ...{ comment: createRandomComment() },
-                                        }}
-                                      />
+                                      {orderData && (
+                                        <ContactCard
+                                          contact={
+                                            orderData.User.employee.contact
+                                          }
+                                        />
+                                      )}
                                     </Grid>
                                     <Grid xs={12}>
                                       <TextAreaField
@@ -329,12 +345,16 @@ export default function OrderInterfaceContent({
                                                       centerMarker
                                                       marker={[
                                                         {
-                                                          name: orderData?.orderCode,
+                                                          name:
+                                                            orderData?.orderCode ||
+                                                            "",
                                                           type: "Project Address",
-                                                          address:
-                                                            orderData
-                                                              ?.projectAddress
-                                                              ?.coordinates,
+                                                          address: orderData
+                                                            ?.projectAddress
+                                                            ?.coordinates || {
+                                                            lat: 0,
+                                                            lng: 0,
+                                                          },
                                                         },
                                                       ]}
                                                     />
@@ -405,15 +425,13 @@ export default function OrderInterfaceContent({
                                                   xs={6}
                                                   alignItems="center"
                                                 >
-                                                  <ContactCard
-                                                    contact={{
-                                                      ...orderData?.meetingPerson,
-                                                      ...{
-                                                        comment:
-                                                          createRandomComment(),
-                                                      },
-                                                    }}
-                                                  />
+                                                  {orderData && (
+                                                    <ContactCard
+                                                      contact={
+                                                        orderData.meetingPerson
+                                                      }
+                                                    />
+                                                  )}
                                                 </Grid>
                                               </Grid.Container>
                                             </ContainerCard>
@@ -469,12 +487,16 @@ export default function OrderInterfaceContent({
                                                       centerMarker
                                                       marker={[
                                                         {
-                                                          name: orderData?.orderCode,
+                                                          name:
+                                                            orderData?.orderCode ||
+                                                            "",
                                                           type: "Delivery Address",
-                                                          address:
-                                                            orderData
-                                                              ?.deliveryAddress
-                                                              ?.coordinates,
+                                                          address: orderData
+                                                            ?.deliveryAddress
+                                                            ?.coordinates || {
+                                                            lat: 0,
+                                                            lng: 0,
+                                                          },
                                                         },
                                                       ]}
                                                     />
@@ -584,7 +606,7 @@ export default function OrderInterfaceContent({
                                                 gap={2}
                                                 alignItems="stretch"
                                               >
-                                                {orderData?.inductionForms.map(
+                                                {orderData?.InductionForm.map(
                                                   (form, idx) => (
                                                     <Grid key={idx}>
                                                       <FileCard
@@ -660,11 +682,13 @@ export default function OrderInterfaceContent({
                                                 >
                                                   <Grid xs={12}>
                                                     <ContainerCard noPadding>
-                                                      <WorkerReqTable
-                                                        workerRequired={
-                                                          orderData?.workerRequired
-                                                        }
-                                                      />
+                                                      {orderData && (
+                                                        <WorkerReqTable
+                                                          workerRequired={
+                                                            orderData.WorkerRequired
+                                                          }
+                                                        />
+                                                      )}
                                                     </ContainerCard>
                                                   </Grid>
                                                 </Grid.Container>
@@ -832,7 +856,10 @@ export default function OrderInterfaceContent({
                                                                   Object.values(
                                                                     form.watch(
                                                                       "workingHours"
-                                                                    )
+                                                                    ) as Record<
+                                                                      string,
+                                                                      number
+                                                                    >
                                                                   ).reduce(
                                                                     (a, b) =>
                                                                       a + b,
@@ -908,15 +935,24 @@ export default function OrderInterfaceContent({
                                                         alignItems="stretch"
                                                       >
                                                         <Grid xs={12}>
-                                                          <CompanyCard
-                                                            company={{
-                                                              ...orderData?.client,
-                                                              ...{
-                                                                comment:
-                                                                  createRandomComment(),
-                                                              },
-                                                            }}
-                                                          />
+                                                          {orderData?.client
+                                                            .company && (
+                                                            <CompanyCard
+                                                              company={
+                                                                orderData.client
+                                                                  .company
+                                                              }
+                                                              registerAddress={
+                                                                orderData
+                                                                  ?.client
+                                                                  .address
+                                                              }
+                                                              registerName={
+                                                                orderData
+                                                                  ?.client.name
+                                                              }
+                                                            />
+                                                          )}
                                                         </Grid>
                                                         <Grid xs={12}>
                                                           <TextField
@@ -937,15 +973,15 @@ export default function OrderInterfaceContent({
                                                               performed
                                                             </b>
                                                             <br />
-                                                            {orderData?.workPerformed?.map(
+                                                            {orderData?.WorkPerformed?.map(
                                                               (work, idx) => (
                                                                 <Fragment
                                                                   key={idx}
                                                                 >
                                                                     • 
                                                                   {
-                                                                    work?.work
-                                                                      ?.name
+                                                                    work.work
+                                                                      .name
                                                                   }
                                                                   <br />
                                                                 </Fragment>
@@ -966,7 +1002,7 @@ export default function OrderInterfaceContent({
                                                               required
                                                             </b>
                                                             <br />
-                                                            {orderData?.trainingCoursesRequired?.map(
+                                                            {orderData?.TrainingCourseRequired?.map(
                                                               (course, idx) => (
                                                                 <Fragment
                                                                   key={idx}
@@ -974,8 +1010,8 @@ export default function OrderInterfaceContent({
                                                                     • 
                                                                   {
                                                                     course
-                                                                      ?.course
-                                                                      ?.name
+                                                                      .course
+                                                                      .name
                                                                   }
                                                                   <br />
                                                                 </Fragment>
@@ -1232,12 +1268,12 @@ export default function OrderInterfaceContent({
                                   minHeight: 140,
                                 }}
                               >
-                                {orderData?.payChargeRate?.map(
+                                {orderData?.PayChargeRate?.map(
                                   (payChargeRate) => (
                                     <Fragment key={payChargeRate.id}>
                                       <Grid xs={12} sm={4}>
                                         <PayChargeRateTable
-                                          payChargeRate={payChargeRate}
+                                          payChargeRate={payChargeRate as any}
                                           version={version}
                                         />
                                       </Grid>
@@ -1334,7 +1370,7 @@ export default function OrderInterfaceContent({
                                                   <br />
                                                   {
                                                     orderData
-                                                      ?.payChargeRate?.[0]
+                                                      ?.PayChargeRate?.[0]
                                                       .currency
                                                   }
                                                 </Text>
@@ -1391,16 +1427,49 @@ export default function OrderInterfaceContent({
                                               />
                                             </Grid>
                                             <Grid xs={12} justify="center">
-                                              <EditAddPayChargeRates
-                                                open={openEditAddModal}
-                                                payChargeRates={
-                                                  orderData?.payChargeRate
+                                              {orderData && (
+                                                <EditAddPayChargeRates
+                                                  open={openEditAddModal}
+                                                  payChargeRates={
+                                                    orderData.PayChargeRate
+                                                  }
+                                                  onClose={() =>
+                                                    setOpenEditAddModal(false)
+                                                  }
+                                                  onAdd={async (selected) => {
+                                                    try {
+                                                      await addPayChargeRates.mutateAsync({
+                                                        currency: orderData.PayChargeRate[0].currency,
+                                                        id: orderData.id,
+                                                        jobRole: selected[0],
+                                                      });
+                                                    } catch (cause) {
+                                                      console.error({ cause }, 'Failed to add pay charge rates');
+                                                    }
+                                                  }}
+                                                  onEdit={async (values) => {
+                                                    try {
+                                                      await editPayChargeRates.mutateAsync({
+                                                        id: values.rateID,
+                                                        chargeRate: values.charge,
+                                                        payRate: values.pay,
+                                                        appliedAt: values.appliedAt,
+                                                        old: values.old
+                                                      });
+                                                    } catch (cause) {
+                                                      console.error({ cause }, 'Failed to add post');
+                                                    }
+                                                  }}
+                                                  jobRoles={jobRoles}
+                                                />
+                                              )}
+                                              <Button
+                                                size={"sm"}
+                                                type="button"
+                                                onPress={() =>
+                                                  setOpenEditAddModal(true)
                                                 }
-                                                onClose={() =>
-                                                  setOpenEditAddModal(false)
-                                                }
-                                              />
-                                              <Button size={"sm"} type="button" onPress={() => setOpenEditAddModal(true)}>
+                                              >
                                                 Edit / Add
                                               </Button>
                                             </Grid>
@@ -1439,7 +1508,11 @@ function WorkerReqTable({
   workerRequired,
   onChange,
 }: {
-  workerRequired: OrderDataProps["workerRequired"];
+  workerRequired: Prisma.WorkerRequiredGetPayload<{
+    include: {
+      jobRole: true;
+    };
+  }>[];
   onChange?: ({
     id,
     quantity,
@@ -1570,7 +1643,30 @@ function PayChargeRateTable({
   payChargeRate,
   version,
 }: {
-  payChargeRate: OrderDataProps["payChargeRate"][0];
+  payChargeRate: Prisma.PayChargeRateGetPayload<{
+    include: {
+      jobRole: true;
+      payRate: true;
+      chargeRate: true;
+    };
+  }> & {
+    old: {
+      chargeRate: {
+        normal: number;
+        ot1: number;
+        ot2: number;
+        ot3: number;
+        ot4: number;
+      };
+      payRate: {
+        normal: number;
+        ot1: number;
+        ot2: number;
+        ot3: number;
+        ot4: number;
+      };
+    };
+  };
   version: "old" | "new";
 }) {
   /**
@@ -1586,6 +1682,7 @@ function PayChargeRateTable({
         pay: number;
       }[] = [];
       Object.entries(payChargeRate.chargeRate).map(([key, value]) => {
+        if (typeof value !== "number") return;
         payChargeRateTableFriendlyData.push({
           type: key,
           ch: value,
@@ -1598,7 +1695,7 @@ function PayChargeRateTable({
             payChargeRateTableFriendlyData.findIndex(
               (item) => item.type === key
             )
-          ],
+          ] || {},
           { pay: value }
         );
       });
@@ -1609,7 +1706,15 @@ function PayChargeRateTable({
         ch: number;
         pay: number;
       }[] = [];
-      Object.entries(payChargeRate.old.chargeRate).map(([key, value]) => {
+      Object.entries(
+        payChargeRate.old?.chargeRate as {
+          normal: number;
+          ot1: number;
+          ot2: number;
+          ot3: number;
+          ot4: number;
+        }
+      ).map(([key, value]) => {
         payChargeRateTableFriendlyData.push({
           type: key,
           ch: value,
@@ -1622,7 +1727,7 @@ function PayChargeRateTable({
             payChargeRateTableFriendlyData.findIndex(
               (item) => item.type === key
             )
-          ],
+          ] || {},
           { pay: value }
         );
       });
@@ -1653,7 +1758,7 @@ function PayChargeRateTable({
               }}
             >
               {version == "new" ? "at " : "before "}
-              {payChargeRate?.appliedAt.toLocaleString("en-IE", {
+              {payChargeRate?.appliedAt?.toLocaleString("en-IE", {
                 day: "2-digit",
                 month: "short",
                 year: "numeric",
@@ -1724,7 +1829,7 @@ function PayChargeRateTable({
 }
 
 /**
- * Renders a modal component for editing and adding pay and charge rates for a job role. 
+ * Renders a modal component for editing and adding pay and charge rates for a job role.
  *
  * @param {object} props - An object containing the following properties:
  *    @param {boolean} props.open - Determines whether the modal is open or not.
@@ -1740,11 +1845,19 @@ function EditAddPayChargeRates({
   onEdit,
   onAdd,
   payChargeRates,
+  jobRoles
 }: {
   open: boolean;
-  payChargeRates: OrderDataProps["payChargeRate"];
+  payChargeRates: Prisma.PayChargeRateGetPayload<{
+    include: {
+      jobRole: true;
+      payRate: true;
+      chargeRate: true;
+    };
+  }>[];
+  jobRoles: JobRolesProps[];
   onClose: () => void;
-  onEdit?: ([]: {
+  onEdit?: ({} : {
     appliedAt: Date;
     rateID: string;
     pay: {
@@ -1761,12 +1874,28 @@ function EditAddPayChargeRates({
       ot3: number;
       ot4: number;
     };
-  }[]) => void;
+    old: {
+      payRate: {
+        normal: number;
+        ot1: number;
+        ot2: number;
+        ot3: number;
+        ot4: number;
+      },
+      chargeRate: {
+        normal: number;
+        ot1: number;
+        ot2: number;
+        ot3: number;
+        ot4: number;
+      }
+    }
+  }) => void;
   onAdd?: ([]: string[]) => void;
 }) {
   const initValues = [
     ...payChargeRates.map((rate) => ({
-      appliedAt: new Date(),
+      appliedAt: rate.appliedAt,
       rateID: rate.id,
       pay: rate.payRate,
       charge: rate.chargeRate,
@@ -1829,9 +1958,8 @@ function EditAddPayChargeRates({
                               }
                               name={"appliedAt" + payChargeRates[page - 1].id}
                               value={
-                                value[page - 1].appliedAt
-                                  .toISOString()
-                                  .split("T")[0]
+                                value[page - 1]?.appliedAt?.toISOString()
+                                  .split("T")[0] || undefined
                               }
                               onChange={(e) => {
                                 setValue((prev) => {
@@ -1863,14 +1991,14 @@ function EditAddPayChargeRates({
                           <Grid xs={4.5} alignItems="center">
                             <Input
                               aria-label={
-                                "normalPay" + payChargeRates[page - 1].id
+                                "normalPay" + payChargeRates[page - 1]?.id
                               }
-                              name={"normalPay" + payChargeRates[page - 1].id}
+                              name={"normalPay" + payChargeRates[page - 1]?.id}
                               type="number"
                               bordered
                               placeholder={value[
                                 page - 1
-                              ].pay.normal.toString()}
+                              ]?.pay?.normal.toString()}
                               fullWidth
                               onChange={(e) => {
                                 setValue((prev) => {
@@ -1879,29 +2007,29 @@ function EditAddPayChargeRates({
                                     [page - 1]: {
                                       ...prev[page - 1],
                                       pay: {
-                                        ...prev[page - 1].pay,
+                                        ...prev[page - 1]?.pay,
                                         normal: Number(e.target.value),
                                       },
                                     },
                                   };
                                 });
                               }}
-                              value={value[page - 1].pay.normal}
+                              value={value[page - 1]?.pay.normal}
                             />
                           </Grid>
                           <Grid xs={4.5} alignItems="center">
                             <Input
                               aria-label={
-                                "normalCharge" + payChargeRates[page - 1].id
+                                "normalCharge" + payChargeRates[page - 1]?.id
                               }
                               name={
-                                "normalCharge" + payChargeRates[page - 1].id
+                                "normalCharge" + payChargeRates[page - 1]?.id
                               }
                               type="number"
                               bordered
                               placeholder={value[
                                 page - 1
-                              ].pay.normal.toString()}
+                              ]?.pay?.normal.toString()}
                               fullWidth
                               onChange={(e) => {
                                 setValue((prev) => {
@@ -1910,14 +2038,14 @@ function EditAddPayChargeRates({
                                     [page - 1]: {
                                       ...prev[page - 1],
                                       charge: {
-                                        ...prev[page - 1].charge,
+                                        ...prev[page - 1]?.charge,
                                         normal: Number(e.target.value),
                                       },
                                     },
                                   };
                                 });
                               }}
-                              value={value[page - 1].charge.normal}
+                              value={value[page - 1]?.charge.normal}
                             />
                           </Grid>
                           <Grid xs={3} alignItems="center">
@@ -1925,13 +2053,13 @@ function EditAddPayChargeRates({
                           </Grid>
                           <Grid xs={4.5} alignItems="center">
                             <Input
-                              name={"ot1Pay" + payChargeRates[page - 1].id}
+                              name={"ot1Pay" + payChargeRates[page - 1]?.id}
                               aria-label={
-                                "ot1Pay" + payChargeRates[page - 1].id
+                                "ot1Pay" + payChargeRates[page - 1]?.id
                               }
                               type="number"
                               bordered
-                              placeholder={value[page - 1].pay.ot1.toString()}
+                              placeholder={value[page - 1]?.pay.ot1.toString()}
                               fullWidth
                               onChange={(e) => {
                                 setValue((prev) => {
@@ -1940,25 +2068,25 @@ function EditAddPayChargeRates({
                                     [page - 1]: {
                                       ...prev[page - 1],
                                       pay: {
-                                        ...prev[page - 1].pay,
+                                        ...prev[page - 1]?.pay,
                                         ot1: Number(e.target.value),
                                       },
                                     },
                                   };
                                 });
                               }}
-                              value={value[page - 1].pay.ot1}
+                              value={value[page - 1]?.pay.ot1}
                             />
                           </Grid>
                           <Grid xs={4.5} alignItems="center">
                             <Input
-                              name={"ot1Charge" + payChargeRates[page - 1].id}
+                              name={"ot1Charge" + payChargeRates[page - 1]?.id}
                               aria-label={
-                                "ot1Charge" + payChargeRates[page - 1].id
+                                "ot1Charge" + payChargeRates[page - 1]?.id
                               }
                               type="number"
                               bordered
-                              placeholder={value[page - 1].pay.ot1.toString()}
+                              placeholder={value[page - 1]?.pay.ot1.toString()}
                               fullWidth
                               onChange={(e) => {
                                 setValue((prev) => {
@@ -1967,14 +2095,14 @@ function EditAddPayChargeRates({
                                     [page - 1]: {
                                       ...prev[page - 1],
                                       charge: {
-                                        ...prev[page - 1].charge,
+                                        ...prev[page - 1]?.charge,
                                         ot1: Number(e.target.value),
                                       },
                                     },
                                   };
                                 });
                               }}
-                              value={value[page - 1].charge.ot1}
+                              value={value[page - 1]?.charge.ot1}
                             />
                           </Grid>
                           <Grid xs={3} alignItems="center">
@@ -1982,13 +2110,13 @@ function EditAddPayChargeRates({
                           </Grid>
                           <Grid xs={4.5} alignItems="center">
                             <Input
-                              name={"ot2Pay" + payChargeRates[page - 1].id}
+                              name={"ot2Pay" + payChargeRates[page - 1]?.id}
                               aria-label={
-                                "ot2Pay" + payChargeRates[page - 1].id
+                                "ot2Pay" + payChargeRates[page - 1]?.id
                               }
                               type="number"
                               bordered
-                              placeholder={value[page - 1].pay.ot2.toString()}
+                              placeholder={value[page - 1]?.pay.ot2.toString()}
                               fullWidth
                               onChange={(e) => {
                                 setValue((prev) => {
@@ -1997,25 +2125,25 @@ function EditAddPayChargeRates({
                                     [page - 1]: {
                                       ...prev[page - 1],
                                       pay: {
-                                        ...prev[page - 1].pay,
+                                        ...prev[page - 1]?.pay,
                                         ot2: Number(e.target.value),
                                       },
                                     },
                                   };
                                 });
                               }}
-                              value={value[page - 1].pay.ot2}
+                              value={value[page - 1]?.pay.ot2}
                             />
                           </Grid>
                           <Grid xs={4.5} alignItems="center">
                             <Input
-                              name={"ot2Charge" + payChargeRates[page - 1].id}
+                              name={"ot2Charge" + payChargeRates[page - 1]?.id}
                               aria-label={
-                                "ot2Charge" + payChargeRates[page - 1].id
+                                "ot2Charge" + payChargeRates[page - 1]?.id
                               }
                               type="number"
                               bordered
-                              placeholder={value[page - 1].pay.ot2.toString()}
+                              placeholder={value[page - 1]?.pay.ot2.toString()}
                               fullWidth
                               onChange={(e) => {
                                 setValue((prev) => {
@@ -2024,14 +2152,14 @@ function EditAddPayChargeRates({
                                     [page - 1]: {
                                       ...prev[page - 1],
                                       charge: {
-                                        ...prev[page - 1].charge,
+                                        ...prev[page - 1]?.charge,
                                         ot2: Number(e.target.value),
                                       },
                                     },
                                   };
                                 });
                               }}
-                              value={value[page - 1].charge.ot2}
+                              value={value[page - 1]?.charge.ot2}
                             />
                           </Grid>
                           <Grid xs={3} alignItems="center">
@@ -2039,13 +2167,13 @@ function EditAddPayChargeRates({
                           </Grid>
                           <Grid xs={4.5} alignItems="center">
                             <Input
-                              name={"ot3Pay" + payChargeRates[page - 1].id}
+                              name={"ot3Pay" + payChargeRates[page - 1]?.id}
                               aria-label={
-                                "ot3Pay" + payChargeRates[page - 1].id
+                                "ot3Pay" + payChargeRates[page - 1]?.id
                               }
                               type="number"
                               bordered
-                              placeholder={value[page - 1].pay.ot3.toString()}
+                              placeholder={value[page - 1]?.pay.ot3.toString()}
                               fullWidth
                               onChange={(e) => {
                                 setValue((prev) => {
@@ -2054,27 +2182,27 @@ function EditAddPayChargeRates({
                                     [page - 1]: {
                                       ...prev[page - 1],
                                       pay: {
-                                        ...prev[page - 1].pay,
+                                        ...prev[page - 1]?.pay,
                                         ot3: Number(e.target.value),
                                       },
                                     },
                                   };
                                 });
                               }}
-                              value={value[page - 1].pay.ot3}
+                              value={value[page - 1]?.pay.ot3}
                             />
                           </Grid>
                           <Grid xs={4.5} alignItems="center">
                             <Input
-                              name={"ot3Charge" + payChargeRates[page - 1].id}
+                              name={"ot3Charge" + payChargeRates[page - 1]?.id}
                               aria-label={
-                                "ot3Charge" + payChargeRates[page - 1].id
+                                "ot3Charge" + payChargeRates[page - 1]?.id
                               }
                               type="number"
                               bordered
                               placeholder={value[
                                 page - 1
-                              ].charge.ot3.toString()}
+                              ]?.charge.ot3.toString()}
                               fullWidth
                               onChange={(e) => {
                                 setValue((prev) => {
@@ -2083,14 +2211,14 @@ function EditAddPayChargeRates({
                                     [page - 1]: {
                                       ...prev[page - 1],
                                       charge: {
-                                        ...prev[page - 1].charge,
+                                        ...prev[page - 1]?.charge,
                                         ot3: Number(e.target.value),
                                       },
                                     },
                                   };
                                 });
                               }}
-                              value={value[page - 1].charge.ot3}
+                              value={value[page - 1]?.charge.ot3}
                             />
                           </Grid>
                           <Grid xs={3} alignItems="center">
@@ -2098,13 +2226,13 @@ function EditAddPayChargeRates({
                           </Grid>
                           <Grid xs={4.5} alignItems="center">
                             <Input
-                              name={"ot4Pay" + payChargeRates[page - 1].id}
+                              name={"ot4Pay" + payChargeRates[page - 1]?.id}
                               aria-label={
-                                "ot4Pay" + payChargeRates[page - 1].id
+                                "ot4Pay" + payChargeRates[page - 1]?.id
                               }
                               type="number"
                               bordered
-                              placeholder={value[page - 1].pay.ot4.toString()}
+                              placeholder={value[page - 1]?.pay.ot4.toString()}
                               fullWidth
                               onChange={(e) => {
                                 setValue((prev) => {
@@ -2113,27 +2241,27 @@ function EditAddPayChargeRates({
                                     [page - 1]: {
                                       ...prev[page - 1],
                                       pay: {
-                                        ...prev[page - 1].pay,
+                                        ...prev[page - 1]?.pay,
                                         ot4: Number(e.target.value),
                                       },
                                     },
                                   };
                                 });
                               }}
-                              value={value[page - 1].pay.ot4}
+                              value={value[page - 1]?.pay.ot4}
                             />
                           </Grid>
                           <Grid xs={4.5} alignItems="center">
                             <Input
-                              name={"ot4Charge" + payChargeRates[page - 1].id}
+                              name={"ot4Charge" + payChargeRates[page - 1]?.id}
                               aria-label={
-                                "ot4Charge" + payChargeRates[page - 1].id
+                                "ot4Charge" + payChargeRates[page - 1]?.id
                               }
                               type="number"
                               bordered
                               placeholder={value[
                                 page - 1
-                              ].charge.ot4.toString()}
+                              ]?.charge.ot4.toString()}
                               fullWidth
                               onChange={(e) => {
                                 setValue((prev) => {
@@ -2142,14 +2270,14 @@ function EditAddPayChargeRates({
                                     [page - 1]: {
                                       ...prev[page - 1],
                                       charge: {
-                                        ...prev[page - 1].charge,
+                                        ...prev[page - 1]?.charge,
                                         ot4: Number(e.target.value),
                                       },
                                     },
                                   };
                                 });
                               }}
-                              value={value[page - 1].charge.ot4}
+                              value={value[page - 1]?.charge.ot4}
                             />
                           </Grid>
                         </Grid.Container>
@@ -2185,34 +2313,18 @@ function EditAddPayChargeRates({
                           <Grid xs={12} alignItems="center">
                             <Checkbox.Group
                               aria-label="Checkbox group for rates"
-                              // should be id not name 
-                              defaultValue={[
-                                ...payChargeRates.map(
-                                  (item) => item.jobRole.name
-                                ),
-                              ]}
-                              onChange={(value)=>{
-                                if(onAdd){
-                                  onAdd(value)
+                              onChange={(value) => {
+                                if (onAdd) {
+                                  console.log(value);
+                                  onAdd(value);
                                 }
                               }}
                             >
-                              {faker.helpers
-                                .uniqueArray(
-                                  faker.helpers
-                                    .uniqueArray(createRandomJobRole, 40)
-                                    .map((jobRole) => jobRole.name),
-                                  11
-                                )
-                                .map((jobRole) => ({
-                                  id: faker.string.uuid(),
-                                  name: jobRole,
-                                }))
+                              {jobRoles
                                 .map((jobRole) => (
                                   <Fragment key={jobRole.id}>
                                     <Checkbox
-                                      //should be id not name
-                                      value={jobRole.name}
+                                      value={jobRole.id}
                                       size="xs"
                                       isDisabled={
                                         payChargeRates.findIndex(
@@ -2241,10 +2353,13 @@ function EditAddPayChargeRates({
                 <Grid xs={12} justify="center">
                   <Pagination
                     page={page}
-                    onChange={(page) => {
-                      setPage(page);
-                      if (onEdit && value !== initValues) {
-                        onEdit(value);
+                    onChange={(newPage) => {
+                      setPage(newPage);
+                      if (onEdit && newPage > page && JSON.stringify(value) !== JSON.stringify(initValues)) {
+                        onEdit({...value[newPage - 2], old: {
+                          payRate: initValues[newPage - 2].pay,
+                          chargeRate: initValues[newPage - 2].charge
+                        }});
                       }
                     }}
                     loop

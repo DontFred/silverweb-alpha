@@ -51,6 +51,7 @@ CREATE TABLE "Project" (
     "updatedAt" TIMESTAMP(3) NOT NULL,
     "name" TEXT NOT NULL,
     "company" TEXT NOT NULL,
+    "size" TEXT NOT NULL,
     "typeID" TEXT NOT NULL,
     "comment" TEXT NOT NULL,
     "addressID" TEXT NOT NULL,
@@ -87,8 +88,8 @@ CREATE TABLE "Coordinates" (
     "id" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
-    "lat" DECIMAL(65,30) NOT NULL,
-    "lng" DECIMAL(65,30) NOT NULL,
+    "lat" DOUBLE PRECISION NOT NULL,
+    "lng" DOUBLE PRECISION NOT NULL,
 
     CONSTRAINT "Coordinates_pkey" PRIMARY KEY ("id")
 );
@@ -463,7 +464,7 @@ CREATE TABLE "PayChargeRate" (
     "appliedAt" TIMESTAMP(3) NOT NULL,
     "currency" TEXT NOT NULL,
     "jobRoleID" TEXT NOT NULL,
-    "old" JSONB NOT NULL,
+    "old" JSONB NOT NULL DEFAULT '{ "payRate": { "normal": "0", "ot1": "0", "ot2": "0", "ot3": "0", "ot4": "0"} , "chargeRate": { "normal": "0", "ot1": "0", "ot2": "0", "ot3": "0", "ot4": "0"} }',
 
     CONSTRAINT "PayChargeRate_pkey" PRIMARY KEY ("id")
 );

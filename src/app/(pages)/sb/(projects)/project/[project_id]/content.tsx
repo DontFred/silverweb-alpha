@@ -28,7 +28,7 @@ const Map = dynamic(() => import("@/comp/sw/app/Map"), {
       />
     </div>
   ),
-  ssr: false
+  ssr: false,
 });
 
 const FieldsetStyling: StyleObject.Properties = {
@@ -51,9 +51,9 @@ export default function ProjectInterfaceContent({
         postalCode: projectData?.address?.postCode,
         country: projectData?.address?.country,
       },
-      companyName: projectData?.company?.name,
+      companyName: projectData?.company,
       projectSize: projectData?.size,
-      projectComment: projectData?.projectComment,
+      projectComment: projectData?.comment,
     },
   });
   const {
@@ -89,7 +89,7 @@ export default function ProjectInterfaceContent({
                   }}
                 >
                   <Text h2 role="banner">
-                    Project | {projectData.name}
+                    Project | {projectData?.name}
                   </Text>
                 </div>
               </Grid>
@@ -131,19 +131,24 @@ export default function ProjectInterfaceContent({
                                       />
                                     </Grid>
                                     <Grid xs={6}>
-                                      <ContainerCard noBorder noPadding overflowHidden>
+                                      <ContainerCard
+                                        noBorder
+                                        noPadding
+                                        overflowHidden
+                                      >
                                         <Map
                                           centerMarker
                                           marker={[
                                             {
-                                              name: projectData?.name,
+                                              name: projectData?.name || "",
                                               id: projectData?.id,
-                                              company:
-                                                projectData?.company?.name,
-                                              type: projectData?.type,
-                                              address:
-                                                projectData?.address
-                                                  ?.coordinates,
+                                              company: projectData?.company,
+                                              type: projectData?.type.name,
+                                              address: projectData?.address
+                                                ?.coordinates || {
+                                                lat: 0,
+                                                lng: 0,
+                                              },
                                             },
                                           ]}
                                         />
@@ -193,7 +198,6 @@ export default function ProjectInterfaceContent({
                                         type="text"
                                         name="projectSize"
                                         label="Size"
-
                                       />
                                     </Grid>
                                     <Grid xs={12}>
@@ -239,13 +243,17 @@ export default function ProjectInterfaceContent({
                                       minHeight: 140,
                                     }}
                                   >
-                                    {projectData?.order?.map((order) => (
+                                    {projectData?.Order?.map((order) => (
                                       <Grid key={order.id}>
                                         <TwoRowCard
                                           heading={order?.orderCode}
-                                          description={order?.client?.company?.name}
+                                          description={
+                                            order?.client?.company?.name
+                                          }
                                           onPress={() => {
-                                            router.push("/sb/order/"+order.id)
+                                            router.push(
+                                              "/sb/order/" + order.id
+                                            );
                                           }}
                                         />
                                       </Grid>

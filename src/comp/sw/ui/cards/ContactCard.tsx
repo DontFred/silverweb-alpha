@@ -1,4 +1,3 @@
-import { CommentProps, ContactProps as FakerContactProps } from "@/faker.d";
 import {
   Avatar,
   Button,
@@ -13,9 +12,27 @@ import {
 import { AtSign, Building, Smartphone, User } from "lucide-react";
 import React, { Fragment } from "react";
 import StyleObject from "csstype";
+import { Prisma } from "@prisma/client";
 
 
-type ContactProps = FakerContactProps;
+type ContactProps = Prisma.ContactGetPayload<{
+  include: {
+    company: true;
+    ContactComment: {
+      include: {
+        comment: {
+          include: {
+            user: {
+              include: {
+                color: true;
+              }
+            }
+          };
+        };
+      };
+    };
+  };
+}>;
 
 /**
  * Renders a contact card with details such as name, job, company, email, phone and comments.
@@ -28,7 +45,7 @@ type ContactProps = FakerContactProps;
 export default function ContactCard({
   contact,
 }: {
-  contact: ContactProps & { comment: CommentProps };
+  contact: ContactProps;
 }) {
 
   const TriggerStyling: CSS = {
@@ -74,7 +91,7 @@ export default function ContactCard({
               css={ContactCardBodyStyling}
             >
               <UserDisplay
-                job={contact.jobPosition}
+                job={contact.jobPosition || ""}
                 name={`${contact.firstName} ${contact.lastName}`}
               />
             </Card.Body>
@@ -87,7 +104,7 @@ export default function ContactCard({
             <Grid xs={8}>
               <UserDisplay
                 noIcon
-                job={contact.jobPosition}
+                job={contact.jobPosition || ""}
                 name={`${contact.firstName} ${contact.lastName}`}
               />
             </Grid>
@@ -120,7 +137,7 @@ export default function ContactCard({
                 </Grid>
                 <Grid xs={8.5}>
                   <Text size="$sm" weight="medium">
-                    {contact.company.name}
+                    {contact.company?.name}
                   </Text>
                 </Grid>
               </Grid.Container>
@@ -192,20 +209,22 @@ export default function ContactCard({
                 </Grid>
                 <Grid>
                   <Text size="$xs" color="$accents6" weight={"bold"}>
-                    1
+                  {contact.ContactComment.length}
                   </Text>
                 </Grid>
               </Grid.Container>
             </Grid>
-            <Grid xs={12}>
-              <Comment
-                name={contact?.comment?.user?.name}
-                color={contact?.comment?.user?.color}
-                avatar={contact?.comment?.user?.avatar}
-                date={contact?.comment?.date}
-                comment={contact?.comment?.comment}
-              />
-            </Grid>
+            {contact.ContactComment.map(({comment}) => (
+              <Grid xs={12} key={comment.id}>
+                <Comment
+                  name={comment.user.name}
+                  color={comment.user.color?.color}
+                  avatar={comment.user.avatar}
+                  date={comment.createdAt}
+                  comment={comment.comment}
+                />
+              </Grid>
+            ))}
             <Spacer y={0.5} />
           </Grid.Container>
         </Popover.Content>
@@ -316,7 +335,7 @@ function Comment({
   comment,
 }: {
   avatar: string;
-  color?: "error" | "default" | "primary" | "secondary" | "success" | "warning" | "gradient";
+  color?: string;
   name: string;
   date: Date;
   comment: string;
@@ -340,7 +359,7 @@ function Comment({
         css={CommentContainerStyling}
       >
         <Grid xs={1.5}>
-          <Avatar bordered color={color} src={avatar} size={"sm"} />
+          <Avatar bordered color={color as unknown as "primary" | "secondary" | "success" | "warning" | "error" | "gradient" | "default" } src={avatar} size={"sm"} />
         </Grid>
         <Grid xs={10.5}>
           <Grid.Container justify="space-between">

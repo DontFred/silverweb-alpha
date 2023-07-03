@@ -19,7 +19,7 @@ export type MarkerProps = {
           string
         ,
         address: {
-          lat: Decimal,
-          lng: Decimal,
+          lat: number,
+          lng: number,
         }
       } 

@@ -170,7 +170,7 @@ export default function OrderFormContent({
                                       <ThreeRowCard
                                         heading={order.orderCode}
                                         description={order.client.company.name}
-                                        subdescription={order.project.name}
+                                        subdescription={order.Project.name}
                                         onPress={() => {
                                           router.push("/sb/order/" + order.id);
                                         }}
@@ -203,7 +203,7 @@ export default function OrderFormContent({
                                       <ThreeRowCard
                                         heading={order.orderCode}
                                         description={order.client.company.name}
-                                        subdescription={order.project.name}
+                                        subdescription={order.Project.name}
                                       />
                                     </Grid>
                                   )}

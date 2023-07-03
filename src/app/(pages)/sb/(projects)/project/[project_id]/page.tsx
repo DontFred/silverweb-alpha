@@ -1,36 +1,36 @@
 import { Fragment } from "react";
 import ProjectInterfaceContent from "./content";
+import { trpc } from "@/lib/trpc/ssTRPC";
+import { Prisma } from "@prisma/client";
 
-import { createRandomOrder, createRandomProjects } from "@/faker";
-import { OrderProps, ProjectProps } from "@/faker.d";
-import { faker } from "@faker-js/faker";
-
-export type ProjectDataProps = ProjectProps & {
-    order: Array<OrderProps>;
+export type ProjectDataProps = Prisma.ProjectGetPayload<{
+  include: {
+    address: {
+      include: {
+        coordinates: true;
+      };
+    },
+    type: true;
+    Order: {
+      include: {
+        client: {
+          include: {
+            company: true;
+          };
+        }
+      }
+    }
   };
-  
-/**
- * Asynchronously generates and returns a new set of ProjectDataProps.
- *
- * @return {Promise<ProjectDataProps>} The newly generated ProjectDataProps.
- */
-async function getProjectData(){
-    const projectData = createRandomProjects();
-  
-    Object.assign(projectData, {
-      order: [...faker.helpers.uniqueArray(createRandomOrder, 6)],
-    }) as ProjectDataProps;
-  
-    return projectData as ProjectDataProps
-  }
+}> | null
 
-export default async function ProjectInterface() {
 
-  const projectData = await getProjectData()
+export default async function ProjectInterface({ params }: { params: { project_id: string } }) { 
+  
+  let data = await trpc.getProjectById(params.project_id);
 
   return (
     <Fragment>
-      <ProjectInterfaceContent projectData={projectData}/>
+      <ProjectInterfaceContent projectData={data}/>
     </Fragment>
   );
 }
