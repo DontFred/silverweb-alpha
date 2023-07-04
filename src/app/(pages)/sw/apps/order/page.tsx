@@ -14,12 +14,38 @@ export type OrderProps = Prisma.OrderGetPayload<{
   }
 }>
 
+export type JobRolesProps = Prisma.JobRoleGetPayload<{
+  
+}>
+
+export type ProjectProps = Prisma.ProjectGetPayload<{
+  include: {
+    address: {
+      include: {
+        coordinates: true,
+      },
+    },
+    type: true,
+  }
+}>
+
+export type CompanyProps = Prisma.CompanyGetPayload<{
+  include: {
+    ClientProfiles: true,
+    address: true
+  }
+}>
+
 export default async function OrderForm() {
 
   let data = await trpc.getAllOrders();
+
+  let projectsData = await trpc.getAllProjects();
+  let companiesData = await trpc.getAllCompanies();
+  let jobRoles = await trpc.getAllJobRoles();
   return (
     <Fragment>
-        <OrderFormContent orderData={data}/>
+        <OrderFormContent orderData={data} projectsData={projectsData} companiesData={companiesData} jobRolesData={jobRoles}/>
     </Fragment>
   )
 }

@@ -33,7 +33,7 @@ export type FieldSchema = {
     | "relationNumber";
 };
 
-type DefaultProps = {
+export type DefaultProps = {
   label?: string;
   htmlType?: HTMLInputTypeAttribute;
   helpText?: string;

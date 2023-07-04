@@ -37,7 +37,7 @@ export default function EmailField(props: EmailFieldProps & { name: string }) {
           initialValue={watch(name)}
           clearable
           labelPlaceholder={label}
-          {...register(name, { ...option, ...option && {validate: (value: string) => value.includes("@") ? "" : "Please enter a valid email address" }}) }
+          {...register(name, { ...option, ...option && {validate: (value: string) => value.includes("@") ? true : "Please enter a valid email address" }}) }
         />
         <div
           style={{

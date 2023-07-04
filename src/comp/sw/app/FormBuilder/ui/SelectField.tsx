@@ -169,6 +169,7 @@ export default function SelectField(
       selectedOrSearchValue
         ? field.onChange(selectedOrSearchValue)
         : field.onChange("");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedOrSearchValue]);
 
   return (

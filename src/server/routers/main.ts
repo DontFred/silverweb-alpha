@@ -203,6 +203,14 @@ export const appRouter = t.router({
   getAllJobRoles: t.procedure.query(async () => {
     return await prisma.jobRole.findMany();
   }),
+  getAllCompanies: t.procedure.query(async () => {
+    return await prisma.company.findMany({
+      include: {
+        address: true,
+        ClientProfiles: true
+      }
+    })
+  }),
   addPayChargeRate: t.procedure
     .input(
       z.object({
