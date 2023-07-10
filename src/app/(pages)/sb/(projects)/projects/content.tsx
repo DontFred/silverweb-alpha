@@ -1,7 +1,7 @@
 "use client";
 
 import Layout from "@/comp/sw/ui/Layout";
-import { Grid, Loading, Text } from "@nextui-org/react";
+import { Grid, Loading, Switch, Text } from "@nextui-org/react";
 import React from "react";
 import dynamic from "next/dynamic";
 import ContainerCard from "@/comp/sw/ui/cards/ContainerCard";
@@ -41,7 +41,14 @@ export default function ProjectsContent({projectsData}: {projectsData: MapFriend
           </div>
         </Grid>
         <Grid xs={12} css={{ h: "calc(100% - 80px)" }}>
-          <ContainerCard>
+          <ContainerCard overflowHidden>
+            <div style={{
+              zIndex: 1000,
+              position: "absolute",
+            }}>
+            <Switch                                                 color={"secondary"}
+                                                bordered/>
+            </div>
             <Map
               marker={projectsData}
             />
