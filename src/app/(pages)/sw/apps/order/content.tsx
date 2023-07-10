@@ -1,12 +1,27 @@
 "use client";
+import {
+  Button,
+  Grid,
+  Loading,
+  Modal,
+  Pagination,
+  Spacer,
+  Text,
+} from "@nextui-org/react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
+import {
+  FormProvider,
+  useFieldArray,
+  useForm,
+  useFormContext,
+  useWatch,
+} from "react-hook-form";
+import { Minus, Plus } from "lucide-react";
+
 import Layout from "@/comp/sw/ui/Layout";
 import ThreeRowCard from "@/comp/sw/ui/cards/ThreeRowCard";
 import TwoRowCard from "@/comp/sw/ui/cards/TwoRowCard";
-import { Button, Grid, Modal, Pagination, Spacer, Text } from "@nextui-org/react";
-import React, { Fragment, useEffect, useState } from "react";
-import { CompanyProps, JobRolesProps, OrderProps, ProjectProps } from "./page";
-import { useRouter } from "next/navigation";
-import { FormProvider, useFieldArray, useForm, useFormContext } from "react-hook-form";
 import TextField from "@/comp/sw/app/FormBuilder/ui/TextField";
 import SelectField from "@/comp/sw/app/FormBuilder/ui/SelectField";
 import HeadingField from "@/comp/sw/app/FormBuilder/ui/HeadingField";
@@ -14,41 +29,20 @@ import SubheadingField from "@/comp/sw/app/FormBuilder/ui/SubheadingField";
 import AddressField from "@/comp/sw/app/FormBuilder/ui/AddressField";
 import ContactField from "@/comp/sw/app/FormBuilder/ui/ContactField";
 import { DefaultProps } from "@/comp/sw/app/FormBuilder/types";
-import { Minus, Plus } from "lucide-react";
-import { trpc } from "@/lib/trpc/csTRPC";
 import NumberField from "@/comp/sw/app/FormBuilder/ui/NumberField";
+import { AddOrderProps, CompanyProps, JobRolesProps, OrderProps, ProjectProps } from "./type";
+import { DevTool } from "@hookform/devtools";
 
-type AddOrderProps = {
-  orderCode: string;
-  projectRef: string;
-  clientRef: string;
-  registerName: string;
-  registerAddress: {
-    streetNo: string;
-    postCode: string;
-    city: string;
-    country: string;
-  };
-  salesContact: {
-    firstName: string;
-    lastName: string;
-    email: string;
-    phone: string;
-  };
-  currency: string;
-  payChargeRates: {
-    jobRole: string;
-    payRate: {
-      normal: string
-    }
-  }
-};
+//DEV
+import { trpc } from "@/lib/trpc/csTRPC";
+
+
 
 export default function OrderFormContent({
   orderData,
   projectsData,
   companiesData,
-  jobRolesData
+  jobRolesData,
 }: {
   orderData: OrderProps[];
   projectsData: ProjectProps[];
@@ -56,20 +50,61 @@ export default function OrderFormContent({
   jobRolesData: JobRolesProps[];
 }) {
   const form = useForm({
-    defaultValues: {
-      orderCode: "",
-    } as AddOrderProps,
+    defaultValues: {} as AddOrderProps,
   });
   const [open, setOpen] = useState<boolean>(false);
   const [page, setPage] = useState<number>(1);
+  const [submitting, setSubmitting] = useState<boolean>(false);
+  const submitButtonRef = useRef<HTMLButtonElement>(null);
   const router = useRouter();
+  const Order = trpc.addOrder.useMutation({
+    onSuccess: () => {
+        window.location.reload();
+      }
+  })
 
-  function handleAddOrder(data: any) {}
+  async function handleAddOrder(data: AddOrderProps) {
+    setSubmitting(true);
+    const order = await Order.mutateAsync({
+      accountManager: "00000000-0000-0000-0000-000000000000",
+      clientRef: data.clientRef,
+      currency: data.currency,
+      orderCode: data.orderCode,
+      payChargeRates: data.payChargeRates,
+      projectRef: data.projectRef,
+      registerName: data.registerName,
+      registerAddress: data.registerAddress,
+      salesContact: data.salesContact,
+    })
+    setSubmitting(false);
+  }
+
+  const clientRef = useWatch({
+    control: form.control,
+    name: "clientRef",
+  });
   return (
     <Fragment>
+      {process.env.NODE_ENV !== "production" && (
+        // Form state tool for react-hook-form
+        <DevTool control={form.control} />
+      )}
       <Modal
         open={open}
-        onClose={() => setOpen(false)}
+        onClose={() => {
+          form.unregister([
+            "clientRef",
+            "currency",
+            "orderCode",
+            "payChargeRates",
+            "projectRef",
+            "registerAddress",
+            "registerName",
+            "salesContact",
+          ]);
+          setPage(1);
+          setOpen(false);
+        }}
         width="30%"
         css={{ p: "$sm" }}
       >
@@ -78,8 +113,11 @@ export default function OrderFormContent({
             <Grid xs={12}>
               <FormProvider {...form}>
                 <form
-                  onSubmit={form.handleSubmit(handleAddOrder)}
                   style={{ width: "100%" }}
+                  onSubmit={form.handleSubmit(
+                    (data) => handleAddOrder(data),
+                    (e) => console.error(e)
+                  )}
                 >
                   {page === 1 && (
                     <Fragment>
@@ -94,8 +132,16 @@ export default function OrderFormContent({
                             message: "Please enter a order code",
                           },
                           validate: {
-                            checkIfUnique: () => {
-                              return true;
+                            checkIfUnique: (value: string) => {
+                              const orderCode = orderData.find(
+                                (o) => o.orderCode === value
+                              );
+                              if (orderCode !== undefined) {
+                                console.log("Order code already exists");
+                                return "Order code already exists";
+                              } else {
+                                return undefined;
+                              }
                             },
                           },
                         }}
@@ -123,7 +169,6 @@ export default function OrderFormContent({
                               type: { name: typeName },
                               name,
                             } = obj;
-
                             if (result[typeName]) {
                               result[typeName].push(name);
                             } else {
@@ -134,6 +179,7 @@ export default function OrderFormContent({
                           },
                           {}
                         )}
+                        autocomplete
                       />
                       <Spacer y={2} />
                       <HeadingField
@@ -146,6 +192,13 @@ export default function OrderFormContent({
                         name="clientRef"
                         label="Client reference"
                         items={companiesData.map((company) => company.name)}
+                        option={{
+                          required: {
+                            value: true,
+                            message:
+                              "Please select a client or company reference",
+                          },
+                        }}
                       />
                       <Spacer y={2} />
                       <HeadingField
@@ -166,13 +219,11 @@ export default function OrderFormContent({
                         label="Register name"
                         items={[
                           ...(companiesData
-                            .find(
-                              (company) =>
-                                company.name === form.watch("clientRef")
-                            )
+                            .find((company) => company.name === clientRef)
                             ?.ClientProfiles.map((client) => client.name) ||
                             []),
                         ]}
+                        autocomplete
                       />
                       <Spacer y={2} />
                     </Fragment>
@@ -208,24 +259,103 @@ export default function OrderFormContent({
                         content="you can only choose one for the hole order"
                         type="subheading"
                       />
-                      <TextField type="text" name="currency" label="Currency"/>
+                      <TextField
+                        type="text"
+                        name="currency"
+                        label="Currency"
+                        option={{
+                          required: {
+                            value: true,
+                            message: "Please enter a currency",
+                          },
+                        }}
+                      />
                       <Spacer y={2} />
-                      <HeadingField content="Pay and charge rates" type="heading" />
-                      <SubheadingField content="the job roles selected, pre fill the needed workers" type="subheading" />
-                      <PayChargeRatesField name="payChargeRates" jobRoles={jobRolesData.map((jobRole) => jobRole.name)}   />
+                      <HeadingField
+                        content="Pay and charge rates"
+                        type="heading"
+                      />
+                      <SubheadingField
+                        content="the job roles selected, pre fill the needed workers"
+                        type="subheading"
+                      />
+                      <PayChargeRatesField
+                        name="payChargeRates"
+                        jobRoles={jobRolesData.map((jobRole) => jobRole.name)}
+                        // option={{
+                        //   required: {
+                        //     message: "Please enter at least one rate",
+                        //     value: true
+                        //   }
+                        // }}
+                      />
                     </Fragment>
                   )}
+                  {page === 4 && (
+                    <Fragment>
+                      {submitting ? (
+                        <Fragment>
+                          <div style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            height: 200,
+                            width: "100%",
+                          }}>
+                            <Loading size="lg"  />
+                          </div>
+                        </Fragment>
+                      ) : (
+                        <Fragment>
+                          <HeadingField type="heading" content="Form URL" />
+                          <fieldset disabled style={{
+                              margin: 0,
+                              padding: 0,
+                              border: 0,
+                              minInlineSize: "unset",
+                          }}>
+                            <TextField type="text" name="formUrl" placeholder="URL"/>
+                            <Spacer y={2} />
+                            <HeadingField type="heading" content="Password" />
+                            <TextField type="text" name="password" placeholder="Password"/>
+                          </fieldset>
+                        </Fragment>
+                      )}
+                    </Fragment>
+                  )}
+                  <button
+                    ref={submitButtonRef}
+                    type="submit"
+                    style={{ display: "none" }}
+                  />
                 </form>
               </FormProvider>
             </Grid>
             <Grid xs={12} justify="center">
               <Pagination
-                onChange={(page) => setPage(page)}
+                onChange={async (newPage) => {
+                  if (page == 1) {
+                    await form.trigger([
+                      "orderCode",
+                      "projectRef",
+                      "clientRef",
+                      "registerName",
+                    ]);
+                  } else if (page == 2) {
+                    await form.trigger(["salesContact", "registerAddress"]);
+                  } else if (page == 3) {
+                    await form.trigger(["currency", "payChargeRates"]);
+                  }
+                  if (Object.keys(form.formState.errors).length === 0) {
+                    if (newPage == 4) {
+                      console.log(newPage, "submit");
+                      submitButtonRef.current?.click();
+                    }
+                    setPage(newPage);
+                  }
+                }}
                 page={page}
-                loop
-                size="xl"
-                onlyDots
-                rounded
+                size="sm"
                 total={4}
                 bordered
               />
@@ -290,7 +420,7 @@ export default function OrderFormContent({
                         <Grid xs={12}>
                           <div style={{ width: "100%" }}>
                             <Text weight="light">Answered forms</Text>
-                            <Grid.Container gap={2}>
+                            <Grid.Container gap={2} justify="space-between">
                               {orderData.map((order, idx) => (
                                 <Fragment key={idx}>
                                   {order.answered && (
@@ -323,7 +453,7 @@ export default function OrderFormContent({
                         <Grid xs={12}>
                           <div style={{ width: "100%" }}>
                             <Text weight="light">Not answered forms</Text>
-                            <Grid.Container gap={2}>
+                            <Grid.Container gap={2} justify="space-between">
                               {orderData.map((order, idx) => (
                                 <Fragment key={idx}>
                                   {!order.answered && (
@@ -353,8 +483,12 @@ export default function OrderFormContent({
   );
 }
 
-
-function PayChargeRatesField(props: { name: string, jobRoles: string[], option?: DefaultProps["option"], helpText?: string }) {
+function PayChargeRatesField(props: {
+  name: string;
+  jobRoles: string[];
+  option?: DefaultProps["option"];
+  helpText?: string;
+}) {
   const { name, option, jobRoles } = props;
 
   const { control } = useFormContext();
@@ -362,104 +496,132 @@ function PayChargeRatesField(props: { name: string, jobRoles: string[], option?:
     control,
     name: name,
   });
-  
+
   useEffect(() => {
-    function addNull(){
+    function addNull() {
       update(0, { item: null });
     }
-    addNull()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    addNull();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <Fragment>
       {fields.map((field, index) => (
         <Fragment key={field.id}>
-      <Grid.Container gap={1} css={{
-        w: "calc(100% + 24px)",
-        ml: "-12px"
-      }}>
-        <Grid xs={2.5} alignItems="center">
-          <Text>
-            Job role
-          </Text>
-        </Grid>
-        <Grid xs={9.5}>
-          <SelectField
-            option={option} type="select"
-            name={name + "."+ index + ".jobRole"}
-            items={jobRoles}
-          />
-        </Grid>
-        <Grid xs={12}>
-          <Spacer y={0.5} />
-        </Grid>
-        <Grid xs={2.5}/>
-        <Grid xs={4.75}>
-          <Text>
-            Pay rate
-          </Text>
-        </Grid>
-        <Grid xs={4.75}>
-          <Text>
-            Charge rate
-          </Text>
-        </Grid>
-        <Grid xs={2.5} alignItems="center">
-          <Text>
-            Normal
-          </Text>
-        </Grid>
-        <Grid xs={4.75}>
-          <NumberField option={option} type="number" name={name + "."+ index + ".payRate.normal"}/>
-        </Grid>
-        <Grid xs={4.75}>
-          <NumberField option={option} type="number" name={name + "."+ index + ".chargeRate.normal"}/>
-        </Grid>
-        <Grid xs={2.5} alignItems="center">
-          <Text>
-            OT1
-          </Text>
-        </Grid>
-        <Grid xs={4.75}>
-          <NumberField option={option} type="number" name={name + "."+ index + ".payRate.ot1"}/>
-        </Grid>
-        <Grid xs={4.75}>
-          <NumberField option={option} type="number" name={name + "."+ index + ".chargeRate.ot1"}/>
-        </Grid>
-        <Grid xs={2.5} alignItems="center">
-          <Text>
-            OT2
-          </Text>
-        </Grid>
-        <Grid xs={4.75}>
-          <NumberField option={option} type="number" name={name + "."+ index + ".payRate.ot2"}/>
-        </Grid>
-        <Grid xs={4.75}>
-          <NumberField option={option} type="number" name={name + "."+ index + ".chargeRate.ot2"}/>
-        </Grid>
-        <Grid xs={2.5} alignItems="center">
-          <Text>
-            OT3
-          </Text>
-        </Grid>
-        <Grid xs={4.75}>
-          <NumberField option={option} type="number" name={name + "."+ index + ".payRate.ot3"}/>
-        </Grid>
-        <Grid xs={4.75}>
-          <NumberField option={option} type="number" name={name + "."+ index + ".chargeRate.ot3"}/>
-        </Grid>
-        <Grid xs={2.5} alignItems="center">
-          <Text>
-            OT4
-          </Text>
-        </Grid>
-        <Grid xs={4.75}>
-          <NumberField option={option} type="number" name={name + "."+ index + ".payRate.ot4"}/>
-        </Grid>
-        <Grid xs={4.75}>
-          <NumberField option={option} type="number" name={name + "."+ index + ".chargeRate.ot4"}/>
-        </Grid>
-      </Grid.Container>
+          <Grid.Container
+            gap={1}
+            css={{
+              w: "calc(100% + 24px)",
+              ml: "-12px",
+            }}
+          >
+            <Grid xs={2.5} alignItems="center">
+              <Text>Job role</Text>
+            </Grid>
+            <Grid xs={9.5}>
+              <SelectField
+                option={option}
+                type="select"
+                name={name + "." + index + ".jobRole"}
+                items={jobRoles}
+              />
+            </Grid>
+            <Grid xs={12}>
+              <Spacer y={0.5} />
+            </Grid>
+            <Grid xs={2.5} />
+            <Grid xs={4.75}>
+              <Text>Pay rate</Text>
+            </Grid>
+            <Grid xs={4.75}>
+              <Text>Charge rate</Text>
+            </Grid>
+            <Grid xs={2.5} alignItems="center">
+              <Text>Normal</Text>
+            </Grid>
+            <Grid xs={4.75}>
+              <NumberField
+                option={option}
+                type="number"
+                name={name + "." + index + ".payRate.normal"}
+              />
+            </Grid>
+            <Grid xs={4.75}>
+              <NumberField
+                option={option}
+                type="number"
+                name={name + "." + index + ".chargeRate.normal"}
+              />
+            </Grid>
+            <Grid xs={2.5} alignItems="center">
+              <Text>OT1</Text>
+            </Grid>
+            <Grid xs={4.75}>
+              <NumberField
+                option={option}
+                type="number"
+                name={name + "." + index + ".payRate.ot1"}
+              />
+            </Grid>
+            <Grid xs={4.75}>
+              <NumberField
+                option={option}
+                type="number"
+                name={name + "." + index + ".chargeRate.ot1"}
+              />
+            </Grid>
+            <Grid xs={2.5} alignItems="center">
+              <Text>OT2</Text>
+            </Grid>
+            <Grid xs={4.75}>
+              <NumberField
+                option={option}
+                type="number"
+                name={name + "." + index + ".payRate.ot2"}
+              />
+            </Grid>
+            <Grid xs={4.75}>
+              <NumberField
+                option={option}
+                type="number"
+                name={name + "." + index + ".chargeRate.ot2"}
+              />
+            </Grid>
+            <Grid xs={2.5} alignItems="center">
+              <Text>OT3</Text>
+            </Grid>
+            <Grid xs={4.75}>
+              <NumberField
+                option={option}
+                type="number"
+                name={name + "." + index + ".payRate.ot3"}
+              />
+            </Grid>
+            <Grid xs={4.75}>
+              <NumberField
+                option={option}
+                type="number"
+                name={name + "." + index + ".chargeRate.ot3"}
+              />
+            </Grid>
+            <Grid xs={2.5} alignItems="center">
+              <Text>OT4</Text>
+            </Grid>
+            <Grid xs={4.75}>
+              <NumberField
+                option={option}
+                type="number"
+                name={name + "." + index + ".payRate.ot4"}
+              />
+            </Grid>
+            <Grid xs={4.75}>
+              <NumberField
+                option={option}
+                type="number"
+                name={name + "." + index + ".chargeRate.ot4"}
+              />
+            </Grid>
+          </Grid.Container>
           <Spacer y={fields.length !== index + 1 ? 2 : 1} />
         </Fragment>
       ))}
@@ -483,5 +645,5 @@ function PayChargeRatesField(props: { name: string, jobRoles: string[], option?:
         </Button>
       </Button.Group>
     </Fragment>
-  )
+  );
 }

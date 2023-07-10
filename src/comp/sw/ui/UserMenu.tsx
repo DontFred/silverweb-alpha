@@ -66,13 +66,13 @@ export default function UserMenu({
           width: "90%",
           m: "0 auto",
           "@sm": {
-            width: "55%",
+            width: "80%",
           },
           "@md": {
-            width: "50%",
+            width: "70%",
           },
           "@lg": {
-            width: "50%",
+            width: "70%",
           },
         }}
         autoMargin

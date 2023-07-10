@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { TextFieldProps } from "../types";
-import { useFormContext } from "react-hook-form";
+import { useFormContext, useWatch } from "react-hook-form";
 import { Input } from "@nextui-org/react";
 import TooltipHelper from "./TooltipHelper";
 
@@ -11,12 +11,17 @@ import TooltipHelper from "./TooltipHelper";
  * @return {JSX.Element} A text input field with validation errors and help text.
  */
 export default function TextField(props: TextFieldProps & { name: string }) {
-  const { register, watch, formState } = useFormContext();
+  const { register, control, formState } = useFormContext();
   const { label, name, option, helpText, placeholder } = props;
 
   const Error = name
     .split(".")
     .reduce((err, path): any => err && err[path], formState.errors);
+
+  const text = useWatch({
+    control: control,
+    name: name
+  })
 
   return (
     <Fragment>
@@ -33,7 +38,7 @@ export default function TextField(props: TextFieldProps & { name: string }) {
           })}
           fullWidth
           aria-label={"textfield-" + label + name }
-          initialValue={watch(name)}
+          initialValue={text}
           helperColor="error"
           bordered
           clearable

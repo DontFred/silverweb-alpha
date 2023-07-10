@@ -106,6 +106,7 @@ export type SelectFieldProps = FieldSchema &
   DefaultProps & {
     type: "select";
     items: Array<string> | Record<string, Array<string>>;
+    autocomplete?: boolean;
   };
 
 export type RadioFieldProps = FieldSchema &

@@ -80,34 +80,41 @@ export default function SelectField(
   props: SelectFieldProps & { name: string }
 ) {
   // Destruction
-  const { name, label, option, items, helpText } = props;
+  const { name, label, option, items, helpText, autocomplete } = props;
   const rules = option || {};
-  const ValidationRule = rules.validate || {};
-  Object.assign(ValidationRule, {
-    isSelectable: (value: string) => {
-      if(Array.isArray(items)){
-        if(items.includes(value)){
-          return true;
-        }else{
-          return "Please select an option";
-        }
-      }else{
-        const selectAbleOptions = ([] as string[]).concat(...Object.values(items));
-        if(selectAbleOptions.includes(value)){
-          return true;
-        }else{
-          return "Please select an option";
-        }
-      }
-    },
-  }),
-    (rules.validate = ValidationRule);
 
   const { control, formState,  } = useFormContext();
   const { field } = useController({
     name: name,
     control: control,
-    rules: rules,
+    rules: {...rules,
+        validate: {
+          ...rules.validate,
+          ...((autocomplete === undefined) || (autocomplete === false) )&& {
+            /**
+             * Checks if a value is selectable.
+             *
+             * @param {string} value - The value to check.
+             * @return {boolean|string} Returns true if the value is selectable, otherwise returns "Please select an option".
+             */
+            isSelectable: (value: string, formValues) => {
+              if(Array.isArray(items)){
+                if(items.includes(value) || value === ""){
+                  return true;
+                }else{
+                  return "Please select an option";
+                }
+              }else{
+                const selectAbleOptions = ([] as string[]).concat(...Object.values(items));
+                if(selectAbleOptions.includes(value) || value === ""){
+                  return true;
+                }else{
+                  return "Please select an option";
+                }
+              }
+            },
+          }
+        }},
   });
 
   // Errors
@@ -180,6 +187,7 @@ export default function SelectField(
           {...(Error && {
             helperText: "" + Error.message,
           })}
+          aria-label={name}
           name={field.name}
           helperColor="error"
           inputMode="search"
@@ -278,7 +286,7 @@ export default function SelectField(
           <Popover.Trigger>
             <div style={TriggerStyling} />
           </Popover.Trigger>
-          <Popover.Content css={DropdownMenuStyling}>
+          <Popover.Content css={{DropdownMenuStyling, ...(sortedItems.length == 0 && { display: "none" })}}>
             <ul style={ListStyling}>
               {/* Checking if items is grouped or not */}
               {Array.isArray(items)

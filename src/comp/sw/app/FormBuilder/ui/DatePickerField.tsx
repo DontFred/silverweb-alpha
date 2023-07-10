@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { DatePickerFieldProps } from "../types";
 import { Input } from "@nextui-org/react";
-import { useFormContext } from "react-hook-form";
+import { useFormContext, useWatch } from "react-hook-form";
 import TooltipHelper from "./TooltipHelper";
 
 /**
@@ -13,12 +13,17 @@ import TooltipHelper from "./TooltipHelper";
 export default function DatePickerField(
   props: DatePickerFieldProps & { name: string }
 ) {
-  const { register, watch, formState } = useFormContext();
+  const { register, formState, control } = useFormContext();
   const {label, date, time, name, option, helpText } = props;
 
   const Error = name
     .split(".")
     .reduce((err, path): any => err && err[path], formState.errors);
+
+  const DATE = useWatch({
+    control: control,
+    name: name,
+  })
 
   return (
     <Fragment>
@@ -38,7 +43,7 @@ export default function DatePickerField(
           })}
           type={date ? "date" : time ? "time" : "datetime-local"}
           fullWidth
-          initialValue={watch(name)}
+          initialValue={DATE}
           helperColor="error"
           bordered
           {...register(name, { ...option })}

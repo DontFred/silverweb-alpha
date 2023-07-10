@@ -2,8 +2,7 @@ import { Grid, Spacer } from "@nextui-org/react";
 import TextField from "./TextField";
 import SelectField from "./SelectField";
 import { AddressFieldProps } from "../types";
-import Nominatim from "nominatim-client";
-import { useFormContext } from "react-hook-form";
+import { useFormContext, useWatch } from "react-hook-form";
 
 /**
  * Renders an address form with street number, city, postal code, and country fields.
@@ -14,48 +13,20 @@ import { useFormContext } from "react-hook-form";
 export default function AddressField(
   props: AddressFieldProps & { name: string }
 ) {
-  const { watch, setError, clearErrors } = useFormContext();
+  const {
+    setError,
+    clearErrors,
+    control,
+    formState: { isValidating },
+  } = useFormContext();
 
   const { name, option } = props;
 
-  /**
-   * Asynchronously checks if the provided address is valid.
-   *
-   * @return {Promise<void>} A Promise that resolves when the function completes.
-   */
-  // async function checkAddress() {
-  //   const result = await Nominatim.createClient({
-  //     useragent: "SilverWeb",
-  //     referer: `${process.env.NEXT_PUBLIC_HOST_DOMAIN}`,
-  //   }).search({
-  //     q: `${watch(name).streetNo}, ${watch(name).postalCode} ${
-  //       watch(name).city
-  //     }, ${watch(name).country}`,
-  //     addressdetails: 1,
-  //   });
-  //   if (result.length != 0) {
-  //     clearErrors(name);
-  //     return false
-  //   } else {
-  //     setError(name + ".streetNo", {
-  //       type: "validate",
-  //       message: "Please enter a valid Address",
-  //     });
-  //     setError(name + ".postalCode", {
-  //       type: "validate",
-  //       message: "Please enter a valid Address",
-  //     });
-  //     setError(name + ".city", {
-  //       type: "validate",
-  //       message: "Please enter a valid Address",
-  //     });
-  //     setError(name + ".country", {
-  //       type: "validate",
-  //       message: "Please enter a valid Address",
-  //     });
-  //     return "Please enter a valid Address"
-  //   }
-  // }
+  const address = useWatch({
+    control:  control,
+    name: name
+  })
+
 
   return (
     <Grid.Container>
@@ -311,51 +282,69 @@ export default function AddressField(
               "Venezuela",
             ],
           }}
-          option={{...option, validate: {
-            ...option?.validate,
-            checkAddress: async (_, ) => {
-              try {
-                if(watch(name).streetNo && watch(name).postalCode && watch(name).city && watch(name).country) {
-                  const result = await Nominatim.createClient({
-                        useragent: "SilverWeb Nominatim" + name,
-                        referer: `${process.env.NEXT_PUBLIC_HOST_DOMAIN}`,
-                      }).search({
-                        q: `${watch(name).streetNo}, ${watch(name).postalCode} ${
-                          watch(name).city
-                        }, ${watch(name).country}`,
-                        addressdetails: 1,
+          option={{
+            ...option,
+            validate: {
+              ...option?.validate,
+              checkAddress: async (_) => {
+                try {
+                  if (
+                    address?.streetNo &&
+                    address?.postalCode &&
+                    address?.city &&
+                    address?.country &&
+                    isValidating
+                  ) {
+
+                    const r = await fetch(
+                      `https://nominatim.openstreetmap.org/?addressdetails=1&q=${address.streetNo}+${
+                        address.postalCode
+                      }+${address.city}+${address.country}&format=json&limit=1`,
+                      { method: "GET" }
+                    );
+                    const result = await r.json();
+                    if (result.length != 0) {
+                      clearErrors([
+                        name + ".streetNo",
+                        name + ".postalCode",
+                        name + ".city",
+                        name + ".country",
+                      ]);
+                      return undefined;
+                    } else {
+                      setError(name + ".streetNo", {
+                        type: "validate",
+                        message: "Please enter a valid Address",
                       });
-                      console.log(result, "result")
-                      if (result.length != 0) {
-                        clearErrors(name);
-                        return false
-                      } else {
-                        setError(name + ".streetNo", {
-                          type: "validate",
-                          message: "Please enter a valid Address",
-                        });
-                        setError(name + ".postalCode", {
-                          type: "validate",
-                          message: "Please enter a valid Address",
-                        });
-                        setError(name + ".city", {
-                          type: "validate",
-                          message: "Please enter a valid Address",
-                        });
-                        setError(name + ".country", {
-                          type: "validate",
-                          message: "Please enter a valid Address",
-                        });
-                        return "Please enter a valid Address"
-                      }
-                      
+                      setError(name + ".postalCode", {
+                        type: "validate",
+                        message: "Please enter a valid Address",
+                      });
+                      setError(name + ".city", {
+                        type: "validate",
+                        message: "Please enter a valid Address",
+                      });
+                      setError(name + ".country", {
+                        type: "validate",
+                        message: "Please enter a valid Address",
+                      });
+                      return "Please enter a valid Address";
+                    }
+                  }
+                  clearErrors([
+                    name + ".streetNo",
+                    name + ".postalCode",
+                    name + ".city",
+                    name + ".country",
+                  ]);
+                  return undefined;
+                } catch (error) {
+                  console.error(error, "error");
+                  return true;
                 }
-              } catch (error) {
-                console.error(error, "error");
-                return true
-              }
-            }, 
-          }}}
+              },
+            },
+          }}
         />
       </Grid>
     </Grid.Container>

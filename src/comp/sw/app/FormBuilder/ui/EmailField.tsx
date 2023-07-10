@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { EmailFieldProps } from "../types";
-import { useFormContext } from "react-hook-form";
+import { useFormContext, useWatch } from "react-hook-form";
 import { Input } from "@nextui-org/react";
 import TooltipHelper from "./TooltipHelper";
 
@@ -11,13 +11,17 @@ import TooltipHelper from "./TooltipHelper";
  * @return {JSX.Element} A React component representing the email input field.
  */
 export default function EmailField(props: EmailFieldProps & { name: string }) {
-  const { register, formState, watch, setError } = useFormContext();
+  const { register, formState, control } = useFormContext();
   const { label, name, option, helpText } = props;
 
   const Error = name
     .split(".")
     .reduce((err, path): any => err && err[path], formState.errors);
 
+    const email = useWatch({
+      control: control,
+      name: name,
+    })
   return (
     <Fragment>
       <div
@@ -34,7 +38,7 @@ export default function EmailField(props: EmailFieldProps & { name: string }) {
           fullWidth
           helperColor="error"
           bordered
-          initialValue={watch(name)}
+          initialValue={email}
           clearable
           labelPlaceholder={label}
           {...register(name, { ...option, ...option && {validate: (value: string) => value.includes("@") ? true : "Please enter a valid email address" }}) }

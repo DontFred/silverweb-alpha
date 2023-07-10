@@ -1,6 +1,7 @@
 import "./(styles)/globals.css";
 import Providers from "@/lib/providers";
 import localFont from "next/font/local";
+import { useTheme } from 'next-themes'
 
 const graphik = localFont({
   src: [
@@ -44,11 +45,14 @@ export const metadata = {
   description: "Build a better future with the SilverBack Group - a global construction and contracting company committed to sustainability and innovation. Contact us today to start building a greener future. ",
 };
 
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
+  
 }) {
+
   return (
     <html lang="en">
       <head>
@@ -57,18 +61,18 @@ export default function RootLayout({
           sizes="180x180"
           href="/icon/apple-touch-icon.png"
         />
-        <link rel="icon" type="image/x-icon" href="/icon/favicon.ico"></link>
+        <link rel="icon" type="image/x-icon" href={`/icon/favicon.ico`}></link>
         <link
           rel="icon"
           type="image/png"
           sizes="32x32"
-          href="/icon/favicon-32x32.png"
+          href={`/icon/favicon-32x32.png`}
         />
         <link
           rel="icon"
           type="image/png"
           sizes="16x16"
-          href="/icon/favicon-16x16.png"
+          href={`/icon/favicon-16x16.png`}
         />
         <link rel="manifest" href="/icon/site.webmanifest" />
         <link

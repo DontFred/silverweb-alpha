@@ -1,7 +1,7 @@
 import { CSS, Container } from "@nextui-org/react";
 import { Fields, RelationNumberProps } from "../types";
 import GridField from "./GridField";
-import { useFormContext } from "react-hook-form";
+import { useFormContext, useWatch } from "react-hook-form";
 
 /**
  * Renders a component that displays a list of related numbers as a grid.
@@ -12,9 +12,14 @@ import { useFormContext } from "react-hook-form";
 export default function RelationNumberField(props: RelationNumberProps & { name: string }) {
   const { name, relatedField } = props;
 
-  const { watch } = useFormContext()
+  const { control } = useFormContext()
 
-  const properties: Fields = Array.isArray(watch(relatedField)) ? watch(relatedField).reduce((a: any, v: string) => ({...a, [v]: {type: "number", label: v}}), {}) : {}
+  const related = useWatch({
+    control: control,
+    name: relatedField 
+  })
+
+  const properties: Fields = Array.isArray(related) ? related.reduce((a: any, v: string) => ({...a, [v]: {type: "number", label: v}}), {}) : {}
 
   const CheckboxContainerStyling: CSS = {
     p: 0,

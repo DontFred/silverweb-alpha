@@ -83,7 +83,7 @@ const ListItemStyling: StyleObject.Properties = {
 export default function FileField(props: FileFieldProps & { name: string }) {
   const { name, option } = props;
 
-  const { control, formState, setError, watch, clearErrors } = useFormContext();
+  const { control, formState } = useFormContext();
 
   const { field } = useController({
     name: name,

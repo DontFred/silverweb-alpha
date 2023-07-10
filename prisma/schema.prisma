@@ -55,14 +55,14 @@ model Project {
   id        String       @id @default(uuid())
   createdAt DateTime     @default(now())
   updatedAt DateTime     @updatedAt
-  name      String       @unique
+  name      String
   company   String
   size      String
   type      ProjectTypes @relation(fields: [typeID], references: [id])
   typeID    String
   comment   String
   address   Address      @relation(fields: [addressID], references: [id])
-  addressID String       @unique
+  addressID String
   Order     Order[]
 }
 
@@ -84,7 +84,7 @@ model Address {
   country               String
   coordinates           Coordinates @relation(fields: [coordinatesID], references: [id])
   coordinatesID         String      @unique
-  Project               Project?
+  Project               Project[]
   Company               Company[]
   Office                Office?
   ClientRegisterAddress Client[]
@@ -296,6 +296,7 @@ model Order {
   WorkerRequired              WorkerRequired[]
   PayChargeRate               PayChargeRate[]
   ContactOrder                ContactOrder[]
+  OrderFormAuth               OrderFormAuth?
 }
 
 model EmployeeStatus {
@@ -513,4 +514,13 @@ model ContactOrder {
   contact   Contact  @relation(fields: [contactID], references: [id])
   contactID String
   orderNo   Int
+}
+
+model OrderFormAuth {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  order     Order    @relation(fields: [orderID], references: [id])
+  orderID   String   @unique
+  password  String   @unique
 }

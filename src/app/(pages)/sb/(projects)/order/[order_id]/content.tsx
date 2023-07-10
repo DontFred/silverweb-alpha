@@ -17,7 +17,7 @@ import {
   Checkbox,
 } from "@nextui-org/react";
 import { Fragment, useRef, useState } from "react";
-import { FormProvider, useForm } from "react-hook-form";
+import { FormProvider, useForm, useWatch } from "react-hook-form";
 import StyleObject from "csstype";
 import ContactCard from "@/comp/sw/ui/cards/ContactCard";
 import TextAreaField from "@/comp/sw/app/FormBuilder/ui/TextAreaField";
@@ -135,6 +135,11 @@ export default function OrderInterfaceContent({
       window.location.reload();
       setOpenEditAddModal(false);
     }
+  })
+
+  const workingHours = useWatch({
+    control: form.control,
+    name: "workingHours"
   })
 
   const addPayChargeRates = trpc.addPayChargeRate.useMutation({
@@ -854,9 +859,7 @@ export default function OrderInterfaceContent({
                                                                 readOnly
                                                                 value={
                                                                   Object.values(
-                                                                    form.watch(
-                                                                      "workingHours"
-                                                                    ) as Record<
+                                                                    workingHours as Record<
                                                                       string,
                                                                       number
                                                                     >

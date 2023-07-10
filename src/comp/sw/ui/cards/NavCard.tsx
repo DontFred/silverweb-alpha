@@ -54,7 +54,7 @@ export default function NavCard({
         }} rounded color={"invert"} placement="right" isDisabled={!compact}>
         <Card variant="bordered" css={{ bg: "transparent" }}>
           <Card.Body css={{ p: 10 }}>
-            <Grid.Container gap={compact ? 0 : 1} justify="flex-start">
+            <Grid.Container gap={compact ? 0 : 1} justify={compact ? "center" :"flex-start"}>
               <Grid>{icon}</Grid>
               {!compact && (
                 <Grid>

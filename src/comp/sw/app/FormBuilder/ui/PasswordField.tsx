@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { PasswordFieldProps } from "../types";
-import { useFormContext } from "react-hook-form";
+import { useFormContext, useWatch } from "react-hook-form";
 import { Input } from "@nextui-org/react";
 import TooltipHelper from "./TooltipHelper";
 
@@ -13,12 +13,17 @@ import TooltipHelper from "./TooltipHelper";
 export default function PasswordField(
   props: PasswordFieldProps & { name: string }
 ) {
-  const { register,watch, formState } = useFormContext();
+  const { register, formState, control } = useFormContext();
   const { label, name, option, helpText } = props;
 
   const Error = name
     .split(".")
     .reduce((err, path): any => err && err[path], formState.errors);
+
+  const password = useWatch({
+    control: control,
+    name: name
+  })
 
   return (
     <Fragment>
@@ -29,7 +34,7 @@ export default function PasswordField(
         }}
       >
         <Input.Password
-          initialValue={watch(name)}
+          initialValue={password}
           status={Error ? "error" : "default"}
           {...(Error && {
             helperText: "" + Error.message,

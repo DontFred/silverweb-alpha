@@ -30,6 +30,6 @@
     ".next/types/**/*.ts",
     "src/server/env.js",
     "src/server/env.js"
-  ],
+, "src/lib/Error.js"  ],
   "exclude": ["node_modules"]
 }
