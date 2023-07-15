@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import ProjectsContent from "./content";
 import { trpc } from "@/lib/trpc/ssTRPC";
+import { notFound } from "next/navigation";
 
 export type MapFriendlyProjectData =
   | {
@@ -9,6 +10,7 @@ export type MapFriendlyProjectData =
       name: string;
       company: string;
       address: {
+        locstring: string;
         lat: number;
         lng: number;
       };
@@ -24,6 +26,10 @@ export type MapFriendlyProjectData =
  */
 export default async function Projects() {
   let data = await trpc.getAllProjects();
+
+  if (!data){
+    notFound()
+  }
   function getMapFriendlyAllProjectsData(allProjectData: typeof data) {
     const projectsData = allProjectData;
     const mapFriendlyAllProjectsData: MapFriendlyProjectData =
@@ -33,6 +39,7 @@ export default async function Projects() {
         name: project.name,
         company: project.company,
         address: {
+          locstring: project.address.city + ", " + project.address.country,
           lat: project.address.coordinates.lat,
           lng: project.address.coordinates.lng,
         },
@@ -40,6 +47,7 @@ export default async function Projects() {
 
     return mapFriendlyAllProjectsData;
   }
+
 
   const mapFriendlyAllProjectsData = getMapFriendlyAllProjectsData(data);
   return (

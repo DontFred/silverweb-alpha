@@ -71,6 +71,9 @@ input:disabled {
 
 input {
   color: var(--nextui-colors-accents6) !important;
+  user-select: all;
+  cursor: text !important;
+  pointer-events: all !important;
 }
 
 input[type="text"]{

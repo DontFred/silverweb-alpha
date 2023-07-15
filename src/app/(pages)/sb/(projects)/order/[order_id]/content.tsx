@@ -32,6 +32,9 @@ import CompanyCard from "@/comp/sw/ui/cards/CompanyCard";
 import NumberField from "@/comp/sw/app/FormBuilder/ui/NumberField";
 import { Prisma } from "@prisma/client";
 import { trpc } from "@/lib/trpc/csTRPC";
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+import { addressSchema } from "@/comp/sw/app/FormBuilder/zod";
 
 const Map = dynamic(() => import("@/comp/sw/app/Map"), {
   loading: () => (
@@ -169,7 +172,7 @@ export default function OrderInterfaceContent({
               }}
             >
               <Text h2 role="banner">
-                Order | {orderData?.orderCode}
+                Order | {orderData?.orderCode} | {orderData?.client.company.name}
               </Text>
             </div>
           </Grid>
@@ -859,10 +862,7 @@ export default function OrderInterfaceContent({
                                                                 readOnly
                                                                 value={
                                                                   Object.values(
-                                                                    workingHours as Record<
-                                                                      string,
-                                                                      number
-                                                                    >
+                                                                    workingHours as Record<string, number>
                                                                   ).reduce(
                                                                     (a, b) =>
                                                                       a + b,
@@ -2318,7 +2318,6 @@ function EditAddPayChargeRates({
                               aria-label="Checkbox group for rates"
                               onChange={(value) => {
                                 if (onAdd) {
-                                  console.log(value);
                                   onAdd(value);
                                 }
                               }}

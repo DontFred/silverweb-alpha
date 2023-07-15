@@ -1,7 +1,7 @@
 import { ChangeEvent, Fragment, useRef, useState } from "react";
 import { NumberFieldProps } from "../types";
 import { Button, CSS, FormElement, Input } from "@nextui-org/react";
-import { useController, useFormContext, useWatch } from "react-hook-form";
+import { useController, useFormContext } from "react-hook-form";
 import TooltipHelper from "./TooltipHelper";
 import { Minus, Plus } from "lucide-react";
 
@@ -27,11 +27,6 @@ export default function NumberField(
   const Error = name
     .split(".")
     .reduce((err, path): any => err && err[path], formState.errors);
-
-    const number = useWatch({
-    control: control,
-    name: name,
-    })
 
   const [focusInput, setFocusInput] = useState<boolean>(false);
   const [hoverInput, setHoverInput] = useState<boolean>(false);
@@ -115,7 +110,7 @@ export default function NumberField(
           type="number"
           inputMode="numeric"
           fullWidth
-          initialValue={number}
+          initialValue={field.value}
           helperColor="error"
           bordered
           aria-label={name}

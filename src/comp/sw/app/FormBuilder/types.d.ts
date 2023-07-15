@@ -223,12 +223,13 @@ export type Fields = Record<string, Field>;
 export interface FormProps {
   fields: Array<Fields>;
   onSubmit: SubmitHandler<FieldValues>;
-  defaultValues?: Record<string, boolean | string | number | undefined | Record<string, Record<string, boolean | string | number | undefined | Record<string, Record<string, boolean | string | number | undefined | Record<string, any>>>>>>;
+  defaultValues?: Record<string, any>;
+  onChange?: (fv: FieldValues) => void;
 }
 
 export interface Meta {
   title: string;
-  arg: any;
+  arg: FormProps;
 }
 
 export type RadioAndCheckboxItemProps =

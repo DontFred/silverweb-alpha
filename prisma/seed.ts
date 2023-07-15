@@ -49,6 +49,7 @@ async function main() {
           })
       )
     );
+
     const userRolePrisma = await Promise.all(
       ["employee", "supervisor", "admin"].map(
         async (role) =>
@@ -19367,6 +19368,10 @@ async function main() {
         avatar: "https://github.com/dontfred.png",
       },
     });
+  },
+  {
+    maxWait: 5000, // default: 2000
+    timeout: 1000000, // default: 5000
   });
 }
 main()

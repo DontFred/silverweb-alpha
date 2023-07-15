@@ -47,6 +47,7 @@ export type OrderProps = Prisma.OrderGetPayload<{
     salesContact?: {
       firstName: string;
       lastName: string;
+      jobPosition: string;
       email: string;
       phone: string;
     };
@@ -68,4 +69,6 @@ export type OrderProps = Prisma.OrderGetPayload<{
         ot4: number;
       };
     }[];
+    formUrl: string;
+    password: string;
   };

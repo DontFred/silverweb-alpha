@@ -22,7 +22,7 @@ import { SelectFieldProps } from "../types";
 import TooltipHelper from "./TooltipHelper";
 
 const DropdownMenuStyling: CSS = {
-  bs: "0 0 10px black",
+  bs: "0 2px 10px black",
   w: 250,
 };
 
@@ -131,7 +131,6 @@ export default function SelectField(
   const [selectedOrSearchValue, setSelectedOrSearchValue] = useState<string>(
     field.value || ""
   );
-
   // For external blur and react-hook-form
   const InputTriggerRef = useRef<HTMLInputElement>(null);
 
@@ -286,7 +285,7 @@ export default function SelectField(
           <Popover.Trigger>
             <div style={TriggerStyling} />
           </Popover.Trigger>
-          <Popover.Content css={{DropdownMenuStyling, ...(sortedItems.length == 0 && { display: "none" })}}>
+          <Popover.Content css={{...DropdownMenuStyling, ...(sortedItems.length == 0 && { display: "none" })}}>
             <ul style={ListStyling}>
               {/* Checking if items is grouped or not */}
               {Array.isArray(items)

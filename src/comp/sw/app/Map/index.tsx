@@ -1,11 +1,10 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import "leaflet/dist/leaflet.css";
 import { MarkerProps } from "./type";
 import L, { LatLngTuple } from "leaflet";
 import { useRouter } from "next/navigation";
 import ReactDomServer from "react-dom/server";
 import { Text } from "@nextui-org/react";
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 
 /**
  * Returns a Leaflet icon based on the type of marker specified in the parameter.
@@ -57,8 +56,9 @@ export default function Map({
   marker?: MarkerProps[];
   centerMarker?: boolean;
 }) {
+  const [id, _] = useState(new Date().getMilliseconds() * Math.random())
   useEffect(() => {
-    var container: any = L.DomUtil.get("map");
+    var container = L.DomUtil.get("map-"+id) as HTMLElement & { _leaflet_id: string | null } | null;
 
     if (container != null) {
       container._leaflet_id = null;
@@ -67,7 +67,7 @@ export default function Map({
       centerMarker && marker
         ? [marker[0].address.lat, marker[0].address.lng]
         : [53.36512, 10.27083];
-    var map = L.map("map").setView([...center], 4);
+    var map = L.map("map-"+id).setView([...center], 4);
     L.tileLayer(
       "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
     ).addTo(map);
@@ -108,7 +108,6 @@ export default function Map({
         );
       });
   });
-  const router = useRouter();
   return (
     <Fragment>
       <style jsx global>{`
@@ -155,7 +154,7 @@ export default function Map({
           color: var(--nextui-colors-gray800);
         }
       `}</style>
-      <div id="map" style={{ height: "100%", width: "100%" }}></div>;
+      <div id={"map-"+id} style={{ height: "100%", width: "100%" }}></div>;
     </Fragment>
   );
 }

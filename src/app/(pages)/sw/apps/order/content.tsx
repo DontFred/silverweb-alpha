@@ -58,9 +58,6 @@ export default function OrderFormContent({
   const submitButtonRef = useRef<HTMLButtonElement>(null);
   const router = useRouter();
   const Order = trpc.addOrder.useMutation({
-    onSuccess: () => {
-        window.location.reload();
-      }
   })
 
   async function handleAddOrder(data: AddOrderProps) {
@@ -77,6 +74,8 @@ export default function OrderFormContent({
       salesContact: data.salesContact,
     })
     setSubmitting(false);
+    form.setValue("formUrl", "cp.silverback-group.com/forms/order/" + order.id);
+    form.setValue("password", order.password);
   }
 
   const clientRef = useWatch({
@@ -104,6 +103,7 @@ export default function OrderFormContent({
           ]);
           setPage(1);
           setOpen(false);
+          window.location.reload();
         }}
         width="30%"
         css={{ p: "$sm" }}
@@ -137,7 +137,6 @@ export default function OrderFormContent({
                                 (o) => o.orderCode === value
                               );
                               if (orderCode !== undefined) {
-                                console.log("Order code already exists");
                                 return "Order code already exists";
                               } else {
                                 return undefined;
@@ -282,12 +281,6 @@ export default function OrderFormContent({
                       <PayChargeRatesField
                         name="payChargeRates"
                         jobRoles={jobRolesData.map((jobRole) => jobRole.name)}
-                        // option={{
-                        //   required: {
-                        //     message: "Please enter at least one rate",
-                        //     value: true
-                        //   }
-                        // }}
                       />
                     </Fragment>
                   )}
@@ -348,7 +341,6 @@ export default function OrderFormContent({
                   }
                   if (Object.keys(form.formState.errors).length === 0) {
                     if (newPage == 4) {
-                      console.log(newPage, "submit");
                       submitButtonRef.current?.click();
                     }
                     setPage(newPage);

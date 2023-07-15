@@ -1,6 +1,6 @@
 export default function Logo({fill, width, height, sm}: {fill?: string, width?: number, height?: number, sm?: boolean}) {
     return (
-      <svg width={width} height={height} xmlns="http://www.w3.org/2000/svg" viewBox={sm ? "0 0 20 80 " : "0 0 86 38"}>
+      <svg width={width} height={height} xmlns="http://www.w3.org/2000/svg" viewBox={sm ? "0 0 20 35 " : "0 0 86 38"}>
         <path d="M0 9.46168V15.57L16.4186 25.8173V19.7093L0 9.46168Z"  fill={fill}/>
         <path d="M16.4186 25.8173L7.62459 31.2794H0.0147209V25.8174L16.4186 25.8173Z"  fill={fill}/>
         <path d="M0 9.46168L8.76452 4H16.4038V9.46168L0 9.46168Z"  fill={fill}/>

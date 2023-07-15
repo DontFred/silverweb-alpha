@@ -2,7 +2,8 @@ import { Grid, Spacer } from "@nextui-org/react";
 import TextField from "./TextField";
 import SelectField from "./SelectField";
 import { AddressFieldProps } from "../types";
-import { useFormContext, useWatch } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
+import { NominatimResponseProps } from "../../../../../../type";
 
 /**
  * Renders an address form with street number, city, postal code, and country fields.
@@ -16,16 +17,10 @@ export default function AddressField(
   const {
     setError,
     clearErrors,
-    control,
     formState: { isValidating },
   } = useFormContext();
 
   const { name, option } = props;
-
-  const address = useWatch({
-    control:  control,
-    name: name
-  })
 
 
   return (
@@ -286,63 +281,63 @@ export default function AddressField(
             ...option,
             validate: {
               ...option?.validate,
-              checkAddress: async (_) => {
-                try {
-                  if (
-                    address?.streetNo &&
-                    address?.postalCode &&
-                    address?.city &&
-                    address?.country &&
-                    isValidating
-                  ) {
-
-                    const r = await fetch(
-                      `https://nominatim.openstreetmap.org/?addressdetails=1&q=${address.streetNo}+${
-                        address.postalCode
-                      }+${address.city}+${address.country}&format=json&limit=1`,
-                      { method: "GET" }
-                    );
-                    const result = await r.json();
-                    if (result.length != 0) {
-                      clearErrors([
-                        name + ".streetNo",
-                        name + ".postalCode",
-                        name + ".city",
-                        name + ".country",
-                      ]);
-                      return undefined;
-                    } else {
-                      setError(name + ".streetNo", {
-                        type: "validate",
-                        message: "Please enter a valid Address",
-                      });
-                      setError(name + ".postalCode", {
-                        type: "validate",
-                        message: "Please enter a valid Address",
-                      });
-                      setError(name + ".city", {
-                        type: "validate",
-                        message: "Please enter a valid Address",
-                      });
-                      setError(name + ".country", {
-                        type: "validate",
-                        message: "Please enter a valid Address",
-                      });
-                      return "Please enter a valid Address";
-                    }
-                  }
-                  clearErrors([
-                    name + ".streetNo",
-                    name + ".postalCode",
-                    name + ".city",
-                    name + ".country",
-                  ]);
-                  return undefined;
-                } catch (error) {
-                  console.error(error, "error");
-                  return true;
-                }
-              },
+              // checkAddress: async (_, formValues) => {
+              //   const address = formValues[name];
+              //   try {
+              //     if (
+              //       address?.streetNo &&
+              //       address?.postalCode &&
+              //       address?.city &&
+              //       address?.country &&
+              //       isValidating
+              //     ) {
+              //       const r = await fetch(
+              //         `https://nominatim.openstreetmap.org/?addressdetails=1&q=${address.streetNo}+${
+              //           address.postalCode
+              //         }+${address.city}+${address.country}&format=json&limit=1`,
+              //         { method: "GET" }
+              //       );
+              //       const result: NominatimResponseProps = await r.json();
+              //       if (result.length != 0) {
+              //         clearErrors([
+              //           name + ".streetNo",
+              //           name + ".postalCode",
+              //           name + ".city",
+              //           name + ".country",
+              //         ]);
+              //         return undefined;
+              //       } else {
+              //         setError(name + ".streetNo", {
+              //           type: "validate",
+              //           message: "Please enter a valid Address",
+              //         });
+              //         setError(name + ".postalCode", {
+              //           type: "validate",
+              //           message: "Please enter a valid Address",
+              //         });
+              //         setError(name + ".city", {
+              //           type: "validate",
+              //           message: "Please enter a valid Address",
+              //         });
+              //         setError(name + ".country", {
+              //           type: "validate",
+              //           message: "Please enter a valid Address",
+              //         });
+              //         return "Please enter a valid Address";
+              //       }
+              //     }
+              //     clearErrors([
+              //       name + ".streetNo",
+              //       name + ".postalCode",
+              //       name + ".city",
+              //       name + ".country",
+              //     ]);
+              //     return undefined;
+              //   } catch (error) {
+              //     console.error(error, "error");
+              //     return true;
+              //   }
+              // },
             },
           }}
         />

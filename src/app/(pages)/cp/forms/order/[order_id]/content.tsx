@@ -2,11 +2,22 @@
 import Footer from "@/comp/sb/ui/Footer";
 import Nav from "@/comp/sb/ui/Nav";
 import { Form, FormProps, Meta } from "@/comp/sw/app/FormBuilder";
-import { Button, Modal, Text } from "@nextui-org/react";
+import { Button, Loading, Modal, Text } from "@nextui-org/react";
+import { useParams } from "next/navigation";
 import React, { Fragment, useState } from "react";
+import { FormDataProps, OrderProps } from "./type";
+import { trpc } from "@/lib/trpc/csTRPC";
 
-export default function OrderFormContent() {
-  const [openSubmissionModal, setOpenSubmissionModal] = useState<boolean>(false);
+export default function OrderFormContent({
+  order,
+  auth,
+}: {
+  order: OrderProps;
+  auth: string;
+}) {
+  const [openSubmissionModal, setOpenSubmissionModal] = useState<boolean>(true);
+
+  const submitForm = trpc.submitOrderForm.useMutation();
 
   const fields: FormProps["fields"] = [
     {
@@ -39,6 +50,14 @@ export default function OrderFormContent() {
           pattern: {
             value: /^[A-Z2-7]{16}$/,
             message: "Please enter a valid password",
+          },
+          validate: {
+            password: async (value) => {
+              if (auth == value) {
+                return undefined;
+              }
+              return "Please enter your correct password";
+            },
           },
         },
       },
@@ -137,6 +156,12 @@ export default function OrderFormContent() {
         type: "array",
         item: "contact",
         counterMessage: "Colleague No.",
+        option: {
+          required: {
+            message: "Please enter one details",
+            value: true,
+          },
+        },
       },
       spacerFunf: {
         type: "spacer",
@@ -231,7 +256,6 @@ export default function OrderFormContent() {
           },
           validate: {
             OtherOption: (value: string) => {
-              console.log(value);
               if (value == "other" || value == "") {
                 return "Please enter something in the other field";
               } else {
@@ -670,11 +694,11 @@ export default function OrderFormContent() {
       },
       headingDrei: {
         type: "heading",
-        content: "The email(s)"
+        content: "The email(s)",
       },
       subheadingDrei: {
         type: "subheading",
-        content: "for the invoice"
+        content: "for the invoice",
       },
       invoicingEmail: {
         type: "textarea",
@@ -688,7 +712,7 @@ export default function OrderFormContent() {
       },
       spacerDrei: {
         type: "spacer",
-        double: true
+        double: true,
       },
       headingVier: {
         type: "heading",
@@ -764,42 +788,11 @@ export default function OrderFormContent() {
               }}
             >
               {[
-                {
-                  name: "Mechanic",
-                  ncr: "100",
-                  ot1: "150",
-                  ot2: "200",
-                  ot3: "250",
-                  ot4: "300",
-                  cy: "SEK",
-                },
-                {
-                  name: "Mechanic",
-                  ncr: "100",
-                  ot1: "150",
-                  ot2: "200",
-                  ot3: "250",
-                  ot4: "300",
-                  cy: "SEK",
-                },
-                {
-                  name: "Mechanic",
-                  ncr: "100",
-                  ot1: "150",
-                  ot2: "200",
-                  ot3: "250",
-                  ot4: "300",
-                  cy: "SEK",
-                },
-                {
-                  name: "Mechanic",
-                  ncr: "100",
-                  ot1: "150",
-                  ot2: "200",
-                  ot3: "250",
-                  ot4: "300",
-                  cy: "SEK",
-                },
+                ...order.PayChargeRate.map((cr) => ({
+                  name: cr.jobRole.name,
+                  ncr: cr.chargeRate.normal,
+                  cy: cr.currency,
+                })),
               ].map((cr, idx) => (
                 <Fragment key={idx}>
                   <Text size="$sm">
@@ -858,42 +851,14 @@ export default function OrderFormContent() {
               }}
             >
               {[
-                {
-                  name: "Mechanic",
-                  ncr: "100",
-                  ot1: "150",
-                  ot2: "200",
-                  ot3: "250",
-                  ot4: "300",
-                  cy: "SEK",
-                },
-                {
-                  name: "Mechanic",
-                  ncr: "100",
-                  ot1: "150",
-                  ot2: "200",
-                  ot3: "250",
-                  ot4: "300",
-                  cy: "SEK",
-                },
-                {
-                  name: "Mechanic",
-                  ncr: "100",
-                  ot1: "150",
-                  ot2: "200",
-                  ot3: "250",
-                  ot4: "300",
-                  cy: "SEK",
-                },
-                {
-                  name: "Mechanic",
-                  ncr: "100",
-                  ot1: "150",
-                  ot2: "200",
-                  ot3: "250",
-                  ot4: "300",
-                  cy: "SEK",
-                },
+                ...order.PayChargeRate.map((pc) => ({
+                  name: pc.jobRole.name,
+                  ot1: pc.chargeRate.ot1,
+                  ot2: pc.chargeRate.ot2,
+                  ot3: pc.chargeRate.ot3,
+                  ot4: pc.chargeRate.ot4,
+                  cy: pc.currency,
+                })),
               ].map((cr, idx) => (
                 <Fragment key={idx}>
                   <Text size="$sm">
@@ -953,18 +918,112 @@ export default function OrderFormContent() {
       },
     },
   ];
-  
+
+  const params = useParams();
   const meta: Meta = {
     title: "Order form",
     arg: {
       fields,
-      onSubmit: (values: Record<string, any>) => {
+      onSubmit: async (values: Record<string, any>) => {
         setOpenSubmissionModal(true);
-        console.log("values", values);
+        await submitForm.mutateAsync({
+          orderId: order.id,
+          ...(values as FormDataProps),
+        });
+      },
+      onChange(fv) {
+        if (typeof window !== "undefined") {
+          localStorage.setItem(
+            "SilverWeb-LS-" + params.order_id,
+            JSON.stringify(fv)
+          );
+        }
       },
       defaultValues: {
-        
-      } as Record<string, any>,
+        ...{
+          authCode: "",
+          officialCompanyName: order.client.name,
+          companyAddress: {
+            ...(order.client.address.id !==
+              "00000000-0000-0000-0000-000000000000" && {
+              streetNo: order.client.address.streetNo,
+              city: order.client.address.city,
+              postalCode: order.client.address.postCode,
+              country: order.client.address.country,
+            }),
+          },
+          personalContact: {
+            firstName: order.ContactOrder.find((c) => c.orderNo == 1)?.contact
+              .firstName,
+            lastName: order.ContactOrder.find((c) => c.orderNo == 1)?.contact
+              .lastName,
+            jobPosition: order.ContactOrder.find((c) => c.orderNo == 1)?.contact
+              .jobPosition,
+            email: order.ContactOrder.find((c) => c.orderNo == 1)?.contact
+              .email,
+            phone: order.ContactOrder.find((c) => c.orderNo == 1)?.contact
+              .phoneNumber,
+          },
+          ...(order.Project.name !== "No Project yet" && {
+            projectName: order.Project.name,
+          }),
+          projectAddress: {
+            streetNo: "",
+            city: "",
+            postalCode: "",
+            country: "",
+          },
+          performedWork: [],
+          workerNeeded: [...order.PayChargeRate.map((pc) => pc.jobRole.name)],
+          confirmRotation: [],
+          projectStart: "",
+          projectDuration: {},
+          requiredTrainingCourses: [],
+          inductionForms: [],
+          typeOfProject:
+            order.Project.type.id !== "00000000-0000-0000-0000-000000000000" &&
+            order.Project.type.name,
+          meetingPerson: {
+            firstName: "",
+            lastName: "",
+            jobPosition: "",
+            email: "",
+          },
+          deliveryAddress: {
+            streetNo: "",
+            city: "",
+            postalCode: "",
+            country: "",
+          },
+          confirmPayterm: [],
+          invoicingAddress: {
+            streetNo: "",
+            city: "",
+            postalCode: "",
+            country: "",
+          },
+          orgaNumber: "",
+          vatNumber: "",
+          confirmChargerates: [],
+          confirmOTChargerates: [],
+          colleaguesContactDetails: [
+            {
+              item: {
+                phone: null,
+                firstName: null,
+                lastName: "",
+                jobPosition: "",
+                email: "",
+              },
+            },
+          ],
+        },
+
+        ...(typeof window !== "undefined" &&
+          JSON.parse(
+            localStorage.getItem("SilverWeb-LS-" + params.order_id) || "{}"
+          )),
+      } as FormDataProps,
     },
   };
   return (
@@ -984,39 +1043,53 @@ export default function OrderFormContent() {
             width: "45%",
           },
         }}
-        blur 
-        open={openSubmissionModal} 
+        blur
+        open={openSubmissionModal}
         preventClose
       >
         <Modal.Header>
           <Text h2>Submitting form</Text>
         </Modal.Header>
         <Modal.Body>
-          <Text css={{ p: "0 50px" }}>
-            <b>Thank you</b> for providing us with the details of your project.
-            We appreciate your business and are <b>grateful</b> for the
-            opportunity to <b>work</b> with you. <br />
-            Your account manager of the SilverBack Team will be in touch with
-            you shortly to discuss your project further and to provide any
-            additional information you or we may need. <br />
-            In the meantime, please don&apos;t hesitate to <b>
-              contact us
-            </b> with <b>any questions</b> or concerns. We are here to help and
-            want to ensure that your experience with our company is a{" "}
-            <b>positive</b> one. <br />
-            Thank you again for choosing to work with us. We look forward to
-            partnering with you on your project.
-          </Text>
+          {submitForm.isLoading ? (
+            <Loading size="xl" css={{ m: "auto", py: 100 }} />
+          ) : (
+            <Fragment>
+              <Text css={{ p: "0 50px" }}>
+                <b>Thank you</b> for providing us with the details of your
+                project. We appreciate your business and are <b>grateful</b> for
+                the opportunity to <b>work</b> with you.
+              </Text>
+              <Text css={{ p: "0 50px" }}>
+                Your account manager of the SilverBack Team will be in touch
+                with you shortly to discuss your project further and to provide
+                any additional information you or we may need.
+              </Text>
+              <Text css={{ p: "0 50px" }}>
+                In the meantime, please don&apos;t hesitate to <b>contact us</b>{" "}
+                with <b>any questions</b> or concerns. We are here to help and
+                want to ensure that your experience with our company is a{" "}
+                <b>positive</b> one.
+              </Text>
+              <Text css={{ p: "0 50px" }}>
+                Thank you again for choosing to work with us. We look forward to
+                partnering with you on your project.
+              </Text>
+            </Fragment>
+          )}
         </Modal.Body>
         <Modal.Footer>
           <Button
-           onPress={()=>{
-            window.location.href= "https://silverback.ie"
-           }}
-           ghost
-           css={{
-            m: "auto"
-           }}
+            onPress={() => {
+              window.location.href= "https://silverback.ie"
+            }}
+            size={"sm"}
+            disabled={submitForm.isLoading}
+            ghost
+            css={{
+              m: "auto",
+              my: "$4",
+            }}
           >
             Redirect
           </Button>

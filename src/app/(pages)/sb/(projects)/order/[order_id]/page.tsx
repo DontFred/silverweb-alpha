@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import OrderInterfaceContent from "./content";
 import { trpc } from "@/lib/trpc/ssTRPC";
 import { Prisma } from "@prisma/client";
+import { notFound } from "next/navigation";
 
 export type OrderDataProps = Prisma.OrderGetPayload<{
   include: {
@@ -151,6 +152,9 @@ export type JobRolesProps = Prisma.JobRoleGetPayload<{
 export default async function OrderInterface({ params }: { params: { order_id: string } }) {
   let data = await trpc.getOrderById(params.order_id);
   let jr = await trpc.getAllJobRoles();
+  if (!data){
+    notFound()
+  }
   return (
     <Fragment>
       <OrderInterfaceContent orderData={data} jobRoles={jr} />

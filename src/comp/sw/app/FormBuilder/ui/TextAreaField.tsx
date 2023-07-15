@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useRef, useState } from "react";
+import { Fragment, useRef, useState } from "react";
 import { TextAreaFieldProps } from "../types";
 import { useController, useFormContext, useWatch } from "react-hook-form";
 import TooltipHelper from "./TooltipHelper";
@@ -26,10 +26,6 @@ export default function TextAreaField(
     rules: option,
   });
 
-  const text = useWatch({
-    control: control,
-    name: name
-  })
 
   const Error = name
     .split(".")
@@ -46,13 +42,6 @@ export default function TextAreaField(
   setTimeout(() => {
     setClearable(!TextAreaRef.current?.closest("fieldset")?.disabled);
   }, 10);
-
-  useEffect(() => {
-    if(TextAreaRef.current){
-      TextAreaRef.current.style.height = "auto";
-      TextAreaRef.current.style.height = TextAreaRef.current.scrollHeight + "px";
-    }
-  }, [text])
 
   const TextAreaContainerStyling: StyleObject.Properties = {
     width: "100%",
@@ -79,6 +68,8 @@ export default function TextAreaField(
     resize: "none",
     fontSize: "var(--nextui-fontSizes-sm)",
     lineHeight: "20px",
+    minHeight: "60px",
+    height: TextAreaRef.current && TextAreaRef.current.scrollHeight + "px" || "auto"
   };
 
   const ClearButtonIconStyling: StyleObject.Properties = {
@@ -172,6 +163,8 @@ export default function TextAreaField(
             style={TextAreaStyling}
             value={field.value}
             onChange={(e) => {
+              e.currentTarget.style.height = "auto";
+              e.currentTarget.style.height = e.currentTarget.scrollHeight + "px";
               field.onChange(e.target.value);
             }}
           />

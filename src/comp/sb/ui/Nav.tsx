@@ -1,6 +1,6 @@
 "use client";
 
-import { Navbar, Row, Text } from "@nextui-org/react";
+import { Button, Navbar, Row, Text } from "@nextui-org/react";
 import Link from "next/link";
 import { Fragment } from "react";
 import Logo from "./Logo";
@@ -14,7 +14,11 @@ export default function Nav({
 }) {
   return (
     <Fragment>
-      <Row>
+      <Row
+        css={{
+          position: "absolute"
+        }}
+      >
         <Navbar isBordered variant="floating">
           <Navbar.Toggle showIn="xs" />
           <Navbar.Brand showIn="xs">
@@ -77,6 +81,9 @@ export default function Nav({
                 {item.title}
               </Navbar.Link>
             ))}
+            <Navbar.Link as={Link} href="#">
+              Sign In
+            </Navbar.Link>
           </Navbar.Content>
           <Navbar.Toggle showIn="md" hideIn="xs" />
           <Navbar.Collapse

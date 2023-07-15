@@ -13,7 +13,7 @@ import Image from "next/image";
 import React, { ChangeEvent, Fragment, useRef, useState } from "react";
 import StyleObject from "csstype";
 import { PhoneFieldProps } from "../types";
-import { useController, useFormContext, useWatch } from "react-hook-form";
+import { useController, useFormContext } from "react-hook-form";
 import TooltipHelper from "./TooltipHelper";
 
 type PrefixEntry = { country: string; name: string; prefix: string };
@@ -1319,11 +1319,6 @@ export default function PhoneField(props: PhoneFieldProps & { name: string }) {
     .split(".")
     .reduce((err, path): any => err && err[path], formState.errors);
 
-  const phone = useWatch({
-    control: control,
-    name: name,
-  })
-
   const [openPopover, setOpenPopover] = useState<boolean>(false);
   const [selectedPrefix, setSelectedPrefix] = useState<PrefixEntry | null>(
     NumberPrefix.find(item => field.value?.startsWith(item.prefix)) || null
@@ -1341,7 +1336,7 @@ export default function PhoneField(props: PhoneFieldProps & { name: string }) {
           {...(Error && {
             helperText: "" + Error.message,
           })}
-          initialValue={phone}
+          initialValue={field.value}
           value={field.value || ""}
           labelLeft={
             <div style={InputLabelDropdownHandlerContainerStyling}>

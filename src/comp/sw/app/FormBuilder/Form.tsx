@@ -35,7 +35,7 @@ import { DevTool } from "@hookform/devtools";
  * @param {number} idx - the index of the field
  * @return {JSX.Element} the rendered form field
  */
-export function renderFields([name, fieldProps]: [string, Field], idx: number) {
+export function renderFields([name, fieldProps]: [ string, Field], idx: number) {
   switch (fieldProps.type) {
     case "title":
       return <TitleField {...fieldProps} key={idx} />;
@@ -96,12 +96,18 @@ export function renderFields([name, fieldProps]: [string, Field], idx: number) {
  * @param {Function} onSubmit - a callback function to be called when the form is submitted.
  * @return {JSX.Element} - a React component representing the form.
  */
-export function Form({ fields, onSubmit, defaultValues }: FormProps) {
+
+
+
+export function Form({ fields, onSubmit, defaultValues, onChange }: FormProps) {
   const [pages, setPages] = useState<number>(0);
 
   const form = useForm({
-    defaultValues: defaultValues
+    defaultValues: defaultValues,
   });
+
+
+
   return (
     <Fragment>
       <style jsx global>
@@ -212,6 +218,9 @@ export function Form({ fields, onSubmit, defaultValues }: FormProps) {
                             return await form.trigger(field[0]);
                           })
                         );
+                        if (onChange) {
+                          onChange(form.getValues());
+                        }
                         if (Errors.every((value) => value === true)) {
                           // No errors found
                           setPages(pages + 1);

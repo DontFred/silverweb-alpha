@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, memo } from "react";
 import { TextFieldProps } from "../types";
 import { useFormContext, useWatch } from "react-hook-form";
 import { Input } from "@nextui-org/react";
@@ -10,7 +10,7 @@ import TooltipHelper from "./TooltipHelper";
  * @param {TextFieldProps & { name: string }} props - The props for the TextField component.
  * @return {JSX.Element} A text input field with validation errors and help text.
  */
-export default function TextField(props: TextFieldProps & { name: string }) {
+function TextField(props: TextFieldProps & { name: string }) {
   const { register, control, formState } = useFormContext();
   const { label, name, option, helpText, placeholder } = props;
 
@@ -61,3 +61,5 @@ export default function TextField(props: TextFieldProps & { name: string }) {
     </Fragment>
   );
 }
+
+export default memo(TextField);

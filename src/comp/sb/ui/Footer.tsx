@@ -9,7 +9,9 @@ export default function Footer() {
     <Fragment>
       <Grid.Container
         css={{
-          m: "0 auto",
+          maxW: 1400,
+          left: "50%",
+          transform: "translateX(-50%)",
           position: "absolute",
           bottom: 0,
         }}
@@ -17,7 +19,7 @@ export default function Footer() {
         <Grid xs={12}>
           <hr
             style={{
-              border: "1px solid grey",
+              border: "0.5px solid grey",
               width: "100%",
               margin: "20px 40px",
             }}
@@ -97,7 +99,7 @@ export default function Footer() {
                   </Link>
                 </Grid>
                 <Grid>
-                  <Link href="https://www.facebook.com/SilverBackStaffing/">
+                  <Link href="https://www.instagram.com/silverback_mission_critical/?igshid=Y2IzZGU1MTFhOQ%3D%3D">
                     <Image
                       src={"/svg/Icon/instagram.svg"}
                       width={15}
