@@ -90,7 +90,7 @@ const whoiamCommandOutput = [
     "    The guy that developed this webapp and much more.",
     "    ",
     "    Here is my LinkedIn profile:",
-    <a href="https://www.linkedin.com/in/frederik-willem-grimm-672a29230/">    Frederik W. Grimm</a>
+    <a key="linkedin" href="https://www.linkedin.com/in/frederik-willem-grimm-672a29230/">    Frederik W. Grimm</a>
 ]
 
 export default function Console({error, errorCode, custom}: {error: string[], errorCode: number, custom?: { command: string, output: ReactNode[], function: () => void } }) {

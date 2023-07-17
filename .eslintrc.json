@@ -1,4 +1,17 @@
 {
-  "extends": "next/core-web-vitals"
-  // "react/no-unknown-property": ["error", { "ignore": ["global", "jsx"] }] 
+  "extends": "next",
+  "rules": {
+    "react/no-unescaped-entities": "off",
+    "@next/next/no-page-custom-font": "off",
+    "react/no-unknown-property": [
+      2,
+      {
+        "ignore": [
+          "jsx",
+          "global"
+        ]
+      }
+    ]
+
+  }
 }

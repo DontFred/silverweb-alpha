@@ -14,7 +14,7 @@ export default function SignWithOTP() {
           input[type="number"] {
             -moz-appearance: textfield;
           }
-          input[aria-typeof="OTP"] {
+          input[aria-controls="OTP"] {
             font-size: 20px;
             margin: 4px !important;
             text-align: center;
@@ -85,7 +85,7 @@ export default function SignWithOTP() {
                   onChange={(e) => {
                     e.target.value = e.target.value.slice(0, 1);
                   }}
-                  aria-typeof="OTP"
+                  aria-controls="OTP"
                   aria-label="OTP-1"
                   bordered
                   type="number"
@@ -99,7 +99,7 @@ export default function SignWithOTP() {
                   onChange={(e) => {
                     e.target.value = e.target.value.slice(0, 1);
                   }}
-                  aria-typeof="OTP"
+                  aria-controls="OTP"
                   aria-label="OTP-1"
                   bordered
                   type="number"
@@ -113,7 +113,7 @@ export default function SignWithOTP() {
                   onChange={(e) => {
                     e.target.value = e.target.value.slice(0, 1);
                   }}
-                  aria-typeof="OTP"
+                  aria-controls="OTP"
                   aria-label="OTP-1"
                   bordered
                   type="number"
