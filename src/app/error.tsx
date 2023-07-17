@@ -2,7 +2,7 @@
 import Console from '@/comp/sw/app/Console'
 import React, { useEffect } from 'react'
 
-export default function error({error, reset}: {
+export default function Error({error, reset}: {
   error: Error
   reset: () => void
 }) {
