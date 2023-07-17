@@ -54,6 +54,7 @@ import {
   Wrench,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { Fragment, useEffect, useRef } from "react";
 import Typewriter from "typewriter-effect";
 
@@ -79,7 +80,6 @@ export default function Home() {
         CurrentParallaxRef?.container.current.scrollHeight -
         CurrentParallaxRef?.container.current.clientHeight;
       const scrollPercent = (scrollTop / scrollHeight) * 100;
-      console.log(scrollPercent);
       if (scrollPercent > 9 && scrollPercent < 23) {
         Object.assign(sideInfoComprehensiveServicesRef.current?.style || {}, {
           translate:
@@ -147,6 +147,7 @@ export default function Home() {
         ]}
         active={0}
       />
+
       <Parallax
         ref={ParallaxRef}
         pages={5}
@@ -1554,12 +1555,8 @@ export default function Home() {
               <Text
                 css={{
                   fontWeight: "bold",
-                  fontSize: "2.5em",
-                  "@smMax": {
-                    fontSize: "2em",
-                  },
+                  fontSize: "2em",
                   lineHeight: "$sm",
-                  mt: 20,
                 }}
               >
                 Get in touch
@@ -1601,6 +1598,7 @@ export default function Home() {
                     }}
                   >
                     <User
+                      src="data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M23 22C23.2 21 23.7 20.3 24.5 19.5C25.5 18.6 26 17.3 26 16C26 14.4087 25.3679 12.8826 24.2426 11.7574C23.1174 10.6321 21.5913 10 20 10C18.4087 10 16.8826 10.6321 15.7574 11.7574C14.6321 12.8826 14 14.4087 14 16C14 17 14.2 18.2 15.5 19.5C16.2 20.2 16.8 21 17 22' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M17 26H23' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M18 30H22' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A"
                       name="I have a project"
                       description="Work with us and be a partner"
                     />
@@ -1624,8 +1622,9 @@ export default function Home() {
                     }}
                   >
                     <User
+                      src="data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17.998 20.998C18.4275 21.5721 18.9754 22.0472 19.6046 22.391C20.2338 22.7347 20.9296 22.9391 21.6447 22.9903C22.3598 23.0416 23.0776 22.9384 23.7494 22.6878C24.4212 22.4372 25.0312 22.0451 25.538 21.538L28.538 18.538C29.4488 17.595 29.9528 16.332 29.9414 15.021C29.93 13.71 29.4042 12.456 28.4771 11.5289C27.5501 10.6019 26.296 10.076 24.9851 10.0646C23.6741 10.0533 22.4111 10.5572 21.468 11.468L19.748 13.178' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M22.0022 19.0012C21.5727 18.4271 21.0248 17.952 20.3956 17.6083C19.7664 17.2645 19.0706 17.0601 18.3555 17.0089C17.6404 16.9577 16.9226 17.0608 16.2508 17.3114C15.579 17.562 14.969 17.9541 14.4622 18.4612L11.4622 21.4612C10.5514 22.4042 10.0474 23.6672 10.0588 24.9782C10.0702 26.2892 10.596 27.5433 11.5231 28.4703C12.4501 29.3973 13.7042 29.9232 15.0151 29.9346C16.3261 29.946 17.5891 29.442 18.5322 28.5312L20.2422 26.8212' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A"
                       name="I want to support"
-                      description="Work for us and you the team"
+                      description="Work for us and join the team"
                     />
                     <Checkbox isRounded color="secondary" aria-label="Job" />
                   </div>

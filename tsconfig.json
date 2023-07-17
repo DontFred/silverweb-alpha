@@ -30,6 +30,6 @@
     ".next/types/**/*.ts",
     "src/server/env.js",
     "src/server/env.js"
-, "src/lib/Error.js"  ],
+, "src/lib/Error.js", "src/app/@modal/(..)login-admin", "src/app/auth/login-employee", "src/app/auth/login-admin"  ],
   "exclude": ["node_modules"]
 }

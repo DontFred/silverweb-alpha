@@ -16,6 +16,9 @@ export default function template({
     <Fragment>
       <Container
         xl
+        css={{
+          p: 0
+        }}
       >
         <div style={{ width: "100%", position: "relative", height: "100vh" }}>{children}</div>
       </Container>

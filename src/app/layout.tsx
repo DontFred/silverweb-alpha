@@ -48,9 +48,10 @@ export const metadata = {
 
 export default function RootLayout({
   children,
+  modal
 }: {
   children: React.ReactNode;
-  
+  modal: React.ReactNode
 }) {
 
   return (
@@ -87,7 +88,7 @@ export default function RootLayout({
         <meta name="theme-color" content="dark" />
       </head>
       <body className={graphik.className}>
-        <Providers>{children}</Providers>
+        <Providers>{children}{modal}</Providers>
       </body>
     </html>
   );

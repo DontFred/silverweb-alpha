@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Navbar, Row, Text } from "@nextui-org/react";
+import { Button, Dropdown, Navbar, Row, Text } from "@nextui-org/react";
 import Link from "next/link";
 import { Fragment } from "react";
 import Logo from "./Logo";
@@ -16,7 +16,7 @@ export default function Nav({
     <Fragment>
       <Row
         css={{
-          position: "absolute"
+          position: "absolute",
         }}
       >
         <Navbar isBordered variant="floating">
@@ -81,9 +81,39 @@ export default function Nav({
                 {item.title}
               </Navbar.Link>
             ))}
-            <Navbar.Link as={Link} href="#">
-              Sign In
-            </Navbar.Link>
+              <Dropdown placement="bottom-right">
+                <Navbar.Item>
+                  <Dropdown.Button
+                    auto
+                    light
+                    css={{
+                      px: 0,
+                      dflex: "center",
+                      svg: { pe: "none" },
+                    }}
+                    ripple={false}
+                  >
+                    <Link href="" style={{
+                      fontWeight: "400"
+                    }}>
+                      Sign In
+                    </Link>
+                  </Dropdown.Button>
+                </Navbar.Item>
+                <Dropdown.Menu  css={{
+                  bg: "$black",
+                  m: "$2",
+                  br: "12px"
+                }}>
+                  <Dropdown.Item textValue="As an employee">
+                    <Link href={""}>
+                    As an employee
+                    </Link>
+                  </Dropdown.Item>
+                  <Dropdown.Item><Link href={""} >As a partner</Link></Dropdown.Item>
+                  <Dropdown.Item><Link href={"/auth/login-admin"}>As an admin</Link></Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
           </Navbar.Content>
           <Navbar.Toggle showIn="md" hideIn="xs" />
           <Navbar.Collapse
