@@ -26,6 +26,7 @@ model User {
   Order         Order[]
   Job           Job[]
   WebAuthN      WebAuthN?
+  Session       Session[]
 }
 
 model WebAuthN {
@@ -539,4 +540,20 @@ model OrderFormAuth {
   order     Order    @relation(fields: [orderID], references: [id])
   orderID   String   @unique
   password  String   @unique
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

@@ -1,6 +1,7 @@
 "use client";
 
-import { Button, Dropdown, Navbar, Row, Text } from "@nextui-org/react";
+import {  Dropdown, Navbar, Row, Text } from "@nextui-org/react";
+import { signIn, signOut } from "next-auth/react";
 import Link from "next/link";
 import { Fragment } from "react";
 import Logo from "./Logo";
@@ -110,8 +111,8 @@ export default function Nav({
                     As an employee
                     </Link>
                   </Dropdown.Item>
-                  <Dropdown.Item><Link href={""} >As a partner</Link></Dropdown.Item>
-                  <Dropdown.Item><Link href={"/auth/login-admin"}>As an admin</Link></Dropdown.Item>
+                  <Dropdown.Item><Link href={""}onClick={()=>signOut()} >As a partner</Link></Dropdown.Item>
+                  <Dropdown.Item><Link href={"/auth/login-admin"} onClick={()=>signIn()}>As an admin</Link></Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
           </Navbar.Content>

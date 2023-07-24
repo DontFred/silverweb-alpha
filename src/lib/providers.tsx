@@ -5,6 +5,7 @@ import { CssBaseline, NextUIProvider, createTheme } from "@nextui-org/react";
 import { Fragment } from "react";
 import { ThemeProvider } from "next-themes";
 import { TrpcProvider } from "./trpc/trpcProvider";
+import NextAuthProvider from "./auth/NextAuthProvider";
 
 const lightTheme = createTheme({
   type: "light",
@@ -37,6 +38,7 @@ const darkTheme = createTheme({
 export default function Providers({ children }: any) {
   return (
     <Fragment>
+      <NextAuthProvider>
         <TrpcProvider>
           <ThemeProvider
             defaultTheme="dark"
@@ -89,6 +91,7 @@ export default function Providers({ children }: any) {
             <NextUIProvider>{children}</NextUIProvider>
           </ThemeProvider>
         </TrpcProvider>
+      </NextAuthProvider>
     </Fragment>
   );
 }
