@@ -152,7 +152,6 @@ export default function FileField(props: FileFieldProps & { name: string }) {
             e.preventDefault();
           }}
           onClick={() => {
-            console.log("click");
             InputContainerRef.current?.click();
           }}
         >
