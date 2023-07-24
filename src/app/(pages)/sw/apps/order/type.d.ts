@@ -34,6 +34,7 @@ export type OrderProps = Prisma.OrderGetPayload<{
   }>
 
   type AddOrderProps = {
+    ClientProjectRef: string;
     orderCode: string;
     projectRef?: string;
     clientRef: string;

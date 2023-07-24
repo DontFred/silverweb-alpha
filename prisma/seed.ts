@@ -182,7 +182,7 @@ async function main() {
     const projectPrisma = await Promise.all(
       [
         {
-          name: faker.airline.airport().iataCode + faker.airline.flightNumber,
+          name: faker.airline.airport().iataCode + faker.airline.flightNumber(),
           typeID:
             projectTypesPrisma[faker.number.int(projectTypesPrisma.length - 1)]
               .id,
@@ -2438,6 +2438,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -2739,6 +2742,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -3040,6 +3046,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -3341,6 +3350,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -3642,6 +3654,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -3943,6 +3958,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -4244,6 +4262,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -4545,6 +4566,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -4846,6 +4870,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -5147,6 +5174,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -5448,6 +5478,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -5749,6 +5782,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -6050,6 +6086,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -6351,6 +6390,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -6652,6 +6694,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -6953,6 +6998,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -7254,6 +7302,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -7555,6 +7606,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -7856,6 +7910,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -8157,6 +8214,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -8458,6 +8518,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -8759,6 +8822,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -9060,6 +9126,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -9361,6 +9430,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -9662,6 +9734,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -9963,6 +10038,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -10264,6 +10342,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -10565,6 +10646,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -10866,6 +10950,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -11167,6 +11254,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -11468,6 +11558,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -11769,6 +11862,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -12070,6 +12166,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -12371,6 +12470,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -12672,6 +12774,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -12973,6 +13078,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -13274,6 +13382,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -13575,6 +13686,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -13876,6 +13990,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -14177,6 +14294,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -14478,6 +14598,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -14779,6 +14902,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -15080,6 +15206,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -15381,6 +15510,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -15682,6 +15814,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -15983,6 +16118,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -16284,6 +16422,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -16585,6 +16726,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -16886,6 +17030,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -17187,6 +17334,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -17488,6 +17638,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -17789,6 +17942,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -18090,6 +18246,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:
@@ -18391,6 +18550,9 @@ async function main() {
             faker.airline.airline().iataCode +
             faker.airline.flightNumber({ addLeadingZeros: true }),
           answered: true,
+          commentToRotation: faker.word.words(20),
+          commentToNumbersOfWorker: faker.word.words(20),
+          clientProjectCode: faker.airline.recordLocator({ allowNumerics: true }),
           commentToGeneralInformation: faker.word.words(20),
           clientID: clientPrisma[faker.number.int(clientPrisma.length - 1)].id,
           accountManagerID:

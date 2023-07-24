@@ -17,8 +17,8 @@ export default function ContactField(
   const { name, option } = props;
   return (
     <Fragment>
-      <Grid.Container>
-        <Grid xs>
+      <Grid.Container gap={2}>
+        <Grid xs={6}>
           <TextField
             name={`${name}.firstName`}
             label="First name"
@@ -26,19 +26,13 @@ export default function ContactField(
             option={option}
           />
         </Grid>
-        <Grid>
-          <Spacer y={1} />
-        </Grid>
-        <Grid xs>
+        <Grid xs={6}>
           <TextField
             name={`${name}.lastName`}
             label="Last name"
             type="text"
             option={option}
           />
-        </Grid>
-        <Grid xs={12}>
-          <Spacer x={1} />
         </Grid>
         <Grid xs={12}>
           <TextField
@@ -48,10 +42,7 @@ export default function ContactField(
             option={option}
           />
         </Grid>
-        <Grid xs={12}>
-          <Spacer x={1} />
-        </Grid>
-        <Grid xs>
+        <Grid xs={6}>
           <EmailField
             name={`${name}.email`}
             label="Email"
@@ -59,10 +50,7 @@ export default function ContactField(
             option={option}
           />
         </Grid>
-        <Grid>
-          <Spacer y={1} />
-        </Grid>
-        <Grid xs>
+        <Grid xs={6}>
           <PhoneField
             name={`${name}.phone`}
             label="Phone"

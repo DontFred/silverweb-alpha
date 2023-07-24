@@ -25,6 +25,19 @@ model User {
   WroteComments Comment[]
   Order         Order[]
   Job           Job[]
+  WebAuthN      WebAuthN?
+}
+
+model WebAuthN {
+  id                String   @id @default(uuid())
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  secretOTP         String   @unique
+  webauthnChallenge String
+  webauthnSecret    String?
+  User              User     @relation(fields: [userID], references: [id])
+  userID            String   @unique
+  otp               String?
 }
 
 model Department {
@@ -255,6 +268,7 @@ model Order {
   createdAt                   DateTime                 @default(now())
   updatedAt                   DateTime                 @updatedAt
   orderCode                   String                   @unique
+  clientProjectCode           String
   answered                    Boolean                  @default(false)
   client                      Client                   @relation(fields: [clientID], references: [id])
   clientID                    String
@@ -288,6 +302,8 @@ model Order {
   breakTime                   String
   breaksPaid                  String
   rotation                    String
+  commentToRotation           String
+  commentToNumbersOfWorker    String
   workingHours                Json                     @default("{ \"mo\": \"0\", \"tu\": \"0\", \"we\": \"0\", \"th\": \"0\", \"fr\": \"0\", \"sa\": \"0\", \"su\": \"0\" }")
   InductionForm               InductionForm[]
   ProjectHistory              ProjectHistory[]

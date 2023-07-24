@@ -3,6 +3,8 @@ import SuperJSON from "superjson";
 import { z } from "zod";
 import { prisma } from "../prisma";
 import { NominatimResponseProps } from "../../../type";
+import bcrypt from "bcrypt";
+import { intervalToDuration } from "date-fns";
 
 const t = initTRPC.create({
   transformer: SuperJSON,
@@ -228,11 +230,27 @@ export const appRouter = t.router({
       },
     });
   }),
+  getWebAuthnBySecretKey: t.procedure.input(z.object({ secret: z.string(), otp: z.string() })).mutation(async (req) => {
+    const { input } = req;
+    const credentials = await prisma.webAuthN.findFirst({
+      where: {
+        secretOTP: input.secret,
+      },
+      include: {
+        User: true
+      }
+    });
+    if(!credentials || credentials.otp === null) return null;
+    const verify = await bcrypt.compare(input.otp, credentials.otp)
+    if(!verify) return null;
+    return credentials;
+  }),
   addOrder: t.procedure
     .input(
       z.object({
         accountManager: z.string(),
         orderCode: z.string(),
+        clientProjectCode: z.string(),
         projectRef: z.string().optional(),
         clientRef: z.string(),
         registerName: z.string().optional(),
@@ -303,6 +321,9 @@ export const appRouter = t.router({
         const result: NominatimResponseProps = await r.json();
         const order = await tx.order.create({
           data: {
+            commentToNumbersOfWorker: "",
+            commentToRotation: "",
+            clientProjectCode: input.clientProjectCode,
             breaksPaid: "Unpaid",
             breakTime: "1h/day",
             rotation: "6 weeks on / 2 weeks off",
@@ -372,8 +393,12 @@ export const appRouter = t.router({
                             streetNo: input.registerAddress.streetNo,
                             coordinates: {
                               create: {
-                                lat: Math.round((result[0]?.lat || 1) * 1000) / 1000,
-                                lng: Math.round((result[0]?.lon || 1) * 1000) / 1000,
+                                lat:
+                                  Math.round((result[0]?.lat || 1) * 1000) /
+                                  1000,
+                                lng:
+                                  Math.round((result[0]?.lon || 1) * 1000) /
+                                  1000,
                               },
                             },
                           },
@@ -625,85 +650,86 @@ export const appRouter = t.router({
   submitOrderForm: t.procedure
     .input(
       z.object({
-        orderId: z.string(), //
-        authCode: z.string(), //
-        officialCompanyName: z.string(), //
+        orderId: z.string(),
+        authCode: z.string(),
+        officialCompanyName: z.string(),
         companyAddress: z.object({
-          //
-          streetNo: z.string(), //
-          city: z.string(), //
-          postalCode: z.string(), //
-          country: z.string(), //
-        }), //
-        personalContact: z.object({ //
-          firstName: z.string(), //
-          lastName: z.string(), //
-          jobPosition: z.string(), //
-          email: z.string(), //
-          phone: z.string(), //
-        }), //
-        projectName: z.string(), //
-        projectAddress: z.object({
-          //
-          streetNo: z.string(), //
-          city: z.string(), //
-          postalCode: z.string(), //
-          country: z.string(), //
-        }), //
-        performedWork: z.string().array(), //
-        workerNeeded: z.string().array(), //
-        confirmRotation: z.string().array(), //
-        projectStart: z.string(), //
-        projectDuration: z.object({
-          weeks: z.number(), //
+            streetNo: z.string(),
+            city: z.string(),
+            postalCode: z.string(),
+            country: z.string()
         }),
-        requiredTrainingCourses: z.string().array(), //
-        inductionForms: z.array( //
-          z.object({ //
-            filename: z.string(), //
-            uri: z.string(), //
-          }) //
-        ), //
-        typeOfProject: z.string(), //
-        meetingPerson: z.object({ //
-          firstName: z.string(), //
-          lastName: z.string(), //
-          jobPosition: z.string(), //
-          email: z.string(), //
-          phone: z.string(), //
-        }), //
+        personalContact: z.object({
+            firstName: z.string(),
+            lastName: z.string(),
+            jobPosition: z.string(),
+            email: z.string(),
+            phone: z.string()
+        }),
+        projectName: z.string(),
+        projectAddress: z.object({
+            streetNo: z.string(),
+            city: z.string(),
+            postalCode: z.string(),
+            country: z.string()
+        }),
+        performedWork: z.array(z.string()),
+        workerNeeded: z.array(z.string()),
+        confirmRotation: z.array(z.string()),
+        projectDuration: z.object({
+            from: z.string(),
+            to: z.string()
+        }),
+        requiredTrainingCourses: z.array(z.string()),
+        inductionForms: z.array(z.object({
+           filename: z.string(), uri: z.string() 
+        })),
+        typeOfProject: z.string(),
+        meetingPerson: z.object({
+            firstName: z.string(),
+            lastName: z.string(),
+            jobPosition: z.string(),
+            email: z.string(),
+            phone: z.string()
+        }),
         deliveryAddress: z.object({
-          //
-          streetNo: z.string(), //
-          city: z.string(), //
-          postalCode: z.string(), //
-          country: z.string(), //
-        }), //
-        confirmPayterm: z.string().array(), //
-        invoicingAddress: z.object({ //
-          streetNo: z.string(), // 
-          city: z.string(), //
-          postalCode: z.string(), //
-          country: z.string(), //
-        }), //
-        orgaNumber: z.string(), //
-        vatNumber: z.string(), //
-        confirmChargerates: z.string().array(), //
-        confirmOTChargerates: z.string().array(), //
-        colleaguesContactDetails: z.array( //
-          z.object({ //
-            item: z.object({ //
-              firstName: z.string(), //
-              lastName: z.string(), //
-              jobPosition: z.string(), //
-              email: z.string(), //
-              phone: z.string(), //
-            }), //
-          }) //
-        ), //
-        workerOnSite: z.record(z.number()), //
-        invoicingEmail: z.string(), //
-      })
+            streetNo: z.string(),
+            city: z.string(),
+            postalCode: z.string(),
+            country: z.string()
+        }).optional(),
+        confirmPayterm: z.array(z.string()),
+        invoicingAddress: z.object({
+            streetNo: z.string(),
+            city: z.string(),
+            postalCode: z.string(),
+            country: z.string()
+        }),
+        orgaNumber: z.string(),
+        vatNumber: z.string(),
+        confirmChargerates: z.array(z.string()),
+        confirmOTChargerates: z.array(z.string()),
+        colleaguesContactDetails: z.array(
+          z.object({
+            firstName: z.string(),
+            lastName: z.string(),
+            jobPosition: z.string(),
+            email: z.string(),
+            phone: z.string()
+          })
+        ),
+        workerOnSite: z.record(z.string(), z.number()),
+        inductionAddress: z.object({
+            streetNo: z.string(),
+            city: z.string(),
+            postalCode: z.string(),
+            country: z.string()
+        }).optional(),
+        inductionStart: z.string(),
+        commentToRotation: z.string(),
+        commentToNumbersOfWorker: z.string(),
+        invoicingEmail: z.string()
+    })
     )
     .mutation(async (req) => {
       const { input } = req;
@@ -721,10 +747,16 @@ export const appRouter = t.router({
         const clientAddress: NominatimResponseProps = await car.json();
 
         const dar = await fetch(
-          `https://nominatim.openstreetmap.org/?addressdetails=1&q=${input.deliveryAddress.streetNo}+${input.deliveryAddress.postalCode}+${input.deliveryAddress.city}+${input.deliveryAddress.country}&format=json&limit=1`,
+          `https://nominatim.openstreetmap.org/?addressdetails=1&q=${input.deliveryAddress?.streetNo}+${input.deliveryAddress?.postalCode}+${input.deliveryAddress?.city}+${input.deliveryAddress?.country}&format=json&limit=1`,
           { method: "GET" }
         );
         const deliveryAddress: NominatimResponseProps = await dar.json();
+
+        const indar = await fetch(
+          `https://nominatim.openstreetmap.org/?addressdetails=1&q=${input.inductionAddress?.streetNo}+${input.inductionAddress?.postalCode}+${input.inductionAddress?.city}+${input.inductionAddress?.country}&format=json&limit=1`,
+        )
+
+        const inductionAddress: NominatimResponseProps = await indar.json();
 
         const iar = await fetch(
           `https://nominatim.openstreetmap.org/?addressdetails=1&q=${input.invoicingAddress.streetNo}+${input.invoicingAddress.postalCode}+${input.invoicingAddress.city}+${input.invoicingAddress.country}&format=json&limit=1`,
@@ -746,7 +778,7 @@ export const appRouter = t.router({
               include: {
                 contact: true,
               },
-            }
+            },
           },
         });
 
@@ -786,8 +818,12 @@ export const appRouter = t.router({
                     country: input.companyAddress.country,
                     coordinates: {
                       create: {
-                        lat: Math.round((clientAddress[0]?.lat || 1) * 1000) / 1000,
-                        lng: Math.round((clientAddress[0]?.lon || 1) * 1000) / 1000
+                        lat:
+                          Math.round((clientAddress[0]?.lat || 1) * 1000) /
+                          1000,
+                        lng:
+                          Math.round((clientAddress[0]?.lon || 1) * 1000) /
+                          1000,
                       },
                     },
                   },
@@ -797,56 +833,55 @@ export const appRouter = t.router({
           }
         }
 
-        await Promise.all(input.colleaguesContactDetails.map(async (contact, idx) => {
-          await tx.contactOrder.create({
-            data: {
-              orderNo: idx + 2,
-              order: {
-                connect: {
-                  id: orderPre?.id || "",
+        await Promise.all(
+          input.colleaguesContactDetails.map(async (contact, idx) => {
+            await tx.contactOrder.create({
+              data: {
+                orderNo: idx + 2,
+                order: {
+                  connect: {
+                    id: orderPre?.id || "",
+                  },
+                },
+                contact: {
+                  create: {
+                    firstName: contact.firstName,
+                    lastName: contact.lastName,
+                    jobPosition: contact.jobPosition,
+                    email: contact.email,
+                    phoneNumber: contact.phone,
+                  },
                 },
               },
-              contact: {
-                create: {
-                    firstName: contact.item.firstName,
-                    lastName: contact.item.lastName,
-                    jobPosition: contact.item.jobPosition,
-                    email: contact.item.email,
-                    phoneNumber: contact.item.phone,
-                },
-              }
-            },
+            });
           })
-        }))
-
+        );
 
         const salesContact = await tx.contact.update({
-
-                where: {
-                  id: orderPre?.ContactOrder.find((x) => x.orderNo === 1)?.contact?.id
-                },
-                data: {
-                  firstName: input.personalContact.firstName,
-                  lastName: input.personalContact.lastName,
-                  jobPosition: input.personalContact.jobPosition,
-                  email: input.personalContact.email,
-                  phoneNumber: input.personalContact.phone,
-                }
-        })
+          where: {
+            id: orderPre?.ContactOrder.find((x) => x.orderNo === 1)?.contact
+              ?.id,
+          },
+          data: {
+            firstName: input.personalContact.firstName,
+            lastName: input.personalContact.lastName,
+            jobPosition: input.personalContact.jobPosition,
+            email: input.personalContact.email,
+            phoneNumber: input.personalContact.phone,
+          },
+        });
         const order = await tx.order.update({
           where: {
             id: input.orderId,
           },
           data: {
+          inductionDateTime: new Date(input.inductionStart),
+          commentToRotation: input.commentToRotation,
+          commentToNumbersOfWorker: input.commentToNumbersOfWorker,
             orgaNumber: input.orgaNumber,
-            start: new Date(input.projectStart),
-            estimatedDuration: input.projectDuration.weeks + " weeks",
-            end: new Date(
-              new Date(input.projectStart).setDate(
-                new Date(input.projectStart).getDate() +
-                  input.projectDuration.weeks * 7
-              )
-            ),
+            start: new Date(input.projectDuration.from),
+            estimatedDuration: intervalToDuration({start: new Date(input.projectDuration.from), end: new Date(input.projectDuration.to)}) + " weeks",
+            end: new Date(input.projectDuration.to),
             invoiceEmail: input.invoicingEmail,
             vatNumber: input.vatNumber,
             answered: true,
@@ -878,8 +913,14 @@ export const appRouter = t.router({
                           country: input.projectAddress.country,
                           coordinates: {
                             create: {
-                              lat: Math.round((projectAddress[0]?.lat || 1) * 1000) / 1000,
-                              lng: Math.round((projectAddress[0]?.lat || 1) * 1000) / 1000,
+                              lat:
+                                Math.round(
+                                  (projectAddress[0]?.lat || 1) * 1000
+                                ) / 1000,
+                              lng:
+                                Math.round(
+                                  (projectAddress[0]?.lat || 1) * 1000
+                                ) / 1000,
                             },
                           },
                         },
@@ -910,8 +951,14 @@ export const appRouter = t.router({
                           country: input.companyAddress.country,
                           coordinates: {
                             create: {
-                              lat: Math.round((clientAddress[0]?.lat || 1) * 1000) / 1000,
-                              lng: Math.round((clientAddress[0]?.lat || 1) * 1000) / 1000,
+                              lat:
+                                Math.round(
+                                  (clientAddress[0]?.lat || 1) * 1000
+                                ) / 1000,
+                              lng:
+                                Math.round(
+                                  (clientAddress[0]?.lat || 1) * 1000
+                                ) / 1000,
                             },
                           },
                         },
@@ -921,18 +968,36 @@ export const appRouter = t.router({
             },
             deliveryAddress: {
               create: {
-                city: input.deliveryAddress.city,
-                streetNo: input.deliveryAddress.streetNo,
-                postCode: input.deliveryAddress.postalCode,
-                country: input.deliveryAddress.country,
+                city: input.deliveryAddress ? input.deliveryAddress.city : input.projectAddress.city,
+                streetNo: input.deliveryAddress ? input.deliveryAddress.streetNo : input.projectAddress.streetNo,
+                postCode: input.deliveryAddress ? input.deliveryAddress.postalCode : input.projectAddress.postalCode,
+                country: input.deliveryAddress ? input.deliveryAddress.country : input.projectAddress.country,
                 coordinates: {
                   create: {
-                    lat: Math.round((deliveryAddress[0]?.lat || 1) * 1000) / 1000,
-                    lng: Math.round((deliveryAddress[0]?.lat || 1) * 1000) / 1000,
+                    lat:
+                      Math.round(((input.deliveryAddress ? deliveryAddress[0]?.lat : projectAddress[0]?.lat) || 1) * 1000) / 1000,
+                    lng:
+                      Math.round(((input.deliveryAddress ? deliveryAddress[0]?.lat : projectAddress[0]?.lon) || 1) * 1000) / 1000,
                   },
                 },
               },
             },
+            inductionAddress: {
+              create: {
+                city: input.inductionAddress ? input.inductionAddress.city : input.projectAddress.city,
+                streetNo: input.inductionAddress ? input.inductionAddress.streetNo : input.projectAddress.streetNo,
+                postCode: input.inductionAddress ? input.inductionAddress.postalCode : input.projectAddress.postalCode,
+                country: input.inductionAddress ? input.inductionAddress.country : input.projectAddress.country,
+                coordinates: {
+                  create: {
+                    lat:
+                      Math.round(((input.inductionAddress ? inductionAddress[0]?.lat : projectAddress[0]?.lat) || 1) * 1000) / 1000,
+                    lng:
+                      Math.round(((input.inductionAddress ? inductionAddress[0]?.lat : projectAddress[0]?.lon) || 1) * 1000) / 1000,
+                  },
+                },
+              }
+            },  
             invoicingAddress: {
               create: {
                 city: input.invoicingAddress.city,
@@ -941,11 +1006,13 @@ export const appRouter = t.router({
                 country: input.invoicingAddress.country,
                 coordinates: {
                   create: {
-                    lat: Math.round((invoicingAddress[0]?.lat || 1) * 1000) / 1000,
-                    lng: Math.round((invoicingAddress[0]?.lat || 1) * 1000) / 1000,
+                    lat:
+                      Math.round((invoicingAddress[0]?.lat || 1) * 1000) / 1000,
+                    lng:
+                      Math.round((invoicingAddress[0]?.lat || 1) * 1000) / 1000,
                   },
                 },
-              }
+              },
             },
             projectAddress: {
               create: {
@@ -955,11 +1022,13 @@ export const appRouter = t.router({
                 country: input.projectAddress.country,
                 coordinates: {
                   create: {
-                    lat: Math.round((projectAddress[0]?.lat || 1) * 1000) / 1000,
-                    lng: Math.round((projectAddress[0]?.lat || 1) * 1000) / 1000,
+                    lat:
+                      Math.round((projectAddress[0]?.lat || 1) * 1000) / 1000,
+                    lng:
+                      Math.round((projectAddress[0]?.lat || 1) * 1000) / 1000,
                   },
-                }
-              }
+                },
+              },
             },
             meetingPerson: {
               create: {
@@ -968,98 +1037,169 @@ export const appRouter = t.router({
                 lastName: input.meetingPerson.lastName,
                 jobPosition: input.meetingPerson.jobPosition,
                 phoneNumber: input.meetingPerson.phone,
-                companyID:  orderPre?.client.company.id
-              }
+                companyID: orderPre?.client.company.id,
+              },
             },
           },
         });
 
-        await Promise.all(input.performedWork.map(async (item, idx) => {
-          await tx.workPerformed.create({
-            data: {
-              order: {
-                connect: {
-                  id: order.id,
-                }
+        await Promise.all(
+          input.performedWork.map(async (item, idx) => {
+            await tx.workPerformed.create({
+              data: {
+                order: {
+                  connect: {
+                    id: order.id,
+                  },
+                },
+                work: {
+                  connectOrCreate: {
+                    where: {
+                      name: item,
+                    },
+                    create: {
+                      name: item,
+                    },
+                  },
+                },
               },
-              work: {
-                connectOrCreate: {
-                  where: {
-                    name: item,
-                  },
-                  create: {
-                    name: item,
-                  },
-                }
-              }
-            }
+            });
           })
-        }))
+        );
 
-        await Promise.all(input.workerNeeded.map(async (item, idx) => {
-          await tx.workerRequired.create({
-            data: {
-              order: {
-                connect: {
-                  id: order.id,
-                }
-              },
-              jobRole: {
-                connectOrCreate: {
-                  where: {
-                    name: item,
+        await Promise.all(
+          input.workerNeeded.map(async (item, idx) => {
+            await tx.workerRequired.create({
+              data: {
+                order: {
+                  connect: {
+                    id: order.id,
                   },
-                  create: {
-                    name: item,
+                },
+                jobRole: {
+                  connectOrCreate: {
+                    where: {
+                      name: item,
+                    },
+                    create: {
+                      name: item,
+                    },
                   },
-                }
+                },
+                quantity: input.workerOnSite[item],
               },
-              quantity: input.workerOnSite[item]
-            }
+            });
           })
-        }))
+        );
 
-        await Promise.all(input.requiredTrainingCourses.map(async (item, idx) => {
-          await tx.trainingCourseRequired.create({
-            data: {
-              order: {
-                connect: {
-                  id: order.id,
-                }
+        await Promise.all(
+          input.requiredTrainingCourses.map(async (item, idx) => {
+            await tx.trainingCourseRequired.create({
+              data: {
+                order: {
+                  connect: {
+                    id: order.id,
+                  },
+                },
+                course: {
+                  connectOrCreate: {
+                    where: {
+                      name: item,
+                    },
+                    create: {
+                      name: item.replace(/[^a-zA-Z]/g, ''),
+                    },
+                  },
+                },
               },
-              course: {
-                connectOrCreate: {
-                  where: {
-                    name: item,
-                  },
-                  create: {
-                    name: item,
-                  },
-                }
-              }
-            }
+            });
           })
-        }))
+        );
 
-        await Promise.all(input.inductionForms.map(async (item, idx) => {
-          await tx.inductionForm.create({
-            data: {
-              order: {
-                connect: {
-                  id: order.id,
-                }
+        await Promise.all(
+          input.inductionForms.map(async (item, idx) => {
+            await tx.inductionForm.create({
+              data: {
+                order: {
+                  connect: {
+                    id: order.id,
+                  },
+                },
+                file: {
+                  create: {
+                    name: item.filename,
+                    uri: item.uri,
+                  },
+                },
               },
-              file: {
-                create: {
-                  name: item.filename,
-                  uri: item.uri,
-                }
-              }
-            }
+            });
           })
-        }))
+        );
       });
     }),
+  registerWebAuthN: t.procedure
+    .input(z.object({
+      id: z.string(),
+      secret: z.string(),
+    }))
+    .mutation(async (req) => {
+      const { input } = req;
+      const salt = await bcrypt.genSalt(10);
+      const hashed = await bcrypt.hash(input.secret, salt);
+      return await prisma.webAuthN.update({
+        where: {
+          id: input.id,
+        },
+        data: {
+          webauthnSecret: hashed,
+          otp: null,
+        },
+      });
+    }),
+  addCompany: t.procedure
+    .input(z.object({
+      name: z.string(),
+      workingField: z.string(),
+      email: z.string(),
+      phone: z.string(),
+      address: z.object({
+        city: z.string(),
+        streetNo: z.string(),
+        postalCode: z.string(),
+        country: z.string(),
+      }),
+    })).mutation(async (req) => {
+      const { input } = req;
+
+      const cadr = await fetch(
+        `https://nominatim.openstreetmap.org/?addressdetails=1&q=${input.address.streetNo}+${input.address.postalCode}+${input.address.city}+${input.address.country}&format=json&limit=1`,
+        { method: "GET" }
+
+      );
+      const companyAddress: NominatimResponseProps = await cadr.json();
+      return await prisma.company.create({
+        data: {
+          email: input.email,
+          name: input.name,
+          phone: input.phone,
+          workingField: input.workingField,
+          address: {
+            create: {
+              city: input.address.city,
+              streetNo: input.address.streetNo,
+              postCode: input.address.postalCode,
+              country: input.address.country,
+              coordinates: {
+                create: {
+                  lat: Math.round(companyAddress[0]?.lat || 1 * 1000) / 1000,
+                  lng: Math.round(companyAddress[0]?.lon || 1 * 1000) / 1000,
+                }
+              }
+            },
+          }
+        }
+      })
+    })
 });
 
 export type AppRouter = typeof appRouter;

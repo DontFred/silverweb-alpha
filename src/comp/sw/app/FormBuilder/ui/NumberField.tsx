@@ -83,6 +83,7 @@ export default function NumberField(
         }}
       >
         <Input
+          css={{m: "auto"}}
           ref={InputRef}
           contentRightStyling={false}
           value={field.value || ""}

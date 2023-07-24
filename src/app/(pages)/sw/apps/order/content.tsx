@@ -9,7 +9,7 @@ import {
   Text,
 } from "@nextui-org/react";
 import React, { Fragment, useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   FormProvider,
   useFieldArray,
@@ -30,13 +30,19 @@ import AddressField from "@/comp/sw/app/FormBuilder/ui/AddressField";
 import ContactField from "@/comp/sw/app/FormBuilder/ui/ContactField";
 import { DefaultProps } from "@/comp/sw/app/FormBuilder/types";
 import NumberField from "@/comp/sw/app/FormBuilder/ui/NumberField";
-import { AddOrderProps, CompanyProps, JobRolesProps, OrderProps, ProjectProps } from "./type";
+import {
+  AddOrderProps,
+  CompanyProps,
+  JobRolesProps,
+  OrderProps,
+  ProjectProps,
+} from "./type";
 import { DevTool } from "@hookform/devtools";
 
 //DEV
 import { trpc } from "@/lib/trpc/csTRPC";
-
-
+import EmailField from "@/comp/sw/app/FormBuilder/ui/EmailField";
+import PhoneField from "@/comp/sw/app/FormBuilder/ui/PhoneField";
 
 export default function OrderFormContent({
   orderData,
@@ -52,18 +58,41 @@ export default function OrderFormContent({
   const form = useForm({
     defaultValues: {} as AddOrderProps,
   });
+
+  const addCompanyForm = useForm({
+    defaultValues: {} as {
+      companyName: string;
+      companyWorkingField: string;
+      companyPhone: string;
+      companyEmail: string;
+      companyAddress: {
+        streetNo: string;
+        city: string;
+        postalCode: string;
+        country: string;
+      };
+    },
+  });
   const [open, setOpen] = useState<boolean>(false);
   const [page, setPage] = useState<number>(1);
+  const [openAddCompany, setOpenAddCompany] = useState<boolean>(false);
   const [submitting, setSubmitting] = useState<boolean>(false);
   const submitButtonRef = useRef<HTMLButtonElement>(null);
+  const addCompanyFormRef = useRef<HTMLFormElement>(null);
   const router = useRouter();
-  const Order = trpc.addOrder.useMutation({
-  })
+  const pathRouter = usePathname();
+  const Order = trpc.addOrder.useMutation({});
+  const AddCompany = trpc.addCompany.useMutation({
+    onSuccess() {
+      router.replace(pathRouter);
+    },
+  });
 
   async function handleAddOrder(data: AddOrderProps) {
     setSubmitting(true);
     const order = await Order.mutateAsync({
       accountManager: "00000000-0000-0000-0000-000000000000",
+      clientProjectCode: data.ClientProjectRef,
       clientRef: data.clientRef,
       currency: data.currency,
       orderCode: data.orderCode,
@@ -72,9 +101,12 @@ export default function OrderFormContent({
       registerName: data.registerName,
       registerAddress: data.registerAddress,
       salesContact: data.salesContact,
-    })
+    });
     setSubmitting(false);
-    form.setValue("formUrl", "cp.silverback-group.com/forms/order/" + order.id);
+    form.setValue(
+      "formUrl",
+      process.env.NEXT_PUBLIC_HOST_DOMAIN + "/cp/forms/order/" + order.id
+    );
     form.setValue("password", order.password);
   }
 
@@ -88,6 +120,106 @@ export default function OrderFormContent({
         // Form state tool for react-hook-form
         <DevTool control={form.control} />
       )}
+      <Modal open={openAddCompany} onClose={() => setOpenAddCompany(false)}>
+        <Modal.Body>
+          <FormProvider {...addCompanyForm}>
+            <form
+              ref={addCompanyFormRef}
+              style={{ width: "100%" }}
+              onSubmit={addCompanyForm.handleSubmit(
+                async (data) => {
+                  await AddCompany.mutateAsync({
+                    address: data.companyAddress,
+                    email: data.companyEmail,
+                    name: data.companyName,
+                    phone: data.companyPhone,
+                    workingField: data.companyWorkingField,
+                  });
+                  setOpenAddCompany(false);
+                },
+                (e) => console.error(e)
+              )}
+            >
+              <Grid.Container gap={2}>
+                <Grid xs={12}>
+                  <Text h3>Add company</Text>
+                </Grid>
+                <Grid xs={12}>
+                  <TextField
+                    type="text"
+                    name="companyName"
+                    label="Company name"
+                    option={{
+                      required: {
+                        message: "Company name is required",
+                        value: true,
+                      },
+                    }}
+                  />
+                </Grid>
+                <Grid xs={12}>
+                  <TextField
+                    type="text"
+                    name="companyWorkingField"
+                    label="Working field"
+                    option={{
+                      required: {
+                        message: "Working field is required",
+                        value: true,
+                      },
+                    }}
+                  />
+                </Grid>
+                <Grid xs={12}>
+                  <PhoneField
+                    type="phone"
+                    name="companyPhone"
+                    label="Phone"
+                    option={{
+                      required: {
+                        message: "Phone number is required",
+                        value: true,
+                      },
+                    }}
+                  />
+                </Grid>
+                <Grid xs={12}>
+                  <EmailField
+                    type="email"
+                    name="companyEmail"
+                    label="Email"
+                    option={{
+                      required: {
+                        message: "Email is required",
+                        value: true,
+                      },
+                    }}
+                  />
+                </Grid>
+                <Grid xs={12}>
+                  <AddressField
+                    type="address"
+                    name="companyAddress"
+                    label="Address"
+                    option={{
+                      required: {
+                        message: "Address is required",
+                        value: true,
+                      },
+                    }}
+                  />
+                </Grid>
+                <Grid xs={12} justify="flex-end">
+                  <Button type="submit" ghost color={"primary"} size={"sm"}>
+                    Add
+                  </Button>
+                </Grid>
+                <Grid />
+              </Grid.Container>
+            </form>
+          </FormProvider>
+        </Modal.Body>
+      </Modal>
       <Modal
         open={open}
         onClose={() => {
@@ -147,6 +279,16 @@ export default function OrderFormContent({
                       />
                       <Spacer y={2} />
                       <HeadingField
+                        content="Clients project reference"
+                        type="heading"
+                      />
+                      <TextField
+                        type="text"
+                        name="ClientProjectRef"
+                        label="Reference"
+                      />
+                      <Spacer y={2} />
+                      <HeadingField
                         content="Project reference"
                         type="heading"
                       />
@@ -198,6 +340,7 @@ export default function OrderFormContent({
                               "Please select a client or company reference",
                           },
                         }}
+                        onAddOption={() => setOpenAddCompany(true)}
                       />
                       <Spacer y={2} />
                       <HeadingField
@@ -288,29 +431,42 @@ export default function OrderFormContent({
                     <Fragment>
                       {submitting ? (
                         <Fragment>
-                          <div style={{
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            height: 200,
-                            width: "100%",
-                          }}>
-                            <Loading size="lg"  />
+                          <div
+                            style={{
+                              display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center",
+                              height: 200,
+                              width: "100%",
+                            }}
+                          >
+                            <Loading size="lg" />
                           </div>
                         </Fragment>
                       ) : (
                         <Fragment>
                           <HeadingField type="heading" content="Form URL" />
-                          <fieldset disabled style={{
+                          <fieldset
+                            disabled
+                            style={{
                               margin: 0,
                               padding: 0,
                               border: 0,
                               minInlineSize: "unset",
-                          }}>
-                            <TextField type="text" name="formUrl" placeholder="URL"/>
+                            }}
+                          >
+                            <TextField
+                              type="text"
+                              name="formUrl"
+                              placeholder="URL"
+                            />
                             <Spacer y={2} />
                             <HeadingField type="heading" content="Password" />
-                            <TextField type="text" name="password" placeholder="Password"/>
+                            <TextField
+                              type="text"
+                              name="password"
+                              placeholder="Password"
+                            />
                           </fieldset>
                         </Fragment>
                       )}

@@ -32,9 +32,6 @@ import CompanyCard from "@/comp/sw/ui/cards/CompanyCard";
 import NumberField from "@/comp/sw/app/FormBuilder/ui/NumberField";
 import { Prisma } from "@prisma/client";
 import { trpc } from "@/lib/trpc/csTRPC";
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
-import { addressSchema } from "@/comp/sw/app/FormBuilder/zod";
 
 const Map = dynamic(() => import("@/comp/sw/app/Map"), {
   loading: () => (
@@ -63,7 +60,7 @@ const FieldsetStyling: StyleObject.Properties = {
 
 export default function OrderInterfaceContent({
   orderData,
-  jobRoles
+  jobRoles,
 }: {
   orderData: OrderDataProps;
   jobRoles: JobRolesProps[];
@@ -134,24 +131,24 @@ export default function OrderInterfaceContent({
 
   const editPayChargeRates = trpc.editPayChargeRate.useMutation({
     onSuccess: () => {
-      utils.getOrderById.invalidate()
+      utils.getOrderById.invalidate();
       window.location.reload();
       setOpenEditAddModal(false);
-    }
-  })
+    },
+  });
 
   const workingHours = useWatch({
     control: form.control,
-    name: "workingHours"
-  })
+    name: "workingHours",
+  });
 
   const addPayChargeRates = trpc.addPayChargeRate.useMutation({
     onSuccess: () => {
-      utils.getOrderById.invalidate()
+      utils.getOrderById.invalidate();
       window.location.reload();
       setOpenEditAddModal(false);
-    }
-  })
+    },
+  });
   return (
     <Layout>
       <FormProvider {...form}>
@@ -172,7 +169,8 @@ export default function OrderInterfaceContent({
               }}
             >
               <Text h2 role="banner">
-                Order | {orderData?.orderCode} | {orderData?.client.company.name}
+                Order | {orderData?.orderCode} |{" "}
+                {orderData?.client.company.name}
               </Text>
             </div>
           </Grid>
@@ -697,6 +695,18 @@ export default function OrderInterfaceContent({
                                                           }
                                                         />
                                                       )}
+                                                      <div
+                                                        style={{
+                                                          padding:
+                                                            "0 27.5px 27.5px 27.5px",
+                                                        }}
+                                                      >
+                                                        <TextAreaField
+                                                          type="textarea"
+                                                          name="commentToNumbersOfWorker"
+                                                          label="Comment"
+                                                        />
+                                                      </div>
                                                     </ContainerCard>
                                                   </Grid>
                                                 </Grid.Container>
@@ -862,7 +872,10 @@ export default function OrderInterfaceContent({
                                                                 readOnly
                                                                 value={
                                                                   Object.values(
-                                                                    workingHours as Record<string, number>
+                                                                    workingHours as Record<
+                                                                      string,
+                                                                      number
+                                                                    >
                                                                   ).reduce(
                                                                     (a, b) =>
                                                                       a + b,
@@ -898,6 +911,14 @@ export default function OrderInterfaceContent({
                                                                 type="text"
                                                                 name="rotation"
                                                                 label="Rotation"
+                                                              />
+                                                            </Grid>
+                                                            <Spacer y={1.17} />
+                                                            <Grid xs={12}>
+                                                              <TextAreaField
+                                                                type="textarea"
+                                                                name="commentToRotation"
+                                                                label="Comment"
                                                               />
                                                             </Grid>
                                                           </Grid.Container>
@@ -1149,9 +1170,11 @@ export default function OrderInterfaceContent({
                                                   <Input
                                                     bordered
                                                     fullWidth
-                                                    labelPlaceholder="Order code"
+                                                    labelPlaceholder="Client project code"
                                                     readOnly
-                                                    value={orderData?.orderCode}
+                                                    value={
+                                                      orderData?.clientProjectCode
+                                                    }
                                                   />
                                                 </Grid>
                                                 <Grid xs={12}>
@@ -1441,26 +1464,41 @@ export default function OrderInterfaceContent({
                                                   }
                                                   onAdd={async (selected) => {
                                                     try {
-                                                      await addPayChargeRates.mutateAsync({
-                                                        currency: orderData.PayChargeRate[0].currency,
-                                                        id: orderData.id,
-                                                        jobRole: selected[0],
-                                                      });
+                                                      await addPayChargeRates.mutateAsync(
+                                                        {
+                                                          currency:
+                                                            orderData
+                                                              .PayChargeRate[0]
+                                                              .currency,
+                                                          id: orderData.id,
+                                                          jobRole: selected[0],
+                                                        }
+                                                      );
                                                     } catch (cause) {
-                                                      console.error({ cause }, 'Failed to add pay charge rates');
+                                                      console.error(
+                                                        { cause },
+                                                        "Failed to add pay charge rates"
+                                                      );
                                                     }
                                                   }}
                                                   onEdit={async (values) => {
                                                     try {
-                                                      await editPayChargeRates.mutateAsync({
-                                                        id: values.rateID,
-                                                        chargeRate: values.charge,
-                                                        payRate: values.pay,
-                                                        appliedAt: values.appliedAt,
-                                                        old: values.old
-                                                      });
+                                                      await editPayChargeRates.mutateAsync(
+                                                        {
+                                                          id: values.rateID,
+                                                          chargeRate:
+                                                            values.charge,
+                                                          payRate: values.pay,
+                                                          appliedAt:
+                                                            values.appliedAt,
+                                                          old: values.old,
+                                                        }
+                                                      );
                                                     } catch (cause) {
-                                                      console.error({ cause }, 'Failed to add post');
+                                                      console.error(
+                                                        { cause },
+                                                        "Failed to add post"
+                                                      );
                                                     }
                                                   }}
                                                   jobRoles={jobRoles}
@@ -1848,7 +1886,7 @@ function EditAddPayChargeRates({
   onEdit,
   onAdd,
   payChargeRates,
-  jobRoles
+  jobRoles,
 }: {
   open: boolean;
   payChargeRates: Prisma.PayChargeRateGetPayload<{
@@ -1860,7 +1898,7 @@ function EditAddPayChargeRates({
   }>[];
   jobRoles: JobRolesProps[];
   onClose: () => void;
-  onEdit?: ({} : {
+  onEdit?: ({}: {
     appliedAt: Date;
     rateID: string;
     pay: {
@@ -1884,15 +1922,15 @@ function EditAddPayChargeRates({
         ot2: number;
         ot3: number;
         ot4: number;
-      },
+      };
       chargeRate: {
         normal: number;
         ot1: number;
         ot2: number;
         ot3: number;
         ot4: number;
-      }
-    }
+      };
+    };
   }) => void;
   onAdd?: ([]: string[]) => void;
 }) {
@@ -1961,7 +1999,8 @@ function EditAddPayChargeRates({
                               }
                               name={"appliedAt" + payChargeRates[page - 1].id}
                               value={
-                                value[page - 1]?.appliedAt?.toISOString()
+                                value[page - 1]?.appliedAt
+                                  ?.toISOString()
                                   .split("T")[0] || undefined
                               }
                               onChange={(e) => {
@@ -2322,25 +2361,24 @@ function EditAddPayChargeRates({
                                 }
                               }}
                             >
-                              {jobRoles
-                                .map((jobRole) => (
-                                  <Fragment key={jobRole.id}>
-                                    <Checkbox
-                                      value={jobRole.id}
-                                      size="xs"
-                                      isDisabled={
-                                        payChargeRates.findIndex(
-                                          (item) =>
-                                            item.jobRole.name === jobRole.name
-                                        ) !== -1
-                                      }
-                                      label={jobRole.name}
-                                      color="secondary"
-                                    >
-                                      {jobRole.name}
-                                    </Checkbox>
-                                  </Fragment>
-                                ))}
+                              {jobRoles.map((jobRole) => (
+                                <Fragment key={jobRole.id}>
+                                  <Checkbox
+                                    value={jobRole.id}
+                                    size="xs"
+                                    isDisabled={
+                                      payChargeRates.findIndex(
+                                        (item) =>
+                                          item.jobRole.name === jobRole.name
+                                      ) !== -1
+                                    }
+                                    label={jobRole.name}
+                                    color="secondary"
+                                  >
+                                    {jobRole.name}
+                                  </Checkbox>
+                                </Fragment>
+                              ))}
                             </Checkbox.Group>
                           </Grid>
                         </Grid.Container>
@@ -2357,11 +2395,18 @@ function EditAddPayChargeRates({
                     page={page}
                     onChange={(newPage) => {
                       setPage(newPage);
-                      if (onEdit && newPage > page && JSON.stringify(value) !== JSON.stringify(initValues)) {
-                        onEdit({...value[newPage - 2], old: {
-                          payRate: initValues[newPage - 2].pay,
-                          chargeRate: initValues[newPage - 2].charge
-                        }});
+                      if (
+                        onEdit &&
+                        newPage > page &&
+                        JSON.stringify(value) !== JSON.stringify(initValues)
+                      ) {
+                        onEdit({
+                          ...value[newPage - 2],
+                          old: {
+                            payRate: initValues[newPage - 2].pay,
+                            chargeRate: initValues[newPage - 2].charge,
+                          },
+                        });
                       }
                     }}
                     loop

@@ -22,6 +22,7 @@ export type FieldSchema = {
     | "radio"
     | "checkbox"
     | "date"
+    | "date-range"
     | "file"
     | "address"
     | "contact"
@@ -95,6 +96,11 @@ export type TextFieldProps = FieldSchema &
 export type TextAreaFieldProps = FieldSchema &
   DefaultProps & {
     type: "textarea"
+  }
+
+export type DateRangeFieldProps = FieldSchema &
+  DefaultProps & {
+    type: "date-range";
   }
 
 export type NumberFieldProps = FieldSchema &
@@ -208,6 +214,7 @@ export type Field =
   | RadioFieldProps
   | CheckboxFieldProps
   | DatePickerFieldProps
+  | DateRangeFieldProps
   | AddressFieldProps
   | ContactFieldProps
   | FileFieldProps
@@ -215,7 +222,6 @@ export type Field =
   | EmailFieldProps
   | PhoneFieldProps
   | ArrayProps
-  | GirdProps
   | RelationNumberProps;
 
 export type Fields = Record<string, Field>;

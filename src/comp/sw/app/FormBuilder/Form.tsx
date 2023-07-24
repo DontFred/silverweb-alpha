@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useRef, useState } from "react";
 import { Button, Grid, Modal } from "@nextui-org/react";
 import { FormProvider, useForm } from "react-hook-form";
 
@@ -19,7 +19,6 @@ import EmailField from "./ui/EmailField";
 import RadioField from "./ui/RadioField";
 import CheckboxField from "./ui/CheckboxField";
 import NumberField from "./ui/NumberField";
-import GridField from "./ui/GridField";
 import RelationNumberField from "./ui/RelationNumberField";
 import DatePickerField from "./ui/DatePickerField";
 import FileField from "./ui/FileField";
@@ -27,6 +26,16 @@ import TextAreaField from "./ui/TextAreaField";
 
 //Dev
 import { DevTool } from "@hookform/devtools";
+import DateRageField from "./ui/DateRangeField";
+import { z } from "zod";
+import {
+  addressSchema,
+  checkboxSchema,
+  contactSchema,
+  dateRangeSchema,
+  fileSchema,
+} from "./zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 /**
  * Renders a form field based on its type and properties.
@@ -35,7 +44,7 @@ import { DevTool } from "@hookform/devtools";
  * @param {number} idx - the index of the field
  * @return {JSX.Element} the rendered form field
  */
-export function renderFields([name, fieldProps]: [ string, Field], idx: number) {
+export function renderFields([name, fieldProps]: [string, Field], idx: number) {
   switch (fieldProps.type) {
     case "title":
       return <TitleField {...fieldProps} key={idx} />;
@@ -61,6 +70,8 @@ export function renderFields([name, fieldProps]: [ string, Field], idx: number) 
       return <CheckboxField {...fieldProps} name={name} key={idx} />;
     case "date":
       return <DatePickerField {...fieldProps} name={name} key={idx} />;
+    case "date-range":
+      return <DateRageField {...fieldProps} name={name} key={idx} />;
     case "file":
       return <FileField {...fieldProps} name={name} key={idx} />;
     case "address":
@@ -75,8 +86,6 @@ export function renderFields([name, fieldProps]: [ string, Field], idx: number) 
       return <PhoneField {...fieldProps} name={name} key={idx} />;
     case "array":
       return <ArrayField {...fieldProps} name={name} key={idx} />;
-    case "grid":
-      return <GridField {...fieldProps} name={name} key={idx} />;
     case "relationNumber":
       return <RelationNumberField {...fieldProps} name={name} key={idx} />;
     default:
@@ -97,16 +106,103 @@ export function renderFields([name, fieldProps]: [ string, Field], idx: number) 
  * @return {JSX.Element} - a React component representing the form.
  */
 
-
+// {
+//   orderId: z.string(), //
+//   authCode: z.string(), //
+//   officialCompanyName: z.string(), //
+//   companyAddress: z.object({
+//     //
+//     streetNo: z.string(), //
+//     city: z.string(), //
+//     postalCode: z.string(), //
+//     country: z.string(), //
+//   }), //
+//   personalContact: z.object({
+//     //
+//     firstName: z.string(), //
+//     lastName: z.string(), //
+//     jobPosition: z.string(), //
+//     email: z.string(), //
+//     phone: z.string(), //
+//   }), //
+//   projectName: z.string(), //
+//   projectAddress: z.object({
+//     //
+//     streetNo: z.string(), //
+//     city: z.string(), //
+//     postalCode: z.string(), //
+//     country: z.string(), //
+//   }), //
+//   performedWork: z.string().array(), //
+//   workerNeeded: z.string().array(), //
+//   confirmRotation: z.string().array(), //
+//   projectStart: z.string(), //
+//   projectDuration: z.object({
+//     weeks: z.number(), //
+//   }),
+//   requiredTrainingCourses: z.string().array(), //
+//   inductionForms: z.array(
+//     //
+//     z.object({
+//       //
+//       filename: z.string(), //
+//       uri: z.string(), //
+//     }) //
+//   ), //
+//   typeOfProject: z.string(), //
+//   meetingPerson: z.object({
+//     //
+//     firstName: z.string(), //
+//     lastName: z.string(), //
+//     jobPosition: z.string(), //
+//     email: z.string(), //
+//     phone: z.string(), //
+//   }), //
+//   deliveryAddress: z.object({
+//     //
+//     streetNo: z.string(), //
+//     city: z.string(), //
+//     postalCode: z.string(), //
+//     country: z.string(), //
+//   }), //
+//   confirmPayterm: z.string().array(), //
+//   invoicingAddress: z.object({
+//     //
+//     streetNo: z.string(), //
+//     city: z.string(), //
+//     postalCode: z.string(), //
+//     country: z.string(), //
+//   }), //
+//   orgaNumber: z.string(), //
+//   vatNumber: z.string(), //
+//   confirmChargerates: z.string().array(), //
+//   confirmOTChargerates: z.string().array(), //
+//   colleaguesContactDetails: z.array(
+//     //
+//     z.object({
+//       //
+//       item: z.object({
+//         //
+//         firstName: z.string(), //
+//         lastName: z.string(), //
+//         jobPosition: z.string(), //
+//         email: z.string(), //
+//         phone: z.string(), //
+//       }), //
+//     }) //
+//   ), //
+//   workerOnSite: z.record(z.number()), //
+//   invoicingEmail: z.string(), //
+// }
 
 export function Form({ fields, onSubmit, defaultValues, onChange }: FormProps) {
   const [pages, setPages] = useState<number>(0);
-
+  const FormBaseRef = useRef<HTMLDivElement>(null);
   const form = useForm({
     defaultValues: defaultValues,
+    mode: "onSubmit" ,
+    reValidateMode: "onSubmit"
   });
-
-
 
   return (
     <Fragment>
@@ -150,7 +246,8 @@ export function Form({ fields, onSubmit, defaultValues, onChange }: FormProps) {
           }}
         >
           <FormProvider {...form}>
-            <form>
+            <form noValidate>
+              <div ref={FormBaseRef} />
               {fields.map((field, idx) => (
                 <div
                   key={idx}
@@ -204,14 +301,7 @@ export function Form({ fields, onSubmit, defaultValues, onChange }: FormProps) {
                       ghost
                       auto
                       onPress={async () => {
-                        document
-                          .getElementsByClassName(
-                            "nextui-backdrop nextui-backdrop--open nextui-backdrop-wrapper-enter nextui-backdrop-wrapper-enter-active"
-                          )[0]
-                          .scrollTo({
-                            top: 0,
-                            behavior: "smooth",
-                          });
+                        // console.log(FormBaseRef.current?.scrollIntoView({ behavior: "smooth"}))
                         const Errors = await Promise.all(
                           Object.entries(fields[pages]).map(async (field) => {
                             // Checking field
@@ -224,6 +314,10 @@ export function Form({ fields, onSubmit, defaultValues, onChange }: FormProps) {
                         if (Errors.every((value) => value === true)) {
                           // No errors found
                           setPages(pages + 1);
+                          const scroll = FormBaseRef.current?.scrollIntoView({
+                            behavior: "smooth",
+                            block: "center",
+                          });
                         }
                       }}
                     >

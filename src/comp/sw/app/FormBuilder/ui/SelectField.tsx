@@ -64,7 +64,6 @@ const TriggerStyling: StyleObject.Properties = {
   top: "40px",
 };
 
-
 /**
  * Renders a select field component.
  *
@@ -77,44 +76,49 @@ const TriggerStyling: StyleObject.Properties = {
  * @return {JSX.Element} the select field component
  */
 export default function SelectField(
-  props: SelectFieldProps & { name: string }
+  props: SelectFieldProps & { name: string } & { onAddOption?: () => void }
 ) {
   // Destruction
-  const { name, label, option, items, helpText, autocomplete } = props;
+  const { name, label, option, items, helpText, autocomplete, onAddOption } =
+    props;
   const rules = option || {};
 
-  const { control, formState,  } = useFormContext();
+  const { control, formState } = useFormContext();
   const { field } = useController({
     name: name,
     control: control,
-    rules: {...rules,
-        validate: {
-          ...rules.validate,
-          ...((autocomplete === undefined) || (autocomplete === false) )&& {
-            /**
-             * Checks if a value is selectable.
-             *
-             * @param {string} value - The value to check.
-             * @return {boolean|string} Returns true if the value is selectable, otherwise returns "Please select an option".
-             */
-            isSelectable: (value: string, formValues) => {
-              if(Array.isArray(items)){
-                if(items.includes(value) || value === ""){
-                  return true;
-                }else{
-                  return "Please select an option";
-                }
-              }else{
-                const selectAbleOptions = ([] as string[]).concat(...Object.values(items));
-                if(selectAbleOptions.includes(value) || value === ""){
-                  return true;
-                }else{
-                  return "Please select an option";
-                }
+    rules: {
+      ...rules,
+      validate: {
+        ...rules.validate,
+        ...((autocomplete === undefined || autocomplete === false) && {
+          /**
+           * Checks if a value is selectable.
+           *
+           * @param {string} value - The value to check.
+           * @return {boolean | string} Returns true if the value is selectable, otherwise returns "Please select an option".
+           */
+          isSelectable: (value: string, formValues) => {
+            if (Array.isArray(items)) {
+              if (items.includes(value) || value === "") {
+                return true;
+              } else {
+                return "Please select an option";
               }
-            },
-          }
-        }},
+            } else {
+              const selectAbleOptions = ([] as string[]).concat(
+                ...Object.values(items)
+              );
+              if (selectAbleOptions.includes(value) || value === "") {
+                return true;
+              } else {
+                return "Please select an option";
+              }
+            }
+          },
+        }),
+      },
+    },
   });
 
   // Errors
@@ -168,15 +172,15 @@ export default function SelectField(
     ? searchedList.flatMap((item) => item[1]).flat()
     : (searchedList as Array<string>);
 
-    useEffect(() => {
-      const endingFocusItem = document.getElementById(sortedItems[focusedItem]);
-      if (endingFocusItem) endingFocusItem.style.backgroundColor = "";
-      setFocusedItem(-1);
-      selectedOrSearchValue
-        ? field.onChange(selectedOrSearchValue)
-        : field.onChange("");
+  useEffect(() => {
+    const endingFocusItem = document.getElementById(sortedItems[focusedItem]);
+    if (endingFocusItem) endingFocusItem.style.backgroundColor = "";
+    setFocusedItem(-1);
+    selectedOrSearchValue
+      ? field.onChange(selectedOrSearchValue)
+      : field.onChange("");
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [selectedOrSearchValue]);
+  }, [selectedOrSearchValue]);
 
   return (
     <Fragment>
@@ -285,9 +289,51 @@ export default function SelectField(
           <Popover.Trigger>
             <div style={TriggerStyling} />
           </Popover.Trigger>
-          <Popover.Content css={{...DropdownMenuStyling, ...(sortedItems.length == 0 && { display: "none" })}}>
+          <Popover.Content
+            css={{
+              ...DropdownMenuStyling,
+              ...(sortedItems.length == 0 && { display: "none" }),
+            }}
+          >
             <ul style={ListStyling}>
-              {/* Checking if items is grouped or not */}
+   
+              {onAddOption && (
+                <li>
+                  <Grid.Container
+                    justify="space-between"
+                    css={SelectItemStyling}
+                    onMouseEnter={(e) => {
+                      // hover
+                      // gave type as HTMLDivElement
+                      // bc e.target doesn't have
+                      // style property
+                      const target = e.target as HTMLDivElement;
+                      target.style.backgroundColor =
+                        "var(--nextui-colors-neutralLight)";
+                    }}
+                    onMouseLeave={(e) => {
+                      // hover
+                      // s. MouseEnter :100
+                      const target = e.target as HTMLDivElement;
+                      target.style.backgroundColor = "";
+                    }}
+                    onClick={() => {
+                      onAddOption();
+                    }}
+                    id={"onAddOption"}
+                  >
+                    <Grid css={{
+                      bgColor: "transparent !important",
+                      fontWeight: "600",
+                      justifyContent: "center",
+                      display: "flex",
+                      width: "100%"
+                    }}>
+                      Add Option</Grid>
+                  </Grid.Container>
+                </li>
+              )}
+                         {/* Checking if items is grouped or not */}
               {Array.isArray(items)
                 ? searchedList.map((item, idx) => (
                     <li key={idx}>

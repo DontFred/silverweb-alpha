@@ -4,7 +4,7 @@ import Head from "next/head";
 import { CssBaseline, NextUIProvider, createTheme } from "@nextui-org/react";
 import { Fragment } from "react";
 import { ThemeProvider } from "next-themes";
-import { TrpcProvider } from "./trpcProvider";
+import { TrpcProvider } from "./trpc/trpcProvider";
 
 const lightTheme = createTheme({
   type: "light",

@@ -15,15 +15,16 @@ export default function OrderFormContent({
   order: OrderProps;
   auth: string;
 }) {
-  const [openSubmissionModal, setOpenSubmissionModal] = useState<boolean>(true);
+  const [openSubmissionModal, setOpenSubmissionModal] = useState<boolean>(false);
 
   const submitForm = trpc.submitOrderForm.useMutation();
+
 
   const fields: FormProps["fields"] = [
     {
       title: {
         type: "title",
-        content: "SilverBack Order form",
+        content: "SilverBack Order for " + order.clientProjectCode,
       },
       descriptionEins: {
         type: "description",
@@ -419,6 +420,21 @@ export default function OrderFormContent({
         type: "spacer",
         double: true,
       },
+      headingAcht: {
+        type: "heading",
+        content: "Comment to rotation",
+      },
+      subheadingAcht: {
+        type: "subheading",
+        content: "if you have any",
+      },
+      commentToRotation: {
+        type: "textarea",
+      },
+      spacerNeun: {
+        type: "spacer",
+        double: true,
+      },
       headingSieben: {
         type: "heading",
         content: "The number of workers always on site,",
@@ -427,38 +443,16 @@ export default function OrderFormContent({
         type: "subheading",
         content: "due to the 6/2-Rotation schedule,",
       },
-      subheadingAcht: {
+      subheadingNeun: {
         type: "subheading",
         content: "will always be a multiple of 3",
       },
-      spacerNeun: {
+      spacerZehn: {
         type: "spacer",
       },
       workerOnSite: {
         type: "relationNumber",
         relatedField: "workerNeeded",
-      },
-      spacerZehn: {
-        type: "spacer",
-        double: true,
-      },
-      headingAcht: {
-        type: "heading",
-        content: "When is the start",
-      },
-      subheadingNeun: {
-        type: "subheading",
-        content: "for the Silverback team",
-      },
-      projectStart: {
-        type: "date",
-        label: "Start Date",
-        option: {
-          required: {
-            message: "Please enter a start date",
-            value: true,
-          },
-        },
       },
       spacerElf: {
         type: "spacer",
@@ -466,30 +460,43 @@ export default function OrderFormContent({
       },
       headingNeun: {
         type: "heading",
-        content: "How long",
+        content: "Comment to needed workers",
       },
       subheadingZehn: {
+        type: "subheading",
+        content: "if you have any",
+      },
+      commentToNumbersOfWorker: {
+        type: "textarea",
+      },
+      spacerZwolf: {
+        type: "spacer",
+        double: true,
+      },
+      headingZehn: {
+        type: "heading",
+        content: "How long",
+      },
+      subheadingElf: {
         type: "subheading",
         content: "are we needed",
       },
       projectDuration: {
-        type: "grid",
-        justify: true,
-        columnWidth: 0,
-        properties: {
-          weeks: {
-            type: "number",
-            label: "Weeks",
-            option: {
-              required: {
-                message: "Please enter a duration",
-                value: true,
-              },
+        type: "date-range",
+        label: "Duration",
+        option: {
+          validate: {
+            duration: (value) => {
+              if (value.from == undefined || value.to == undefined) {
+                return "Please enter a duration";
+              } else {
+                return true;
+              }
             },
           },
         },
       },
-      spacerZwolf: {
+      spacerDreizehn: {
         type: "spacer",
         double: true,
       },
@@ -539,12 +546,12 @@ export default function OrderFormContent({
       requiredTrainingCourses: {
         type: "checkbox",
         items: [
-          "Confined space",
-          "Construction safety",
-          "Harness",
-          "MEWP",
-          "Manual handling",
-          "SSG",
+          "Confined space¹",
+          "Construction safety²",
+          "Harness³",
+          "MEWP⁴",
+          "Manual handling⁵",
+          "SSG⁶",
         ],
         columnWidth: 2,
         otherOpt: true,
@@ -568,6 +575,36 @@ export default function OrderFormContent({
         type: "spacer",
         double: true,
       },
+      descriptionSieben: {
+        type: "description",
+        content: (
+          <Fragment>
+            <Text
+              css={{
+                color: "$primary",
+                fs: "$xs",
+                lh: "$sm",
+              }}
+            >
+              ¹: Entry or exit and is not designed for continuous occupancy.
+              <br />
+              ²: A principle adhered to and enforced by construction safety
+              managers.
+              <br />
+              ³: Help to work safely at height through a harness's proper use.
+              <br />
+              ⁴: Mobile elevating work platforms
+              <br />
+              ⁵: An industry standard for a safer work environment at industrial
+              plants.
+            </Text>
+          </Fragment>
+        ),
+      },
+      spacerZwei: {
+        type: "spacer",
+        double: true,
+      },
       headingZwei: {
         type: "heading",
         content: "Induction Forms needed ",
@@ -579,19 +616,49 @@ export default function OrderFormContent({
       inductionForms: {
         type: "file",
       },
-      spacerZwei: {
+      spacerDrei: {
         type: "spacer",
         double: true,
       },
       headingDrei: {
         type: "heading",
-        content: "Meeting person contact details",
+        content: "Induction address",
       },
       subheadingVier: {
         type: "subheading",
-        content: "of who the SilverBack Team will meet",
+        content: "where to meet form inductions",
       },
       subheadingFunf: {
+        type: "subheading",
+        content: "leave blank if same then project address",
+      },
+      inductionAddress: {
+        type: "address",
+      },
+      spacerVier: {
+        type: "spacer",
+        double: true,
+      },
+      headingVier: {
+        type: "heading",
+        content: "Inductions start",
+      },
+      inductionStart: {
+        type: "date",
+      },
+      spacerFunf: {
+        type: "spacer",
+        double: true,
+      },
+      headingFunf: {
+        type: "heading",
+        content: "Meeting person contact details",
+      },
+      subheadingSechs: {
+        type: "subheading",
+        content: "of who the SilverBack Team will meet",
+      },
+      subheadingSieben: {
         type: "subheading",
         content: "or call on the first day",
       },
@@ -604,32 +671,26 @@ export default function OrderFormContent({
           },
         },
       },
-      spacerDrei: {
+      spacerSechs: {
         type: "spacer",
         double: true,
       },
-      headingVier: {
+      headingSechs: {
         type: "heading",
         content: "Delivery address for ID06 cards,",
       },
-      subheadingSechs: {
-        type: "subheading",
-        content: "if we have to deliver a new card ",
-      },
       subheadingAcht: {
         type: "subheading",
-        content: "for our staff onsite",
+        content: "if we have to deliver a new card for our staff onsite",
+      },
+      subheadingNeun: {
+        type: "subheading",
+        content: "leave blank if same then project address",
       },
       deliveryAddress: {
         type: "address",
-        option: {
-          required: {
-            message: "Please enter the delivery address",
-            value: true,
-          },
-        },
       },
-      spacerVier: {
+      spacerSieben: {
         type: "spacer",
         double: true,
       },
@@ -976,7 +1037,6 @@ export default function OrderFormContent({
           performedWork: [],
           workerNeeded: [...order.PayChargeRate.map((pc) => pc.jobRole.name)],
           confirmRotation: [],
-          projectStart: "",
           projectDuration: {},
           requiredTrainingCourses: [],
           inductionForms: [],
@@ -1008,13 +1068,11 @@ export default function OrderFormContent({
           confirmOTChargerates: [],
           colleaguesContactDetails: [
             {
-              item: {
-                phone: null,
-                firstName: null,
-                lastName: "",
-                jobPosition: "",
-                email: "",
-              },
+              phone: null,
+              firstName: null,
+              lastName: "",
+              jobPosition: "",
+              email: "",
             },
           ],
         },
@@ -1081,7 +1139,7 @@ export default function OrderFormContent({
         <Modal.Footer>
           <Button
             onPress={() => {
-              window.location.href= "https://silverback.ie"
+              window.location.href = process.env.NEXT_PUBLIC_SILVERBACK_DOMAIN+"";
             }}
             size={"sm"}
             disabled={submitForm.isLoading}

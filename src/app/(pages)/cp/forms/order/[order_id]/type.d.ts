@@ -139,6 +139,9 @@ export type OrderProps = Prisma.OrderGetPayload<{
   }>
 
 export type FormDataProps = {
+  commentToRotation: string, 
+  commentToNumbersOfWorker: string, 
+  inductionStart: string,
   authCode: string,
   officialCompanyName: string,
   companyAddress: {
@@ -166,7 +169,8 @@ export type FormDataProps = {
   confirmRotation: string[],
   projectStart: string,
   projectDuration: {
-      weeks: number
+    from: string,
+    to: string
   },
   requiredTrainingCourses: string[],
   inductionForms: 
@@ -202,13 +206,11 @@ export type FormDataProps = {
   confirmOTChargerates: string[],
   colleaguesContactDetails: 
       {
-          item: {
               phone: string,
               firstName: string,
               lastName: string,
               jobPosition: string,
               email: string
-          }
       }[]
   ,
   workerOnSite: Record<string, number>,

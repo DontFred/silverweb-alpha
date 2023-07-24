@@ -1,9 +1,5 @@
 import { CSS, Container, Grid, Text } from "@nextui-org/react";
-import React, {
-  ChangeEvent,
-  DragEvent,
-  Fragment,
-} from "react";
+import React, { ChangeEvent, DragEvent, Fragment, useRef } from "react";
 import { FileFieldProps } from "../types";
 import { FileCheck2, FileX2, X } from "lucide-react";
 import StyleObject from "csstype";
@@ -44,17 +40,17 @@ const GridItemStyling: CSS = {
 };
 
 const ErrorMessageStyling: CSS = {
-    fs: "var(--nextui-space-5)",
-    color: "$error",
-    position: "absolute",
-    w: "100%",
-    ta: "right",
-    p: "0 $8 0 0",
-  };
+  fs: "var(--nextui-space-5)",
+  color: "$error",
+  position: "absolute",
+  w: "100%",
+  ta: "right",
+  p: "0 $8 0 0",
+};
 
 const AllContainerStyling: StyleObject.Properties = {
-    position: "relative"
-}
+  position: "relative",
+};
 
 const FileIconStyling: StyleObject.Properties = {
   overflow: "visible",
@@ -73,7 +69,6 @@ const ListItemStyling: StyleObject.Properties = {
   margin: 0,
 };
 
-
 /**
  * Renders a file input field with drag-and-drop functionality, file validation, and error handling.
  *
@@ -88,10 +83,14 @@ export default function FileField(props: FileFieldProps & { name: string }) {
   const { field } = useController({
     name: name,
     control: control,
-    rules: {...option, validate: {
-      ...option?.validate,
-      validate: (value: { filename: string; uri: string }) => value.uri !== "zugross",
-    }},
+    rules: {
+      ...option,
+      validate: {
+        ...option?.validate,
+        validate: (value: { filename: string; uri: string }[]) =>
+          value.map((item) => item.uri !== "zugross" ).every((item) => item == true),
+      },
+    },
     defaultValue: [],
   });
 
@@ -99,6 +98,7 @@ export default function FileField(props: FileFieldProps & { name: string }) {
     .split(".")
     .reduce((err, path): any => err && err[path], formState.errors);
 
+  const InputContainerRef = useRef<HTMLInputElement>(null);
 
   //convert to base64
 
@@ -145,10 +145,15 @@ export default function FileField(props: FileFieldProps & { name: string }) {
     <Fragment>
       <div style={AllContainerStyling}>
         <label
+          style={{}}
           htmlFor={"file-input-" + name}
           onDrop={handleDrop}
           onDragOver={(e) => {
             e.preventDefault();
+          }}
+          onClick={() => {
+            console.log("click");
+            InputContainerRef.current?.click();
           }}
         >
           <Container
@@ -156,7 +161,7 @@ export default function FileField(props: FileFieldProps & { name: string }) {
             fluid
             onMouseEnter={(e) => {
               const element = e.target as HTMLDivElement;
-              element.style.borderColor = "var(--nextui-colors-foreground)";
+              element.style.borderColor = "var(--nextui-colors-gray600)";
             }}
             onMouseLeave={(e) => {
               const element = e.target as HTMLDivElement;
@@ -167,9 +172,10 @@ export default function FileField(props: FileFieldProps & { name: string }) {
           </Container>
         </label>
         <input
-            onBlur={()=>{
-                field.onBlur
-            }}
+          ref={InputContainerRef}
+          onBlur={() => {
+            field.onBlur;
+          }}
           multiple
           onChange={handleFile}
           id={"file-input-" + name}
@@ -252,11 +258,11 @@ export default function FileField(props: FileFieldProps & { name: string }) {
             </ul>
           </Fragment>
         )}
-      {Error && (
+        {Error && (
           <Text css={ErrorMessageStyling}>
-          {Error.message ? Error.message.toString() : ""}
-        </Text>
-      )}
+            {Error.message ? Error.message.toString() : ""}
+          </Text>
+        )}
       </div>
     </Fragment>
   );

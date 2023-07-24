@@ -49,7 +49,9 @@ export default function ArrayField(props: ArrayProps & { name: string }) {
   
   useEffect(() => {
     function addNull(){
-      update(0, { item: null });
+      if(fields.length === 0){
+        update(0, {});
+      }
     }
     addNull()
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -65,14 +67,14 @@ export default function ArrayField(props: ArrayProps & { name: string }) {
               index ? (counterMessage ? counterMessage : "") + (index + 1) : ""
             }
           />
-          <Component name={name + "." + index + ".item"} {...rest} />
+          <Component name={name + "." + index} {...rest} />
           <Spacer y={fields.length !== index + 1 ? 2 : 1} />
         </Fragment>
       ))}
       <Button.Group ghost rounded>
         <Button
           onPress={() => {
-            append({ item: {} });
+            append({});
           }}
           css={{ p: 5, h: 25 }}
         >
