@@ -1,15 +1,16 @@
 import { trpc } from "@/lib/trpc/csTRPC";
 import { Button, Grid, Input, Loading, Text } from "@nextui-org/react";
+import { usePathname, useRouter } from "next/navigation";
 import React, { Fragment, useRef, useState } from "react";
 import { useWebAuthn } from "react-hook-webauthn";
 
-export default function SignWithOTP() {
+export default function SignWithOTP({ inModal }: { inModal?: boolean }) {
   const OTP1Ref = useRef<HTMLInputElement>(null);
   const OTP2Ref = useRef<HTMLInputElement>(null);
   const OTP3Ref = useRef<HTMLInputElement>(null);
   const OTP4Ref = useRef<HTMLInputElement>(null);
 
-  const [ registerState, setRegisterState ] = useState<string>("");
+  const [registerState, setRegisterState] = useState<string>("");
 
   const [secretAndWebAuth, setSecretAndWebAuth] = useState<{
     otp: Array<string>;
@@ -21,6 +22,8 @@ export default function SignWithOTP() {
     rpName: "SilverWeb",
   };
 
+  const router = useRouter();
+  const path = usePathname();
   const { getCredential } = useWebAuthn(rpOptions);
   const checkOTP = trpc.getWebAuthnBySecretKey.useMutation();
   const registerWebAuthN = trpc.registerWebAuthN.useMutation();
@@ -29,7 +32,7 @@ export default function SignWithOTP() {
       otp: secretAndWebAuth.otp.join(""),
       secret: secretAndWebAuth.secret,
     });
-    if(!credentials){
+    if (!credentials) {
       throw new Error("Credentials got rejected");
     }
     const auth = await getCredential({
@@ -37,19 +40,21 @@ export default function SignWithOTP() {
       userDisplayName: credentials.User.name,
       userId: credentials.User.id,
       userName: credentials.User.email,
-    })
-    console.log(auth)
-    if(!auth){
+    });
+    if (!auth) {
       throw new Error("WebAuthN got rejected");
     }
     const setupWebAuthN = await registerWebAuthN.mutateAsync({
       id: credentials.id,
       secret: auth.id,
-    })
+    });
 
-    if(setupWebAuthN.webauthnSecret){
+    if (setupWebAuthN.webauthnSecret) {
       setRegisterState("success");
     }
+    setTimeout(() => {
+      router.refresh()
+    }, 500)
   }
 
   return (
@@ -70,15 +75,19 @@ export default function SignWithOTP() {
         `}
       </style>
       <Grid.Container
-        css={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          maxW: 350,
-          filter: "invert(1)",
-          py: 20,
-        }}
+        {...(!inModal
+          ? {
+              css: {
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                maxW: 350,
+                filter: "invert(1)",
+                py: 20,
+              },
+            }
+          : { css: { py: 20 } })}
       >
         <Grid xs={12}>
           <Text
@@ -252,12 +261,14 @@ export default function SignWithOTP() {
         <Grid
           xs={12}
           justify="center"
-          css={{
-            filter: "invert(1)",
+          {...!inModal && {
+            css: {
+              filter: "invert(1)",
+            }
           }}
         >
           <Button
-            onPress={async()=> {
+            onPress={async () => {
               try {
                 setRegisterState("loading");
                 await handleRegister();
@@ -270,9 +281,21 @@ export default function SignWithOTP() {
             disabled={registerState == "loading"}
             size="sm"
             ghost
-            color={registerState == "error" ? "error" : registerState == "success" ? "success" : "default"}
+            color={
+              registerState == "error"
+                ? "error"
+                : registerState == "success"
+                ? "success"
+                : "default"
+            }
           >
-            {registerState == "error" ? "Error" : registerState == "loading" ?  <Loading color="currentColor" size="xs" /> : "Register"}
+            {registerState == "error" ? (
+              "Error"
+            ) : registerState == "loading" ? (
+              <Loading color="currentColor" size="xs" />
+            ) : (
+              "Register"
+            )}
           </Button>
         </Grid>
       </Grid.Container>

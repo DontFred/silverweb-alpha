@@ -1,14 +1,17 @@
-import { initTRPC } from "@trpc/server";
+import { TRPCError, initTRPC } from "@trpc/server";
 import SuperJSON from "superjson";
 import { z } from "zod";
 import { prisma } from "../prisma";
 import { NominatimResponseProps } from "../../../type";
 import bcrypt from "bcrypt";
+import { getServerSession } from "next-auth/next";
 import { intervalToDuration } from "date-fns";
+import { authOption } from "@/lib/auth/authOption";
 
 const t = initTRPC.create({
   transformer: SuperJSON,
 });
+
 
 export const appRouter = t.router({
   getAllProjects: t.procedure.query(async () => {
@@ -228,6 +231,22 @@ export const appRouter = t.router({
       where: {
         id: input,
       },
+    });
+  }),
+  getWebAuthnByEmail: t.procedure.input(z.string()).mutation(async (req) => {
+    const { input } = req;
+    console.log(input);
+    return await prisma.user.findFirst({
+      where: {
+        email: input,
+      },
+      select: {
+        WebAuthN: {
+          select: {
+            webauthnChallenge: true,
+          }
+        },
+      }
     });
   }),
   getWebAuthnBySecretKey: t.procedure.input(z.object({ secret: z.string(), otp: z.string() })).mutation(async (req) => {
@@ -1199,6 +1218,30 @@ export const appRouter = t.router({
           }
         }
       })
+    }),
+  checkWebAuthN: t.procedure
+    .input(z.object({
+      email: z.string(),
+      secret: z.string(),
+    })).mutation(async (req) => {
+      const { input } = req;
+      console.log("asdasdadasdasasasshshshhshshshshshshsh")
+      const account = await prisma.user.findUnique({
+        where: {
+          email: input.email,
+        },
+        include: {
+          WebAuthN: true,
+        }
+      })
+      console.log("account",account);
+      if(!account || !account.WebAuthN || !account.WebAuthN.webauthnSecret) return null;
+
+      const comp = await bcrypt.compare(input.secret, account.WebAuthN.webauthnSecret);
+      console.log(comp);
+      if(!comp) return null;
+
+      return account;
     })
 });
 

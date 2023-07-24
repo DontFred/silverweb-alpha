@@ -112,7 +112,7 @@ export default function Nav({
                     </Link>
                   </Dropdown.Item>
                   <Dropdown.Item><Link href={""}onClick={()=>signOut()} >As a partner</Link></Dropdown.Item>
-                  <Dropdown.Item><Link href={"/auth/login-admin"} onClick={()=>signIn()}>As an admin</Link></Dropdown.Item>
+                  <Dropdown.Item><Link href={"/auth/login-admin"}>As an admin</Link></Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
           </Navbar.Content>

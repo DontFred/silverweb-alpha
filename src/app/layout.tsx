@@ -2,6 +2,8 @@ import "./(styles)/globals.css";
 import Providers from "@/lib/providers";
 import localFont from "next/font/local";
 import { useTheme } from 'next-themes'
+import { getServerSession } from "next-auth/next"
+import { authOption } from "@/lib/auth/authOption";
 
 const graphik = localFont({
   src: [
@@ -46,7 +48,7 @@ export const metadata = {
 };
 
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   modal
 }: {
@@ -54,6 +56,7 @@ export default function RootLayout({
   modal: React.ReactNode
 }) {
 
+  console.log(await getServerSession(authOption))
   return (
     <html lang="en">
       <head>
