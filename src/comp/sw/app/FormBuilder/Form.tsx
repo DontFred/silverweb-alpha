@@ -301,7 +301,6 @@ export function Form({ fields, onSubmit, defaultValues, onChange }: FormProps) {
                       ghost
                       auto
                       onPress={async () => {
-                        // console.log(FormBaseRef.current?.scrollIntoView({ behavior: "smooth"}))
                         const Errors = await Promise.all(
                           Object.entries(fields[pages]).map(async (field) => {
                             // Checking field

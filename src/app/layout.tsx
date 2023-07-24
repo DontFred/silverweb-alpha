@@ -56,7 +56,6 @@ export default async function RootLayout({
   modal: React.ReactNode
 }) {
 
-  console.log(await getServerSession(authOption))
   return (
     <html lang="en">
       <head>

@@ -18,12 +18,10 @@ export const authOption: NextAuthOptions = {
               secret: { label: "Secret", type: "password" }
             },
             async authorize(credentials, req) {
-                console.log("AuthOptions", credentials)
                 if(!credentials || !credentials.email || !credentials.secret) return null
 
                 const user = await trpc.checkWebAuthN({email: credentials.email, secret: credentials.secret})
 
-                console.log(user)
                 if(user) return {
                   id: user.id,
                   email: user.email,

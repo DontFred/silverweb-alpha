@@ -235,7 +235,6 @@ export const appRouter = t.router({
   }),
   getWebAuthnByEmail: t.procedure.input(z.string()).mutation(async (req) => {
     const { input } = req;
-    console.log(input);
     return await prisma.user.findFirst({
       where: {
         email: input,
@@ -1225,7 +1224,6 @@ export const appRouter = t.router({
       secret: z.string(),
     })).mutation(async (req) => {
       const { input } = req;
-      console.log("asdasdadasdasasasshshshhshshshshshshsh")
       const account = await prisma.user.findUnique({
         where: {
           email: input.email,
@@ -1234,11 +1232,9 @@ export const appRouter = t.router({
           WebAuthN: true,
         }
       })
-      console.log("account",account);
       if(!account || !account.WebAuthN || !account.WebAuthN.webauthnSecret) return null;
 
       const comp = await bcrypt.compare(input.secret, account.WebAuthN.webauthnSecret);
-      console.log(comp);
       if(!comp) return null;
 
       return account;

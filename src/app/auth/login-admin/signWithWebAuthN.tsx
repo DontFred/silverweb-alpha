@@ -19,7 +19,6 @@ export default function SignWithWebAuthN({ inModal }: { inModal?: boolean }) {
 
   async function handleSignIn() {
     const credentials = await checkWebAuthN.mutateAsync(email)
-    console.log(credentials)
     if (!credentials || !credentials.WebAuthN) {
       throw new Error("Credentials got rejected");
     }
@@ -33,10 +32,6 @@ export default function SignWithWebAuthN({ inModal }: { inModal?: boolean }) {
         redirect: true,
         callbackUrl: "/sw",
     })
-    console.log(signinWebAuthN)
-    // if(!signinWebAuthN || !signinWebAuthN.ok) {
-    //   throw new Error("Credentials got rejected");
-    // }
     return
   }
 

@@ -16,7 +16,6 @@ export const addressSchema = z
   .refine(
     async (address) => {
 
-      console.log(address)
       if(!address.streetNo || !address.city || !address.postalCode || !address.country) return false;
       setTimeout(async () => {
         const r = await fetch(
