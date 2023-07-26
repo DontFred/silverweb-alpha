@@ -36,6 +36,7 @@ export default function NavCard({
       }
     }}>
       <Link
+        passHref
         aria-disabled={disabled && "true"}
         href={disabled ? "#" : link}
         style={{

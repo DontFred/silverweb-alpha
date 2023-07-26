@@ -77,7 +77,7 @@ export default function Footer() {
                   <Link href="#">Contact</Link>
                 </Grid>
                 <Grid >
-                  <Link href="https://www.linkedin.com/company/silverback-staffing/mycompany/">
+                  <Link passHref href="https://www.linkedin.com/company/silverback-staffing/mycompany/">
                     <Image
                       src={"/svg/Icon/linkedin.svg"}
                       width={15}
@@ -88,7 +88,7 @@ export default function Footer() {
                   </Link>
                 </Grid>
                 <Grid >
-                  <Link href="https://www.facebook.com/SilverBackStaffing/">
+                  <Link passHref href="https://www.facebook.com/SilverBackStaffing/">
                     <Image
                       src={"/svg/Icon/facebook.svg"}
                       width={15}
@@ -99,7 +99,7 @@ export default function Footer() {
                   </Link>
                 </Grid>
                 <Grid>
-                  <Link href="https://www.instagram.com/silverback_mission_critical/?igshid=Y2IzZGU1MTFhOQ%3D%3D">
+                  <Link passHref href="https://www.instagram.com/silverback_mission_critical/?igshid=Y2IzZGU1MTFhOQ%3D%3D">
                     <Image
                       src={"/svg/Icon/instagram.svg"}
                       width={15}
