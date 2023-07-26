@@ -1,6 +1,5 @@
 import { Fragment } from "react";
 import HomeContent from "./content";
-import { faker } from "@faker-js/faker";
 import { trpc } from "@/lib/trpc/ssTRPC";
 
 export type MapFriendlyProjectData =
@@ -36,9 +35,9 @@ export type HoursFriendlyProjectHistoryData = {
  */
 async function getHoursFriendlyAllProjectsData() {
   const hoursFriendlyAllProjectsHistoryData: HoursFriendlyProjectHistoryData = {
-    elec: faker.number.int(9000),
-    mech: faker.number.int(9000),
-    white: faker.number.int(14000),
+    elec: 7344,
+    mech: 6422,
+    white: 12301,
   };
 
   return hoursFriendlyAllProjectsHistoryData;

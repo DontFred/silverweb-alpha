@@ -61,9 +61,11 @@ const FieldsetStyling: StyleObject.Properties = {
 export default function OrderInterfaceContent({
   orderData,
   jobRoles,
+  user
 }: {
   orderData: OrderDataProps;
   jobRoles: JobRolesProps[];
+  user: any;
 }) {
   const form = useForm({
     defaultValues: {

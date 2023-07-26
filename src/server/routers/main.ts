@@ -248,6 +248,18 @@ export const appRouter = t.router({
       }
     });
   }),
+  getUserByEmail: t.procedure.input(z.string()).query(async (req) => {
+    const { input } = req;
+    return await prisma.user.findFirst({
+      where: {
+        email: input,
+      },
+      select: {
+        color: true,
+        department: true,
+      }
+    });
+  }),
   getWebAuthnBySecretKey: t.procedure.input(z.object({ secret: z.string(), otp: z.string() })).mutation(async (req) => {
     const { input } = req;
     const credentials = await prisma.webAuthN.findFirst({
@@ -1229,6 +1241,8 @@ export const appRouter = t.router({
           email: input.email,
         },
         include: {
+          department: true,
+          color: true,
           WebAuthN: true,
         }
       })

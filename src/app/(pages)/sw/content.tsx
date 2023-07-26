@@ -3,17 +3,19 @@
 import Layout from "@/comp/sw/ui/Layout";
 import ThreeRowCard from "@/comp/sw/ui/cards/ThreeRowCard";
 import TwoRowCard from "@/comp/sw/ui/cards/TwoRowCard";
-import { faker } from "@faker-js/faker";
 import { Grid, Loading, Spacer, Text } from "@nextui-org/react";
-import React from "react";
+import React, { useEffect } from "react";
 import dynamic from "next/dynamic";
 import ContainerCard from "@/comp/sw/ui/cards/ContainerCard";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
+
 import {
   HoursFriendlyProjectHistoryData,
   MapFriendlyProjectData,
   StatisticsFriendlyProjectData,
 } from "./page";
+import { useRouter } from "next/navigation";
 
 const Map = dynamic(() => import("@/comp/sw/app/Map"), {
   loading: () => (
@@ -30,7 +32,7 @@ const Map = dynamic(() => import("@/comp/sw/app/Map"), {
       />
     </div>
   ),
-  ssr: false
+  ssr: false,
 });
 
 export default function HomeContent({
@@ -42,6 +44,31 @@ export default function HomeContent({
   statisticFriendlyAllProjectsData?: StatisticsFriendlyProjectData;
   hoursFriendlyAllProjectsHistoryData?: HoursFriendlyProjectHistoryData;
 }) {
+  const router = useRouter();
+
+  const { data: session, status } = useSession();
+  useEffect(() => {
+    if (status === "unauthenticated" ) {
+      router.push("/auth/login-admin");
+    }
+  }, [status, router]);
+
+  if (!session) {
+    return (
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          position: "relative",
+          background: "var(--nextui-colors-gray100)",
+        }}
+      >
+        <Loading
+          css={{ left: "50%", top: "50%", transform: "translate(-50%, -50%)" }}
+        />
+      </div>
+    );
+  }
   return (
     <Layout>
       <Grid.Container gap={0} css={{ p: 30 }}>
@@ -52,7 +79,7 @@ export default function HomeContent({
             }}
           >
             <Text h2 role="banner">
-              Welcome {faker.person.firstName()},
+              Welcome {session.user.name},
             </Text>
             <Text h3 role="banner">
               it&apos;s{" "}
@@ -78,10 +105,16 @@ export default function HomeContent({
                       <Text weight="light">Monthly Hours Statistics</Text>
                       <Grid.Container gap={2} justify="space-between">
                         <Grid>
-                          <TwoRowCard heading={hoursFriendlyAllProjectsHistoryData?.mech} description="Mechanic" />
+                          <TwoRowCard
+                            heading={hoursFriendlyAllProjectsHistoryData?.mech}
+                            description="Mechanic"
+                          />
                         </Grid>
                         <Grid>
-                          <TwoRowCard heading={hoursFriendlyAllProjectsHistoryData?.elec} description="Electrician" />
+                          <TwoRowCard
+                            heading={hoursFriendlyAllProjectsHistoryData?.elec}
+                            description="Electrician"
+                          />
                         </Grid>
                         <Grid>
                           <TwoRowCard
@@ -127,7 +160,11 @@ export default function HomeContent({
                       >
                         <Grid xs={12}>
                           <ContainerCard overflowHidden>
-                            <Map {...mapFriendlyAllProjectsData && {marker:mapFriendlyAllProjectsData}} />
+                            <Map
+                              {...(mapFriendlyAllProjectsData && {
+                                marker: mapFriendlyAllProjectsData,
+                              })}
+                            />
                           </ContainerCard>
                         </Grid>
                       </Grid.Container>
@@ -185,13 +222,17 @@ export default function HomeContent({
                         </Grid>
                         <Grid>
                           <TwoRowCard
-                            heading={statisticFriendlyAllProjectsData?.factories}
+                            heading={
+                              statisticFriendlyAllProjectsData?.factories
+                            }
                             description="Factories"
                           />
                         </Grid>
                         <Grid>
                           <TwoRowCard
-                            heading={statisticFriendlyAllProjectsData?.buildings}
+                            heading={
+                              statisticFriendlyAllProjectsData?.buildings
+                            }
                             description="Buildings"
                           />
                         </Grid>

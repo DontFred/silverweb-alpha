@@ -10,7 +10,6 @@ import {
   Text,
   Avatar,
 } from "@nextui-org/react";
-import { UserProps } from "@/faker.d";
 
 type MessageProps = {
   id: string;
@@ -19,6 +18,14 @@ type MessageProps = {
   message: string;
   date: Date;
 };
+
+type UserProps = {
+  id?: string;
+  name?: string | null;
+  deptname?: string;
+  avatar?: string;
+  color?: "error" | "default" | "primary" | "secondary" | "success" | "warning" | "gradient" ;
+}
 
 /**
  * Renders a UserMenu component that displays a dropdown menu with user options, including
@@ -174,7 +181,7 @@ export default function UserMenu({
                       <User
                         name={user.name}
                         src={user.avatar}
-                        description={user.dept.name}
+                        description={user.deptname}
                         bordered
                         color={user.color}
                       />

@@ -3,6 +3,8 @@ import { Button, Grid, Input, Loading, Text } from "@nextui-org/react";
 import { usePathname, useRouter } from "next/navigation";
 import React, { Fragment, useRef, useState } from "react";
 import { useWebAuthn } from "react-hook-webauthn";
+import { signIn } from "next-auth/react";
+
 
 export default function SignWithOTP({ inModal }: { inModal?: boolean }) {
   const OTP1Ref = useRef<HTMLInputElement>(null);
@@ -51,10 +53,13 @@ export default function SignWithOTP({ inModal }: { inModal?: boolean }) {
 
     if (setupWebAuthN.webauthnSecret) {
       setRegisterState("success");
+      const signinWebAuthN = await signIn("credentials", {
+        email: credentials.User.email,
+        secret: auth.id,
+        redirect: true,
+        callbackUrl: "/sw",
+    })
     }
-    setTimeout(() => {
-      router.refresh()
-    }, 500)
   }
 
   return (

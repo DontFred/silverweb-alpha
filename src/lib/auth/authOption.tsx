@@ -26,13 +26,27 @@ export const authOption: NextAuthOptions = {
                   id: user.id,
                   email: user.email,
                   name: user.name,
-                  image: user.avatar
+                  avatar: user.avatar,
+                  deptname: user.department.name,
+                  color: user.color.color
                 }
 
                 return null
             }
           })
     ],
+    callbacks: {
+      jwt: async ({ token, user }) => {
+        return {
+          ...token,
+          ...user,
+        };
+      },
+        session: async ({ session, token, user }) => {
+            session.user = token
+            return session
+        },
+    },
     secret: process.env.NEXTAUTH_SECRET,
     pages: {
         signIn: "/auth/login-admin"
