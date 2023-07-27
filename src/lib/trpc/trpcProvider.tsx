@@ -13,7 +13,10 @@ export const TrpcProvider: React.FC<{ children: React.ReactNode }> = (p) => {
       transformer: SuperJSON,
       links: [
         httpBatchLink({
-          url: "http://localhost:3000/api/trpc",
+          url: "http://silverback-group.eu/api/trpc",
+          fetch(url, options){
+            return fetch(url, {...options, credentials: "include"});
+          }
         }),
       ],
     })
