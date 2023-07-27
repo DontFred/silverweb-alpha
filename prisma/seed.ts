@@ -19303,6 +19303,13 @@ async function main() {
         id: "00000000-0000-0000-0000-000000000000",
         email: "fgrimm@silverback.ie",
         name: "Freddy",
+        WebAuthN: {
+          create:{
+            secretOTP: "Halloitz12!",
+            webauthnChallenge: "mLnDzF2xfOB4jDe3cjIugXypBV4FCg9L",
+            otp: "$2a$09$pGCOpFB7FfVaawXBuNKEQe52XaAlsTEm07qrW51jAsQ6ziZ5YTYGW"
+          }
+        },
         color: {
           connect: {
             color: "error",

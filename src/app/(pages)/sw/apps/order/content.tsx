@@ -18,6 +18,7 @@ import {
   useWatch,
 } from "react-hook-form";
 import { Minus, Plus } from "lucide-react";
+import { useSession } from "next-auth/react";
 
 import Layout from "@/comp/sw/ui/Layout";
 import ThreeRowCard from "@/comp/sw/ui/cards/ThreeRowCard";
@@ -88,10 +89,18 @@ export default function OrderFormContent({
     },
   });
 
+  const {status, data: session} = useSession();
+  useEffect(() => {
+    if (status === "unauthenticated" ) {
+      router.push("/auth/login-admin");
+    }
+  }, [status, router]);
+
+
   async function handleAddOrder(data: AddOrderProps) {
     setSubmitting(true);
     const order = await Order.mutateAsync({
-      accountManager: "00000000-0000-0000-0000-000000000000",
+      accountManager: session?.user.id || "00000000-0000-0000-0000-000000000000",
       clientProjectCode: data.ClientProjectRef,
       clientRef: data.clientRef,
       currency: data.currency,
