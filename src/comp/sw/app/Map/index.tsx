@@ -69,7 +69,10 @@ export default function Map({
         : [53.36512, 10.27083];
     var map = L.map("map-"+id).setView([...center], 4);
     L.tileLayer(
-      "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
+      "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+      {
+        className: "map-tiles",
+      }
     ).addTo(map);
     marker &&
       marker.map((marker, idx) => {
@@ -113,6 +116,9 @@ export default function Map({
       <style jsx global>{`
         .leaflet-c-popover {
           border-radius: 14px;
+        }
+        .map-tiles {
+          filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
         }
         .leaflet-c-popover :first-child {
           background: black;
