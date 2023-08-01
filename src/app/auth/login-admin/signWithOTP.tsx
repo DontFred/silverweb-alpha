@@ -24,8 +24,6 @@ export default function SignWithOTP({ inModal }: { inModal?: boolean }) {
     rpName: "SilverWeb",
   };
 
-  const router = useRouter();
-  const path = usePathname();
   const { getCredential } = useWebAuthn(rpOptions);
   const checkOTP = trpc.getWebAuthnBySecretKey.useMutation();
   const registerWebAuthN = trpc.registerWebAuthN.useMutation();

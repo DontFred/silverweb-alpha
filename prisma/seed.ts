@@ -19562,7 +19562,7 @@ async function main() {
           create: {
             secretOTP: "aR278!!@m_8",
             webauthnChallenge: "xh6ewPsOSYTdK0GNtN9w45jzSWwVEJ2T",
-            otp: "$2a$10$YxQK9Yayj0W.3DW2HZ6fYOOQLSTe5siszOEmArbtYgXe3ZQB7Nrfy"
+            otp: "$2a$04$vPunW/YpahEsGHpUKf05huI3gNmaw63bzSl/zHuDPFZyNuZurD3MC"
           }
         },
         userRole: {
