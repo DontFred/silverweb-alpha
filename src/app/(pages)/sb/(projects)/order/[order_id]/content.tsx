@@ -111,6 +111,8 @@ export default function OrderInterfaceContent({
       invoicingFrequency: orderData?.invoicingFrequency,
       payTerm: orderData?.payTerm,
       invoicingComment: orderData?.commentToInvoicing,
+      commentToRotation: orderData?.commentToRotation,
+      commentToNumbersOfWorker: orderData?.commentToNumbersOfWorker,
     },
   });
   const {

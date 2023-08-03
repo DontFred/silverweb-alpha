@@ -13,7 +13,7 @@ export const TrpcProvider: React.FC<{ children: React.ReactNode }> = (p) => {
       transformer: SuperJSON,
       links: [
         httpBatchLink({
-          url: process.env.TRPC_URL + "",
+          url: process.env.NEXT_PUBLIC_HOST_DOMAIN + "/api/trpc",
         }),
       ],
     })

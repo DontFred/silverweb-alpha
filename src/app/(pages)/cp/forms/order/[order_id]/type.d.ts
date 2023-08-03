@@ -169,8 +169,8 @@ export type FormDataProps = {
   confirmRotation: string[],
   projectStart: string,
   projectDuration: {
-    from: string,
-    to: string
+    from: Date,
+    to: Date
   },
   requiredTrainingCourses: string[],
   inductionForms: 

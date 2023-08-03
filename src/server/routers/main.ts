@@ -4,9 +4,7 @@ import { z } from "zod";
 import { prisma } from "../prisma";
 import { NominatimResponseProps } from "../../../type";
 import bcrypt from "bcrypt";
-import { getServerSession } from "next-auth/next";
 import { intervalToDuration } from "date-fns";
-import { authOption } from "@/lib/auth/authOption";
 
 const t = initTRPC.create({
   transformer: SuperJSON,
@@ -392,7 +390,7 @@ export const appRouter = t.router({
                   id: project?.id || "",
                 },
                 create: {
-                  name: "No Project yet",
+                  name: input.projectRef || "No Project yet",
                   company: "No Company yet",
                   size: "No Size yet",
                   comment: "No Comment yet",
@@ -756,8 +754,8 @@ export const appRouter = t.router({
             country: z.string()
         }).optional(),
         inductionStart: z.string(),
-        commentToRotation: z.string(),
-        commentToNumbersOfWorker: z.string(),
+        commentToRotation: z.string().optional(),
+        commentToNumbersOfWorker: z.string().optional(),
         invoicingEmail: z.string()
     })
     )
@@ -910,7 +908,7 @@ export const appRouter = t.router({
           commentToNumbersOfWorker: input.commentToNumbersOfWorker,
             orgaNumber: input.orgaNumber,
             start: new Date(input.projectDuration.from),
-            estimatedDuration: intervalToDuration({start: new Date(input.projectDuration.from), end: new Date(input.projectDuration.to)}) + " weeks",
+            estimatedDuration: intervalToDuration({start: new Date(input.projectDuration.from), end: new Date(input.projectDuration.to)}).days + " weeks",
             end: new Date(input.projectDuration.to),
             invoiceEmail: input.invoicingEmail,
             vatNumber: input.vatNumber,
@@ -998,32 +996,32 @@ export const appRouter = t.router({
             },
             deliveryAddress: {
               create: {
-                city: input.deliveryAddress ? input.deliveryAddress.city : input.projectAddress.city,
-                streetNo: input.deliveryAddress ? input.deliveryAddress.streetNo : input.projectAddress.streetNo,
-                postCode: input.deliveryAddress ? input.deliveryAddress.postalCode : input.projectAddress.postalCode,
-                country: input.deliveryAddress ? input.deliveryAddress.country : input.projectAddress.country,
+                city: input.deliveryAddress?.city ? input.deliveryAddress.city : input.projectAddress.city,
+                streetNo: input.deliveryAddress?.city ? input.deliveryAddress.streetNo : input.projectAddress.streetNo,
+                postCode: input.deliveryAddress?.city ? input.deliveryAddress.postalCode : input.projectAddress.postalCode,
+                country: input.deliveryAddress?.city ? input.deliveryAddress.country : input.projectAddress.country,
                 coordinates: {
                   create: {
                     lat:
-                      Math.round(((input.deliveryAddress ? deliveryAddress[0]?.lat : projectAddress[0]?.lat) || 1) * 1000) / 1000,
+                      Math.round(((input.deliveryAddress?.city ? deliveryAddress[0]?.lat : projectAddress[0]?.lat) || 1) * 1000) / 1000,
                     lng:
-                      Math.round(((input.deliveryAddress ? deliveryAddress[0]?.lat : projectAddress[0]?.lon) || 1) * 1000) / 1000,
+                      Math.round(((input.deliveryAddress?.city ? deliveryAddress[0]?.lat : projectAddress[0]?.lon) || 1) * 1000) / 1000,
                   },
                 },
               },
             },
             inductionAddress: {
               create: {
-                city: input.inductionAddress ? input.inductionAddress.city : input.projectAddress.city,
-                streetNo: input.inductionAddress ? input.inductionAddress.streetNo : input.projectAddress.streetNo,
-                postCode: input.inductionAddress ? input.inductionAddress.postalCode : input.projectAddress.postalCode,
-                country: input.inductionAddress ? input.inductionAddress.country : input.projectAddress.country,
+                city: input.inductionAddress?.city ? input.inductionAddress.city : input.projectAddress.city,
+                streetNo: input.inductionAddress?.city ? input.inductionAddress.streetNo : input.projectAddress.streetNo,
+                postCode: input.inductionAddress?.city ? input.inductionAddress.postalCode : input.projectAddress.postalCode,
+                country: input.inductionAddress?.city ? input.inductionAddress.country : input.projectAddress.country,
                 coordinates: {
                   create: {
                     lat:
-                      Math.round(((input.inductionAddress ? inductionAddress[0]?.lat : projectAddress[0]?.lat) || 1) * 1000) / 1000,
+                      Math.round(((input.inductionAddress?.city ? inductionAddress[0]?.lat : projectAddress[0]?.lat) || 1) * 1000) / 1000,
                     lng:
-                      Math.round(((input.inductionAddress ? inductionAddress[0]?.lat : projectAddress[0]?.lon) || 1) * 1000) / 1000,
+                      Math.round(((input.inductionAddress?.city ? inductionAddress[0]?.lat : projectAddress[0]?.lon) || 1) * 1000) / 1000,
                   },
                 },
               }
@@ -1134,7 +1132,7 @@ export const appRouter = t.router({
                 course: {
                   connectOrCreate: {
                     where: {
-                      name: item,
+                      name: item.replace(/[^a-zA-Z]/g, ''),
                     },
                     create: {
                       name: item.replace(/[^a-zA-Z]/g, ''),

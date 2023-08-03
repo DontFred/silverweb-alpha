@@ -31,8 +31,8 @@ export default function DateRageField(
     control: control,
     rules: option,
     defaultValue: {} as {
-      from: Date;
-      to: Date | undefined;
+      from: string;
+      to: string | undefined;
     },
   });
 
@@ -328,7 +328,7 @@ export default function DateRageField(
                                   ) {
                                     setFirstSelectedDay(date);
                                     field.onChange({
-                                      from: date,
+                                      from: date.toISOString(),
                                       to: undefined,
                                     });
                                     setLastSelectedDay(undefined);
@@ -338,7 +338,7 @@ export default function DateRageField(
                                     field.value?.from &&
                                       field.onChange({
                                         from: field.value.from,
-                                        to: date,
+                                        to: date.toISOString(),
                                       });
                                   }
                                 }}
@@ -580,7 +580,7 @@ export default function DateRageField(
                                   ) {
                                     setFirstSelectedDay(date);
                                     field.onChange({
-                                      from: date,
+                                      from: date.toISOString(),
                                       to: undefined,
                                     });
                                     setLastSelectedDay(undefined);
@@ -590,7 +590,7 @@ export default function DateRageField(
                                     field.value?.from &&
                                       field.onChange({
                                         from: field.value.from,
-                                        to: date,
+                                        to: date.toISOString(),
                                       });
                                   }
                                 }}

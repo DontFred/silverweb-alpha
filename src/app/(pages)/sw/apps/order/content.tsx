@@ -85,7 +85,7 @@ export default function OrderFormContent({
   const Order = trpc.addOrder.useMutation({});
   const AddCompany = trpc.addCompany.useMutation({
     onSuccess() {
-      router.replace(pathRouter);
+      router.refresh();
     },
   });
 
