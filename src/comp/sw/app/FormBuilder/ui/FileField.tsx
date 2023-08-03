@@ -98,7 +98,6 @@ export default function FileField(props: FileFieldProps & { name: string }) {
     .split(".")
     .reduce((err, path): any => err && err[path], formState.errors);
 
-  const InputContainerRef = useRef<HTMLInputElement>(null);
 
   //convert to base64
 
@@ -151,9 +150,6 @@ export default function FileField(props: FileFieldProps & { name: string }) {
           onDragOver={(e) => {
             e.preventDefault();
           }}
-          onClick={() => {
-            InputContainerRef.current?.click();
-          }}
         >
           <Container
             css={ContainerStyling}
@@ -171,7 +167,6 @@ export default function FileField(props: FileFieldProps & { name: string }) {
           </Container>
         </label>
         <input
-          ref={InputContainerRef}
           onBlur={() => {
             field.onBlur;
           }}
