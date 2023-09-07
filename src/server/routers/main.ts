@@ -705,8 +705,8 @@ export const appRouter = t.router({
         workerNeeded: z.array(z.string()),
         confirmRotation: z.array(z.string()),
         projectDuration: z.object({
-            from: z.date(),
-            to: z.date()
+            from: z.string(),
+            to: z.string()
         }),
         requiredTrainingCourses: z.array(z.string()),
         inductionForms: z.array(z.object({
