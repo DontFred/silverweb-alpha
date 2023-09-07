@@ -597,6 +597,8 @@ export default function OrderFormContent({
               <br />
               ⁵: An industry standard for a safer work environment at industrial
               plants.
+              <br />
+              ⁶: Standard Solutions Group - SSG Entre Basic Course
             </Text>
           </Fragment>
         ),
@@ -607,7 +609,7 @@ export default function OrderFormContent({
       },
       headingZwei: {
         type: "heading",
-        content: "Induction Forms needed ",
+        content: "Documents needed ",
       },
       subheadingDrei: {
         type: "subheading",

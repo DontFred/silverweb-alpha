@@ -601,7 +601,7 @@ export default function OrderInterfaceContent({
                                           css={{ flex: "0 1 auto" }}
                                           weight="light"
                                         >
-                                          Induction Forms
+                                          Documents
                                         </Text>
                                         <Grid.Container
                                           gap={2}

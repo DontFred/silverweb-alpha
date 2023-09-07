@@ -4,7 +4,7 @@ import { z } from "zod";
 import { prisma } from "../prisma";
 import { NominatimResponseProps } from "../../../type";
 import bcrypt from "bcrypt";
-import { intervalToDuration } from "date-fns";
+import { intervalToDuration, setHours } from "date-fns";
 
 const t = initTRPC.create({
   transformer: SuperJSON,
@@ -705,8 +705,8 @@ export const appRouter = t.router({
         workerNeeded: z.array(z.string()),
         confirmRotation: z.array(z.string()),
         projectDuration: z.object({
-            from: z.string(),
-            to: z.string()
+            from: z.date(),
+            to: z.date()
         }),
         requiredTrainingCourses: z.array(z.string()),
         inductionForms: z.array(z.object({
@@ -810,12 +810,6 @@ export const appRouter = t.router({
           },
         });
 
-        const project = await tx.project.findFirst({
-          where: {
-            name: input.projectName,
-          },
-        });
-
         const client = await tx.client.findFirst({
           where: {
             name: input.officialCompanyName,
@@ -907,20 +901,14 @@ export const appRouter = t.router({
           commentToRotation: input.commentToRotation,
           commentToNumbersOfWorker: input.commentToNumbersOfWorker,
             orgaNumber: input.orgaNumber,
-            start: new Date(input.projectDuration.from),
-            estimatedDuration: intervalToDuration({start: new Date(input.projectDuration.from), end: new Date(input.projectDuration.to)}).days + " weeks",
+            start: setHours(new Date(input.projectDuration.from), 7),
+            estimatedDuration: intervalToDuration({start: new Date(input.projectDuration.from), end: new Date(input.projectDuration.to)}).weeks + " weeks",
             end: new Date(input.projectDuration.to),
             invoiceEmail: input.invoicingEmail,
             vatNumber: input.vatNumber,
             answered: true,
             Project: {
-              ...(project
-                ? {
-                    connect: {
-                      id: project?.id,
-                    },
-                  }
-                : {
+              ...{
                     update: {
                       name: input.projectName,
                       type: {
@@ -947,14 +935,14 @@ export const appRouter = t.router({
                                 ) / 1000,
                               lng:
                                 Math.round(
-                                  (projectAddress[0]?.lat || 1) * 1000
+                                  (projectAddress[0]?.lon || 1) * 1000
                                 ) / 1000,
                             },
                           },
                         },
                       },
                     },
-                  }),
+                  },
             },
             client: {
               ...(client

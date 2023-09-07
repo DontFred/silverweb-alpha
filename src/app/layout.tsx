@@ -1,9 +1,7 @@
 import "./(styles)/globals.css";
 import Providers from "@/lib/providers";
 import localFont from "next/font/local";
-import { useTheme } from 'next-themes'
-import { getServerSession } from "next-auth/next"
-import { authOption } from "@/lib/auth/authOption";
+import { Metadata } from "next";
 
 const graphik = localFont({
   src: [
@@ -42,9 +40,65 @@ const graphik = localFont({
   display: "fallback",
 });
 
-export const metadata = {
-  title: "SilverBack Group - Making the Future Easy, Green, and Productive.",
-  description: "Build a better future with the SilverBack Group - a global construction and contracting company committed to sustainability and innovation. Contact us today to start building a greener future. ",
+export const metadata: Metadata = {
+  title: {
+    template: "%s | SilverBack",
+    default:
+      "SilverBack Group - Making the Future Easy, Green, and Productive.",
+  },
+  description:
+    "Build a better future with the SilverBack Group - a global construction and contracting company committed to sustainability and innovation. Contact us today to start building a greener future.",
+  authors: { name: "SilverBack Group" },
+  creator: "Frederik W. Grimm for SilverBack",
+  openGraph: {
+    type: "website",
+    siteName: "SilverBack Group",
+    url: process.env.NEXT_PUBLIC_HOST_DOMAIN,
+    images: {
+      url: "/opengraph/opengraph-image.png",
+    },
+  },
+  icons: {
+    icon: [
+      {
+        url: "/icon/favicon-32x32.png",
+        sizes: "32x32",
+        type: "image/png",
+      },
+      {
+        url: "/icon/favicon-16x16.png",
+        sizes: "16x16",
+        type: "image/png",
+      },
+      {
+        url: "/icon/favicon.ico",
+        type: "image/x-icon",
+      },
+    ],
+    other: [
+      {
+        rel: "apple-touch-icon",
+        url: "/icon/apple-touch-icon.png",
+        sizes: "180x180",
+      },
+      {
+        rel: "mask-icon",
+        url: "/icon/safari-pinned-tab.svg",
+      },
+      {
+        rel: "shortcut icon",
+        url: "/icon/favicon.ico"
+      }
+    ],
+  },
+  manifest: "/icon/site.webmanifest",
+  other: {
+    "apple-mobile-web-app-title": "SilverBack Group",
+    "application-name": "SilverBack Group",
+    "msapplication-TileColor": "#000000",
+    "msapplication-config": "/icon/browserconfig.xml",
+    "theme-color": "dark",
+  },
 };
 
 
@@ -58,37 +112,6 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <head>
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/icon/apple-touch-icon.png"
-        />
-        <link rel="icon" type="image/x-icon" href={`/icon/favicon.ico`}></link>
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href={`/icon/favicon-32x32.png`}
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href={`/icon/favicon-16x16.png`}
-        />
-        <link rel="manifest" href="/icon/site.webmanifest" />
-        <link
-          rel="mask-icon"
-          href="/icon/safari-pinned-tab.svg"
-          color="#000000"
-        />
-        <meta name="apple-mobile-web-app-title" content="SilverBack" />
-        <meta name="application-name" content="SilverBack" />
-        <meta name="msapplication-TileColor" content="#000000" />
-        <meta name="msapplication-config" content="/icon/browserconfig.xml" />
-        <meta name="theme-color" content="dark" />
-      </head>
       <body className={graphik.className}>
         <Providers>{children}{modal}</Providers>
       </body>
