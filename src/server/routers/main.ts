@@ -902,7 +902,7 @@ export const appRouter = t.router({
           commentToNumbersOfWorker: input.commentToNumbersOfWorker,
             orgaNumber: input.orgaNumber,
             start: setHours(new Date(input.projectDuration.from), 7),
-            estimatedDuration: intervalToDuration({start: new Date(input.projectDuration.from), end: new Date(input.projectDuration.to)}).weeks + " weeks",
+            estimatedDuration: Math.abs(Math.round((new Date(input.projectDuration.to).getTime() - new Date(input.projectDuration.from).getTime()) / 1000 / (60 * 60 * 24 * 7))) + " weeks",
             end: new Date(input.projectDuration.to),
             invoiceEmail: input.invoicingEmail,
             vatNumber: input.vatNumber,
