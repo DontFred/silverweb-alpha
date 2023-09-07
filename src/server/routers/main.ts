@@ -973,7 +973,7 @@ export const appRouter = t.router({
                                 ) / 1000,
                               lng:
                                 Math.round(
-                                  (clientAddress[0]?.lat || 1) * 1000
+                                  (clientAddress[0]?.lon || 1) * 1000
                                 ) / 1000,
                             },
                           },
@@ -993,7 +993,7 @@ export const appRouter = t.router({
                     lat:
                       Math.round(((input.deliveryAddress?.city ? deliveryAddress[0]?.lat : projectAddress[0]?.lat) || 1) * 1000) / 1000,
                     lng:
-                      Math.round(((input.deliveryAddress?.city ? deliveryAddress[0]?.lat : projectAddress[0]?.lon) || 1) * 1000) / 1000,
+                      Math.round(((input.deliveryAddress?.city ? deliveryAddress[0]?.lon : projectAddress[0]?.lon) || 1) * 1000) / 1000,
                   },
                 },
               },
@@ -1009,7 +1009,7 @@ export const appRouter = t.router({
                     lat:
                       Math.round(((input.inductionAddress?.city ? inductionAddress[0]?.lat : projectAddress[0]?.lat) || 1) * 1000) / 1000,
                     lng:
-                      Math.round(((input.inductionAddress?.city ? inductionAddress[0]?.lat : projectAddress[0]?.lon) || 1) * 1000) / 1000,
+                      Math.round(((input.inductionAddress?.city ? inductionAddress[0]?.lon : projectAddress[0]?.lon) || 1) * 1000) / 1000,
                   },
                 },
               }
@@ -1025,7 +1025,7 @@ export const appRouter = t.router({
                     lat:
                       Math.round((invoicingAddress[0]?.lat || 1) * 1000) / 1000,
                     lng:
-                      Math.round((invoicingAddress[0]?.lat || 1) * 1000) / 1000,
+                      Math.round((invoicingAddress[0]?.lon || 1) * 1000) / 1000,
                   },
                 },
               },
@@ -1041,7 +1041,7 @@ export const appRouter = t.router({
                     lat:
                       Math.round((projectAddress[0]?.lat || 1) * 1000) / 1000,
                     lng:
-                      Math.round((projectAddress[0]?.lat || 1) * 1000) / 1000,
+                      Math.round((projectAddress[0]?.lon || 1) * 1000) / 1000,
                   },
                 },
               },
