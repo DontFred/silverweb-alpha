@@ -15,10 +15,10 @@ export default function OrderFormContent({
   order: OrderProps;
   auth: string;
 }) {
-  const [openSubmissionModal, setOpenSubmissionModal] = useState<boolean>(false);
+  const [openSubmissionModal, setOpenSubmissionModal] =
+    useState<boolean>(false);
 
   const submitForm = trpc.submitOrderForm.useMutation();
-
 
   const fields: FormProps["fields"] = [
     {
@@ -183,28 +183,6 @@ export default function OrderFormContent({
         type: "spacer",
         double: true,
       },
-      headingEins: {
-        type: "heading",
-        content: "The name or code",
-      },
-      subheadingEins: {
-        type: "subheading",
-        content: "of the project.",
-      },
-      projectName: {
-        type: "text",
-        label: "Project name",
-        option: {
-          required: {
-            message: "Please enter the project name",
-            value: true,
-          },
-        },
-      },
-      spacerZwei: {
-        type: "spacer",
-        double: true,
-      },
       headingZwei: {
         type: "heading",
         content: "The address",
@@ -221,51 +199,6 @@ export default function OrderFormContent({
             value: true,
           },
         },
-      },
-      spacerVier: {
-        type: "spacer",
-        double: true,
-      },
-      headingDrei: {
-        type: "heading",
-        content: "What type",
-      },
-      subheadingDrei: {
-        type: "subheading",
-        content: "of the project",
-      },
-      typeOfProject: {
-        type: "radio",
-        items: [
-          "Apartments",
-          "Battery Factory",
-          "Data Centre",
-          "Hospital",
-          "Mine",
-          "Museum",
-          "Paper Mill",
-          "Pre-Cast Factory",
-          "School",
-          "Shopping Centre",
-          "Windfarm",
-        ],
-        columnWidth: 2,
-        option: {
-          required: {
-            value: true,
-            message: "Please select a option",
-          },
-          validate: {
-            OtherOption: (value: string) => {
-              if (value == "other" || value == "") {
-                return "Please enter something in the other field";
-              } else {
-                return true;
-              }
-            },
-          },
-        },
-        otherOpt: true,
       },
       spacerFunf: {
         type: "spacer",
@@ -321,50 +254,6 @@ export default function OrderFormContent({
           },
         },
       },
-      spacerSechs: {
-        type: "spacer",
-        double: true,
-      },
-      headingFunf: {
-        type: "heading",
-        content: "Which workers",
-      },
-      subheadingFunf: {
-        type: "subheading",
-        content: "are needed from us",
-      },
-      workerNeeded: {
-        type: "checkbox",
-        items: [
-          "Electrician",
-          "Electrician Assistant",
-          "Electrician Team Leader",
-          "General Operative",
-          "Skilled General Operative",
-          "MEWP Spotter",
-          "Mechanic",
-          "Mechanic Team Leader",
-          "Storeperson",
-          "Teleporter Driver",
-        ],
-        otherOpt: true,
-        columnWidth: 2,
-        option: {
-          required: {
-            value: true,
-            message: "Please select a option",
-          },
-          validate: {
-            OtherOption: (value: string[]) => {
-              if (value.indexOf("other") !== -1 || value.indexOf("") !== -1) {
-                return "Please enter something in the other field";
-              } else {
-                return true;
-              }
-            },
-          },
-        },
-      },
       spacerSieben: {
         type: "spacer",
         double: true,
@@ -401,8 +290,9 @@ export default function OrderFormContent({
             <i>Home on rotation</i>
             <br />
             We are conscious of likelihood that your direct staff finish earlier
-            than our teams which is why your consideration is import. Please
-            confirm your understanding.
+            than our teams which is why your consideration is import. Do you
+            have supervision to work on the schedule above? If so please
+            confirm, if not please write your changes in the comment box.
           </Text>
         ),
       },
@@ -429,44 +319,6 @@ export default function OrderFormContent({
         content: "if you have any",
       },
       commentToRotation: {
-        type: "textarea",
-      },
-      spacerNeun: {
-        type: "spacer",
-        double: true,
-      },
-      headingSieben: {
-        type: "heading",
-        content: "The number of workers always on site,",
-      },
-      subheadingSieben: {
-        type: "subheading",
-        content: "due to the 6/2-Rotation schedule,",
-      },
-      subheadingNeun: {
-        type: "subheading",
-        content: "will always be a multiple of 3",
-      },
-      spacerZehn: {
-        type: "spacer",
-      },
-      workerOnSite: {
-        type: "relationNumber",
-        relatedField: "workerNeeded",
-      },
-      spacerElf: {
-        type: "spacer",
-        double: true,
-      },
-      headingNeun: {
-        type: "heading",
-        content: "Comment to needed workers",
-      },
-      subheadingZehn: {
-        type: "subheading",
-        content: "if you have any",
-      },
-      commentToNumbersOfWorker: {
         type: "textarea",
       },
       spacerZwolf: {
@@ -618,61 +470,6 @@ export default function OrderFormContent({
       inductionForms: {
         type: "file",
       },
-      spacerDrei: {
-        type: "spacer",
-        double: true,
-      },
-      headingDrei: {
-        type: "heading",
-        content: "Induction address",
-      },
-      subheadingVier: {
-        type: "subheading",
-        content: "where to meet form inductions",
-      },
-      subheadingFunf: {
-        type: "subheading",
-        content: "leave blank if same then project address",
-      },
-      inductionAddress: {
-        type: "address",
-      },
-      spacerVier: {
-        type: "spacer",
-        double: true,
-      },
-      headingVier: {
-        type: "heading",
-        content: "Inductions start",
-      },
-      inductionStart: {
-        type: "date",
-      },
-      spacerFunf: {
-        type: "spacer",
-        double: true,
-      },
-      headingFunf: {
-        type: "heading",
-        content: "Meeting person contact details",
-      },
-      subheadingSechs: {
-        type: "subheading",
-        content: "of who the SilverBack Team will meet",
-      },
-      subheadingSieben: {
-        type: "subheading",
-        content: "or call on the first day",
-      },
-      meetingPerson: {
-        type: "contact",
-        option: {
-          required: {
-            message: "Please enter the details",
-            value: true,
-          },
-        },
-      },
       spacerSechs: {
         type: "spacer",
         double: true,
@@ -727,27 +524,6 @@ export default function OrderFormContent({
           required: {
             value: true,
             message: "Please confirm the pay term.",
-          },
-        },
-      },
-      spacerEins: {
-        type: "spacer",
-        double: true,
-      },
-      headingZwei: {
-        type: "heading",
-        content: "The address",
-      },
-      subheadingZwei: {
-        type: "subheading",
-        content: "for the invoicing",
-      },
-      invoicingAddress: {
-        type: "address",
-        option: {
-          required: {
-            message: "Please enter the invoicing address",
-            value: true,
           },
         },
       },
@@ -998,7 +774,8 @@ export default function OrderFormContent({
         if (typeof window !== "undefined") {
           localStorage.setItem(
             "SilverWeb-LS-" + params.order_id,
-            JSON.stringify(fv)
+            ""
+            // JSON.stringify(fv)
           );
         }
       },
@@ -1141,7 +918,8 @@ export default function OrderFormContent({
         <Modal.Footer>
           <Button
             onPress={() => {
-              window.location.href = process.env.NEXT_PUBLIC_SILVERBACK_DOMAIN+"";
+              window.location.href =
+                process.env.NEXT_PUBLIC_SILVERBACK_DOMAIN + "";
             }}
             size={"sm"}
             disabled={submitForm.isLoading}

@@ -433,10 +433,10 @@ export default function OrderInterfaceContent({
                                                   xs={6}
                                                   alignItems="center"
                                                 >
-                                                  {orderData && (
+                                                  {orderData?.ContactOrder[0] && (
                                                     <ContactCard
                                                       contact={
-                                                        orderData.meetingPerson
+                                                        orderData.ContactOrder[0].contact
                                                       }
                                                     />
                                                   )}
